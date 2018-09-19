@@ -1,0 +1,1 @@
+# designit-ckeditor-plugin

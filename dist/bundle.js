@@ -96,65 +96,18 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ckeditor_ckeditor5_editor_classic_src_classiceditor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-editor-classic/src/classiceditor */ "./node_modules/@ckeditor/ckeditor5-editor-classic/src/classiceditor.js");
-/* harmony import */ var _ckeditor_ckeditor5_essentials_src_essentials__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-essentials/src/essentials */ "./node_modules/@ckeditor/ckeditor5-essentials/src/essentials.js");
-/* harmony import */ var _ckeditor_ckeditor5_paragraph_src_paragraph__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-paragraph/src/paragraph */ "./node_modules/@ckeditor/ckeditor5-paragraph/src/paragraph.js");
-/* harmony import */ var _ckeditor_ckeditor5_basic_styles_src_bold__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ckeditor/ckeditor5-basic-styles/src/bold */ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/bold.js");
-/* harmony import */ var _ckeditor_ckeditor5_basic_styles_src_italic__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ckeditor/ckeditor5-basic-styles/src/italic */ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/italic.js");
-/* harmony import */ var _ckeditor_ckeditor5_image_src_image__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ckeditor/ckeditor5-image/src/image */ "./node_modules/@ckeditor/ckeditor5-image/src/image.js");
-/* harmony import */ var _ckeditor_ckeditor5_image_src_imagecaption__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ckeditor/ckeditor5-image/src/imagecaption */ "./node_modules/@ckeditor/ckeditor5-image/src/imagecaption.js");
-/* harmony import */ var _myPlugin__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./myPlugin */ "./myPlugin.js");
+/* harmony import */ var _ckeditor_ckeditor5_paragraph_src_paragraph__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-paragraph/src/paragraph */ "./node_modules/@ckeditor/ckeditor5-paragraph/src/paragraph.js");
+/* harmony import */ var _designit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./designit */ "./designit.js");
 
 
 
 
 
-
-
-
-
-//import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
-// import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
-
-// import imageIcon from '@ckeditor/ckeditor5-core/theme/icons/image.svg';
-
-
-// implement new plugin InsertImage
-// class InsertImage extends Plugin {
-//     init() {
-//         const editor = this.editor;
-
-//         editor.ui.componentFactory.add( 'insertImage', locale => {
-//             const view = new ButtonView( locale );
-
-//             view.set( {
-//                 label: 'Insert image',
-//                 icon: imageIcon,
-//                 tooltip: true
-//             } );
-
-//             // Callback executed once the image is clicked.
-//             view.on( 'execute', () => {
-//                 const imageUrl = prompt( 'Image URL' );
-
-//                 editor.model.change( writer => {
-//                     const imageElement = writer.createElement( 'image', {
-//                         src: imageUrl
-//                     } );
-
-//                     // Insert the image in the current selection location.
-//                     editor.model.insertContent( imageElement, editor.model.document.selection );
-//                 } );
-//             } );
-
-//             return view;
-//         } );
-//     }
-// }
 
 _ckeditor_ckeditor5_editor_classic_src_classiceditor__WEBPACK_IMPORTED_MODULE_0__["default"]
     .create( document.querySelector( '#editor' ), {
-        plugins: [ _ckeditor_ckeditor5_essentials_src_essentials__WEBPACK_IMPORTED_MODULE_1__["default"], _ckeditor_ckeditor5_paragraph_src_paragraph__WEBPACK_IMPORTED_MODULE_2__["default"], _ckeditor_ckeditor5_basic_styles_src_bold__WEBPACK_IMPORTED_MODULE_3__["default"], _ckeditor_ckeditor5_basic_styles_src_italic__WEBPACK_IMPORTED_MODULE_4__["default"], _ckeditor_ckeditor5_image_src_image__WEBPACK_IMPORTED_MODULE_5__["default"], _myPlugin__WEBPACK_IMPORTED_MODULE_7__["default"], _ckeditor_ckeditor5_image_src_imagecaption__WEBPACK_IMPORTED_MODULE_6__["default"] ],
-        toolbar: [ 'bold', 'italic', 'insertImage' ]
+        plugins: [ _ckeditor_ckeditor5_paragraph_src_paragraph__WEBPACK_IMPORTED_MODULE_1__["default"], _designit__WEBPACK_IMPORTED_MODULE_2__["default"] ],
+        toolbar: [ 'Designit' ]
     } )
     .then( editor => {
         console.log( 'Editor was initialized', editor );
@@ -165,1372 +118,1107 @@ _ckeditor_ckeditor5_editor_classic_src_classiceditor__WEBPACK_IMPORTED_MODULE_0_
 
 /***/ }),
 
-/***/ "./myPlugin.js":
+/***/ "./button.js":
+/*!*******************!*\
+  !*** ./button.js ***!
+  \*******************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/*
+ * DesignBold JS SDK v1.0
+ *
+ * Using in Design IT Button
+ *
+ * Copyright (c) DesignBold
+ */
+
+window.DBSDK_Cfg = {
+    export_mode: ['download'],
+    export_callback: function (resultUrl,document_id, exportTarget) {
+        // do something with design image URL, which is only accessible for 24 hours
+    },
+};
+window.DBSDK = {
+    app_id : "08b68956d3",
+};
+
+// Add style css
+(function (doc) {
+    var style = doc.createElement('style');
+    style.type = 'text/css';
+    style.innerHTML = ".db-btn-designit,.db-btn-redesign{-moz-box-shadow:0 10px 14px -7px #000;-webkit-box-shadow:0 10px 14px -7px #000;background-color:#0098fe}@-webkit-keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes fadeIn{from{opacity:0}to{opacity:1}}.fadeIn{-webkit-animation-name:fadeIn;animation-name:fadeIn}.animated{-webkit-animation-duration:1s;animation-duration:1s;-webkit-animation-fill-mode:both;animation-fill-mode:both}.db-btn-designit{box-shadow:0 10px 14px -7px #000;font-family:Arial;-moz-border-radius:3px;border-radius:3px;display:inline-block;cursor:pointer;color:#fff;font-size:13px;font-weight:700;padding:0 10px 0 30px;height:30px;line-height:32px;z-index:99999;text-decoration:none;-moz-transition:all ease .3s;-o-transition:all ease .3s;-webkit-transition:all ease .3s;transition:all ease .3s;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAKT2lDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjanVNnVFPpFj333vRCS4iAlEtvUhUIIFJCi4AUkSYqIQkQSoghodkVUcERRUUEG8igiAOOjoCMFVEsDIoK2AfkIaKOg6OIisr74Xuja9a89+bN/rXXPues852zzwfACAyWSDNRNYAMqUIeEeCDx8TG4eQuQIEKJHAAEAizZCFz/SMBAPh+PDwrIsAHvgABeNMLCADATZvAMByH/w/qQplcAYCEAcB0kThLCIAUAEB6jkKmAEBGAYCdmCZTAKAEAGDLY2LjAFAtAGAnf+bTAICd+Jl7AQBblCEVAaCRACATZYhEAGg7AKzPVopFAFgwABRmS8Q5ANgtADBJV2ZIALC3AMDOEAuyAAgMADBRiIUpAAR7AGDIIyN4AISZABRG8lc88SuuEOcqAAB4mbI8uSQ5RYFbCC1xB1dXLh4ozkkXKxQ2YQJhmkAuwnmZGTKBNA/g88wAAKCRFRHgg/P9eM4Ors7ONo62Dl8t6r8G/yJiYuP+5c+rcEAAAOF0ftH+LC+zGoA7BoBt/qIl7gRoXgugdfeLZrIPQLUAoOnaV/Nw+H48PEWhkLnZ2eXk5NhKxEJbYcpXff5nwl/AV/1s+X48/Pf14L7iJIEyXYFHBPjgwsz0TKUcz5IJhGLc5o9H/LcL//wd0yLESWK5WCoU41EScY5EmozzMqUiiUKSKcUl0v9k4t8s+wM+3zUAsGo+AXuRLahdYwP2SycQWHTA4vcAAPK7b8HUKAgDgGiD4c93/+8//UegJQCAZkmScQAAXkQkLlTKsz/HCAAARKCBKrBBG/TBGCzABhzBBdzBC/xgNoRCJMTCQhBCCmSAHHJgKayCQiiGzbAdKmAv1EAdNMBRaIaTcA4uwlW4Dj1wD/phCJ7BKLyBCQRByAgTYSHaiAFiilgjjggXmYX4IcFIBBKLJCDJiBRRIkuRNUgxUopUIFVIHfI9cgI5h1xGupE7yAAygvyGvEcxlIGyUT3UDLVDuag3GoRGogvQZHQxmo8WoJvQcrQaPYw2oefQq2gP2o8+Q8cwwOgYBzPEbDAuxsNCsTgsCZNjy7EirAyrxhqwVqwDu4n1Y8+xdwQSgUXACTYEd0IgYR5BSFhMWE7YSKggHCQ0EdoJNwkDhFHCJyKTqEu0JroR+cQYYjIxh1hILCPWEo8TLxB7iEPENyQSiUMyJ7mQAkmxpFTSEtJG0m5SI+ksqZs0SBojk8naZGuyBzmULCAryIXkneTD5DPkG+Qh8lsKnWJAcaT4U+IoUspqShnlEOU05QZlmDJBVaOaUt2ooVQRNY9aQq2htlKvUYeoEzR1mjnNgxZJS6WtopXTGmgXaPdpr+h0uhHdlR5Ol9BX0svpR+iX6AP0dwwNhhWDx4hnKBmbGAcYZxl3GK+YTKYZ04sZx1QwNzHrmOeZD5lvVVgqtip8FZHKCpVKlSaVGyovVKmqpqreqgtV81XLVI+pXlN9rkZVM1PjqQnUlqtVqp1Q61MbU2epO6iHqmeob1Q/pH5Z/YkGWcNMw09DpFGgsV/jvMYgC2MZs3gsIWsNq4Z1gTXEJrHN2Xx2KruY/R27iz2qqaE5QzNKM1ezUvOUZj8H45hx+Jx0TgnnKKeX836K3hTvKeIpG6Y0TLkxZVxrqpaXllirSKtRq0frvTau7aedpr1Fu1n7gQ5Bx0onXCdHZ4/OBZ3nU9lT3acKpxZNPTr1ri6qa6UbobtEd79up+6Ynr5egJ5Mb6feeb3n+hx9L/1U/W36p/VHDFgGswwkBtsMzhg8xTVxbzwdL8fb8VFDXcNAQ6VhlWGX4YSRudE8o9VGjUYPjGnGXOMk423GbcajJgYmISZLTepN7ppSTbmmKaY7TDtMx83MzaLN1pk1mz0x1zLnm+eb15vft2BaeFostqi2uGVJsuRaplnutrxuhVo5WaVYVVpds0atna0l1rutu6cRp7lOk06rntZnw7Dxtsm2qbcZsOXYBtuutm22fWFnYhdnt8Wuw+6TvZN9un2N/T0HDYfZDqsdWh1+c7RyFDpWOt6azpzuP33F9JbpL2dYzxDP2DPjthPLKcRpnVOb00dnF2e5c4PziIuJS4LLLpc+Lpsbxt3IveRKdPVxXeF60vWdm7Obwu2o26/uNu5p7ofcn8w0nymeWTNz0MPIQ+BR5dE/C5+VMGvfrH5PQ0+BZ7XnIy9jL5FXrdewt6V3qvdh7xc+9j5yn+M+4zw33jLeWV/MN8C3yLfLT8Nvnl+F30N/I/9k/3r/0QCngCUBZwOJgUGBWwL7+Hp8Ib+OPzrbZfay2e1BjKC5QRVBj4KtguXBrSFoyOyQrSH355jOkc5pDoVQfujW0Adh5mGLw34MJ4WHhVeGP45wiFga0TGXNXfR3ENz30T6RJZE3ptnMU85ry1KNSo+qi5qPNo3ujS6P8YuZlnM1VidWElsSxw5LiquNm5svt/87fOH4p3iC+N7F5gvyF1weaHOwvSFpxapLhIsOpZATIhOOJTwQRAqqBaMJfITdyWOCnnCHcJnIi/RNtGI2ENcKh5O8kgqTXqS7JG8NXkkxTOlLOW5hCepkLxMDUzdmzqeFpp2IG0yPTq9MYOSkZBxQqohTZO2Z+pn5mZ2y6xlhbL+xW6Lty8elQfJa7OQrAVZLQq2QqboVFoo1yoHsmdlV2a/zYnKOZarnivN7cyzytuQN5zvn//tEsIS4ZK2pYZLVy0dWOa9rGo5sjxxedsK4xUFK4ZWBqw8uIq2Km3VT6vtV5eufr0mek1rgV7ByoLBtQFr6wtVCuWFfevc1+1dT1gvWd+1YfqGnRs+FYmKrhTbF5cVf9go3HjlG4dvyr+Z3JS0qavEuWTPZtJm6ebeLZ5bDpaql+aXDm4N2dq0Dd9WtO319kXbL5fNKNu7g7ZDuaO/PLi8ZafJzs07P1SkVPRU+lQ27tLdtWHX+G7R7ht7vPY07NXbW7z3/T7JvttVAVVN1WbVZftJ+7P3P66Jqun4lvttXa1ObXHtxwPSA/0HIw6217nU1R3SPVRSj9Yr60cOxx++/p3vdy0NNg1VjZzG4iNwRHnk6fcJ3/ceDTradox7rOEH0x92HWcdL2pCmvKaRptTmvtbYlu6T8w+0dbq3nr8R9sfD5w0PFl5SvNUyWna6YLTk2fyz4ydlZ19fi753GDborZ752PO32oPb++6EHTh0kX/i+c7vDvOXPK4dPKy2+UTV7hXmq86X23qdOo8/pPTT8e7nLuarrlca7nuer21e2b36RueN87d9L158Rb/1tWeOT3dvfN6b/fF9/XfFt1+cif9zsu72Xcn7q28T7xf9EDtQdlD3YfVP1v+3Njv3H9qwHeg89HcR/cGhYPP/pH1jw9DBY+Zj8uGDYbrnjg+OTniP3L96fynQ89kzyaeF/6i/suuFxYvfvjV69fO0ZjRoZfyl5O/bXyl/erA6xmv28bCxh6+yXgzMV70VvvtwXfcdx3vo98PT+R8IH8o/2j5sfVT0Kf7kxmTk/8EA5jz/GMzLdsAADvqaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/Pgo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzExMSA3OS4xNTgzMjUsIDIwMTUvMDkvMTAtMDE6MTA6MjAgICAgICAgICI+CiAgIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgICAgICAgICAgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iCiAgICAgICAgICAgIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiCiAgICAgICAgICAgIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIKICAgICAgICAgICAgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iPgogICAgICAgICA8eG1wOkNyZWF0b3JUb29sPkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE1IChXaW5kb3dzKTwveG1wOkNyZWF0b3JUb29sPgogICAgICAgICA8eG1wOkNyZWF0ZURhdGU+MjAxNi0wNC0xNVQxMzozNjo1MyswNzowMDwveG1wOkNyZWF0ZURhdGU+CiAgICAgICAgIDx4bXA6TWV0YWRhdGFEYXRlPjIwMTYtMDQtMTVUMTQ6MzE6MDUrMDc6MDA8L3htcDpNZXRhZGF0YURhdGU+CiAgICAgICAgIDx4bXA6TW9kaWZ5RGF0ZT4yMDE2LTA0LTE1VDE0OjMxOjA1KzA3OjAwPC94bXA6TW9kaWZ5RGF0ZT4KICAgICAgICAgPHhtcE1NOkluc3RhbmNlSUQ+eG1wLmlpZDo5MjU4YjVmNi03ZjI3LWQyNGMtYmYyNi02N2FlZDY3ZTc2Nzc8L3htcE1NOkluc3RhbmNlSUQ+CiAgICAgICAgIDx4bXBNTTpEb2N1bWVudElEPmFkb2JlOmRvY2lkOnBob3Rvc2hvcDo2ZGIzZmY3ZC0wMmQ0LTExZTYtOTg0ZC1mMzU1ZWE5OGUxNGU8L3htcE1NOkRvY3VtZW50SUQ+CiAgICAgICAgIDx4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ+eG1wLmRpZDpjM2QwMjFlNC02NTNhLWU5NDQtODFjMS01Njg0OGE2ZTE4N2U8L3htcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD4KICAgICAgICAgPHhtcE1NOkhpc3Rvcnk+CiAgICAgICAgICAgIDxyZGY6U2VxPgogICAgICAgICAgICAgICA8cmRmOmxpIHJkZjpwYXJzZVR5cGU9IlJlc291cmNlIj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OmFjdGlvbj5jcmVhdGVkPC9zdEV2dDphY3Rpb24+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDppbnN0YW5jZUlEPnhtcC5paWQ6YzNkMDIxZTQtNjUzYS1lOTQ0LTgxYzEtNTY4NDhhNmUxODdlPC9zdEV2dDppbnN0YW5jZUlEPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6d2hlbj4yMDE2LTA0LTE1VDEzOjM2OjUzKzA3OjAwPC9zdEV2dDp3aGVuPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6c29mdHdhcmVBZ2VudD5BZG9iZSBQaG90b3Nob3AgQ0MgMjAxNSAoV2luZG93cyk8L3N0RXZ0OnNvZnR3YXJlQWdlbnQ+CiAgICAgICAgICAgICAgIDwvcmRmOmxpPgogICAgICAgICAgICAgICA8cmRmOmxpIHJkZjpwYXJzZVR5cGU9IlJlc291cmNlIj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OmFjdGlvbj5zYXZlZDwvc3RFdnQ6YWN0aW9uPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6aW5zdGFuY2VJRD54bXAuaWlkOmJjN2I1NTg2LTExNDQtMzM0Ni04ZWFkLTIyOWFhZDQxZmZiOTwvc3RFdnQ6aW5zdGFuY2VJRD4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OndoZW4+MjAxNi0wNC0xNVQxMzozNjo1MyswNzowMDwvc3RFdnQ6d2hlbj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OnNvZnR3YXJlQWdlbnQ+QWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpPC9zdEV2dDpzb2Z0d2FyZUFnZW50PgogICAgICAgICAgICAgICAgICA8c3RFdnQ6Y2hhbmdlZD4vPC9zdEV2dDpjaGFuZ2VkPgogICAgICAgICAgICAgICA8L3JkZjpsaT4KICAgICAgICAgICAgICAgPHJkZjpsaSByZGY6cGFyc2VUeXBlPSJSZXNvdXJjZSI+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDphY3Rpb24+c2F2ZWQ8L3N0RXZ0OmFjdGlvbj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0Omluc3RhbmNlSUQ+eG1wLmlpZDo5MjU4YjVmNi03ZjI3LWQyNGMtYmYyNi02N2FlZDY3ZTc2Nzc8L3N0RXZ0Omluc3RhbmNlSUQ+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDp3aGVuPjIwMTYtMDQtMTVUMTQ6MzE6MDUrMDc6MDA8L3N0RXZ0OndoZW4+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDpzb2Z0d2FyZUFnZW50PkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE1IChXaW5kb3dzKTwvc3RFdnQ6c29mdHdhcmVBZ2VudD4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OmNoYW5nZWQ+Lzwvc3RFdnQ6Y2hhbmdlZD4KICAgICAgICAgICAgICAgPC9yZGY6bGk+CiAgICAgICAgICAgIDwvcmRmOlNlcT4KICAgICAgICAgPC94bXBNTTpIaXN0b3J5PgogICAgICAgICA8ZGM6Zm9ybWF0PmltYWdlL3BuZzwvZGM6Zm9ybWF0PgogICAgICAgICA8cGhvdG9zaG9wOkNvbG9yTW9kZT4zPC9waG90b3Nob3A6Q29sb3JNb2RlPgogICAgICAgICA8cGhvdG9zaG9wOklDQ1Byb2ZpbGU+c1JHQiBJRUM2MTk2Ni0yLjE8L3Bob3Rvc2hvcDpJQ0NQcm9maWxlPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICAgICA8dGlmZjpYUmVzb2x1dGlvbj43MjAwMDAvMTAwMDA8L3RpZmY6WFJlc29sdXRpb24+CiAgICAgICAgIDx0aWZmOllSZXNvbHV0aW9uPjcyMDAwMC8xMDAwMDwvdGlmZjpZUmVzb2x1dGlvbj4KICAgICAgICAgPHRpZmY6UmVzb2x1dGlvblVuaXQ+MjwvdGlmZjpSZXNvbHV0aW9uVW5pdD4KICAgICAgICAgPGV4aWY6Q29sb3JTcGFjZT4xPC9leGlmOkNvbG9yU3BhY2U+CiAgICAgICAgIDxleGlmOlBpeGVsWERpbWVuc2lvbj4yMDwvZXhpZjpQaXhlbFhEaW1lbnNpb24+CiAgICAgICAgIDxleGlmOlBpeGVsWURpbWVuc2lvbj4yMDwvZXhpZjpQaXhlbFlEaW1lbnNpb24+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgIAo8P3hwYWNrZXQgZW5kPSJ3Ij8+1i5r2gAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAACoUlEQVR42pSVy0tUYRjGf3NmvF8iL6ndoBKisMuiFkE3Kiq6aWXRokWbaNtfUNCiC5VKBEEuWnWBMLNcFEFQSheMUYlEY8qcxPHajDnN7eg8LRrldEYtH/g273Pe3wff973PcUhiGuUB24BDwEZgYaLeB7QAT4BmYCipU5J9HZHUqn/rk6Rj9n47rEpmTHEzqjmoeiZgjSSZnS0K37usOarGDqycdMyuDwocXSjT/XKu0GOSMIAc4NLkmRrZ81AkSKyuBiIh5qCLQI4BHARKp4DOFFJy5sOQF2JjAAwGTbyjUUJmfDZgKXDIlQBOKb5gKel7T2G8eURLb4javh94un1EJkRhVgrlq/M4ub6AVKdjOugBF7DWWumKm3RureBwRjr1777yMLCUVZki3WXwaTBM07ceegJRzu1YhNORBF3rAkqsFf/oCGe9H9mw/Tg7e9JYZmSwe0UW2alO3H0hqpr7uPm2nzVFmVSW5dmBJUjyW6+qO+iXs+G6Kt3Ppn/NA2GtvN6myrufFYxO2G2/AfisW4wD+a40vowOMTweTjqk1QvSWb9kMa++pzIQnLDbPgNot1YcgP7MJPGJ5FuNC7YUutlT8JgMY8xutxtAo7VSlJZJWW4BHYEBvKGkBhzxMU4XnuHOxvOUZEXsdqORSA7PZCXblcr+4uVEzQhXPR8YiYUtQQKR/mqC/m7M3BOQUmyFeYCnSaMnSSOxsDa/vi8eXNCm13W64WnVsK9W8c/7NNyM/O5lGg93TDt61nCotrodP0e0s+mBqLslV/1VtTTlSu+Rv7VUscDzf4bD5PorZn6ZUd3v/aYrXW/V670mDd/WePS7HXZ5tjxEUoWktv9Il9bEt3/1O2b4BeQDu4ByYJ1lmnyJZ9YAvAB+2Bt/DwBjORDN8Mr1IAAAAABJRU5ErkJggg==);background-repeat:no-repeat;background-position:5px 5px}.db-btn-designit:hover{background-color:#37acfb;color:#fff;text-decoration:none}.db-btn-designit:active{margin-top:1px}.db-overlay{padding:0;margin:0;background-color:rgba(0,0,0,.5);position:fixed;top:0;left:0;bottom:0;right:0;z-index:999999;-moz-transition:all ease .3s;-o-transition:all ease .3s;-webkit-transition:all ease .3s;transition:all ease .3s;display:none}.db-lightbox{position:fixed;top:30px;left:20px;right:20px;background-color:#fff;z-index:99999;bottom:20px;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;overflow:hidden}.db-close-lightbox{width:30px;height:30px;display:block;line-height:30px;font-size:26px;color:#eee;-moz-transition:all ease .2s;-o-transition:all ease .2s;-webkit-transition:all ease .2s;transition:all ease .2s;position:absolute;top:3px;text-align:center;font-family:Arial;right:10px}.db-load,.db-loading{top:0;left:0;bottom:0;z-index:999;position:absolute}.db-close-lightbox:hover{cursor:pointer;color:#fff;-moz-transform:rotate(180deg);-webkit-transform:rotate(180deg);-o-transform:rotate(180deg);-ms-transform:rotate(180deg);transform:rotate(180deg)}.db-lightbox iframe{border:none;width:100%;height:100%}.db-loading{right:0;background-color:#f5f5f5}.db-load{right:0;background-color:rgba(0,0,0,.6);-moz-transition:all ease .3s;-o-transition:all ease .3s;-webkit-transition:all ease .3s;transition:all ease .3s}.inner-circles-loader:not(:required),.large.inner-circles-loader:not(:required){background:rgba(2,188,155,.7);overflow:hidden;text-indent:-9999px;-webkit-mask-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);border-radius:50%}.db-load .db-load-img{position:absolute;top:50%;left:50%;margin:-25px 0 0 -25px;display:block}.inner-circles-loader:not(:required){-moz-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);position:relative;display:inline-block;width:50px;height:50px}.inner-circles-loader:not(:required):after,.inner-circles-loader:not(:required):before{content:\'\';position:absolute;top:0;display:inline-block;width:50px;height:50px;border-radius:50%}.large.inner-circles-loader:not(:required){-moz-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);position:relative;display:inline-block;width:90px;height:90px}.large.inner-circles-loader:not(:required):after,.large.inner-circles-loader:not(:required):before{content:\'\';position:absolute;top:0;display:inline-block;width:90px;height:90px;border-radius:50%}.inner-circles-loader:not(:required):before{-moz-animation:inner-circles-loader 3s infinite;-webkit-animation:inner-circles-loader 3s infinite;animation:inner-circles-loader 3s infinite;-moz-transform-origin:0 50%;-ms-transform-origin:0 50%;-webkit-transform-origin:0 50%;transform-origin:0 50%;left:0;background:#c7efcf}.inner-circles-loader:not(:required):after{-moz-animation:inner-circles-loader 3s .2s reverse infinite;-webkit-animation:inner-circles-loader 3s .2s reverse infinite;animation:inner-circles-loader 3s .2s reverse infinite;-moz-transform-origin:100% 50%;-ms-transform-origin:100% 50%;-webkit-transform-origin:100% 50%;transform-origin:100% 50%;right:0;background:#eef5db;background-color:rgba(44,151,221,.7)}@-moz-keyframes inner-circles-loader{0%,100%{-moz-transform:rotate(0);transform:rotate(0)}50%{-moz-transform:rotate(360deg);transform:rotate(360deg)}}@-webkit-keyframes inner-circles-loader{0%,100%{-webkit-transform:rotate(0);transform:rotate(0)}50%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes inner-circles-loader{0%,100%{-moz-transform:rotate(0);-ms-transform:rotate(0);-webkit-transform:rotate(0);transform:rotate(0)}50%{-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.inner-circles-loader.large{position:absolute!important;top:50%;left:50%;margin:-50px 0 0 -50px}";
+    doc.getElementsByTagName('head')[0].appendChild(style);
+})(document);
+
+(function (self) {
+    'use strict';
+
+    if (self.fetch) {
+        return
+    }
+
+    var support = {
+        searchParams: 'URLSearchParams' in self,
+        iterable: 'Symbol' in self && 'iterator' in Symbol,
+        blob: 'FileReader' in self && 'Blob' in self && (function () {
+            try {
+                new Blob();
+                return true
+            } catch (e) {
+                return false
+            }
+        })(),
+        formData: 'FormData' in self,
+        arrayBuffer: 'ArrayBuffer' in self
+    };
+
+    if (support.arrayBuffer) {
+        var viewClasses = [
+            '[object Int8Array]',
+            '[object Uint8Array]',
+            '[object Uint8ClampedArray]',
+            '[object Int16Array]',
+            '[object Uint16Array]',
+            '[object Int32Array]',
+            '[object Uint32Array]',
+            '[object Float32Array]',
+            '[object Float64Array]'
+        ];
+
+        var isDataView = function (obj) {
+            return obj && DataView.prototype.isPrototypeOf(obj)
+        };
+
+        var isArrayBufferView = ArrayBuffer.isView || function (obj) {
+            return obj && viewClasses.indexOf(Object.prototype.toString.call(obj)) > -1
+        }
+    }
+
+    function normalizeName(name) {
+        if (typeof name !== 'string') {
+            name = String(name)
+        }
+        if (/[^a-z0-9\-#$%&'*+.\^_`|~]/i.test(name)) {
+            throw new TypeError('Invalid character in header field name')
+        }
+        return name.toLowerCase()
+    }
+
+    function normalizeValue(value) {
+        if (typeof value !== 'string') {
+            value = String(value)
+        }
+        return value
+    }
+
+    // Build a destructive iterator for the value list
+    function iteratorFor(items) {
+        var iterator = {
+            next: function () {
+                var value = items.shift();
+                return {done: value === undefined, value: value}
+            }
+        };
+
+        if (support.iterable) {
+            iterator[Symbol.iterator] = function () {
+                return iterator
+            }
+        }
+
+        return iterator
+    }
+
+    function Headers(headers) {
+        this.map = {};
+
+        if (headers instanceof Headers) {
+            headers.forEach(function (value, name) {
+                this.append(name, value)
+            }, this)
+
+        } else if (headers) {
+            Object.getOwnPropertyNames(headers).forEach(function (name) {
+                this.append(name, headers[name])
+            }, this)
+        }
+    }
+
+    Headers.prototype.append = function (name, value) {
+        name = normalizeName(name);
+        value = normalizeValue(value);
+        var oldValue = this.map[name];
+        this.map[name] = oldValue ? oldValue + ',' + value : value
+    };
+
+    Headers.prototype['delete'] = function (name) {
+        delete this.map[normalizeName(name)]
+    };
+
+    Headers.prototype.get = function (name) {
+        name = normalizeName(name);
+        return this.has(name) ? this.map[name] : null
+    };
+
+    Headers.prototype.has = function (name) {
+        return this.map.hasOwnProperty(normalizeName(name))
+    };
+
+    Headers.prototype.set = function (name, value) {
+        this.map[normalizeName(name)] = normalizeValue(value)
+    };
+
+    Headers.prototype.forEach = function (callback, thisArg) {
+        for (var name in this.map) {
+            if (this.map.hasOwnProperty(name)) {
+                callback.call(thisArg, this.map[name], name, this)
+            }
+        }
+    };
+
+    Headers.prototype.keys = function () {
+        var items = [];
+        this.forEach(function (value, name) {
+            items.push(name)
+        });
+        return iteratorFor(items)
+    };
+
+    Headers.prototype.values = function () {
+        var items = [];
+        this.forEach(function (value) {
+            items.push(value)
+        });
+        return iteratorFor(items)
+    };
+
+    Headers.prototype.entries = function () {
+        var items = [];
+        this.forEach(function (value, name) {
+            items.push([name, value])
+        });
+        return iteratorFor(items)
+    };
+
+    if (support.iterable) {
+        Headers.prototype[Symbol.iterator] = Headers.prototype.entries
+    }
+
+    function consumed(body) {
+        if (body.bodyUsed) {
+            return Promise.reject(new TypeError('Already read'))
+        }
+        body.bodyUsed = true
+    }
+
+    function fileReaderReady(reader) {
+        return new Promise(function (resolve, reject) {
+            reader.onload = function () {
+                resolve(reader.result)
+            };
+            reader.onerror = function () {
+                reject(reader.error)
+            }
+        })
+    }
+
+    function readBlobAsArrayBuffer(blob) {
+        var reader = new FileReader();
+        var promise = fileReaderReady(reader);
+        reader.readAsArrayBuffer(blob);
+        return promise
+    }
+
+    function readBlobAsText(blob) {
+        var reader = new FileReader();
+        var promise = fileReaderReady(reader);
+        reader.readAsText(blob);
+        return promise
+    }
+
+    function readArrayBufferAsText(buf) {
+        var view = new Uint8Array(buf);
+        var chars = new Array(view.length);
+
+        for (var i = 0; i < view.length; i++) {
+            chars[i] = String.fromCharCode(view[i])
+        }
+        return chars.join('')
+    }
+
+    function bufferClone(buf) {
+        if (buf.slice) {
+            return buf.slice(0)
+        } else {
+            var view = new Uint8Array(buf.byteLength);
+            view.set(new Uint8Array(buf));
+            return view.buffer
+        }
+    }
+
+    function Body() {
+        this.bodyUsed = false;
+
+        this._initBody = function (body) {
+            this._bodyInit = body;
+            if (!body) {
+                this._bodyText = ''
+            } else if (typeof body === 'string') {
+                this._bodyText = body
+            } else if (support.blob && Blob.prototype.isPrototypeOf(body)) {
+                this._bodyBlob = body
+            } else if (support.formData && FormData.prototype.isPrototypeOf(body)) {
+                this._bodyFormData = body
+            } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
+                this._bodyText = body.toString()
+            } else if (support.arrayBuffer && support.blob && isDataView(body)) {
+                this._bodyArrayBuffer = bufferClone(body.buffer);
+                // IE 10-11 can't handle a DataView body.
+                this._bodyInit = new Blob([this._bodyArrayBuffer])
+            } else if (support.arrayBuffer && (ArrayBuffer.prototype.isPrototypeOf(body) || isArrayBufferView(body))) {
+                this._bodyArrayBuffer = bufferClone(body)
+            } else {
+                throw new Error('unsupported BodyInit type')
+            }
+
+            if (!this.headers.get('content-type')) {
+                if (typeof body === 'string') {
+                    this.headers.set('content-type', 'text/plain;charset=UTF-8')
+                } else if (this._bodyBlob && this._bodyBlob.type) {
+                    this.headers.set('content-type', this._bodyBlob.type)
+                } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
+                    this.headers.set('content-type', 'application/x-www-form-urlencoded;charset=UTF-8')
+                }
+            }
+        };
+
+        if (support.blob) {
+            this.blob = function () {
+                var rejected = consumed(this);
+                if (rejected) {
+                    return rejected
+                }
+
+                if (this._bodyBlob) {
+                    return Promise.resolve(this._bodyBlob)
+                } else if (this._bodyArrayBuffer) {
+                    return Promise.resolve(new Blob([this._bodyArrayBuffer]))
+                } else if (this._bodyFormData) {
+                    throw new Error('could not read FormData body as blob')
+                } else {
+                    return Promise.resolve(new Blob([this._bodyText]))
+                }
+            };
+
+            this.arrayBuffer = function () {
+                if (this._bodyArrayBuffer) {
+                    return consumed(this) || Promise.resolve(this._bodyArrayBuffer)
+                } else {
+                    return this.blob().then(readBlobAsArrayBuffer)
+                }
+            }
+        }
+
+        this.text = function () {
+            var rejected = consumed(this);
+            if (rejected) {
+                return rejected
+            }
+
+            if (this._bodyBlob) {
+                return readBlobAsText(this._bodyBlob)
+            } else if (this._bodyArrayBuffer) {
+                return Promise.resolve(readArrayBufferAsText(this._bodyArrayBuffer))
+            } else if (this._bodyFormData) {
+                throw new Error('could not read FormData body as text')
+            } else {
+                return Promise.resolve(this._bodyText)
+            }
+        };
+
+        if (support.formData) {
+            this.formData = function () {
+                return this.text().then(decode)
+            }
+        }
+
+        this.json = function () {
+            return this.text().then(JSON.parse)
+        };
+
+        return this
+    }
+
+    // HTTP methods whose capitalization should be normalized
+    var methods = ['DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT'];
+
+    function normalizeMethod(method) {
+        var upcased = method.toUpperCase();
+        return (methods.indexOf(upcased) > -1) ? upcased : method
+    }
+
+    function Request(input, options) {
+        options = options || {};
+        var body = options.body;
+
+        if (typeof input === 'string') {
+            this.url = input
+        } else {
+            if (input.bodyUsed) {
+                throw new TypeError('Already read')
+            }
+            this.url = input.url;
+            this.credentials = input.credentials;
+            if (!options.headers) {
+                this.headers = new Headers(input.headers)
+            }
+            this.method = input.method;
+            this.mode = input.mode;
+            if (!body && input._bodyInit !== null) {
+                body = input._bodyInit;
+                input.bodyUsed = true
+            }
+        }
+
+        this.credentials = options.credentials || this.credentials || 'omit';
+        if (options.headers || !this.headers) {
+            this.headers = new Headers(options.headers)
+        }
+        this.method = normalizeMethod(options.method || this.method || 'GET');
+        this.mode = options.mode || this.mode || null;
+        this.referrer = null;
+
+        if ((this.method === 'GET' || this.method === 'HEAD') && body) {
+            throw new TypeError('Body not allowed for GET or HEAD requests')
+        }
+        this._initBody(body)
+    }
+
+    Request.prototype.clone = function () {
+        return new Request(this, {body: this._bodyInit})
+    };
+
+    function decode(body) {
+        var form = new FormData();
+        body.trim().split('&').forEach(function (bytes) {
+            if (bytes) {
+                var split = bytes.split('=');
+                var name = split.shift().replace(/\+/g, ' ');
+                var value = split.join('=').replace(/\+/g, ' ');
+                form.append(decodeURIComponent(name), decodeURIComponent(value))
+            }
+        });
+        return form
+    }
+
+    function parseHeaders(rawHeaders) {
+        var headers = new Headers();
+        rawHeaders.split(/\r?\n/).forEach(function (line) {
+            var parts = line.split(':');
+            var key = parts.shift().trim();
+            if (key) {
+                var value = parts.join(':').trim();
+                headers.append(key, value)
+            }
+        });
+        return headers
+    }
+
+    Body.call(Request.prototype);
+
+    function Response(bodyInit, options) {
+        if (!options) {
+            options = {}
+        }
+
+        this.type = 'default';
+        this.status = 'status' in options ? options.status : 200;
+        this.ok = this.status >= 200 && this.status < 300;
+        this.statusText = 'statusText' in options ? options.statusText : 'OK';
+        this.headers = new Headers(options.headers);
+        this.url = options.url || '';
+        this._initBody(bodyInit)
+    }
+
+    Body.call(Response.prototype);
+
+    Response.prototype.clone = function () {
+        return new Response(this._bodyInit, {
+            status: this.status,
+            statusText: this.statusText,
+            headers: new Headers(this.headers),
+            url: this.url
+        })
+    };
+
+    Response.error = function () {
+        var response = new Response(null, {status: 0, statusText: ''});
+        response.type = 'error';
+        return response
+    };
+
+    var redirectStatuses = [301, 302, 303, 307, 308];
+
+    Response.redirect = function (url, status) {
+        if (redirectStatuses.indexOf(status) === -1) {
+            throw new RangeError('Invalid status code')
+        }
+
+        return new Response(null, {status: status, headers: {location: url}})
+    };
+
+    self.Headers = Headers;
+    self.Request = Request;
+    self.Response = Response;
+
+    self.fetch = function (input, init) {
+        return new Promise(function (resolve, reject) {
+            var request = new Request(input, init);
+            var xhr = new XMLHttpRequest();
+
+            xhr.onload = function () {
+                var options = {
+                    status: xhr.status,
+                    statusText: xhr.statusText,
+                    headers: parseHeaders(xhr.getAllResponseHeaders() || '')
+                };
+                options.url = 'responseURL' in xhr ? xhr.responseURL : options.headers.get('X-Request-URL');
+                var body = 'response' in xhr ? xhr.response : xhr.responseText;
+                resolve(new Response(body, options))
+            };
+
+            xhr.onerror = function () {
+                reject(new TypeError('Network request failed'))
+            };
+
+            xhr.ontimeout = function () {
+                reject(new TypeError('Network request failed'))
+            };
+
+            xhr.open(request.method, request.url, true);
+
+            if (request.credentials === 'include') {
+                xhr.withCredentials = true
+            }
+
+            if ('responseType' in xhr && support.blob) {
+                xhr.responseType = 'blob'
+            }
+
+            request.headers.forEach(function (value, name) {
+                xhr.setRequestHeader(name, value)
+            });
+
+            xhr.send(typeof request._bodyInit === 'undefined' ? null : request._bodyInit)
+        })
+    };
+    self.fetch.polyfill = true
+})(typeof self !== 'undefined' ? self : this);
+(function(doc, win) {
+    var host = null;
+    var source_frame = {};
+    if (typeof win === 'object' && typeof win.DBSDK === 'object' && typeof win.DBSDK.API === 'object' && typeof win.DBSDK.API.host) {
+        host = win.DBSDK.API.host;
+    }
+    win.DBSDK = {
+        'API': {
+            'app_id': win.DBSDK.app_id,
+            'scheme': 'https',
+            'host': host || 'www.designbold.com',
+            'path': 'design-it/create'
+        },
+        'error' : ""
+    };
+
+    DBSDK.getParameterByName = function (name, url) {
+        if (!url) url = doc.getElementById('db-js-sdk').getAttribute('src');
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[#&]" + name + "(=([^&]*)|&|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    };
+
+    DBSDK.validateCustomDimension_ = function (width, height, unit) {
+        if (isNaN(Number(width)) || isNaN(Number(height))) {
+            var msg = 'Please enter a valid width / height number';
+        }
+        else if (unit === 'mm') {
+            if (width < 13.2 || width > 1058.3 || height < 13.2 || height > 1058.3) {
+                var msg = 'Width and height must has value between of 13.2 and 1058.3 milimeters';
+            }
+        }
+        else if (unit === 'cm') {
+            if (width < 1.32 || width > 105.83 || height < 1.32 || height > 105.83) {
+                var msg = 'Width and height must has value between of 1.32 and 105.83 centimeters';
+            }
+        }
+        else if (unit === 'inch' || unit === 'in') {
+            if (width < 0.52 || width > 41.67 || height < 0.52 || height > 41.67) {
+                var msg = 'Width and height must has value between of 0.52 and 41.67 inches';
+            }
+        }
+        else {
+            if (width < 50 || width > 4000 || height < 50 || height > 4000) {
+                var msg = 'Width and height must has value between of 50 and 4000 pixels';
+            }
+        }
+        return msg;
+    };
+
+    DBSDK.API_CREATE = DBSDK.API.scheme + '://' + DBSDK.API.host + '/' + DBSDK.API.path;
+    DBSDK.COLLECTION_LIST = DBSDK.API.scheme + '://' + DBSDK.API.host + '/' + "collection/";
+
+    DBSDK.BROWSER_UNSUPPORTED = DBSDK.API.scheme + '://' + DBSDK.API.host + "/" + "browser/unsupported";
+
+    /* validate app id */
+    DBSDK.validateApp = function (callback) {
+        var app_id = DBSDK.app_id;
+        if (app_id && app_id !== '') {
+            win.fetch('https://api.designbold.com/pub/app/validate/' + app_id, {
+                method: 'POST',
+                mode: 'cors',
+                redirect: 'follow'
+            }).then(function (response) {
+                if (response.status === 200 && typeof callback === 'function') {
+                    DBSDK.API.app_id = app_id;
+                    callback();
+                }
+            }).catch(function () {
+                console.warn("Application is invalid & SDK can not be initialized.");
+            });
+        }
+        return false;
+    };
+
+    /* override dom selector */
+    DBSDK.$ = function (selector) {
+        var selectorType = 'querySelectorAll';
+
+        if (selector.indexOf('#') === 0) {
+            selectorType = 'getElementById';
+            selector = selector.substr(1, selector.length);
+        }
+
+        return document[selectorType](selector);
+    };
+
+    /* check if dom element is in current viewport */
+    DBSDK.isElementInViewport = function (el) {
+
+        //special bonus for those using jQuery
+        if (typeof jQuery === "function" && el instanceof jQuery) {
+            el = el[0];
+        }
+
+        var rect = el.getBoundingClientRect();
+
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (win.innerHeight || doc.documentElement.clientHeight) && /*or $(window).height() */
+            rect.right <= (win.innerWidth || doc.documentElement.clientWidth) /*or $(window).width() */
+        );
+    };
+
+    /* bind event & handler on element */
+    DBSDK.bindEventHandler = function (target, type, callback, useCapture) {
+        useCapture = useCapture || false;
+        if (target.addEventListener) {
+            target.addEventListener(type, callback, useCapture);
+        }
+        else {
+            target.attachEvent('on' + type, callback);
+        }
+    };
+    /* unbind event handler & return callback */
+    DBSDK.unbindEventHandler = function (target, type, callback, useCapture) {
+        useCapture = useCapture || false;
+        if (target.removeEventListener) {
+            target.removeEventListener(type, callback, useCapture);
+        }
+        else {
+            target.detachEvent('on' + type, callback);
+        }
+    };
+
+    /* check if document content is ready */
+    DBSDK.documentReady = function (fn) {
+        if (doc.readyState !== 'loading') {
+            fn();
+        } else if (win.addEventListener) {
+            win.addEventListener('DOMContentLoaded', fn);
+        } else {
+            win.attachEvent('onreadystatechange', function () {
+                if (doc.readyState !== 'loading')
+                    fn();
+            });
+        }
+    };
+
+    /* animating function */
+    DBSDK.FX = {
+        easing: {
+            linear: function (progress) {
+                return progress;
+            },
+            quadratic: function (progress) {
+                return Math.pow(progress, 2);
+            },
+            swing: function (progress) {
+                return 0.5 - Math.cos(progress * Math.PI) / 2;
+            },
+            circ: function (progress) {
+                return 1 - Math.sin(Math.acos(progress));
+            },
+            back: function (progress, x) {
+                return Math.pow(progress, 2) * ((x + 1) * progress - x);
+            },
+            bounce: function (progress) {
+                for (var a = 0, b = 1, result; 1; a += b, b /= 2) {
+                    if (progress >= (7 - 4 * a) / 11) {
+                        return -Math.pow((11 - 6 * a - 11 * progress) / 4, 2) + Math.pow(b, 2);
+                    }
+                }
+            },
+            elastic: function (progress, x) {
+                return Math.pow(2, 10 * (progress - 1)) * Math.cos(20 * Math.PI * x / 3 * progress);
+            }
+        },
+        animate: function (options) {
+            options = options || {};
+            var start = new Date;
+            var id = setInterval(function () {
+                var timePassed = new Date - start;
+                var progress = timePassed / options.duration;
+                if (progress > 1) {
+                    progress = 1;
+                }
+                options.progress = progress;
+                var delta = options.delta(progress);
+                options.step(delta);
+                if (progress === 1) {
+                    clearInterval(id);
+                    options.complete();
+                }
+            }, options.delay || 10);
+        },
+        fadeOut: function (element, options) {
+            options = options || {};
+            var to = 1;
+            this.animate({
+                duration: options.duration || 400,
+                delta: function (progress) {
+                    progress = this.progress;
+                    return DBSDK.FX.easing.swing(progress);
+                },
+                complete: options.complete || function () {
+                },
+                step: function (delta) {
+                    element.style.opacity = to - delta;
+                }
+            });
+        },
+        fadeIn: function (element, options) {
+            options = options || {};
+            var to = 0;
+            this.animate({
+                duration: options.duration || 400,
+                delta: function (progress) {
+                    progress = this.progress;
+                    return DBSDK.FX.easing.swing(progress);
+                },
+                complete: options.complete || function () {
+                },
+                step: function (delta) {
+                    element.style.opacity = to + delta;
+                }
+            });
+        }
+    };
+
+    /* create unique id */
+    DBSDK.guid = function () {
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+        }
+
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+            s4() + '-' + s4() + s4() + s4();
+    };
+
+    /* trigger create or open design frame */
+    DBSDK.startDesignTool = function (e) {
+        var designit_uri = e.currentTarget.getAttribute('data-href'),
+            uuid = e.currentTarget.getAttribute('data-id'),
+            overlay = DBSDK.$('.db-overlay[data-id="' + uuid + '"]');
+        if (overlay.length) {
+            overlay[0].style.display = 'block';
+        }
+        else {
+            var iframe = doc.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.setAttribute('data-id', uuid);
+            iframe.width = '100%';
+            iframe.height = '100%';
+            iframe.src = designit_uri;
+            iframe.name = 'db-design-frame-' + uuid;
+            iframe.id = 'db-design-frame-' + uuid;
+            var iframeOnLoad = function () {
+                if (iframe.removeEventListener) {
+                    iframe.removeEventListener('load', null, true);
+                }
+                else if (iframe.detachEvent) {
+                    iframe.detachEvent('onload', null);
+                }
+                iframe.style.display = 'block';
+                DBSDK.$('.db-overlay[data-id="' + uuid + '"] .db-loading')[0].style.display = 'none';
+                //source_frame = window.document.getElementById('db-design-frame-'+uuid);
+            };
+            DBSDK.unbindEventHandler(iframe, 'load', iframeOnLoad, true);
+            DBSDK.bindEventHandler(iframe, 'load', iframeOnLoad, true);
+            var overlay = '<div class="db-overlay animated fadeIn" data-id="' + uuid + '" style="display: block;">'
+                + '<span class="db-close-lightbox">×</span>'
+                + '<div class="db-lightbox">'
+                + '<div class="db-loading">'
+                + '<div class="inner-circles-loader large loading-icon"></div>'
+                + '</div>'
+                + '</div>'
+                + '</div>';
+            doc.body.insertAdjacentHTML('beforeend', overlay);
+            DBSDK.$('.db-overlay[data-id="' + uuid + '"] .db-lightbox')[0].appendChild(iframe);
+            source_frame = window.document.getElementById('db-design-frame-'+uuid);
+            DBSDK.bindEventHandler(DBSDK.$('.db-overlay[data-id="' + uuid + '"] .db-close-lightbox')[0], 'click', function (e) {
+                e.currentTarget.parentNode.style.display = 'none';
+                window.parent.postMessage({"action":""})
+            });
+        }
+    };
+
+    DBSDK.startDesignToolExtension = function (designit_uri,uuid) {
+        var overlay = DBSDK.$('.db-overlay[data-id="' + uuid + '"]');
+        if (overlay.length) {
+            overlay[0].style.display = 'block';
+        }
+        else {
+            var iframe = doc.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.setAttribute('data-id', uuid);
+            iframe.width = '100%';
+            iframe.height = '100%';
+            iframe.src = designit_uri;
+            iframe.name = 'db-design-frame-' + uuid;
+            iframe.id = 'db-design-frame-' + uuid;
+            var iframeOnLoad = function () {
+                if (iframe.removeEventListener) {
+                    iframe.removeEventListener('load', null, true);
+                }
+                else if (iframe.detachEvent) {
+                    iframe.detachEvent('onload', null);
+                }
+                iframe.style.display = 'block';
+                DBSDK.$('.db-overlay[data-id="' + uuid + '"] .db-loading')[0].style.display = 'none';
+                //source_frame = window.document.getElementById('db-design-frame-'+uuid);
+            };
+            DBSDK.unbindEventHandler(iframe, 'load', iframeOnLoad, true);
+            DBSDK.bindEventHandler(iframe, 'load', iframeOnLoad, true);
+            var overlay = '<div class="db-overlay animated fadeIn" data-id="' + uuid + '" style="display: block;">'
+                + '<span class="db-close-lightbox">×</span>'
+                + '<div class="db-lightbox">'
+                + '<div class="db-loading">'
+                + '<div class="inner-circles-loader large loading-icon"></div>'
+                + '</div>'
+                + '</div>'
+                + '</div>';
+            doc.body.insertAdjacentHTML('beforeend', overlay);
+            DBSDK.$('.db-overlay[data-id="' + uuid + '"] .db-lightbox')[0].appendChild(iframe);
+            source_frame = window.document.getElementById('db-design-frame-'+uuid);
+            DBSDK.bindEventHandler(DBSDK.$('.db-overlay[data-id="' + uuid + '"] .db-close-lightbox')[0], 'click', function (e) {
+                var el = e.currentTarget.parentNode;
+                el.parentNode.removeChild(el);
+                //e.currentTarget.parentNode.style.display = 'none';
+                window.parent.postMessage({action:"#db-extension#design-button#close"},"*");
+            });
+        }
+    };
+
+    /* build design button uri create */
+    DBSDK.buildButtonUri = function (image, doctype, layout, width, height, unit, type) {
+        image = image || '';
+        doctype = doctype || '';
+        layout = layout || '';
+        width = width || 0;
+        height = height || 0;
+        unit = unit || 'px';
+        var uri = '';
+        if (image !== '') {
+            uri = DBSDK.API_CREATE + '/image/w' + width + '/h' + height + '/' + win.btoa(image);
+            if (doctype != ""){
+                uri = DBSDK.API_CREATE + '/image/dt-' + doctype + '/' + win.btoa(image);
+            }
+            else{
+                uri = DBSDK.API_CREATE + '/image/w' + width + '/h' + height + '/' + win.btoa(image);
+            }
+        }
+        else if (doctype !== '' || layout !== '') {
+            uri = DBSDK.API_CREATE;
+            if (doctype !== '') {
+                uri += '/' + doctype;
+            }
+            else {
+                uri += '/dt';
+            }
+            if (layout !== '') {
+                uri += '/' + layout;
+            }
+        }
+        else {
+            uri = DBSDK.API_CREATE + '/custom/' + width + '/' + height + '/' + unit;
+        }
+        var query = [];
+        if (DBSDK.API.app_id !== '') {
+            query.push('app_id=' + DBSDK.API.app_id);
+        }
+        if (query.length > 0) {
+            for (var i = 0; i < query.length; i++) {
+                uri += (i === 0 ? '?' : '&') + query[i];
+            }
+        }
+        return uri;
+    };
+
+    DBSDK.buildButtonUriEdit = function (docid) {
+
+        var uri = '';
+        uri = DBSDK.API_CREATE + '/edit/' + docid;
+        var query = [];
+        if (DBSDK.API.app_id !== '') {
+            query.push('app_id=' + DBSDK.API.app_id);
+        }
+        if (query.length > 0) {
+            for (var i = 0; i < query.length; i++) {
+                uri += (i === 0 ? '?' : '&') + query[i];
+            }
+        }
+        return uri;
+    };
+
+    DBSDK.buildButtonUriCopy = function (docid) {
+        var uri = '';
+        uri = DBSDK.API_CREATE + '/copy/' + docid;
+        var query = [];
+        if (DBSDK.API.app_id !== '') {
+            query.push('app_id=' + DBSDK.API.app_id);
+        }
+        if (query.length > 0) {
+            for (var i = 0; i < query.length; i++) {
+                uri += (i === 0 ? '?' : '&') + query[i];
+            }
+        }
+        return uri;
+    };
+
+    DBSDK.buildUnsupportedUrl = function () {
+        return DBSDK.BROWSER_UNSUPPORTED;
+    };
+
+
+    var DBMessageListener = function (e) {
+        var action = e.data.action || '',
+            frame = e.data.frame || '',
+            design_frame, uuid, img, href;
+        if (action === '#db#design-button#getconfig') {
+            if (!!source_frame) {
+                source_frame.contentWindow.postMessage({
+                    action: '#db#designit#config',
+                    config: DBSDK.config
+                }, '*');
+            }
+        }
+        else if (action === '#db#design-button#getconfiglogin') {
+            if (!DBSDK.config.hasOwnProperty('auth')){
+                DBSDK.config.auth = {};
+            }
+            if (!!source_frame) {
+                source_frame.contentWindow.postMessage({
+                    action: '#db#designit#configlogin',
+                    config: DBSDK.config.auth
+                }, '*');
+            }
+        }
+        else if (action === '#db#design-button#export-callback') {
+            if (typeof DBSDK.exportCallback === 'function') {
+                design_frame = doc.getElementsByName(frame);
+                if (design_frame.length) {
+                    var downloadUrl = e.data.src || null;
+                    var document_id = e.data.document_id || null;
+                    uuid = design_frame[0].getAttribute('data-id');
+                    var btn = DBSDK.$('.db-btn-designit[data-id="' + uuid + '"]')[0],
+                        previewTarget = btn.getAttribute('data-db-preview-target');
+                    // hide the iframe modal
+                    DBSDK.$('.db-overlay[data-id="' + uuid + '"] .db-close-lightbox')[0].click();
+                    setTimeout(function () {
+                        if (previewTarget) {
+                            DBSDK.exportCallback(downloadUrl,document_id, previewTarget);
+                        }
+                        else {
+                            DBSDK.exportCallback(downloadUrl,document_id);
+                        }
+                    }, 0);
+                }
+            }
+        }
+        else if (action === '#db#design-button#quit') {
+            design_frame = doc.getElementsByName(frame);
+            if (design_frame.length) {
+                uuid = design_frame[0].getAttribute('data-id');
+                var overlay = DBSDK.$('.db-overlay[data-id="' + uuid + '"]')[0];
+                overlay.parentNode.removeChild(overlay);
+            }
+        }
+        else if (action === '#db#design-button#logout') {
+            href = e.data.href || '';
+            design_frame = doc.getElementsByName(frame);
+            if (design_frame.length) {
+                // cancel preview if user logged out
+                // ...
+                // create iframe to logout
+                var iframe = doc.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.onload = function (e) {
+                    doc.body.removeChild(iframe);
+                };
+                iframe.src = href;
+                doc.body.appendChild(iframe);
+                // remove all design it overlay
+                var overlays = DBSDK.$('.db-overlay');
+                for (var i = 0; i < overlays.length; i++) {
+                    doc.body.removeChild(overlays[i]);
+                }
+            }
+        }
+        else if (action === '#db#design-button#getimagesize') {
+            href = e.data.href || '';
+            design_frame = doc.getElementsByName(frame);
+            if (design_frame.length) {
+                uuid = design_frame[0].getAttribute('data-id');
+                img = DBSDK.$('.db-btn-designit[data-id="' + uuid + '"]')[0];
+                DBSDK.$('.db-overlay[data-id="' + uuid + '"] iframe')[0].contentWindow.postMessage({
+                    action: '#db#designit#imagesize',
+                    width: img.naturalWidth || img.offsetWidth,
+                    height: img.naturalHeight || img.offsetHeight
+                }, '*');
+            }
+        }
+        else if (action === '#db#design-button#start_design_tool') {
+            var image = e.data.image || '';
+            var param = e.data.param || '';
+            startDesignTool(image,param);
+        }
+    };
+    DBSDK.unbindEventHandler(window, 'message', DBMessageListener, false);
+    DBSDK.bindEventHandler(window, 'message', DBMessageListener, false);
+
+    /* reload button */
+    DBSDK.documentReady(function () {
+        if (win.DBSDK_Cfg.hasOwnProperty('export_callback')) {
+            DBSDK.exportCallback = win.DBSDK_Cfg.export_callback;
+        }
+        DBSDK.config = JSON.parse(JSON.stringify(win.DBSDK_Cfg)) || {};
+    });
+})(document, window);
+
+
+/***/ }),
+
+/***/ "./designit.js":
 /*!*********************!*\
-  !*** ./myPlugin.js ***!
+  !*** ./designit.js ***!
   \*********************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return InsertImage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SampleView; });
 /* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
 /* harmony import */ var _ckeditor_ckeditor5_ui_src_button_buttonview__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-ui/src/button/buttonview */ "./node_modules/@ckeditor/ckeditor5-ui/src/button/buttonview.js");
-/* harmony import */ var _ckeditor_ckeditor5_core_theme_icons_image_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/theme/icons/image.svg */ "./node_modules/@ckeditor/ckeditor5-core/theme/icons/image.svg");
-/* harmony import */ var _ckeditor_ckeditor5_core_theme_icons_image_svg__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_core_theme_icons_image_svg__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _ckeditor_ckeditor5_ui_src_iframe_iframeview__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-ui/src/iframe/iframeview */ "./node_modules/@ckeditor/ckeditor5-ui/src/iframe/iframeview.js");
+/* harmony import */ var _button_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./button.js */ "./button.js");
+/* harmony import */ var _button_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_button_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _ckeditor_ckeditor5_core_theme_icons_image_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/theme/icons/image.svg */ "./node_modules/@ckeditor/ckeditor5-core/theme/icons/image.svg");
+/* harmony import */ var _ckeditor_ckeditor5_core_theme_icons_image_svg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_core_theme_icons_image_svg__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
 
 
-// export default class MyPlugin extends Plugin {
-// 	constructor( editor ) {
-// 		super( editor );
 
-// 		this.prepareYourself();
-// 	}
 
-// 	// The init() method is executed right after all plugins are instantiated.
-// 	init() {
-// 		this.editor.dance();
-// 		console.log("MyPlugin");
-// 	}
-// }
-class InsertImage extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-    init() {
+const Designit = 'Designit';
+
+var startDesignTool = function(image_src, param){
+    if (typeof param != "object"){
+        var doc_type = "blog-graphic";
+    }
+    else{
+        var doc_type = param.doc_type
+    }
+    var status = 1;
+    if (image_src == ""){
+        // status = 0;
+        // var designit_uri = DBSDK.COLLECTION_LIST + doc_type;
+        status = 1;
+        var designit_uri = DBSDK.buildButtonUri(image_src,doc_type,null,null,null,null,"button");
+    }
+    else{
+        status = 1;
+        var designit_uri = DBSDK.buildButtonUri(image_src,doc_type,null,null,null,null,"button");
+    }
+    window.DBSDK.uuid = DBSDK.guid();
+    if (status){
+        DBSDK.startDesignToolExtension(designit_uri,window.DBSDK.uuid);
+    }
+    else{
+        window.open(designit_uri,'_blank');
+    }
+};
+
+class SampleView extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
+    init(){
         const editor = this.editor;
+		const t = editor.t;
 
-        editor.ui.componentFactory.add( 'insertImage', locale => {
+		// Add button to feature components.
+        editor.ui.componentFactory.add( Designit , locale => {
             const view = new _ckeditor_ckeditor5_ui_src_button_buttonview__WEBPACK_IMPORTED_MODULE_1__["default"]( locale );
+            const iframe_view = new _ckeditor_ckeditor5_ui_src_iframe_iframeview__WEBPACK_IMPORTED_MODULE_2__["default"]( locale );
 
             view.set( {
-                label: 'Insert image',
-                icon: _ckeditor_ckeditor5_core_theme_icons_image_svg__WEBPACK_IMPORTED_MODULE_2___default.a,
+                label: t('Open dialog'),
+                icon: _ckeditor_ckeditor5_core_theme_icons_image_svg__WEBPACK_IMPORTED_MODULE_4___default.a,
                 tooltip: true
             } );
 
             // Callback executed once the image is clicked.
             view.on( 'execute', () => {
-                const imageUrl = prompt( 'Image URL' );
-
-                editor.model.change( writer => {
-                    const imageElement = writer.createElement( 'image', {
-                        src: imageUrl
-                    } );
-
-                    // Insert the image in the current selection location.
-                    editor.model.insertContent( imageElement, editor.model.document.selection );
-                } );
+            	let image_src = "";
+            	let param = {
+            		doc_type : "blog-graphic"
+            	};
+            	
+            	startDesignTool(image_src, param);
             } );
-
             return view;
-        } );
+        })
     }
 }
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/attributecommand.js":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-basic-styles/src/attributecommand.js ***!
-  \*******************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return AttributeCommand; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_command__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/command */ "./node_modules/@ckeditor/ckeditor5-core/src/command.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module basic-styles/attributecommand
- */
-
-
-
-/**
- * An extension of the base {@link module:core/command~Command} class, which provides utilities for a command
- * that toggles a single attribute on a text or an element.
- *
- * `AttributeCommand` uses {@link module:engine/model/document~Document#selection}
- * to decide which nodes (if any) should be changed, and applies or removes the attribute from them.
- *
- * The command checks the {@link module:engine/model/model~Model#schema} to decide if it can be enabled
- * for the current selection and to which nodes the attribute can be applied.
- *
- * @extends module:core/command~Command
- */
-class AttributeCommand extends _ckeditor_ckeditor5_core_src_command__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @param {module:core/editor/editor~Editor} editor
-	 * @param {String} attributeKey Attribute that will be set by the command.
-	 */
-	constructor( editor, attributeKey ) {
-		super( editor );
-
-		/**
-		 * The attribute that will be set by the command.
-		 *
-		 * @readonly
-		 * @member {String}
-		 */
-		this.attributeKey = attributeKey;
-
-		/**
-		 * Flag indicating whether the command is active. The command is active when the
-		 * {@link module:engine/model/selection~Selection#hasAttribute selection has the attribute} which means that:
-		 *
-		 * * If the selection is not empty &ndash; That the attribute is set on the first node in the selection that allows this attribute.
-		 * * If the selection is empty &ndash; That the selection has the attribute itself (which means that newly typed
-		 * text will have this attribute, too).
-		 *
-		 * @observable
-		 * @readonly
-		 * @member {Boolean} #value
-		 */
-	}
-
-	/**
-	 * Updates the command's {@link #value} and {@link #isEnabled} based on the current selection.
-	 */
-	refresh() {
-		const model = this.editor.model;
-		const doc = model.document;
-
-		this.value = this._getValueFromFirstAllowedNode();
-		this.isEnabled = model.schema.checkAttributeInSelection( doc.selection, this.attributeKey );
-	}
-
-	/**
-	 * Executes the command &mdash; applies the attribute to the selection or removes it from the selection.
-	 *
-	 * If the command is active (`value == true`), it will remove attributes. Otherwise, it will set attributes.
-	 *
-	 * The execution result differs, depending on the {@link module:engine/model/document~Document#selection}:
-	 *
-	 * * If the selection is on a range, the command applies the attribute to all nodes in that range
-	 * (if they are allowed to have this attribute by the {@link module:engine/model/schema~Schema schema}).
-	 * * If the selection is collapsed in a non-empty node, the command applies the attribute to the
-	 * {@link module:engine/model/document~Document#selection} itself (note that typed characters copy attributes from the selection).
-	 * * If the selection is collapsed in an empty node, the command applies the attribute to the parent node of the selection (note
-	 * that the selection inherits all attributes from a node if it is in an empty node).
-	 *
-	 * @fires execute
-	 * @param {Object} [options] Command options.
-	 * @param {Boolean} [options.forceValue] If set, it will force the command behavior. If `true`, the command will apply the attribute,
-	 * otherwise the command will remove the attribute.
-	 * If not set, the command will look for its current value to decide what it should do.
-	 */
-	execute( options = {} ) {
-		const model = this.editor.model;
-		const doc = model.document;
-		const selection = doc.selection;
-		const value = ( options.forceValue === undefined ) ? !this.value : options.forceValue;
-
-		model.change( writer => {
-			if ( selection.isCollapsed ) {
-				if ( value ) {
-					writer.setSelectionAttribute( this.attributeKey, true );
-				} else {
-					writer.removeSelectionAttribute( this.attributeKey );
-				}
-			} else {
-				const ranges = model.schema.getValidRanges( selection.getRanges(), this.attributeKey );
-
-				for ( const range of ranges ) {
-					if ( value ) {
-						writer.setAttribute( this.attributeKey, value, range );
-					} else {
-						writer.removeAttribute( this.attributeKey, range );
-					}
-				}
-			}
-		} );
-	}
-
-	/**
-	 * Checks the attribute value of the first node in the selection that allows the attribute.
-	 * For the collapsed selection returns the selection attribute.
-	 *
-	 * @private
-	 * @returns {Boolean} The attribute value.
-	 */
-	_getValueFromFirstAllowedNode() {
-		const model = this.editor.model;
-		const schema = model.schema;
-		const selection = model.document.selection;
-
-		if ( selection.isCollapsed ) {
-			return selection.hasAttribute( this.attributeKey );
-		}
-
-		for ( const range of selection.getRanges() ) {
-			for ( const item of range.getItems() ) {
-				if ( schema.checkAttribute( item, this.attributeKey ) ) {
-					return item.hasAttribute( this.attributeKey );
-				}
-			}
-		}
-
-		return false;
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/bold.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-basic-styles/src/bold.js ***!
-  \*******************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Bold; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _bold_boldediting__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bold/boldediting */ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/bold/boldediting.js");
-/* harmony import */ var _bold_boldui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bold/boldui */ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/bold/boldui.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module basic-styles/bold
- */
-
-
-
-
-
-/**
- * The bold feature.
- *
- * It loads the {@link module:basic-styles/bold/boldediting~BoldEditing bold editing feature}
- * and {@link module:basic-styles/bold/boldui~BoldUI bold UI feature}.
- *
- * @extends module:core/plugin~Plugin
- */
-class Bold extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	static get requires() {
-		return [ _bold_boldediting__WEBPACK_IMPORTED_MODULE_1__["default"], _bold_boldui__WEBPACK_IMPORTED_MODULE_2__["default"] ];
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	static get pluginName() {
-		return 'Bold';
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/bold/boldediting.js":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-basic-styles/src/bold/boldediting.js ***!
-  \*******************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BoldEditing; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _attributecommand__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../attributecommand */ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/attributecommand.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module basic-styles/bold/boldediting
- */
-
-
-
-
-const BOLD = 'bold';
-
-/**
- * The bold editing feature.
- *
- * It registers the `bold` command and introduces the `bold` attribute in the model which renders to the view
- * as a `<strong>` element.
- *
- * @extends module:core/plugin~Plugin
- */
-class BoldEditing extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	init() {
-		const editor = this.editor;
-		// Allow bold attribute on text nodes.
-		editor.model.schema.extend( '$text', { allowAttributes: BOLD } );
-
-		// Build converter from model to view for data and editing pipelines.
-
-		editor.conversion.attributeToElement( {
-			model: BOLD,
-			view: 'strong',
-			upcastAlso: [
-				'b',
-				{
-					styles: {
-						'font-weight': 'bold'
-					}
-				}
-			]
-		} );
-
-		// Create bold command.
-		editor.commands.add( BOLD, new _attributecommand__WEBPACK_IMPORTED_MODULE_1__["default"]( editor, BOLD ) );
-
-		// Set the Ctrl+B keystroke.
-		editor.keystrokes.set( 'CTRL+B', BOLD );
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/bold/boldui.js":
-/*!**************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-basic-styles/src/bold/boldui.js ***!
-  \**************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BoldUI; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _ckeditor_ckeditor5_ui_src_button_buttonview__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-ui/src/button/buttonview */ "./node_modules/@ckeditor/ckeditor5-ui/src/button/buttonview.js");
-/* harmony import */ var _theme_icons_bold_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../theme/icons/bold.svg */ "./node_modules/@ckeditor/ckeditor5-basic-styles/theme/icons/bold.svg");
-/* harmony import */ var _theme_icons_bold_svg__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_theme_icons_bold_svg__WEBPACK_IMPORTED_MODULE_2__);
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module basic-styles/bold/boldui
- */
-
-
-
-
-
-
-const BOLD = 'bold';
-
-/**
- * The bold UI feature. It introduces the Bold button.
- *
- * @extends module:core/plugin~Plugin
- */
-class BoldUI extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	init() {
-		const editor = this.editor;
-		const t = editor.t;
-
-		// Add bold button to feature components.
-		editor.ui.componentFactory.add( BOLD, locale => {
-			const command = editor.commands.get( BOLD );
-			const view = new _ckeditor_ckeditor5_ui_src_button_buttonview__WEBPACK_IMPORTED_MODULE_1__["default"]( locale );
-
-			view.set( {
-				label: t( 'Bold' ),
-				icon: _theme_icons_bold_svg__WEBPACK_IMPORTED_MODULE_2___default.a,
-				keystroke: 'CTRL+B',
-				tooltip: true
-			} );
-
-			view.bind( 'isOn', 'isEnabled' ).to( command, 'value', 'isEnabled' );
-
-			// Execute command.
-			this.listenTo( view, 'execute', () => editor.execute( BOLD ) );
-
-			return view;
-		} );
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/italic.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-basic-styles/src/italic.js ***!
-  \*********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Italic; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _italic_italicediting__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./italic/italicediting */ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/italic/italicediting.js");
-/* harmony import */ var _italic_italicui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./italic/italicui */ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/italic/italicui.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module basic-styles/italic
- */
-
-
-
-
-
-/**
- * The italic feature.
- *
- * It loads the {@link module:basic-styles/italic/italicediting~ItalicEditing} and
- * {@link module:basic-styles/italic/italicui~ItalicUI} plugins.
- *
- * @extends module:core/plugin~Plugin
- */
-class Italic extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	static get requires() {
-		return [ _italic_italicediting__WEBPACK_IMPORTED_MODULE_1__["default"], _italic_italicui__WEBPACK_IMPORTED_MODULE_2__["default"] ];
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	static get pluginName() {
-		return 'Italic';
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/italic/italicediting.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-basic-styles/src/italic/italicediting.js ***!
-  \***********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ItalicEditing; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _attributecommand__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../attributecommand */ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/attributecommand.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module basic-styles/italic/italicediting
- */
-
-
-
-
-const ITALIC = 'italic';
-
-/**
- * The italic editing feature.
- *
- * It registers the `italic` command, the <kbd>Ctrl+I</kbd> keystroke and introduces the `italic` attribute in the model
- * which renders to the view as an `<em>` element.
- *
- * @extends module:core/plugin~Plugin
- */
-class ItalicEditing extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	init() {
-		const editor = this.editor;
-
-		// Allow italic attribute on text nodes.
-		editor.model.schema.extend( '$text', { allowAttributes: ITALIC } );
-
-		editor.conversion.attributeToElement( {
-			model: ITALIC,
-			view: 'i',
-			upcastAlso: [
-				'em',
-				{
-					styles: {
-						'font-style': 'italic'
-					}
-				}
-			]
-		} );
-
-		// Create italic command.
-		editor.commands.add( ITALIC, new _attributecommand__WEBPACK_IMPORTED_MODULE_1__["default"]( editor, ITALIC ) );
-
-		// Set the Ctrl+I keystroke.
-		editor.keystrokes.set( 'CTRL+I', ITALIC );
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/italic/italicui.js":
-/*!******************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-basic-styles/src/italic/italicui.js ***!
-  \******************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ItalicUI; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _ckeditor_ckeditor5_ui_src_button_buttonview__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-ui/src/button/buttonview */ "./node_modules/@ckeditor/ckeditor5-ui/src/button/buttonview.js");
-/* harmony import */ var _theme_icons_italic_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../theme/icons/italic.svg */ "./node_modules/@ckeditor/ckeditor5-basic-styles/theme/icons/italic.svg");
-/* harmony import */ var _theme_icons_italic_svg__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_theme_icons_italic_svg__WEBPACK_IMPORTED_MODULE_2__);
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module basic-styles/italic/italicui
- */
-
-
-
-
-
-
-const ITALIC = 'italic';
-
-/**
- * The italic UI feature. It introduces the Italic button.
- *
- * @extends module:core/plugin~Plugin
- */
-class ItalicUI extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	init() {
-		const editor = this.editor;
-		const t = editor.t;
-
-		// Add bold button to feature components.
-		editor.ui.componentFactory.add( ITALIC, locale => {
-			const command = editor.commands.get( ITALIC );
-			const view = new _ckeditor_ckeditor5_ui_src_button_buttonview__WEBPACK_IMPORTED_MODULE_1__["default"]( locale );
-
-			view.set( {
-				label: t( 'Italic' ),
-				icon: _theme_icons_italic_svg__WEBPACK_IMPORTED_MODULE_2___default.a,
-				keystroke: 'CTRL+I',
-				tooltip: true
-			} );
-
-			view.bind( 'isOn', 'isEnabled' ).to( command, 'value', 'isEnabled' );
-
-			// Execute command.
-			this.listenTo( view, 'execute', () => editor.execute( ITALIC ) );
-
-			return view;
-		} );
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-basic-styles/theme/icons/bold.svg":
-/*!****************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-basic-styles/theme/icons/bold.svg ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<svg width=\"20\" height=\"20\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M10.187 17H5.773c-.637 0-1.092-.138-1.364-.415-.273-.277-.409-.718-.409-1.323V4.738c0-.617.14-1.062.419-1.332.279-.27.73-.406 1.354-.406h4.68c.69 0 1.288.041 1.793.124.506.083.96.242 1.36.478.341.197.644.447.906.75a3.262 3.262 0 0 1 .808 2.162c0 1.401-.722 2.426-2.167 3.075C15.05 10.175 16 11.315 16 13.01a3.756 3.756 0 0 1-2.296 3.504 6.1 6.1 0 0 1-1.517.377c-.571.073-1.238.11-2 .11zm-.217-6.217H7v4.087h3.069c1.977 0 2.965-.69 2.965-2.072 0-.707-.256-1.22-.768-1.537-.512-.319-1.277-.478-2.296-.478zM7 5.13v3.619h2.606c.729 0 1.292-.067 1.69-.2a1.6 1.6 0 0 0 .91-.765c.165-.267.247-.566.247-.897 0-.707-.26-1.176-.778-1.409-.519-.232-1.31-.348-2.375-.348H7z\" fill=\"#000\" fill-rule=\"evenodd\"/></svg>\n"
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-basic-styles/theme/icons/italic.svg":
-/*!******************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-basic-styles/theme/icons/italic.svg ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M9.586 14.633l.021.004c-.036.335.095.655.393.962.082.083.173.15.274.201h1.474a.6.6 0 1 1 0 1.2H5.304a.6.6 0 0 1 0-1.2h1.15c.474-.07.809-.182 1.005-.334.157-.122.291-.32.404-.597l2.416-9.55a1.053 1.053 0 0 0-.281-.823 1.12 1.12 0 0 0-.442-.296H8.15a.6.6 0 0 1 0-1.2h6.443a.6.6 0 1 1 0 1.2h-1.195c-.376.056-.65.155-.823.296-.215.175-.423.439-.623.79l-2.366 9.347z\" fill=\"#333\" fill-rule=\"evenodd\"/></svg>"
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-clipboard/src/clipboard.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-clipboard/src/clipboard.js ***!
-  \*********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Clipboard; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _clipboardobserver__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./clipboardobserver */ "./node_modules/@ckeditor/ckeditor5-clipboard/src/clipboardobserver.js");
-/* harmony import */ var _utils_plaintexttohtml__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils/plaintexttohtml */ "./node_modules/@ckeditor/ckeditor5-clipboard/src/utils/plaintexttohtml.js");
-/* harmony import */ var _utils_normalizeclipboarddata__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/normalizeclipboarddata */ "./node_modules/@ckeditor/ckeditor5-clipboard/src/utils/normalizeclipboarddata.js");
-/* harmony import */ var _utils_viewtoplaintext_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/viewtoplaintext.js */ "./node_modules/@ckeditor/ckeditor5-clipboard/src/utils/viewtoplaintext.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_dataprocessor_htmldataprocessor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/dataprocessor/htmldataprocessor */ "./node_modules/@ckeditor/ckeditor5-engine/src/dataprocessor/htmldataprocessor.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module clipboard/clipboard
- */
-
-
-
-
-
-
-
-
-
-
-
-/**
- * The clipboard feature. Currently, it's responsible for intercepting the `paste` and `drop` events and
- * passing the pasted content through the clipboard pipeline.
- *
- * # Clipboard input pipeline
- *
- * The feature creates the clipboard input pipeline which allows processing clipboard content
- * before it gets inserted into the editor. The pipeline consists of two events on which
- * the features can listen in order to modify or totally override the default behavior.
- *
- * ## On {@link module:engine/view/document~Document#event:paste} and {@link module:engine/view/document~Document#event:drop}
- *
- * The default action is to:
- *
- * 1. get HTML or plain text from the clipboard,
- * 2. prevent the default action of the native `paste` or `drop` event,
- * 3. fire {@link module:engine/view/document~Document#event:clipboardInput} with a
- * {@link module:clipboard/datatransfer~DataTransfer `dataTransfer`} property.
- * 4. fire {@link module:clipboard/clipboard~Clipboard#event:inputTransformation} with a `data` containing the clipboard data parsed to
- * a {@link module:engine/view/documentfragment~DocumentFragment view document fragment}.
- *
- * These action are performed by a low priority listeners, so they can be overridden by a normal ones
- * when a deeper change in pasting behavior is needed. For example, a feature which wants to differently read
- * data from the clipboard (the {@link module:clipboard/datatransfer~DataTransfer `DataTransfer`}).
- * should plug a listener at this stage.
- *
- * ## On {@link module:engine/view/document~Document#event:clipboardInput}
- *
- * This action is performed by a low priority listener, so it can be overridden by a normal one.
- *
- * At this stage the dataTransfer object can be processed by the features, which want to transform the original dataTransform.
- *
- *		this.listenTo( editor.editing.view, 'clipboardInput', ( evt, data ) => {
- *			const content = customTransform( data.dataTransfer.get( 'text/html' ) );
- *			const transformedContent = transform( content );
- *			data.dataTransfer.set( 'text/html', transformedContent );
- *		} );
- *
- * ## On {@link module:clipboard/clipboard~Clipboard#event:inputTransformation}
- *
- * The default action is to insert the content (`data.content`, represented by a
- * {@link module:engine/view/documentfragment~DocumentFragment}) to an editor if the data is not empty.
- *
- * This action is performed by a low priority listener, so it can be overridden by a normal one.
- *
- * At this stage the pasted content can be processed by the features. E.g. a feature which wants to transform
- * a pasted text into a link can be implemented in this way:
- *
- *		this.listenTo( editor.plugins.get( 'Clipboard' ), 'inputTransformation', ( evt, data ) => {
- *			if ( data.content.childCount == 1 && isUrlText( data.content.getChild( 0 ) ) ) {
- *				const linkUrl = data.content.getChild( 0 ).data;
- *
- *				data.content = new ViewDocumentFragment( [
- *					ViewElement(
- *						'a',
- *						{ href: linkUrl },
- *						[ new ViewText( linkUrl ) ]
- *					)
- *				] );
- *			}
- *		} );
- *
- * # Clipboard output pipeline
- *
- * The output pipeline is the equivalent of the input pipeline but for the copy and cut operations.
- * It allows to process the content which will be then put into the clipboard or to override the whole process.
- *
- * ## On {@link module:engine/view/document~Document#event:copy} and {@link module:engine/view/document~Document#event:cut}
- *
- * The default action is to:
- *
- * 1. {@link module:engine/model/model~Model#getSelectedContent get selected content} from the editor,
- * 2. prevent the default action of the native `copy` or `cut` event,
- * 3. fire {@link module:engine/view/document~Document#event:clipboardOutput} with a clone of the selected content
- * converted to a {@link module:engine/view/documentfragment~DocumentFragment view document fragment}.
- *
- * ## On {@link module:engine/view/document~Document#event:clipboardOutput}
- *
- * The default action is to put the content (`data.content`, represented by a
- * {@link module:engine/view/documentfragment~DocumentFragment}) to the clipboard as HTML. In case of the cut operation,
- * the selected content is also deleted from the editor.
- *
- * This action is performed by a low priority listener, so it can be overridden by a normal one.
- *
- * At this stage the copied/cut content can be processed by the features.
- *
- * @extends module:core/plugin~Plugin
- */
-class Clipboard extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	static get pluginName() {
-		return 'Clipboard';
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	init() {
-		const editor = this.editor;
-		const modelDocument = editor.model.document;
-		const view = editor.editing.view;
-		const viewDocument = view.document;
-
-		/**
-		 * Data processor used to convert pasted HTML to a view structure.
-		 *
-		 * @private
-		 * @member {module:engine/dataprocessor/htmldataprocessor~HtmlDataProcessor} #_htmlDataProcessor
-		 */
-		this._htmlDataProcessor = new _ckeditor_ckeditor5_engine_src_dataprocessor_htmldataprocessor__WEBPACK_IMPORTED_MODULE_5__["default"]();
-
-		view.addObserver( _clipboardobserver__WEBPACK_IMPORTED_MODULE_1__["default"] );
-
-		// The clipboard paste pipeline.
-
-		// Pasting and dropping is disabled when editor is read-only.
-		// See: https://github.com/ckeditor/ckeditor5-clipboard/issues/26.
-		this.listenTo( viewDocument, 'clipboardInput', evt => {
-			if ( editor.isReadOnly ) {
-				evt.stop();
-			}
-		}, { priority: 'highest' } );
-
-		this.listenTo( viewDocument, 'clipboardInput', ( evt, data ) => {
-			const dataTransfer = data.dataTransfer;
-			let content = '';
-
-			if ( dataTransfer.getData( 'text/html' ) ) {
-				content = Object(_utils_normalizeclipboarddata__WEBPACK_IMPORTED_MODULE_3__["default"])( dataTransfer.getData( 'text/html' ) );
-			} else if ( dataTransfer.getData( 'text/plain' ) ) {
-				content = Object(_utils_plaintexttohtml__WEBPACK_IMPORTED_MODULE_2__["default"])( dataTransfer.getData( 'text/plain' ) );
-			}
-
-			content = this._htmlDataProcessor.toView( content );
-
-			this.fire( 'inputTransformation', { content } );
-
-			view.scrollToTheSelection();
-		}, { priority: 'low' } );
-
-		this.listenTo( this, 'inputTransformation', ( evt, data ) => {
-			if ( !data.content.isEmpty ) {
-				const dataController = this.editor.data;
-				const model = this.editor.model;
-
-				// Convert the pasted content to a model document fragment.
-				// Conversion is contextual, but in this case we need an "all allowed" context and for that
-				// we use the $clipboardHolder item.
-				const modelFragment = dataController.toModel( data.content, '$clipboardHolder' );
-
-				if ( modelFragment.childCount == 0 ) {
-					return;
-				}
-
-				model.insertContent( modelFragment, modelDocument.selection );
-			}
-		}, { priority: 'low' } );
-
-		// The clipboard copy/cut pipeline.
-
-		function onCopyCut( evt, data ) {
-			const dataTransfer = data.dataTransfer;
-
-			data.preventDefault();
-
-			const content = editor.data.toView( editor.model.getSelectedContent( modelDocument.selection ) );
-
-			viewDocument.fire( 'clipboardOutput', { dataTransfer, content, method: evt.name } );
-		}
-
-		this.listenTo( viewDocument, 'copy', onCopyCut, { priority: 'low' } );
-		this.listenTo( viewDocument, 'cut', ( evt, data ) => {
-			// Cutting is disabled when editor is read-only.
-			// See: https://github.com/ckeditor/ckeditor5-clipboard/issues/26.
-			if ( editor.isReadOnly ) {
-				data.preventDefault();
-			} else {
-				onCopyCut( evt, data );
-			}
-		}, { priority: 'low' } );
-
-		this.listenTo( viewDocument, 'clipboardOutput', ( evt, data ) => {
-			if ( !data.content.isEmpty ) {
-				data.dataTransfer.setData( 'text/html', this._htmlDataProcessor.toData( data.content ) );
-				data.dataTransfer.setData( 'text/plain', Object(_utils_viewtoplaintext_js__WEBPACK_IMPORTED_MODULE_4__["default"])( data.content ) );
-			}
-
-			if ( data.method == 'cut' ) {
-				editor.model.deleteContent( modelDocument.selection );
-			}
-		}, { priority: 'low' } );
-	}
-}
-
-/**
- * Fired with a `content`, which comes from the clipboard (was pasted or dropped) and
- * should be processed in order to be inserted into the editor.
- * It's part of the {@link module:clipboard/clipboard~Clipboard "clipboard pipeline"}.
- *
- * @see module:clipboard/clipboardobserver~ClipboardObserver
- * @see module:clipboard/clipboard~Clipboard
- * @event module:clipboard/clipboard~Clipboard#event:inputTransformation
- * @param {Object} data Event data.
- * @param {module:engine/view/documentfragment~DocumentFragment} data.content Event data. Content to be inserted into the editor.
- * It can be modified by the event listeners. Read more about the clipboard pipelines in {@link module:clipboard/clipboard~Clipboard}
- */
-
-/**
- * Fired on {@link module:engine/view/document~Document#event:copy} and {@link module:engine/view/document~Document#event:cut}
- * with a copy of selected content. The content can be processed before it ends up in the clipboard.
- * It's part of the {@link module:clipboard/clipboard~Clipboard "clipboard pipeline"}.
- *
- * @see module:clipboard/clipboardobserver~ClipboardObserver
- * @see module:clipboard/clipboard~Clipboard
- * @event module:engine/view/document~Document#event:clipboardOutput
- * @param {module:clipboard/clipboard~ClipboardOutputEventData} data Event data.
- */
-
-/**
- * The value of the {@link module:engine/view/document~Document#event:clipboardOutput} event.
- *
- * @class module:clipboard/clipboard~ClipboardOutputEventData
- */
-
-/**
- * Data transfer instance.
- *
- * @readonly
- * @member {module:clipboard/datatransfer~DataTransfer} module:clipboard/clipboard~ClipboardOutputEventData#dataTransfer
- */
-
-/**
- * Content to be put into the clipboard. It can be modified by the event listeners.
- * Read more about the clipboard pipelines in {@link module:clipboard/clipboard~Clipboard}.
- *
- * @member {module:engine/view/documentfragment~DocumentFragment} module:clipboard/clipboard~ClipboardOutputEventData#content
- */
-
-/**
- * Whether the event was triggered by copy or cut operation.
- *
- * @member {'copy'|'cut'} module:clipboard/clipboard~ClipboardOutputEventData#method
- */
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-clipboard/src/clipboardobserver.js":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-clipboard/src/clipboardobserver.js ***!
-  \*****************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ClipboardObserver; });
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_view_observer_domeventobserver__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/view/observer/domeventobserver */ "./node_modules/@ckeditor/ckeditor5-engine/src/view/observer/domeventobserver.js");
-/* harmony import */ var _datatransfer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./datatransfer */ "./node_modules/@ckeditor/ckeditor5-clipboard/src/datatransfer.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module clipboard/clipboardobserver
- */
-
-
-
-
-/**
- * Clipboard events observer.
- *
- * Fires the following events:
- *
- * * {@link module:engine/view/document~Document#event:clipboardInput}
- * * {@link module:engine/view/document~Document#event:dragover}
- * * {@link module:engine/view/document~Document#event:drop}
- * * {@link module:engine/view/document~Document#event:paste}
- * * {@link module:engine/view/document~Document#event:copy}
- * * {@link module:engine/view/document~Document#event:cut}
- *
- * Note that this observer is not available by default. To make it available it needs to be added to
- * {@link module:engine/view/document~Document} by the {@link module:engine/view/view~View#addObserver} method.
- *
- * @extends module:engine/view/observer/domeventobserver~DomEventObserver
- */
-class ClipboardObserver extends _ckeditor_ckeditor5_engine_src_view_observer_domeventobserver__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	constructor( view ) {
-		super( view );
-
-		const viewDocument = this.document;
-
-		this.domEventType = [ 'paste', 'copy', 'cut', 'drop', 'dragover' ];
-
-		this.listenTo( viewDocument, 'paste', handleInput, { priority: 'low' } );
-		this.listenTo( viewDocument, 'drop', handleInput, { priority: 'low' } );
-
-		function handleInput( evt, data ) {
-			data.preventDefault();
-
-			const targetRanges = data.dropRange ? [ data.dropRange ] : Array.from( viewDocument.selection.getRanges() );
-
-			viewDocument.fire( 'clipboardInput', {
-				dataTransfer: data.dataTransfer,
-				targetRanges
-			} );
-		}
-	}
-
-	onDomEvent( domEvent ) {
-		const evtData = {
-			dataTransfer: new _datatransfer__WEBPACK_IMPORTED_MODULE_1__["default"]( domEvent.clipboardData ? domEvent.clipboardData : domEvent.dataTransfer )
-		};
-
-		if ( domEvent.type == 'drop' ) {
-			evtData.dropRange = getDropViewRange( this.view, domEvent );
-		}
-
-		this.fire( domEvent.type, domEvent, evtData );
-	}
-}
-
-function getDropViewRange( view, domEvent ) {
-	const domDoc = domEvent.target.ownerDocument;
-	const x = domEvent.clientX;
-	const y = domEvent.clientY;
-	let domRange;
-
-	// Webkit & Blink.
-	if ( domDoc.caretRangeFromPoint && domDoc.caretRangeFromPoint( x, y ) ) {
-		domRange = domDoc.caretRangeFromPoint( x, y );
-	}
-	// FF.
-	else if ( domEvent.rangeParent ) {
-		domRange = domDoc.createRange();
-		domRange.setStart( domEvent.rangeParent, domEvent.rangeOffset );
-		domRange.collapse( true );
-	}
-
-	if ( domRange ) {
-		return view.domConverter.domRangeToView( domRange );
-	} else {
-		return view.document.selection.getFirstRange();
-	}
-}
-
-/**
- * Fired as a continuation of {@link #event:paste} and {@link #event:drop} events.
- * It's part of the {@link module:clipboard/clipboard~Clipboard "clipboard pipeline"}.
- *
- * Fired with a `dataTransfer` which comes from the clipboard and which content should be processed
- * and inserted into the editor.
- *
- * Note that this event is not available by default. To make it available {@link module:clipboard/clipboardobserver~ClipboardObserver}
- * needs to be added to {@link module:engine/view/document~Document} by the {@link module:engine/view/view~View#addObserver} method.
- * It's done by the {@link module:clipboard/clipboard~Clipboard} feature. If it's not loaded, it must be done manually.
- *
- * @see module:clipboard/clipboardobserver~ClipboardObserver
- * @see module:clipboard/clipboard~Clipboard
- * @event module:engine/view/document~Document#event:clipboardInput
- * @param {Object} data Event data.
- * @param {module:clipboard/datatransfer~DataTransfer} data.dataTransfer Data transfer instance.
- * @param {Array.<module:engine/view/range~Range>} data.targetRanges Ranges which are the target of the operation
- * (usually – into which the content should be inserted).
- * If clipboard input was triggered by a paste operation, then these are the selection ranges. If by a drop operation,
- * then it's the drop position (which can be different than the selection at the moment of drop).
- */
-
-/**
- * Fired when user drags content over one of the editables.
- *
- * Introduced by {@link module:clipboard/clipboardobserver~ClipboardObserver}.
- *
- * Note that this event is not available by default. To make it available {@link module:clipboard/clipboardobserver~ClipboardObserver}
- * needs to be added to {@link module:engine/view/document~Document} by the {@link module:engine/view/view~View#addObserver} method.
- * It's done by the {@link module:clipboard/clipboard~Clipboard} feature. If it's not loaded, it must be done manually.
- *
- * @see module:engine/view/document~Document#event:clipboardInput
- * @event module:engine/view/document~Document#event:dragover
- * @param {module:clipboard/clipboardobserver~ClipboardEventData} data Event data.
- */
-
-/**
- * Fired when user dropped content into one of the editables.
- *
- * Introduced by {@link module:clipboard/clipboardobserver~ClipboardObserver}.
- *
- * Note that this event is not available by default. To make it available {@link module:clipboard/clipboardobserver~ClipboardObserver}
- * needs to be added to {@link module:engine/view/document~Document} by the {@link module:engine/view/view~View#addObserver} method.
- * It's done by the {@link module:clipboard/clipboard~Clipboard} feature. If it's not loaded, it must be done manually.
- *
- * @see module:engine/view/document~Document#event:clipboardInput
- * @event module:engine/view/document~Document#event:drop
- * @param {module:clipboard/clipboardobserver~ClipboardEventData} data Event data.
- * @param {module:engine/view/range~Range} dropRange The position into which the content is dropped.
- */
-
-/**
- * Fired when user pasted content into one of the editables.
- *
- * Introduced by {@link module:clipboard/clipboardobserver~ClipboardObserver}.
- *
- * Note that this event is not available by default. To make it available {@link module:clipboard/clipboardobserver~ClipboardObserver}
- * needs to be added to {@link module:engine/view/document~Document} by the {@link module:engine/view/view~View#addObserver} method.
- * It's done by the {@link module:clipboard/clipboard~Clipboard} feature. If it's not loaded, it must be done manually.
- *
- * @see module:engine/view/document~Document#event:clipboardInput
- * @event module:engine/view/document~Document#event:paste
- * @param {module:clipboard/clipboardobserver~ClipboardEventData} data Event data.
- */
-
-/**
- * Fired when user copied content from one of the editables.
- *
- * Introduced by {@link module:clipboard/clipboardobserver~ClipboardObserver}.
- *
- * Note that this event is not available by default. To make it available {@link module:clipboard/clipboardobserver~ClipboardObserver}
- * needs to be added to {@link module:engine/view/document~Document} by the {@link module:engine/view/view~View#addObserver} method.
- * It's done by the {@link module:clipboard/clipboard~Clipboard} feature. If it's not loaded, it must be done manually.
- *
- * @see module:clipboard/clipboardobserver~ClipboardObserver
- * @event module:engine/view/document~Document#event:copy
- * @param {module:clipboard/clipboardobserver~ClipboardEventData} data Event data.
- */
-
-/**
- * Fired when user cut content from one of the editables.
- *
- * Introduced by {@link module:clipboard/clipboardobserver~ClipboardObserver}.
- *
- * Note that this event is not available by default. To make it available {@link module:clipboard/clipboardobserver~ClipboardObserver}
- * needs to be added to {@link module:engine/view/document~Document} by the {@link module:engine/view/view~View#addObserver} method.
- * It's done by the {@link module:clipboard/clipboard~Clipboard} feature. If it's not loaded, it must be done manually.
- *
- * @see module:clipboard/clipboardobserver~ClipboardObserver
- * @event module:engine/view/document~Document#event:cut
- * @param {module:clipboard/clipboardobserver~ClipboardEventData} data Event data.
- */
-
-/**
- * The value of the {@link module:engine/view/document~Document#event:paste},
- * {@link module:engine/view/document~Document#event:copy} and {@link module:engine/view/document~Document#event:cut} events.
- *
- * In order to access clipboard data use `dataTransfer` property.
- *
- * @class module:clipboard/clipboardobserver~ClipboardEventData
- * @extends module:engine/view/observer/domeventdata~DomEventData
- */
-
-/**
- * Data transfer instance.
- *
- * @readonly
- * @member {module:clipboard/datatransfer~DataTransfer} module:clipboard/clipboardobserver~ClipboardEventData#dataTransfer
- */
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-clipboard/src/datatransfer.js":
-/*!************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-clipboard/src/datatransfer.js ***!
-  \************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DataTransfer; });
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module clipboard/datatransfer
- */
-
-/**
- * Facade over the native [`DataTransfer`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer) object.
- */
-class DataTransfer {
-	constructor( nativeDataTransfer ) {
-		/**
-		 * The array of files created from the native `DataTransfer#files` or `DataTransfer#items`.
-		 *
-		 * @readonly
-		 * @member {Array.<File>} #files
-		 */
-		this.files = getFiles( nativeDataTransfer );
-
-		/**
-		 * The native DataTransfer object.
-		 *
-		 * @private
-		 * @member {DataTransfer} #_native
-		 */
-		this._native = nativeDataTransfer;
-	}
-
-	/**
-	 * Returns an array of available native content types.
-	 *
-	 * @returns {Array.<String>}
-	 */
-	get types() {
-		return this._native.types;
-	}
-
-	/**
-	 * Gets data from the data transfer by its mime type.
-	 *
-	 *		dataTransfer.getData( 'text/plain' );
-	 *
-	 * @param {String} type The mime type. E.g. `text/html` or `text/plain`.
-	 * @returns {String}
-	 */
-	getData( type ) {
-		return this._native.getData( type );
-	}
-
-	/**
-	 * Sets data in the data transfer.
-	 *
-	 * @param {String} type The mime type. E.g. `text/html` or `text/plain`.
-	 * @param {String} data
-	 */
-	setData( type, data ) {
-		this._native.setData( type, data );
-	}
-}
-
-function getFiles( nativeDataTransfer ) {
-	// DataTransfer.files and items are Array-like and might not have an iterable interface.
-	const files = nativeDataTransfer.files ? Array.from( nativeDataTransfer.files ) : [];
-	const items = nativeDataTransfer.items ? Array.from( nativeDataTransfer.items ) : [];
-
-	if ( files.length ) {
-		return files;
-	}
-	// Chrome have empty DataTransfer.files, but let get files through the items interface.
-	return items
-		.filter( item => item.kind === 'file' )
-		.map( item => item.getAsFile() );
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-clipboard/src/utils/normalizeclipboarddata.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-clipboard/src/utils/normalizeclipboarddata.js ***!
-  \****************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeClipboardData; });
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module clipboard/utils/normalizeclipboarddata
- */
-
-/**
- * Removes some popular browser quirks out of the clipboard data (HTML).
- *
- * @param {String} data The HTML data to normalize.
- * @returns {String} Normalized HTML.
- */
-function normalizeClipboardData( data ) {
-	return data
-		.replace( /<span(?: class="Apple-converted-space"|)>(\s+)<\/span>/g, ( fullMatch, spaces ) => {
-			// Handle the most popular and problematic case when even a single space becomes an nbsp;.
-			// Decode those to normal spaces. Read more in https://github.com/ckeditor/ckeditor5-clipboard/issues/2.
-			if ( spaces.length == 1 ) {
-				return ' ';
-			}
-
-			return spaces;
-		} );
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-clipboard/src/utils/plaintexttohtml.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-clipboard/src/utils/plaintexttohtml.js ***!
-  \*********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return plainTextToHtml; });
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module clipboard/utils/plaintexttohtml
- */
-
-/**
- * Converts plain text to its HTML-ized version.
- *
- * @param {String} text The plain text to convert.
- * @returns {String} HTML generated from the plain text.
- */
-function plainTextToHtml( text ) {
-	text = text
-		// Encode <>.
-		.replace( /</g, '&lt;' )
-		.replace( />/g, '&gt;' )
-		// Creates paragraphs for double line breaks and change single line breaks to <br>s.
-		.replace( /\n\n/g, '</p><p>' )
-		.replace( /\n/g, '<br>' )
-		// Preserve trailing spaces (only the first and last one – the rest is handled below).
-		.replace( /^\s/, '&nbsp;' )
-		.replace( /\s$/, '&nbsp;' )
-		// Preserve other subsequent spaces now.
-		.replace( /\s\s/g, ' &nbsp;' );
-
-	if ( text.indexOf( '</p><p>' ) > -1 ) {
-		// If we created paragraphs above, add the trailing ones.
-		text = `<p>${ text }</p>`;
-	}
-
-	// TODO:
-	// * What about '\nfoo' vs ' foo'?
-
-	return text;
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-clipboard/src/utils/viewtoplaintext.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-clipboard/src/utils/viewtoplaintext.js ***!
-  \*********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return viewToPlainText; });
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module clipboard/utils/viewtoplaintext
- */
-
-// Elements which should not have empty-line padding.
-// Most `view.ContainerElement` want to be separate by new-line, but some are creating one structure
-// together (like `<li>`) so it is better to separate them by only one "\n".
-const smallPaddingElements = [ 'figcaption', 'li' ];
-
-/**
- * Converts {@link module:engine/view/item~Item view item} and all of its children to plain text.
- *
- * @param {module:engine/view/item~Item} viewItem View item to convert.
- * @returns {String} Plain text representation of `viewItem`.
- */
-function viewToPlainText( viewItem ) {
-	let text = '';
-
-	if ( viewItem.is( 'text' ) || viewItem.is( 'textProxy' ) ) {
-		// If item is `Text` or `TextProxy` simple take its text data.
-		text = viewItem.data;
-	} else if ( viewItem.is( 'img' ) && viewItem.hasAttribute( 'alt' ) ) {
-		// Special case for images - use alt attribute if it is provided.
-		text = viewItem.getAttribute( 'alt' );
-	} else {
-		// Other elements are document fragments, attribute elements or container elements.
-		// They don't have their own text value, so convert their children.
-		let prev = null;
-
-		for ( const child of viewItem.getChildren() ) {
-			const childText = viewToPlainText( child );
-
-			// Separate container element children with one or more new-line characters.
-			if ( prev && ( prev.is( 'containerElement' ) || child.is( 'containerElement' ) ) ) {
-				if ( smallPaddingElements.includes( prev.name ) || smallPaddingElements.includes( child.name ) ) {
-					text += '\n';
-				} else {
-					text += '\n\n';
-				}
-			}
-
-			text += childText;
-			prev = child;
-		}
-	}
-
-	return text;
-}
-
 
 /***/ }),
 
@@ -3218,28 +2906,6 @@ class PluginCollection {
 
 /***/ }),
 
-/***/ "./node_modules/@ckeditor/ckeditor5-core/theme/icons/cancel.svg":
-/*!**********************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-core/theme/icons/cancel.svg ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M11.591 10.177l4.243 4.242a1 1 0 0 1-1.415 1.415l-4.242-4.243-4.243 4.243a1 1 0 0 1-1.414-1.415l4.243-4.242L4.52 5.934A1 1 0 0 1 5.934 4.52l4.243 4.243 4.242-4.243a1 1 0 1 1 1.415 1.414l-4.243 4.243z\" fill=\"#000\" fill-rule=\"evenodd\"/></svg>"
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-core/theme/icons/check.svg":
-/*!*********************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-core/theme/icons/check.svg ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M6.972 16.615a.997.997 0 0 1-.744-.292l-4.596-4.596a1 1 0 1 1 1.414-1.414l3.926 3.926 9.937-9.937a1 1 0 0 1 1.414 1.415L7.717 16.323a.997.997 0 0 1-.745.292z\" fill=\"#000\" fill-rule=\"evenodd\"/></svg>"
-
-/***/ }),
-
 /***/ "./node_modules/@ckeditor/ckeditor5-core/theme/icons/image.svg":
 /*!*********************************************************************!*\
   !*** ./node_modules/@ckeditor/ckeditor5-core/theme/icons/image.svg ***!
@@ -3248,17 +2914,6 @@ module.exports = "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"
 /***/ (function(module, exports) {
 
 module.exports = "<svg width=\"20\" height=\"20\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M6.91 10.54c.26-.23.64-.21.88.03l3.36 3.14 2.23-2.06a.64.64 0 0 1 .87 0l2.52 2.97V4.5H3.2v10.12l3.71-4.08zm10.27-7.51c.6 0 1.09.47 1.09 1.05v11.84c0 .59-.49 1.06-1.09 1.06H2.79c-.6 0-1.09-.47-1.09-1.06V4.08c0-.58.49-1.05 1.1-1.05h14.38zm-5.22 5.56a1.96 1.96 0 1 1 3.4-1.96 1.96 1.96 0 0 1-3.4 1.96z\" fill=\"#000\" fill-rule=\"nonzero\"/></svg>\n"
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-core/theme/icons/low-vision.svg":
-/*!**************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-core/theme/icons/low-vision.svg ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M5.085 6.22L2.943 4.078a.75.75 0 1 1 1.06-1.06l2.592 2.59A11.094 11.094 0 0 1 10 5.068c4.738 0 8.578 3.101 8.578 5.083 0 1.197-1.401 2.803-3.555 3.887l1.714 1.713a.75.75 0 0 1-.09 1.138.488.488 0 0 1-.15.084.75.75 0 0 1-.821-.16L6.17 7.304c-.258.11-.51.233-.757.365l6.239 6.24-.006.005.78.78c-.388.094-.78.166-1.174.215l-1.11-1.11h.011L4.55 8.197a7.2 7.2 0 0 0-.665.514l-.112.098 4.897 4.897-.005.006 1.276 1.276a10.164 10.164 0 0 1-1.477-.117l-.479-.479-.009.009-4.863-4.863-.022.031a2.563 2.563 0 0 0-.124.2c-.043.077-.08.158-.108.241a.534.534 0 0 0-.028.133.29.29 0 0 0 .008.072.927.927 0 0 0 .082.226c.067.133.145.26.234.379l3.242 3.365.025.01.59.623c-3.265-.918-5.59-3.155-5.59-4.668 0-1.194 1.448-2.838 3.663-3.93zm7.07.531a4.632 4.632 0 0 1 1.108 5.992l.345.344.046-.018a9.313 9.313 0 0 0 2-1.112c.256-.187.5-.392.727-.613.137-.134.27-.277.392-.431.072-.091.141-.185.203-.286.057-.093.107-.19.148-.292a.72.72 0 0 0 .036-.12.29.29 0 0 0 .008-.072.492.492 0 0 0-.028-.133.999.999 0 0 0-.036-.096 2.165 2.165 0 0 0-.071-.145 2.917 2.917 0 0 0-.125-.2 3.592 3.592 0 0 0-.263-.335 5.444 5.444 0 0 0-.53-.523 7.955 7.955 0 0 0-1.054-.768 9.766 9.766 0 0 0-1.879-.891c-.337-.118-.68-.219-1.027-.301zm-2.85.21l-.069.002a.508.508 0 0 0-.254.097.496.496 0 0 0-.104.679.498.498 0 0 0 .326.199l.045.005c.091.003.181.003.272.012.9.093 1.676.675 2.017 1.513.024.061.043.125.069.185a.494.494 0 0 0 .45.287h.008a.496.496 0 0 0 .35-.158.482.482 0 0 0 .13-.335.638.638 0 0 0-.048-.219 3.379 3.379 0 0 0-.36-.723 3.438 3.438 0 0 0-2.791-1.543l-.028-.001h-.013z\" fill=\"#000\" fill-rule=\"evenodd\"/></svg>"
 
 /***/ }),
 
@@ -34036,64 +33691,6 @@ class KeyObserver extends _domeventobserver__WEBPACK_IMPORTED_MODULE_0__["defaul
 
 /***/ }),
 
-/***/ "./node_modules/@ckeditor/ckeditor5-engine/src/view/observer/mouseobserver.js":
-/*!************************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-engine/src/view/observer/mouseobserver.js ***!
-  \************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MouseObserver; });
-/* harmony import */ var _domeventobserver__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./domeventobserver */ "./node_modules/@ckeditor/ckeditor5-engine/src/view/observer/domeventobserver.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module engine/view/observer/mouseobserver
- */
-
-
-
-/**
- * Mouse events observer.
- *
- * Note that this observer is not available by default. To make it available it needs to be added to
- * {@link module:engine/view/view~View} by {@link module:engine/view/view~View#addObserver} method.
- *
- * @extends module:engine/view/observer/domeventobserver~DomEventObserver
- */
-class MouseObserver extends _domeventobserver__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	constructor( view ) {
-		super( view );
-
-		this.domEventType = 'mousedown';
-	}
-
-	onDomEvent( domEvent ) {
-		this.fire( domEvent.type, domEvent );
-	}
-}
-
-/**
- * Fired when mouse button is pressed down on one of the editables.
- *
- * Introduced by {@link module:engine/view/observer/mouseobserver~MouseObserver}.
- *
- * Note that this event is not available by default. To make it available {@link module:engine/view/observer/mouseobserver~MouseObserver}
- * needs to be added to {@link module:engine/view/view~View} by a {@link module:engine/view/view~View#addObserver} method.
- *
- * @see module:engine/view/observer/mouseobserver~MouseObserver
- * @event module:engine/view/document~Document#event:mousedown
- * @param {module:engine/view/observer/domeventdata~DomEventData} data Event data.
- */
-
-
-/***/ }),
-
 /***/ "./node_modules/@ckeditor/ckeditor5-engine/src/view/observer/mutationobserver.js":
 /*!***************************************************************************************!*\
   !*** ./node_modules/@ckeditor/ckeditor5-engine/src/view/observer/mutationobserver.js ***!
@@ -34809,170 +34406,6 @@ class SelectionObserver extends _observer__WEBPACK_IMPORTED_MODULE_0__["default"
  * @param {module:engine/view/selection~Selection} data.newSelection New View selection which is converted DOM selection.
  * @param {Selection} data.domSelection Native DOM selection.
  */
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-engine/src/view/placeholder.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-engine/src/view/placeholder.js ***!
-  \*************************************************************************/
-/*! exports provided: attachPlaceholder, detachPlaceholder */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "attachPlaceholder", function() { return attachPlaceholder; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "detachPlaceholder", function() { return detachPlaceholder; });
-/* harmony import */ var _theme_placeholder_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../theme/placeholder.css */ "./node_modules/@ckeditor/ckeditor5-engine/theme/placeholder.css");
-/* harmony import */ var _theme_placeholder_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_theme_placeholder_css__WEBPACK_IMPORTED_MODULE_0__);
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module engine/view/placeholder
- */
-
-
-
-// Each document stores information about its placeholder elements and check functions.
-const documentPlaceholders = new WeakMap();
-
-/**
- * Attaches placeholder to provided element and updates it's visibility. To change placeholder simply call this method
- * once again with new parameters.
- *
- * @param {module:engine/view/view~View} view View controller.
- * @param {module:engine/view/element~Element} element Element to attach placeholder to.
- * @param {String} placeholderText Placeholder text to use.
- * @param {Function} [checkFunction] If provided it will be called before checking if placeholder should be displayed.
- * If function returns `false` placeholder will not be showed.
- */
-function attachPlaceholder( view, element, placeholderText, checkFunction ) {
-	const document = view.document;
-
-	// Single listener per document.
-	if ( !documentPlaceholders.has( document ) ) {
-		documentPlaceholders.set( document, new Map() );
-
-		// Create view post-fixer that will add placeholder where needed.
-		document.registerPostFixer( writer => updateAllPlaceholders( document, writer ) );
-	}
-
-	// Store information about element with placeholder.
-	documentPlaceholders.get( document ).set( element, {
-		placeholderText,
-		checkFunction
-	} );
-
-	// Update view right away.
-	view.render();
-}
-
-/**
- * Removes placeholder functionality from given element.
- *
- * @param {module:engine/view/view~View} view
- * @param {module:engine/view/element~Element} element
- */
-function detachPlaceholder( view, element ) {
-	const doc = element.document;
-
-	view.change( writer => {
-		if ( documentPlaceholders.has( doc ) ) {
-			documentPlaceholders.get( doc ).delete( element );
-		}
-
-		writer.removeClass( 'ck-placeholder', element );
-		writer.removeAttribute( 'data-placeholder', element );
-	} );
-}
-
-// Updates all placeholders of given document.
-//
-// @private
-// @param {module:engine/view/document~Document} view
-// @param {module:engine/view/writer~Writer} writer
-function updateAllPlaceholders( document, writer ) {
-	const placeholders = documentPlaceholders.get( document );
-	let changed = false;
-
-	for ( const [ element, info ] of placeholders ) {
-		if ( updateSinglePlaceholder( writer, element, info ) ) {
-			changed = true;
-		}
-	}
-
-	return changed;
-}
-
-// Updates placeholder class of given element.
-//
-// @private
-// @param {module:engine/view/writer~Writer} writer
-// @param {module:engine/view/element~Element} element
-// @param {Object} info
-function updateSinglePlaceholder( writer, element, info ) {
-	const document = element.document;
-	const text = info.placeholderText;
-	let changed = false;
-
-	// Element was removed from document.
-	if ( !document ) {
-		return false;
-	}
-
-	// Update data attribute if needed.
-	if ( element.getAttribute( 'data-placeholder' ) !== text ) {
-		writer.setAttribute( 'data-placeholder', text, element );
-		changed = true;
-	}
-
-	const viewSelection = document.selection;
-	const anchor = viewSelection.anchor;
-	const checkFunction = info.checkFunction;
-
-	// If checkFunction is provided and returns false - remove placeholder.
-	if ( checkFunction && !checkFunction() ) {
-		if ( element.hasClass( 'ck-placeholder' ) ) {
-			writer.removeClass( 'ck-placeholder', element );
-			changed = true;
-		}
-
-		return changed;
-	}
-
-	// Element is empty for placeholder purposes when it has no children or only ui elements.
-	// This check is taken from `view.ContainerElement#getFillerOffset`.
-	const isEmptyish = !Array.from( element.getChildren() ).some( element => !element.is( 'uiElement' ) );
-
-	// If element is empty and editor is blurred.
-	if ( !document.isFocused && isEmptyish ) {
-		if ( !element.hasClass( 'ck-placeholder' ) ) {
-			writer.addClass( 'ck-placeholder', element );
-			changed = true;
-		}
-
-		return changed;
-	}
-
-	// It there are no child elements and selection is not placed inside element.
-	if ( isEmptyish && anchor && anchor.parent !== element ) {
-		if ( !element.hasClass( 'ck-placeholder' ) ) {
-			writer.addClass( 'ck-placeholder', element );
-			changed = true;
-		}
-	} else {
-		if ( element.hasClass( 'ck-placeholder' ) ) {
-			writer.removeClass( 'ck-placeholder', element );
-			changed = true;
-		}
-	}
-
-	return changed;
-}
 
 
 /***/ }),
@@ -40852,2426 +40285,6 @@ function canBeJoined( a, b ) {
 
 /***/ }),
 
-/***/ "./node_modules/@ckeditor/ckeditor5-engine/theme/placeholder.css":
-/*!***********************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-engine/theme/placeholder.css ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../postcss-loader/src??ref--5-1!./placeholder.css */ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-engine/theme/placeholder.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"singleton":true,"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-enter/src/enter.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-enter/src/enter.js ***!
-  \*************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Enter; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _entercommand__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./entercommand */ "./node_modules/@ckeditor/ckeditor5-enter/src/entercommand.js");
-/* harmony import */ var _enterobserver__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./enterobserver */ "./node_modules/@ckeditor/ckeditor5-enter/src/enterobserver.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module enter/enter
- */
-
-
-
-
-
-/**
- * This plugin handles the <kbd>Enter</kbd> key (hard line break) in the editor.
- *
- * See also the {@link module:enter/shiftenter~ShiftEnter} plugin.
- *
- * @extends module:core/plugin~Plugin
- */
-class Enter extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	static get pluginName() {
-		return 'Enter';
-	}
-
-	init() {
-		const editor = this.editor;
-		const view = editor.editing.view;
-		const viewDocument = view.document;
-
-		view.addObserver( _enterobserver__WEBPACK_IMPORTED_MODULE_2__["default"] );
-
-		editor.commands.add( 'enter', new _entercommand__WEBPACK_IMPORTED_MODULE_1__["default"]( editor ) );
-
-		this.listenTo( viewDocument, 'enter', ( evt, data ) => {
-			// The soft enter key is handled by the ShiftEnter plugin.
-			if ( data.isSoft ) {
-				return;
-			}
-
-			editor.execute( 'enter' );
-			data.preventDefault();
-			view.scrollToTheSelection();
-		}, { priority: 'low' } );
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-enter/src/entercommand.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-enter/src/entercommand.js ***!
-  \********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return EnterCommand; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_command__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/command */ "./node_modules/@ckeditor/ckeditor5-core/src/command.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module enter/entercommand
- */
-
-
-
-/**
- * Enter command. It is used by the {@link module:enter/enter~Enter Enter feature} to handle the <kbd>Enter</kbd> key.
- *
- * @extends module:core/command~Command
- */
-class EnterCommand extends _ckeditor_ckeditor5_core_src_command__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	execute() {
-		const model = this.editor.model;
-		const doc = model.document;
-
-		model.change( writer => {
-			enterBlock( this.editor.model, writer, doc.selection, model.schema );
-			this.fire( 'afterExecute', { writer } );
-		} );
-	}
-}
-
-// Creates a new block in the way that the <kbd>Enter</kbd> key is expected to work.
-//
-// @param {module:engine/model~Model} model
-// @param {module:engine/model/writer~Writer} writer
-// @param {module:engine/model/selection~Selection|module:engine/model/documentselection~DocumentSelection} selection
-// Selection on which the action should be performed.
-// @param {module:engine/model/schema~Schema} schema
-function enterBlock( model, writer, selection, schema ) {
-	const isSelectionEmpty = selection.isCollapsed;
-	const range = selection.getFirstRange();
-	const startElement = range.start.parent;
-	const endElement = range.end.parent;
-
-	// Don't touch the roots and other limit elements.
-	if ( schema.isLimit( startElement ) || schema.isLimit( endElement ) ) {
-		// Delete the selected content but only if inside a single limit element.
-		// Abort, when crossing limit elements boundary (e.g. <limit1>x[x</limit1>donttouchme<limit2>y]y</limit2>).
-		// This is an edge case and it's hard to tell what should actually happen because such a selection
-		// is not entirely valid.
-		if ( !isSelectionEmpty && startElement == endElement ) {
-			model.deleteContent( selection );
-		}
-
-		return;
-	}
-
-	if ( isSelectionEmpty ) {
-		splitBlock( writer, selection, range.start );
-	} else {
-		const leaveUnmerged = !( range.start.isAtStart && range.end.isAtEnd );
-		const isContainedWithinOneElement = ( startElement == endElement );
-
-		model.deleteContent( selection, { leaveUnmerged } );
-
-		if ( leaveUnmerged ) {
-			// Partially selected elements.
-			//
-			// <h>x[xx]x</h>		-> <h>x^x</h>			-> <h>x</h><h>^x</h>
-			if ( isContainedWithinOneElement ) {
-				splitBlock( writer, selection, selection.focus );
-			}
-			// Selection over multiple elements.
-			//
-			// <h>x[x</h><p>y]y<p>	-> <h>x^</h><p>y</p>	-> <h>x</h><p>^y</p>
-			else {
-				writer.setSelection( endElement, 0 );
-			}
-		}
-	}
-}
-
-function splitBlock( writer, selection, splitPos ) {
-	const oldElement = splitPos.parent;
-	const newElement = new oldElement.constructor( oldElement.name, oldElement.getAttributes() );
-
-	if ( splitPos.isAtEnd ) {
-		// If the split is at the end of element, instead of splitting, just create a clone of position's parent
-		// element and insert it after split element. The result is the same but less operations are done
-		// and it's more semantically correct (when it comes to operational transformation).
-		writer.insert( newElement, splitPos.parent, 'after' );
-	} else if ( splitPos.isAtStart ) {
-		// If the split is at the start of element, instead of splitting, just create a clone of position's parent
-		// element and insert it before split element. The result is the same but less operations are done
-		// and it's more semantically correct (when it comes to operational transformation).
-		writer.insert( newElement, splitPos.parent, 'before' );
-	} else {
-		writer.split( splitPos );
-	}
-
-	writer.setSelection( splitPos.parent.nextSibling, 0 );
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-enter/src/enterobserver.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-enter/src/enterobserver.js ***!
-  \*********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return EnterObserver; });
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_view_observer_observer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/view/observer/observer */ "./node_modules/@ckeditor/ckeditor5-engine/src/view/observer/observer.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_view_observer_domeventdata__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/view/observer/domeventdata */ "./node_modules/@ckeditor/ckeditor5-engine/src/view/observer/domeventdata.js");
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/keyboard */ "./node_modules/@ckeditor/ckeditor5-utils/src/keyboard.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module enter/enterobserver
- */
-
-
-
-
-
-/**
- * Enter observer introduces the {@link module:engine/view/document~Document#event:enter} event.
- *
- * @extends module:engine/view/observer~Observer
- */
-class EnterObserver extends _ckeditor_ckeditor5_engine_src_view_observer_observer__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	constructor( view ) {
-		super( view );
-
-		const doc = this.document;
-
-		doc.on( 'keydown', ( evt, data ) => {
-			if ( this.isEnabled && data.keyCode == _ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_2__["keyCodes"].enter ) {
-				// Save the event object to check later if it was stopped or not.
-				let event;
-				doc.once( 'enter', evt => ( event = evt ), { priority: 'highest' } );
-
-				doc.fire( 'enter', new _ckeditor_ckeditor5_engine_src_view_observer_domeventdata__WEBPACK_IMPORTED_MODULE_1__["default"]( doc, data.domEvent, {
-					isSoft: data.shiftKey
-				} ) );
-
-				// Stop `keydown` event if `enter` event was stopped.
-				// https://github.com/ckeditor/ckeditor5/issues/753
-				if ( event && event.stop.called ) {
-					evt.stop();
-				}
-			}
-		} );
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	observe() {}
-}
-
-/**
- * Event fired when the user presses the <kbd>Enter</kbd> key.
- *
- * Note: This event is fired by the {@link module:enter/enterobserver~EnterObserver observer}
- * (usually registered by the {@link module:enter/enter~Enter Enter feature} and
- * {@link module:enter/shiftenter~ShiftEnter ShiftEnter feature}).
- *
- * @event module:engine/view/document~Document#event:enter
- * @param {module:engine/view/observer/domeventdata~DomEventData} data
- * @param {Boolean} data.isSoft Whether it's a soft enter (<kbd>Shift</kbd>+<kbd>Enter</kbd>) or hard enter (<kbd>Enter</kbd>).
- */
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-enter/src/shiftenter.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-enter/src/shiftenter.js ***!
-  \******************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ShiftEnter; });
-/* harmony import */ var _shiftentercommand__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./shiftentercommand */ "./node_modules/@ckeditor/ckeditor5-enter/src/shiftentercommand.js");
-/* harmony import */ var _enterobserver__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./enterobserver */ "./node_modules/@ckeditor/ckeditor5-enter/src/enterobserver.js");
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_conversion_upcast_converters__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/conversion/upcast-converters */ "./node_modules/@ckeditor/ckeditor5-engine/src/conversion/upcast-converters.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_conversion_downcast_converters__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/conversion/downcast-converters */ "./node_modules/@ckeditor/ckeditor5-engine/src/conversion/downcast-converters.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module enter/shiftenter
- */
-
-
-
-
-
-
-
-/**
- * This plugin handles the <kbd>Shift</kbd>+<kbd>Enter</kbd> keystroke (soft line break) in the editor.
- *
- * See also the {@link module:enter/enter~Enter} plugin.
- *
- * @extends module:core/plugin~Plugin
- */
-class ShiftEnter extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_2__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	static get pluginName() {
-		return 'ShiftEnter';
-	}
-
-	init() {
-		const editor = this.editor;
-		const schema = editor.model.schema;
-		const conversion = editor.conversion;
-		const view = editor.editing.view;
-		const viewDocument = view.document;
-
-		// Configure the schema.
-		schema.register( 'softBreak', {
-			allowWhere: '$text'
-		} );
-
-		// Configure converters.
-		conversion.for( 'upcast' )
-			.add( Object(_ckeditor_ckeditor5_engine_src_conversion_upcast_converters__WEBPACK_IMPORTED_MODULE_3__["upcastElementToElement"])( {
-				model: 'softBreak',
-				view: 'br'
-			} ) );
-
-		conversion.for( 'downcast' )
-			.add( Object(_ckeditor_ckeditor5_engine_src_conversion_downcast_converters__WEBPACK_IMPORTED_MODULE_4__["downcastElementToElement"])( {
-				model: 'softBreak',
-				view: ( modelElement, viewWriter ) => viewWriter.createEmptyElement( 'br' )
-			} ) );
-
-		view.addObserver( _enterobserver__WEBPACK_IMPORTED_MODULE_1__["default"] );
-
-		editor.commands.add( 'shiftEnter', new _shiftentercommand__WEBPACK_IMPORTED_MODULE_0__["default"]( editor ) );
-
-		this.listenTo( viewDocument, 'enter', ( evt, data ) => {
-			// The hard enter key is handled by the Enter plugin.
-			if ( !data.isSoft ) {
-				return;
-			}
-
-			editor.execute( 'shiftEnter' );
-			data.preventDefault();
-			view.scrollToTheSelection();
-		}, { priority: 'low' } );
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-enter/src/shiftentercommand.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-enter/src/shiftentercommand.js ***!
-  \*************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ShiftEnterCommand; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_command__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/command */ "./node_modules/@ckeditor/ckeditor5-core/src/command.js");
-/**
- * @module enter/shiftentercommand
- */
-
-
-
-/**
- * ShiftEnter command. It is used by the {@link module:enter/shiftenter~ShiftEnter ShiftEnter feature} to handle
- * the <kbd>Shift</kbd>+<kbd>Enter</kbd> keystroke.
- *
- * @extends module:core/command~Command
- */
-class ShiftEnterCommand extends _ckeditor_ckeditor5_core_src_command__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	execute() {
-		const model = this.editor.model;
-		const doc = model.document;
-
-		model.change( writer => {
-			softBreakAction( model, writer, doc.selection );
-			this.fire( 'afterExecute', { writer } );
-		} );
-	}
-
-	refresh() {
-		const model = this.editor.model;
-		const doc = model.document;
-
-		this.isEnabled = isEnabled( model.schema, doc.selection );
-	}
-}
-
-// Checks whether the ShiftEnter command should be enabled in the specified selection.
-//
-// @param {module:engine/model/schema~Schema} schema
-// @param {module:engine/model/selection~Selection|module:engine/model/documentselection~DocumentSelection} selection
-function isEnabled( schema, selection ) {
-	// At this moment it is okay to support single range selections only.
-	// But in the future we may need to change that.
-	if ( selection.rangeCount > 1 ) {
-		return false;
-	}
-
-	const anchorPos = selection.anchor;
-
-	// Check whether the break element can be inserted in the current selection anchor.
-	if ( !anchorPos || !schema.checkChild( anchorPos, 'softBreak' ) ) {
-		return false;
-	}
-
-	const range = selection.getFirstRange();
-	const startElement = range.start.parent;
-	const endElement = range.end.parent;
-
-	// Do not modify the content if selection is cross-limit elements.
-	if ( ( isInsideLimitElement( startElement, schema ) || isInsideLimitElement( endElement, schema ) ) && startElement !== endElement ) {
-		return false;
-	}
-
-	return true;
-}
-
-// Creates a break in the way that the <kbd>Shift</kbd>+<kbd>Enter</kbd> keystroke is expected to work.
-//
-// @param {module:engine/model~Model} model
-// @param {module:engine/model/writer~Writer} writer
-// @param {module:engine/model/selection~Selection|module:engine/model/documentselection~DocumentSelection} selection
-// Selection on which the action should be performed.
-function softBreakAction( model, writer, selection ) {
-	const isSelectionEmpty = selection.isCollapsed;
-	const range = selection.getFirstRange();
-	const startElement = range.start.parent;
-	const endElement = range.end.parent;
-	const isContainedWithinOneElement = ( startElement == endElement );
-
-	if ( isSelectionEmpty ) {
-		insertBreak( writer, range.end );
-	} else {
-		const leaveUnmerged = !( range.start.isAtStart && range.end.isAtEnd );
-		model.deleteContent( selection, { leaveUnmerged } );
-
-		// Selection within one element:
-		//
-		// <h>x[xx]x</h>		-> <h>x^x</h>			-> <h>x<br>^x</h>
-		if ( isContainedWithinOneElement ) {
-			insertBreak( writer, selection.focus );
-		}
-		// Selection over multiple elements.
-		//
-		// <h>x[x</h><p>y]y<p>	-> <h>x^</h><p>y</p>	-> <h>x</h><p>^y</p>
-		//
-		// We chose not to insert a line break in this case because:
-		//
-		// * it's not a very common scenario,
-		// * it actually surprised me when I saw the "expected behavior" in real life.
-		//
-		// It's ok if the user will need to be more specific where they want the <br> to be inserted.
-		else {
-			// Move the selection to the 2nd element (last step of the example above).
-			if ( leaveUnmerged ) {
-				writer.setSelection( endElement, 0 );
-			}
-		}
-	}
-}
-
-function insertBreak( writer, position ) {
-	const breakLineElement = writer.createElement( 'softBreak' );
-
-	writer.insert( breakLineElement, position );
-	writer.setSelection( breakLineElement, 'after' );
-}
-
-// Checks whether the specified `element` is a child of the limit element.
-//
-// Checking whether the `<p>` element is inside a limit element:
-//   - <$root><p>Text.</p></$root> => false
-//   - <$root><limitElement><p>Text</p></limitElement></$root> => true
-//
-// @param {module:engine/model/element~Element} element
-// @param {module:engine/schema~Schema} schema
-// @returns {Boolean}
-function isInsideLimitElement( element, schema ) {
-	// `$root` is a limit element but in this case is an invalid element.
-	if ( element.is( 'rootElement' ) ) {
-		return false;
-	}
-
-	return schema.isLimit( element ) || isInsideLimitElement( element.parent, schema );
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-essentials/src/essentials.js":
-/*!***********************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-essentials/src/essentials.js ***!
-  \***********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Essentials; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _ckeditor_ckeditor5_clipboard_src_clipboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-clipboard/src/clipboard */ "./node_modules/@ckeditor/ckeditor5-clipboard/src/clipboard.js");
-/* harmony import */ var _ckeditor_ckeditor5_enter_src_enter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-enter/src/enter */ "./node_modules/@ckeditor/ckeditor5-enter/src/enter.js");
-/* harmony import */ var _ckeditor_ckeditor5_enter_src_shiftenter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ckeditor/ckeditor5-enter/src/shiftenter */ "./node_modules/@ckeditor/ckeditor5-enter/src/shiftenter.js");
-/* harmony import */ var _ckeditor_ckeditor5_typing_src_typing__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ckeditor/ckeditor5-typing/src/typing */ "./node_modules/@ckeditor/ckeditor5-typing/src/typing.js");
-/* harmony import */ var _ckeditor_ckeditor5_undo_src_undo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ckeditor/ckeditor5-undo/src/undo */ "./node_modules/@ckeditor/ckeditor5-undo/src/undo.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module essentials/essentials
- */
-
-
-
-
-
-
-
-
-
-/**
- * A plugin including all essential editing features. It represents a set of features that enables similar functionalities
- * to a `<textarea>` element.
- *
- * It includes:
- *
- * * {@link module:clipboard/clipboard~Clipboard},
- * * {@link module:enter/enter~Enter},
- * * {@link module:enter/shiftenter~ShiftEnter},
- * * {@link module:typing/typing~Typing},
- * * {@link module:undo/undo~Undo}.
- *
- * This plugin set does not define any block-level containers (such as {@link module:paragraph/paragraph~Paragraph}).
- * If your editor is supposed to handle block content, make sure to include it.
- *
- * @extends module:core/plugin~Plugin
- */
-class Essentials extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	static get requires() {
-		return [ _ckeditor_ckeditor5_clipboard_src_clipboard__WEBPACK_IMPORTED_MODULE_1__["default"], _ckeditor_ckeditor5_enter_src_enter__WEBPACK_IMPORTED_MODULE_2__["default"], _ckeditor_ckeditor5_enter_src_shiftenter__WEBPACK_IMPORTED_MODULE_3__["default"], _ckeditor_ckeditor5_typing_src_typing__WEBPACK_IMPORTED_MODULE_4__["default"], _ckeditor_ckeditor5_undo_src_undo__WEBPACK_IMPORTED_MODULE_5__["default"] ];
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	static get pluginName() {
-		return 'Essentials';
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-image/src/image.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-image/src/image.js ***!
-  \*************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Image; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _src_image_imageediting__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../src/image/imageediting */ "./node_modules/@ckeditor/ckeditor5-image/src/image/imageediting.js");
-/* harmony import */ var _ckeditor_ckeditor5_widget_src_widget__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-widget/src/widget */ "./node_modules/@ckeditor/ckeditor5-widget/src/widget.js");
-/* harmony import */ var _imagetextalternative__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./imagetextalternative */ "./node_modules/@ckeditor/ckeditor5-image/src/imagetextalternative.js");
-/* harmony import */ var _theme_image_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../theme/image.css */ "./node_modules/@ckeditor/ckeditor5-image/theme/image.css");
-/* harmony import */ var _theme_image_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_theme_image_css__WEBPACK_IMPORTED_MODULE_4__);
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module image/image
- */
-
-
-
-
-
-
-
-
-/**
- * The image plugin.
- *
- * Uses the {@link module:image/image/imageediting~ImageEditing}.
- *
- * For a detailed overview, check the {@glink features/image image feature} documentation.
- *
- * @extends module:core/plugin~Plugin
- */
-class Image extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	static get requires() {
-		return [ _src_image_imageediting__WEBPACK_IMPORTED_MODULE_1__["default"], _ckeditor_ckeditor5_widget_src_widget__WEBPACK_IMPORTED_MODULE_2__["default"], _imagetextalternative__WEBPACK_IMPORTED_MODULE_3__["default"] ];
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	static get pluginName() {
-		return 'Image';
-	}
-}
-
-/**
- * The configuration of the image features. Used by the image features in the `@ckeditor/ckeditor5-image` package.
- *
- * Read more in {@link module:image/image~ImageConfig}.
- *
- * @member {module:image/image~ImageConfig} module:core/editor/editorconfig~EditorConfig#image
- */
-
-/**
- * The configuration of the image features. Used by the image features in the `@ckeditor/ckeditor5-image` package.
- *
- *		ClassicEditor
- *			.create( editorElement, {
- * 				image: ... // Image feature options.
- *			} )
- *			.then( ... )
- *			.catch( ... );
- *
- * See {@link module:core/editor/editorconfig~EditorConfig all editor options}.
- *
- * @interface ImageConfig
- */
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-image/src/image/converters.js":
-/*!************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-image/src/image/converters.js ***!
-  \************************************************************************/
-/*! exports provided: viewFigureToModel, srcsetAttributeConverter, modelToViewAttributeConverter */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "viewFigureToModel", function() { return viewFigureToModel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "srcsetAttributeConverter", function() { return srcsetAttributeConverter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "modelToViewAttributeConverter", function() { return modelToViewAttributeConverter; });
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_model_position__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/model/position */ "./node_modules/@ckeditor/ckeditor5-engine/src/model/position.js");
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_first__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/first */ "./node_modules/@ckeditor/ckeditor5-utils/src/first.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module image/image/converters
- */
-
-
-
-
-/**
- * Returns a function that converts the image view representation:
- *
- *		<figure class="image"><img src="..." alt="..."></img></figure>
- *
- * to the model representation:
- *
- *		<image src="..." alt="..."></image>
- *
- * The entire content of the `<figure>` element except the first `<img>` is being converted as children
- * of the `<image>` model element.
- *
- * @returns {Function}
- */
-function viewFigureToModel() {
-	return dispatcher => {
-		dispatcher.on( 'element:figure', converter );
-	};
-
-	function converter( evt, data, conversionApi ) {
-		// Do not convert if this is not an "image figure".
-		if ( !conversionApi.consumable.test( data.viewItem, { name: true, classes: 'image' } ) ) {
-			return;
-		}
-
-		// Find an image element inside the figure element.
-		const viewImage = Array.from( data.viewItem.getChildren() ).find( viewChild => viewChild.is( 'img' ) );
-
-		// Do not convert if image element is absent, is missing src attribute or was already converted.
-		if ( !viewImage || !viewImage.hasAttribute( 'src' ) || !conversionApi.consumable.test( viewImage, { name: true } ) ) {
-			return;
-		}
-
-		// Convert view image to model image.
-		const conversionResult = conversionApi.convertItem( viewImage, data.modelCursor );
-
-		// Get image element from conversion result.
-		const modelImage = Object(_ckeditor_ckeditor5_utils_src_first__WEBPACK_IMPORTED_MODULE_1__["default"])( conversionResult.modelRange.getItems() );
-
-		// When image wasn't successfully converted then finish conversion.
-		if ( !modelImage ) {
-			return;
-		}
-
-		// Convert rest of the figure element's children as an image children.
-		conversionApi.convertChildren( data.viewItem, _ckeditor_ckeditor5_engine_src_model_position__WEBPACK_IMPORTED_MODULE_0__["default"].createAt( modelImage ) );
-
-		// Set image range as conversion result.
-		data.modelRange = conversionResult.modelRange;
-
-		// Continue conversion where image conversion ends.
-		data.modelCursor = conversionResult.modelCursor;
-	}
-}
-
-/**
- * Converter used to convert the `srcset` model image attribute to the `srcset`, `sizes` and `width` attributes in the view.
- *
- * @returns {Function}
- */
-function srcsetAttributeConverter() {
-	return dispatcher => {
-		dispatcher.on( 'attribute:srcset:image', converter );
-	};
-
-	function converter( evt, data, conversionApi ) {
-		if ( !conversionApi.consumable.consume( data.item, evt.name ) ) {
-			return;
-		}
-
-		const writer = conversionApi.writer;
-		const figure = conversionApi.mapper.toViewElement( data.item );
-		const img = figure.getChild( 0 );
-
-		if ( data.attributeNewValue === null ) {
-			const srcset = data.attributeOldValue;
-
-			if ( srcset.data ) {
-				writer.removeAttribute( 'srcset', img );
-				writer.removeAttribute( 'sizes', img );
-
-				if ( srcset.width ) {
-					writer.removeAttribute( 'width', img );
-				}
-			}
-		} else {
-			const srcset = data.attributeNewValue;
-
-			if ( srcset.data ) {
-				writer.setAttribute( 'srcset', srcset.data, img );
-				// Always outputting `100vw`. See https://github.com/ckeditor/ckeditor5-image/issues/2.
-				writer.setAttribute( 'sizes', '100vw', img );
-
-				if ( srcset.width ) {
-					writer.setAttribute( 'width', srcset.width, img );
-				}
-			}
-		}
-	}
-}
-
-function modelToViewAttributeConverter( attributeKey ) {
-	return dispatcher => {
-		dispatcher.on( `attribute:${ attributeKey }:image`, converter );
-	};
-
-	function converter( evt, data, conversionApi ) {
-		if ( !conversionApi.consumable.consume( data.item, evt.name ) ) {
-			return;
-		}
-
-		const viewWriter = conversionApi.writer;
-		const figure = conversionApi.mapper.toViewElement( data.item );
-		const img = figure.getChild( 0 );
-
-		if ( data.attributeNewValue !== null ) {
-			viewWriter.setAttribute( data.attributeKey, data.attributeNewValue, img );
-		} else {
-			viewWriter.removeAttribute( data.attributeKey, img );
-		}
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-image/src/image/imageediting.js":
-/*!**************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-image/src/image/imageediting.js ***!
-  \**************************************************************************/
-/*! exports provided: default, createImageViewElement */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ImageEditing; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createImageViewElement", function() { return createImageViewElement; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _imageloadobserver__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./imageloadobserver */ "./node_modules/@ckeditor/ckeditor5-image/src/image/imageloadobserver.js");
-/* harmony import */ var _converters__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./converters */ "./node_modules/@ckeditor/ckeditor5-image/src/image/converters.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils */ "./node_modules/@ckeditor/ckeditor5-image/src/image/utils.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_conversion_downcast_converters__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/conversion/downcast-converters */ "./node_modules/@ckeditor/ckeditor5-engine/src/conversion/downcast-converters.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_conversion_upcast_converters__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/conversion/upcast-converters */ "./node_modules/@ckeditor/ckeditor5-engine/src/conversion/upcast-converters.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_view_position__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/view/position */ "./node_modules/@ckeditor/ckeditor5-engine/src/view/position.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module image/image/imageediting
- */
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- * The image engine plugin.
- * It registers `<image>` as a block element in the document schema, and allows `alt`, `src` and `srcset` attributes.
- * It also egisters converters for editing and data pipelines.
- *
- * @extends module:core/plugin~Plugin
- */
-class ImageEditing extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	init() {
-		const editor = this.editor;
-		const schema = editor.model.schema;
-		const t = editor.t;
-		const conversion = editor.conversion;
-
-		// See https://github.com/ckeditor/ckeditor5-image/issues/142.
-		editor.editing.view.addObserver( _imageloadobserver__WEBPACK_IMPORTED_MODULE_1__["default"] );
-
-		// Configure schema.
-		schema.register( 'image', {
-			isObject: true,
-			isBlock: true,
-			allowWhere: '$block',
-			allowAttributes: [ 'alt', 'src', 'srcset' ]
-		} );
-
-		conversion.for( 'dataDowncast' ).add( Object(_ckeditor_ckeditor5_engine_src_conversion_downcast_converters__WEBPACK_IMPORTED_MODULE_4__["downcastElementToElement"])( {
-			model: 'image',
-			view: ( modelElement, viewWriter ) => createImageViewElement( viewWriter )
-		} ) );
-
-		conversion.for( 'editingDowncast' ).add( Object(_ckeditor_ckeditor5_engine_src_conversion_downcast_converters__WEBPACK_IMPORTED_MODULE_4__["downcastElementToElement"])( {
-			model: 'image',
-			view: ( modelElement, viewWriter ) => Object(_utils__WEBPACK_IMPORTED_MODULE_3__["toImageWidget"])( createImageViewElement( viewWriter ), viewWriter, t( 'image widget' ) )
-		} ) );
-
-		conversion.for( 'downcast' )
-			.add( Object(_converters__WEBPACK_IMPORTED_MODULE_2__["modelToViewAttributeConverter"])( 'src' ) )
-			.add( Object(_converters__WEBPACK_IMPORTED_MODULE_2__["modelToViewAttributeConverter"])( 'alt' ) )
-			.add( Object(_converters__WEBPACK_IMPORTED_MODULE_2__["srcsetAttributeConverter"])() );
-
-		conversion.for( 'upcast' )
-			.add( Object(_ckeditor_ckeditor5_engine_src_conversion_upcast_converters__WEBPACK_IMPORTED_MODULE_5__["upcastElementToElement"])( {
-				view: {
-					name: 'img',
-					attributes: {
-						src: true
-					}
-				},
-				model: ( viewImage, modelWriter ) => modelWriter.createElement( 'image', { src: viewImage.getAttribute( 'src' ) } )
-			} ) )
-			.add( Object(_ckeditor_ckeditor5_engine_src_conversion_upcast_converters__WEBPACK_IMPORTED_MODULE_5__["upcastAttributeToAttribute"])( {
-				view: {
-					name: 'img',
-					key: 'alt'
-				},
-				model: 'alt'
-			} ) )
-			.add( Object(_ckeditor_ckeditor5_engine_src_conversion_upcast_converters__WEBPACK_IMPORTED_MODULE_5__["upcastAttributeToAttribute"])( {
-				view: {
-					name: 'img',
-					key: 'srcset'
-				},
-				model: {
-					key: 'srcset',
-					value: viewImage => {
-						const value = {
-							data: viewImage.getAttribute( 'srcset' )
-						};
-
-						if ( viewImage.hasAttribute( 'width' ) ) {
-							value.width = viewImage.getAttribute( 'width' );
-						}
-
-						return value;
-					}
-				}
-			} ) )
-			.add( Object(_converters__WEBPACK_IMPORTED_MODULE_2__["viewFigureToModel"])() );
-	}
-}
-
-// Creates a view element representing the image.
-//
-//		<figure class="image"><img></img></figure>
-//
-// Note that `alt` and `src` attributes are converted separately, so they are not included.
-//
-// @private
-// @param {module:engine/view/writer~Writer} writer
-// @returns {module:engine/view/containerelement~ContainerElement}
-function createImageViewElement( writer ) {
-	const emptyElement = writer.createEmptyElement( 'img' );
-	const figure = writer.createContainerElement( 'figure', { class: 'image' } );
-
-	writer.insert( _ckeditor_ckeditor5_engine_src_view_position__WEBPACK_IMPORTED_MODULE_6__["default"].createAt( figure ), emptyElement );
-
-	return figure;
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-image/src/image/imageloadobserver.js":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-image/src/image/imageloadobserver.js ***!
-  \*******************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ImageLoadObserver; });
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_view_observer_observer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/view/observer/observer */ "./node_modules/@ckeditor/ckeditor5-engine/src/view/observer/observer.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module image/image/imageloadobserver
- */
-
-
-
-/**
- * Observes all new images added to the {@link module:engine/view/document~Document},
- * fires {@link module:engine/view/document~Document#event:imageLoaded} and
- * {@link module:engine/view/document~Document#event:layoutChanged} event every time when the new image
- * has been loaded.
- *
- * **Note:** This event is not fired for images that has been added to the document and rendered as `complete` (already loaded).
- *
- * @extends module:engine/view/observer/observer~Observer
- */
-class ImageLoadObserver extends _ckeditor_ckeditor5_engine_src_view_observer_observer__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	constructor( view ) {
-		super( view );
-
-		/**
-		 * List of img DOM elements that are observed by this observer.
-		 *
-		 * @private
-		 * @type {Set.<HTMLElement>}
-		 */
-		this._observedElements = new Set();
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	observe( domRoot, name ) {
-		const viewRoot = this.document.getRoot( name );
-
-		// When there is a change in one of the view element
-		// we need to check if there are any new `<img/>` elements to observe.
-		viewRoot.on( 'change:children', ( evt, node ) => {
-			// Wait for the render to be sure that `<img/>` elements are rendered in the DOM root.
-			this.view.once( 'render', () => this._updateObservedElements( domRoot, node ) );
-		} );
-	}
-
-	/**
-	 * Updates the list of observed `<img/>` elements.
-	 *
-	 * @private
-	 * @param {HTMLElement} domRoot DOM root element.
-	 * @param {module:engine/view/element~Element} viewNode View element where children have changed.
-	 */
-	_updateObservedElements( domRoot, viewNode ) {
-		if ( !viewNode.is( 'element' ) || viewNode.is( 'attributeElement' ) ) {
-			return;
-		}
-
-		const domNode = this.view.domConverter.mapViewToDom( viewNode );
-
-		// If there is no `domNode` it means that it was removed from the DOM in the meanwhile.
-		if ( !domNode ) {
-			return;
-		}
-
-		for ( const domElement of domNode.querySelectorAll( 'img' ) ) {
-			if ( !this._observedElements.has( domElement ) ) {
-				this.listenTo( domElement, 'load', ( evt, domEvt ) => this._fireEvents( domEvt ) );
-				this._observedElements.add( domElement );
-			}
-		}
-
-		// Clean up the list of observed elements from elements that has been removed from the root.
-		for ( const domElement of this._observedElements ) {
-			if ( !domRoot.contains( domElement ) ) {
-				this.stopListening( domElement );
-				this._observedElements.delete( domElement );
-			}
-		}
-	}
-
-	/**
-	 * Fires {@link module:engine/view/document~Document#event:layoutChanged} and
-	 * {@link module:engine/view/document~Document#event:imageLoaded}
-	 * if observer {@link #isEnabled is enabled}.
-	 *
-	 * @protected
-	 * @param {Event} domEvent The DOM event.
-	 */
-	_fireEvents( domEvent ) {
-		if ( this.isEnabled ) {
-			this.document.fire( 'layoutChanged' );
-			this.document.fire( 'imageLoaded', domEvent );
-		}
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	destroy() {
-		this._observedElements.clear();
-		super.destroy();
-	}
-}
-
-/**
- * Fired when an <img/> DOM element has been loaded in the DOM root.
- *
- * Introduced by {@link module:image/image/imageloadobserver~ImageLoadObserver}.
- *
- * @see module:image/image/imageloadobserver~ImageLoadObserver
- * @event module:engine/view/document~Document#event:imageLoaded
- * @param {module:engine/view/observer/domeventdata~DomEventData} data Event data.
- */
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-image/src/image/ui/utils.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-image/src/image/ui/utils.js ***!
-  \**********************************************************************/
-/*! exports provided: repositionContextualBalloon, getBalloonPositionData */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "repositionContextualBalloon", function() { return repositionContextualBalloon; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getBalloonPositionData", function() { return getBalloonPositionData; });
-/* harmony import */ var _ckeditor_ckeditor5_ui_src_panel_balloon_balloonpanelview__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-ui/src/panel/balloon/balloonpanelview */ "./node_modules/@ckeditor/ckeditor5-ui/src/panel/balloon/balloonpanelview.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ "./node_modules/@ckeditor/ckeditor5-image/src/image/utils.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module image/image/ui/utils
- */
-
-
-
-
-/**
- * A helper utility that positions the
- * {@link module:ui/panel/balloon/contextualballoon~ContextualBalloon contextual balloon} instance
- * with respect to the image in the editor content, if one is selected.
- *
- * @param {module:core/editor/editor~Editor} editor The editor instance.
- */
-function repositionContextualBalloon( editor ) {
-	const balloon = editor.plugins.get( 'ContextualBalloon' );
-
-	if ( Object(_utils__WEBPACK_IMPORTED_MODULE_1__["isImageWidgetSelected"])( editor.editing.view.document.selection ) ) {
-		const position = getBalloonPositionData( editor );
-
-		balloon.updatePosition( position );
-	}
-}
-
-/**
- * Returns the positioning options that control the geometry of the
- * {@link module:ui/panel/balloon/contextualballoon~ContextualBalloon contextual balloon} with respect
- * to the selected element in the editor content.
- *
- * @param {module:core/editor/editor~Editor} editor The editor instance.
- * @returns {module:utils/dom/position~Options}
- */
-function getBalloonPositionData( editor ) {
-	const editingView = editor.editing.view;
-	const defaultPositions = _ckeditor_ckeditor5_ui_src_panel_balloon_balloonpanelview__WEBPACK_IMPORTED_MODULE_0__["default"].defaultPositions;
-
-	return {
-		target: editingView.domConverter.viewToDom( editingView.document.selection.getSelectedElement() ),
-		positions: [
-			defaultPositions.northArrowSouth,
-			defaultPositions.northArrowSouthWest,
-			defaultPositions.northArrowSouthEast,
-			defaultPositions.southArrowNorth,
-			defaultPositions.southArrowNorthWest,
-			defaultPositions.southArrowNorthEast
-		]
-	};
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-image/src/image/utils.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-image/src/image/utils.js ***!
-  \*******************************************************************/
-/*! exports provided: toImageWidget, isImageWidget, isImageWidgetSelected, isImage */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toImageWidget", function() { return toImageWidget; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isImageWidget", function() { return isImageWidget; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isImageWidgetSelected", function() { return isImageWidgetSelected; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isImage", function() { return isImage; });
-/* harmony import */ var _ckeditor_ckeditor5_widget_src_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-widget/src/utils */ "./node_modules/@ckeditor/ckeditor5-widget/src/utils.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_model_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/model/element */ "./node_modules/@ckeditor/ckeditor5-engine/src/model/element.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module image/image/utils
- */
-
-
-
-
-const imageSymbol = Symbol( 'isImage' );
-
-/**
- * Converts a given {@link module:engine/view/element~Element} to an image widget:
- * * Adds a {@link module:engine/view/element~Element#_setCustomProperty custom property} allowing to recognize the image widget element.
- * * Calls the {@link module:widget/utils~toWidget} function with the proper element's label creator.
- *
- * @param {module:engine/view/element~Element} viewElement
- * @param {module:engine/view/writer~Writer} writer An instance of the view writer.
- * @param {String} label The element's label. It will be concatenated with the image `alt` attribute if one is present.
- * @returns {module:engine/view/element~Element}
- */
-function toImageWidget( viewElement, writer, label ) {
-	writer.setCustomProperty( imageSymbol, true, viewElement );
-
-	return Object(_ckeditor_ckeditor5_widget_src_utils__WEBPACK_IMPORTED_MODULE_0__["toWidget"])( viewElement, writer, { label: labelCreator } );
-
-	function labelCreator() {
-		const imgElement = viewElement.getChild( 0 );
-		const altText = imgElement.getAttribute( 'alt' );
-
-		return altText ? `${ altText } ${ label }` : label;
-	}
-}
-
-/**
- * Checks if a given view element is an image widget.
- *
- * @param {module:engine/view/element~Element} viewElement
- * @returns {Boolean}
- */
-function isImageWidget( viewElement ) {
-	return !!viewElement.getCustomProperty( imageSymbol ) && Object(_ckeditor_ckeditor5_widget_src_utils__WEBPACK_IMPORTED_MODULE_0__["isWidget"])( viewElement );
-}
-
-/**
- * Checks if an image widget is the only selected element.
- *
- * @param {module:engine/view/selection~Selection|module:engine/view/documentselection~DocumentSelection} selection
- * @returns {Boolean}
- */
-function isImageWidgetSelected( selection ) {
-	const viewElement = selection.getSelectedElement();
-
-	return !!( viewElement && isImageWidget( viewElement ) );
-}
-
-/**
- * Checks if the provided model element is an instance of {@link module:engine/model/element~Element Element} and its name
- * is `image`.
- *
- * @param {module:engine/model/element~Element} modelElement
- * @returns {Boolean}
- */
-function isImage( modelElement ) {
-	return modelElement instanceof _ckeditor_ckeditor5_engine_src_model_element__WEBPACK_IMPORTED_MODULE_1__["default"] && modelElement.name == 'image';
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-image/src/imagecaption.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-image/src/imagecaption.js ***!
-  \********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ImageCaption; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _imagecaption_imagecaptionediting__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./imagecaption/imagecaptionediting */ "./node_modules/@ckeditor/ckeditor5-image/src/imagecaption/imagecaptionediting.js");
-/* harmony import */ var _theme_imagecaption_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../theme/imagecaption.css */ "./node_modules/@ckeditor/ckeditor5-image/theme/imagecaption.css");
-/* harmony import */ var _theme_imagecaption_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_theme_imagecaption_css__WEBPACK_IMPORTED_MODULE_2__);
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module image/imagecaption
- */
-
-
-
-
-
-
-/**
- * The image caption plugin.
- *
- * For a detailed overview, check the {@glink features/image#image-captions image caption} documentation.
- *
- * @extends module:core/plugin~Plugin
- */
-class ImageCaption extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	static get requires() {
-		return [ _imagecaption_imagecaptionediting__WEBPACK_IMPORTED_MODULE_1__["default"] ];
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	static get pluginName() {
-		return 'ImageCaption';
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-image/src/imagecaption/imagecaptionediting.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-image/src/imagecaption/imagecaptionediting.js ***!
-  \****************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ImageCaptionEditing; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_view_position__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/view/position */ "./node_modules/@ckeditor/ckeditor5-engine/src/view/position.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_conversion_upcast_converters__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/conversion/upcast-converters */ "./node_modules/@ckeditor/ckeditor5-engine/src/conversion/upcast-converters.js");
-/* harmony import */ var _image_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../image/utils */ "./node_modules/@ckeditor/ckeditor5-image/src/image/utils.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils */ "./node_modules/@ckeditor/ckeditor5-image/src/imagecaption/utils.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module image/imagecaption/imagecaptionediting
- */
-
-
-
-
-
-
-
-/**
- * The image caption engine plugin.
- *
- * It registers proper converters. It takes care of adding a caption element if the image without it is inserted
- * to the model document.
- *
- * @extends module:core/plugin~Plugin
- */
-class ImageCaptionEditing extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	init() {
-		const editor = this.editor;
-		const view = editor.editing.view;
-		const schema = editor.model.schema;
-		const data = editor.data;
-		const editing = editor.editing;
-		const t = editor.t;
-
-		/**
-		 * The last selected caption editable.
-		 * It is used for hiding the editable when it is empty and the image widget is no longer selected.
-		 *
-		 * @private
-		 * @member {module:engine/view/editableelement~EditableElement} #_lastSelectedCaption
-		 */
-
-		// Schema configuration.
-		schema.register( 'caption', {
-			allowIn: 'image',
-			allowContentOf: '$block',
-			isLimit: true
-		} );
-
-		// Add caption element to each image inserted without it.
-		editor.model.document.registerPostFixer( writer => this._insertMissingModelCaptionElement( writer ) );
-
-		// View to model converter for the data pipeline.
-		editor.conversion.for( 'upcast' ).add( Object(_ckeditor_ckeditor5_engine_src_conversion_upcast_converters__WEBPACK_IMPORTED_MODULE_2__["upcastElementToElement"])( {
-			view: _utils__WEBPACK_IMPORTED_MODULE_4__["matchImageCaption"],
-			model: 'caption'
-		} ) );
-
-		// Model to view converter for the data pipeline.
-		const createCaptionForData = writer => writer.createContainerElement( 'figcaption' );
-		data.downcastDispatcher.on( 'insert:caption', captionModelToView( createCaptionForData, false ) );
-
-		// Model to view converter for the editing pipeline.
-		const createCaptionForEditing = Object(_utils__WEBPACK_IMPORTED_MODULE_4__["captionElementCreator"])( view, t( 'Enter image caption' ) );
-		editing.downcastDispatcher.on( 'insert:caption', captionModelToView( createCaptionForEditing ) );
-
-		// Always show caption in view when something is inserted in model.
-		editing.downcastDispatcher.on(
-			'insert',
-			this._fixCaptionVisibility( data => data.item ),
-			{ priority: 'high' }
-		);
-
-		// Hide caption when everything is removed from it.
-		editing.downcastDispatcher.on( 'remove', this._fixCaptionVisibility( data => data.position.parent ), { priority: 'high' } );
-
-		// Update caption visibility on view in post fixer.
-		view.document.registerPostFixer( writer => this._updateCaptionVisibility( writer ) );
-	}
-
-	/**
-	 * Updates the view before each rendering, making sure that empty captions (so unnecessary ones) are hidden
-	 * and then visible when the image is selected.
-	 *
-	 * @private
-	 * @param {module:engine/view/writer~Writer} viewWriter
-	 * @returns {Boolean} Returns `true` when the view is updated.
-	 */
-	_updateCaptionVisibility( viewWriter ) {
-		const mapper = this.editor.editing.mapper;
-		const lastCaption = this._lastSelectedCaption;
-		let viewCaption;
-
-		// If whole image is selected.
-		const modelSelection = this.editor.model.document.selection;
-		const selectedElement = modelSelection.getSelectedElement();
-
-		if ( selectedElement && selectedElement.is( 'image' ) ) {
-			const modelCaption = Object(_utils__WEBPACK_IMPORTED_MODULE_4__["getCaptionFromImage"])( selectedElement );
-			viewCaption = mapper.toViewElement( modelCaption );
-		}
-
-		// If selection is placed inside caption.
-		const position = modelSelection.getFirstPosition();
-		const modelCaption = getParentCaption( position.parent );
-
-		if ( modelCaption ) {
-			viewCaption = mapper.toViewElement( modelCaption );
-		}
-
-		// Is currently any caption selected?
-		if ( viewCaption ) {
-			// Was any caption selected before?
-			if ( lastCaption ) {
-				// Same caption as before?
-				if ( lastCaption === viewCaption ) {
-					return showCaption( viewCaption, viewWriter );
-				} else {
-					hideCaptionIfEmpty( lastCaption, viewWriter );
-					this._lastSelectedCaption = viewCaption;
-
-					return showCaption( viewCaption, viewWriter );
-				}
-			} else {
-				this._lastSelectedCaption = viewCaption;
-				return showCaption( viewCaption, viewWriter );
-			}
-		} else {
-			// Was any caption selected before?
-			if ( lastCaption ) {
-				const viewModified = hideCaptionIfEmpty( lastCaption, viewWriter );
-				this._lastSelectedCaption = null;
-
-				return viewModified;
-			} else {
-				return false;
-			}
-		}
-	}
-
-	/**
-	 * Returns a converter that fixes caption visibility during the model-to-view conversion.
-	 * Checks if the changed node is placed inside the caption element and fixes its visibility in the view.
-	 *
-	 * @private
-	 * @param {Function} nodeFinder
-	 * @returns {Function}
-	 */
-	_fixCaptionVisibility( nodeFinder ) {
-		return ( evt, data, conversionApi ) => {
-			const node = nodeFinder( data );
-			const modelCaption = getParentCaption( node );
-			const mapper = this.editor.editing.mapper;
-			const viewWriter = conversionApi.writer;
-
-			if ( modelCaption ) {
-				const viewCaption = mapper.toViewElement( modelCaption );
-
-				if ( viewCaption ) {
-					if ( modelCaption.childCount ) {
-						viewWriter.removeClass( 'ck-hidden', viewCaption );
-					} else {
-						viewWriter.addClass( 'ck-hidden', viewCaption );
-					}
-				}
-			}
-		};
-	}
-
-	/**
-	 * Checks whether the data inserted to the model document have an image element that has no caption element inside it.
-	 * If there is none, it adds it to the image element.
-	 *
-	 * @private
-	 * @param {module:engine/model/writer~Writer} writer The writer to make changes with.
-	 * @returns {Boolean} `true` if any change was applied, `false` otherwise.
-	 */
-	_insertMissingModelCaptionElement( writer ) {
-		const model = this.editor.model;
-		const changes = model.document.differ.getChanges();
-
-		for ( const entry of changes ) {
-			if ( entry.type == 'insert' && entry.name == 'image' ) {
-				const item = entry.position.nodeAfter;
-
-				if ( !Object(_utils__WEBPACK_IMPORTED_MODULE_4__["getCaptionFromImage"])( item ) ) {
-					writer.appendElement( 'caption', item );
-
-					return true;
-				}
-			}
-		}
-	}
-}
-
-// Creates a converter that converts image caption model element to view element.
-//
-// @private
-// @param {Function} elementCreator
-// @param {Boolean} [hide=true] When set to `false` view element will not be inserted when it's empty.
-// @returns {Function}
-function captionModelToView( elementCreator, hide = true ) {
-	return ( evt, data, conversionApi ) => {
-		const captionElement = data.item;
-
-		// Return if element shouldn't be present when empty.
-		if ( !captionElement.childCount && !hide ) {
-			return;
-		}
-
-		if ( Object(_image_utils__WEBPACK_IMPORTED_MODULE_3__["isImage"])( captionElement.parent ) ) {
-			if ( !conversionApi.consumable.consume( data.item, 'insert' ) ) {
-				return;
-			}
-
-			const viewImage = conversionApi.mapper.toViewElement( data.range.start.parent );
-			const viewCaption = elementCreator( conversionApi.writer );
-			const viewWriter = conversionApi.writer;
-
-			// Hide if empty.
-			if ( !captionElement.childCount ) {
-				viewWriter.addClass( 'ck-hidden', viewCaption );
-			}
-
-			insertViewCaptionAndBind( viewCaption, data.item, viewImage, conversionApi );
-		}
-	};
-}
-
-// Inserts `viewCaption` at the end of `viewImage` and binds it to `modelCaption`.
-//
-// @private
-// @param {module:engine/view/containerelement~ContainerElement} viewCaption
-// @param {module:engine/model/element~Element} modelCaption
-// @param {module:engine/view/containerelement~ContainerElement} viewImage
-// @param {Object} conversionApi
-function insertViewCaptionAndBind( viewCaption, modelCaption, viewImage, conversionApi ) {
-	const viewPosition = _ckeditor_ckeditor5_engine_src_view_position__WEBPACK_IMPORTED_MODULE_1__["default"].createAt( viewImage, 'end' );
-
-	conversionApi.writer.insert( viewPosition, viewCaption );
-	conversionApi.mapper.bindElements( modelCaption, viewCaption );
-}
-
-// Checks if the provided node or one of its ancestors is a caption element, and returns it.
-//
-// @private
-// @param {module:engine/model/node~Node} node
-// @returns {module:engine/model/element~Element|null}
-function getParentCaption( node ) {
-	const ancestors = node.getAncestors( { includeSelf: true } );
-	const caption = ancestors.find( ancestor => ancestor.name == 'caption' );
-
-	if ( caption && caption.parent && caption.parent.name == 'image' ) {
-		return caption;
-	}
-
-	return null;
-}
-
-// Hides a given caption in the view if it is empty.
-//
-// @private
-// @param {module:engine/view/containerelement~ContainerElement} caption
-// @param {module:engine/view/writer~Writer} viewWriter
-// @returns {Boolean} Returns `true` if the view was modified.
-function hideCaptionIfEmpty( caption, viewWriter ) {
-	if ( !caption.childCount && !caption.hasClass( 'ck-hidden' ) ) {
-		viewWriter.addClass( 'ck-hidden', caption );
-		return true;
-	}
-
-	return false;
-}
-
-// Shows the caption.
-//
-// @private
-// @param {module:engine/view/containerelement~ContainerElement} caption
-// @param {module:engine/view/writer~Writer} viewWriter
-// @returns {Boolean} Returns `true` if the view was modified.
-function showCaption( caption, viewWriter ) {
-	if ( caption.hasClass( 'ck-hidden' ) ) {
-		viewWriter.removeClass( 'ck-hidden', caption );
-		return true;
-	}
-
-	return false;
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-image/src/imagecaption/utils.js":
-/*!**************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-image/src/imagecaption/utils.js ***!
-  \**************************************************************************/
-/*! exports provided: captionElementCreator, isCaption, getCaptionFromImage, matchImageCaption */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "captionElementCreator", function() { return captionElementCreator; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isCaption", function() { return isCaption; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCaptionFromImage", function() { return getCaptionFromImage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "matchImageCaption", function() { return matchImageCaption; });
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_model_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/model/element */ "./node_modules/@ckeditor/ckeditor5-engine/src/model/element.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_view_placeholder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/view/placeholder */ "./node_modules/@ckeditor/ckeditor5-engine/src/view/placeholder.js");
-/* harmony import */ var _ckeditor_ckeditor5_widget_src_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-widget/src/utils */ "./node_modules/@ckeditor/ckeditor5-widget/src/utils.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module image/imagecaption/utils
- */
-
-
-
-
-
-const captionSymbol = Symbol( 'imageCaption' );
-
-/**
- * Returns a function that creates a caption editable element for the given {@link module:engine/view/document~Document}.
- *
- * @param {module:engine/view/view~View} view
- * @param {String} placeholderText The text to be displayed when the caption is empty.
- * @returns {Function}
- */
-function captionElementCreator( view, placeholderText ) {
-	return writer => {
-		const editable = writer.createEditableElement( 'figcaption' );
-		writer.setCustomProperty( captionSymbol, true, editable );
-		Object(_ckeditor_ckeditor5_engine_src_view_placeholder__WEBPACK_IMPORTED_MODULE_1__["attachPlaceholder"])( view, editable, placeholderText );
-
-		return Object(_ckeditor_ckeditor5_widget_src_utils__WEBPACK_IMPORTED_MODULE_2__["toWidgetEditable"])( editable, writer );
-	};
-}
-
-/**
- * Returns `true` if a given view element is the image caption editable.
- *
- * @param {module:engine/view/element~Element} viewElement
- * @returns {Boolean}
- */
-function isCaption( viewElement ) {
-	return !!viewElement.getCustomProperty( captionSymbol );
-}
-
-/**
- * Returns the caption model element from a given image element. Returns `null` if no caption is found.
- *
- * @param {module:engine/model/element~Element} imageModelElement
- * @returns {module:engine/model/element~Element|null}
- */
-function getCaptionFromImage( imageModelElement ) {
-	for ( const node of imageModelElement.getChildren() ) {
-		if ( node instanceof _ckeditor_ckeditor5_engine_src_model_element__WEBPACK_IMPORTED_MODULE_0__["default"] && node.name == 'caption' ) {
-			return node;
-		}
-	}
-
-	return null;
-}
-
-/**
- * {@link module:engine/view/matcher~Matcher} pattern. Checks if a given element is a `<figcaption>` element that is placed
- * inside the image `<figure>` element.
- *
- * @param {module:engine/view/element~Element} element
- * @returns {Object|null} Returns the object accepted by {@link module:engine/view/matcher~Matcher} or `null` if the element
- * cannot be matched.
- */
-function matchImageCaption( element ) {
-	const parent = element.parent;
-
-	// Convert only captions for images.
-	if ( element.name == 'figcaption' && parent && parent.name == 'figure' && parent.hasClass( 'image' ) ) {
-		return { name: true };
-	}
-
-	return null;
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-image/src/imagetextalternative.js":
-/*!****************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-image/src/imagetextalternative.js ***!
-  \****************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ImageTextAlternative; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _imagetextalternative_imagetextalternativeediting__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./imagetextalternative/imagetextalternativeediting */ "./node_modules/@ckeditor/ckeditor5-image/src/imagetextalternative/imagetextalternativeediting.js");
-/* harmony import */ var _imagetextalternative_imagetextalternativeui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./imagetextalternative/imagetextalternativeui */ "./node_modules/@ckeditor/ckeditor5-image/src/imagetextalternative/imagetextalternativeui.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module image/imagetextalternative
- */
-
-
-
-
-
-/**
- * The image text alternative plugin.
- *
- * It loads the {@link module:image/imagetextalternative/imagetextalternativeediting~ImageTextAlternativeEditing}
- * and {@link module:image/imagetextalternative/imagetextalternativeui~ImageTextAlternativeUI} plugins.
- *
- * @extends module:core/plugin~Plugin
- */
-class ImageTextAlternative extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	static get requires() {
-		return [ _imagetextalternative_imagetextalternativeediting__WEBPACK_IMPORTED_MODULE_1__["default"], _imagetextalternative_imagetextalternativeui__WEBPACK_IMPORTED_MODULE_2__["default"] ];
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	static get pluginName() {
-		return 'ImageTextAlternative';
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-image/src/imagetextalternative/imagetextalternativecommand.js":
-/*!********************************************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-image/src/imagetextalternative/imagetextalternativecommand.js ***!
-  \********************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ImageTextAlternativeCommand; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_command__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/command */ "./node_modules/@ckeditor/ckeditor5-core/src/command.js");
-/* harmony import */ var _image_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../image/utils */ "./node_modules/@ckeditor/ckeditor5-image/src/image/utils.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module image/imagetextalternative/imagetextalternativecommand
- */
-
-
-
-
-/**
- * The image text alternative command. It is used to change the `alt` attribute of `<image>` elements.
- *
- * @extends module:core/command~Command
- */
-class ImageTextAlternativeCommand extends _ckeditor_ckeditor5_core_src_command__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * The command value: `false` if there is no `alt` attribute, otherwise the value of the `alt` attribute.
-	 *
-	 * @readonly
-	 * @observable
-	 * @member {String|Boolean} #value
-	 */
-
-	/**
-	 * @inheritDoc
-	 */
-	refresh() {
-		const element = this.editor.model.document.selection.getSelectedElement();
-
-		this.isEnabled = Object(_image_utils__WEBPACK_IMPORTED_MODULE_1__["isImage"])( element );
-
-		if ( Object(_image_utils__WEBPACK_IMPORTED_MODULE_1__["isImage"])( element ) && element.hasAttribute( 'alt' ) ) {
-			this.value = element.getAttribute( 'alt' );
-		} else {
-			this.value = false;
-		}
-	}
-
-	/**
-	 * Executes the command.
-	 *
-	 * @fires execute
-	 * @param {Object} options
-	 * @param {String} options.newValue The new value of the `alt` attribute to set.
-	 */
-	execute( options ) {
-		const model = this.editor.model;
-		const imageElement = model.document.selection.getSelectedElement();
-
-		model.change( writer => {
-			writer.setAttribute( 'alt', options.newValue, imageElement );
-		} );
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-image/src/imagetextalternative/imagetextalternativeediting.js":
-/*!********************************************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-image/src/imagetextalternative/imagetextalternativeediting.js ***!
-  \********************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ImageTextAlternativeEditing; });
-/* harmony import */ var _imagetextalternativecommand__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./imagetextalternativecommand */ "./node_modules/@ckeditor/ckeditor5-image/src/imagetextalternative/imagetextalternativecommand.js");
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module image/imagetextalternative/imagetextalternativeediting
- */
-
-
-
-
-/**
- * The image text alternative engine plugin.
- * Registers the `imageTextAlternative` command.
- *
- * @extends module:core/plugin~Plugin
- */
-class ImageTextAlternativeEditing extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_1__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	init() {
-		this.editor.commands.add( 'imageTextAlternative', new _imagetextalternativecommand__WEBPACK_IMPORTED_MODULE_0__["default"]( this.editor ) );
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-image/src/imagetextalternative/imagetextalternativeui.js":
-/*!***************************************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-image/src/imagetextalternative/imagetextalternativeui.js ***!
-  \***************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ImageTextAlternativeUI; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _ckeditor_ckeditor5_ui_src_button_buttonview__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-ui/src/button/buttonview */ "./node_modules/@ckeditor/ckeditor5-ui/src/button/buttonview.js");
-/* harmony import */ var _ckeditor_ckeditor5_ui_src_bindings_clickoutsidehandler__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-ui/src/bindings/clickoutsidehandler */ "./node_modules/@ckeditor/ckeditor5-ui/src/bindings/clickoutsidehandler.js");
-/* harmony import */ var _ui_textalternativeformview__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ui/textalternativeformview */ "./node_modules/@ckeditor/ckeditor5-image/src/imagetextalternative/ui/textalternativeformview.js");
-/* harmony import */ var _ckeditor_ckeditor5_ui_src_panel_balloon_contextualballoon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ckeditor/ckeditor5-ui/src/panel/balloon/contextualballoon */ "./node_modules/@ckeditor/ckeditor5-ui/src/panel/balloon/contextualballoon.js");
-/* harmony import */ var _ckeditor_ckeditor5_core_theme_icons_low_vision_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/theme/icons/low-vision.svg */ "./node_modules/@ckeditor/ckeditor5-core/theme/icons/low-vision.svg");
-/* harmony import */ var _ckeditor_ckeditor5_core_theme_icons_low_vision_svg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_core_theme_icons_low_vision_svg__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _image_ui_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../image/ui/utils */ "./node_modules/@ckeditor/ckeditor5-image/src/image/ui/utils.js");
-/* harmony import */ var _image_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../image/utils */ "./node_modules/@ckeditor/ckeditor5-image/src/image/utils.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module image/imagetextalternative/imagetextalternativeui
- */
-
-
-
-
-
-
-
-
-
-
-/**
- * The image text alternative UI plugin.
- *
- * The plugin uses the {@link module:ui/panel/balloon/contextualballoon~ContextualBalloon}.
- *
- * @extends module:core/plugin~Plugin
- */
-class ImageTextAlternativeUI extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	static get requires() {
-		return [ _ckeditor_ckeditor5_ui_src_panel_balloon_contextualballoon__WEBPACK_IMPORTED_MODULE_4__["default"] ];
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	init() {
-		this._createButton();
-		this._createForm();
-	}
-
-	/**
-	 * Creates a button showing the balloon panel for changing the image text alternative and
-	 * registers it in the editor {@link module:ui/componentfactory~ComponentFactory ComponentFactory}.
-	 *
-	 * @private
-	 */
-	_createButton() {
-		const editor = this.editor;
-		const t = editor.t;
-
-		editor.ui.componentFactory.add( 'imageTextAlternative', locale => {
-			const command = editor.commands.get( 'imageTextAlternative' );
-			const view = new _ckeditor_ckeditor5_ui_src_button_buttonview__WEBPACK_IMPORTED_MODULE_1__["default"]( locale );
-
-			view.set( {
-				label: t( 'Change image text alternative' ),
-				icon: _ckeditor_ckeditor5_core_theme_icons_low_vision_svg__WEBPACK_IMPORTED_MODULE_5___default.a,
-				tooltip: true
-			} );
-
-			view.bind( 'isEnabled' ).to( command, 'isEnabled' );
-
-			this.listenTo( view, 'execute', () => this._showForm() );
-
-			return view;
-		} );
-	}
-
-	/**
-	 * Creates the {@link module:image/imagetextalternative/ui/textalternativeformview~TextAlternativeFormView}
-	 * form.
-	 *
-	 * @private
-	 */
-	_createForm() {
-		const editor = this.editor;
-		const view = editor.editing.view;
-		const viewDocument = view.document;
-
-		/**
-		 * The contextual balloon plugin instance.
-		 *
-		 * @private
-		 * @member {module:ui/panel/balloon/contextualballoon~ContextualBalloon}
-		 */
-		this._balloon = this.editor.plugins.get( 'ContextualBalloon' );
-
-		/**
-		 * A form containing a textarea and buttons, used to change the `alt` text value.
-		 *
-		 * @member {module:image/imagetextalternative/ui/textalternativeformview~TextAlternativeFormView}
-		 */
-		this._form = new _ui_textalternativeformview__WEBPACK_IMPORTED_MODULE_3__["default"]( editor.locale );
-
-		// Render the form so its #element is available for clickOutsideHandler.
-		this._form.render();
-
-		this.listenTo( this._form, 'submit', () => {
-			editor.execute( 'imageTextAlternative', {
-				newValue: this._form.labeledInput.inputView.element.value
-			} );
-
-			this._hideForm( true );
-		} );
-
-		this.listenTo( this._form, 'cancel', () => {
-			this._hideForm( true );
-		} );
-
-		// Close the form on Esc key press.
-		this._form.keystrokes.set( 'Esc', ( data, cancel ) => {
-			this._hideForm( true );
-			cancel();
-		} );
-
-		// Reposition the balloon or hide the form if an image widget is no longer selected.
-		this.listenTo( editor.ui, 'update', () => {
-			if ( !Object(_image_utils__WEBPACK_IMPORTED_MODULE_7__["isImageWidgetSelected"])( viewDocument.selection ) ) {
-				this._hideForm( true );
-			} else if ( this._isVisible ) {
-				Object(_image_ui_utils__WEBPACK_IMPORTED_MODULE_6__["repositionContextualBalloon"])( editor );
-			}
-		} );
-
-		// Close on click outside of balloon panel element.
-		Object(_ckeditor_ckeditor5_ui_src_bindings_clickoutsidehandler__WEBPACK_IMPORTED_MODULE_2__["default"])( {
-			emitter: this._form,
-			activator: () => this._isVisible,
-			contextElements: [ this._form.element ],
-			callback: () => this._hideForm()
-		} );
-	}
-
-	/**
-	 * Shows the {@link #_form} in the {@link #_balloon}.
-	 *
-	 * @private
-	 */
-	_showForm() {
-		if ( this._isVisible ) {
-			return;
-		}
-
-		const editor = this.editor;
-		const command = editor.commands.get( 'imageTextAlternative' );
-		const labeledInput = this._form.labeledInput;
-
-		if ( !this._balloon.hasView( this._form ) ) {
-			this._balloon.add( {
-				view: this._form,
-				position: Object(_image_ui_utils__WEBPACK_IMPORTED_MODULE_6__["getBalloonPositionData"])( editor )
-			} );
-		}
-
-		// Make sure that each time the panel shows up, the field remains in sync with the value of
-		// the command. If the user typed in the input, then canceled the balloon (`labeledInput#value`
-		// stays unaltered) and re-opened it without changing the value of the command, they would see the
-		// old value instead of the actual value of the command.
-		// https://github.com/ckeditor/ckeditor5-image/issues/114
-		labeledInput.value = labeledInput.inputView.element.value = command.value || '';
-
-		this._form.labeledInput.select();
-	}
-
-	/**
-	 * Removes the {@link #_form} from the {@link #_balloon}.
-	 *
-	 * @param {Boolean} [focusEditable=false] Controls whether the editing view is focused afterwards.
-	 * @private
-	 */
-	_hideForm( focusEditable ) {
-		if ( !this._isVisible ) {
-			return;
-		}
-
-		this._balloon.remove( this._form );
-
-		if ( focusEditable ) {
-			this.editor.editing.view.focus();
-		}
-	}
-
-	/**
-	 * Returns `true` when the {@link #_form} is the visible view in the {@link #_balloon}.
-	 *
-	 * @private
-	 * @type {Boolean}
-	 */
-	get _isVisible() {
-		return this._balloon.visibleView == this._form;
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-image/src/imagetextalternative/ui/textalternativeformview.js":
-/*!*******************************************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-image/src/imagetextalternative/ui/textalternativeformview.js ***!
-  \*******************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TextAlternativeFormView; });
-/* harmony import */ var _ckeditor_ckeditor5_ui_src_view__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-ui/src/view */ "./node_modules/@ckeditor/ckeditor5-ui/src/view.js");
-/* harmony import */ var _ckeditor_ckeditor5_ui_src_viewcollection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-ui/src/viewcollection */ "./node_modules/@ckeditor/ckeditor5-ui/src/viewcollection.js");
-/* harmony import */ var _ckeditor_ckeditor5_ui_src_button_buttonview__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-ui/src/button/buttonview */ "./node_modules/@ckeditor/ckeditor5-ui/src/button/buttonview.js");
-/* harmony import */ var _ckeditor_ckeditor5_ui_src_labeledinput_labeledinputview__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ckeditor/ckeditor5-ui/src/labeledinput/labeledinputview */ "./node_modules/@ckeditor/ckeditor5-ui/src/labeledinput/labeledinputview.js");
-/* harmony import */ var _ckeditor_ckeditor5_ui_src_inputtext_inputtextview__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ckeditor/ckeditor5-ui/src/inputtext/inputtextview */ "./node_modules/@ckeditor/ckeditor5-ui/src/inputtext/inputtextview.js");
-/* harmony import */ var _ckeditor_ckeditor5_ui_src_bindings_submithandler__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ckeditor/ckeditor5-ui/src/bindings/submithandler */ "./node_modules/@ckeditor/ckeditor5-ui/src/bindings/submithandler.js");
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_keystrokehandler__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/keystrokehandler */ "./node_modules/@ckeditor/ckeditor5-utils/src/keystrokehandler.js");
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_focustracker__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/focustracker */ "./node_modules/@ckeditor/ckeditor5-utils/src/focustracker.js");
-/* harmony import */ var _ckeditor_ckeditor5_ui_src_focuscycler__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ckeditor/ckeditor5-ui/src/focuscycler */ "./node_modules/@ckeditor/ckeditor5-ui/src/focuscycler.js");
-/* harmony import */ var _ckeditor_ckeditor5_core_theme_icons_check_svg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/theme/icons/check.svg */ "./node_modules/@ckeditor/ckeditor5-core/theme/icons/check.svg");
-/* harmony import */ var _ckeditor_ckeditor5_core_theme_icons_check_svg__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_core_theme_icons_check_svg__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _ckeditor_ckeditor5_core_theme_icons_cancel_svg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/theme/icons/cancel.svg */ "./node_modules/@ckeditor/ckeditor5-core/theme/icons/cancel.svg");
-/* harmony import */ var _ckeditor_ckeditor5_core_theme_icons_cancel_svg__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_core_theme_icons_cancel_svg__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _theme_textalternativeform_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../theme/textalternativeform.css */ "./node_modules/@ckeditor/ckeditor5-image/theme/textalternativeform.css");
-/* harmony import */ var _theme_textalternativeform_css__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_theme_textalternativeform_css__WEBPACK_IMPORTED_MODULE_11__);
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module image/imagetextalternative/ui/textalternativeformview
- */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- * The TextAlternativeFormView class.
- *
- * @extends module:ui/view~View
- */
-class TextAlternativeFormView extends _ckeditor_ckeditor5_ui_src_view__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	constructor( locale ) {
-		super( locale );
-
-		const t = this.locale.t;
-
-		/**
-		 * Tracks information about the DOM focus in the form.
-		 *
-		 * @readonly
-		 * @member {module:utils/focustracker~FocusTracker}
-		 */
-		this.focusTracker = new _ckeditor_ckeditor5_utils_src_focustracker__WEBPACK_IMPORTED_MODULE_7__["default"]();
-
-		/**
-		 * An instance of the {@link module:utils/keystrokehandler~KeystrokeHandler}.
-		 *
-		 * @readonly
-		 * @member {module:utils/keystrokehandler~KeystrokeHandler}
-		 */
-		this.keystrokes = new _ckeditor_ckeditor5_utils_src_keystrokehandler__WEBPACK_IMPORTED_MODULE_6__["default"]();
-
-		/**
-		 * A textarea with a label.
-		 *
-		 * @member {module:ui/labeledinput/labeledinputview~LabeledInputView} #labeledTextarea
-		 */
-		this.labeledInput = this._createLabeledInputView();
-
-		/**
-		 * A button used to submit the form.
-		 *
-		 * @member {module:ui/button/buttonview~ButtonView} #saveButtonView
-		 */
-		this.saveButtonView = this._createButton( t( 'Save' ), _ckeditor_ckeditor5_core_theme_icons_check_svg__WEBPACK_IMPORTED_MODULE_9___default.a, 'ck-button-save' );
-		this.saveButtonView.type = 'submit';
-
-		/**
-		 * A button used to cancel the form.
-		 *
-		 * @member {module:ui/button/buttonview~ButtonView} #cancelButtonView
-		 */
-		this.cancelButtonView = this._createButton( t( 'Cancel' ), _ckeditor_ckeditor5_core_theme_icons_cancel_svg__WEBPACK_IMPORTED_MODULE_10___default.a, 'ck-button-cancel', 'cancel' );
-
-		/**
-		 * A collection of views which can be focused in the form.
-		 *
-		 * @readonly
-		 * @protected
-		 * @member {module:ui/viewcollection~ViewCollection}
-		 */
-		this._focusables = new _ckeditor_ckeditor5_ui_src_viewcollection__WEBPACK_IMPORTED_MODULE_1__["default"]();
-
-		/**
-		 * Helps cycling over {@link #_focusables} in the form.
-		 *
-		 * @readonly
-		 * @protected
-		 * @member {module:ui/focuscycler~FocusCycler}
-		 */
-		this._focusCycler = new _ckeditor_ckeditor5_ui_src_focuscycler__WEBPACK_IMPORTED_MODULE_8__["default"]( {
-			focusables: this._focusables,
-			focusTracker: this.focusTracker,
-			keystrokeHandler: this.keystrokes,
-			actions: {
-				// Navigate form fields backwards using the Shift + Tab keystroke.
-				focusPrevious: 'shift + tab',
-
-				// Navigate form fields forwards using the Tab key.
-				focusNext: 'tab'
-			}
-		} );
-
-		this.setTemplate( {
-			tag: 'form',
-
-			attributes: {
-				class: [
-					'ck',
-					'ck-text-alternative-form',
-				],
-
-				// https://github.com/ckeditor/ckeditor5-image/issues/40
-				tabindex: '-1'
-			},
-
-			children: [
-				this.labeledInput,
-				this.saveButtonView,
-				this.cancelButtonView
-			]
-		} );
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	render() {
-		super.render();
-
-		this.keystrokes.listenTo( this.element );
-
-		Object(_ckeditor_ckeditor5_ui_src_bindings_submithandler__WEBPACK_IMPORTED_MODULE_5__["default"])( { view: this } );
-
-		[ this.labeledInput, this.saveButtonView, this.cancelButtonView ]
-			.forEach( v => {
-				// Register the view as focusable.
-				this._focusables.add( v );
-
-				// Register the view in the focus tracker.
-				this.focusTracker.add( v.element );
-			} );
-	}
-
-	/**
-	 * Creates the button view.
-	 *
-	 * @private
-	 * @param {String} label The button label
-	 * @param {String} icon The button's icon.
-	 * @param {String} className The additional button CSS class name.
-	 * @param {String} [eventName] The event name that the ButtonView#execute event will be delegated to.
-	 * @returns {module:ui/button/buttonview~ButtonView} The button view instance.
-	 */
-	_createButton( label, icon, className, eventName ) {
-		const button = new _ckeditor_ckeditor5_ui_src_button_buttonview__WEBPACK_IMPORTED_MODULE_2__["default"]( this.locale );
-
-		button.set( {
-			label,
-			icon,
-			tooltip: true
-		} );
-
-		button.extendTemplate( {
-			attributes: {
-				class: className
-			}
-		} );
-
-		if ( eventName ) {
-			button.delegate( 'execute' ).to( this, eventName );
-		}
-
-		return button;
-	}
-
-	/**
-	 * Creates an input with a label.
-	 *
-	 * @private
-	 * @returns {module:ui/labeledinput/labeledinputview~LabeledInputView}
-	 */
-	_createLabeledInputView() {
-		const t = this.locale.t;
-		const labeledInput = new _ckeditor_ckeditor5_ui_src_labeledinput_labeledinputview__WEBPACK_IMPORTED_MODULE_3__["default"]( this.locale, _ckeditor_ckeditor5_ui_src_inputtext_inputtextview__WEBPACK_IMPORTED_MODULE_4__["default"] );
-
-		labeledInput.label = t( 'Text alternative' );
-		labeledInput.inputView.placeholder = t( 'Text alternative' );
-
-		return labeledInput;
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-image/theme/image.css":
-/*!****************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-image/theme/image.css ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../postcss-loader/src??ref--5-1!./image.css */ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-image/theme/image.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"singleton":true,"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-image/theme/imagecaption.css":
-/*!***********************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-image/theme/imagecaption.css ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../postcss-loader/src??ref--5-1!./imagecaption.css */ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-image/theme/imagecaption.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"singleton":true,"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-image/theme/textalternativeform.css":
-/*!******************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-image/theme/textalternativeform.css ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../postcss-loader/src??ref--5-1!./textalternativeform.css */ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-image/theme/textalternativeform.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"singleton":true,"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
 /***/ "./node_modules/@ckeditor/ckeditor5-paragraph/src/paragraph.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/@ckeditor/ckeditor5-paragraph/src/paragraph.js ***!
@@ -43588,1680 +40601,6 @@ function checkCanBecomeParagraph( block, schema ) {
 
 /***/ }),
 
-/***/ "./node_modules/@ckeditor/ckeditor5-typing/src/delete.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-typing/src/delete.js ***!
-  \***************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Delete; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _deletecommand__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./deletecommand */ "./node_modules/@ckeditor/ckeditor5-typing/src/deletecommand.js");
-/* harmony import */ var _deleteobserver__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./deleteobserver */ "./node_modules/@ckeditor/ckeditor5-typing/src/deleteobserver.js");
-/* harmony import */ var _utils_injectandroidbackspacemutationshandling__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/injectandroidbackspacemutationshandling */ "./node_modules/@ckeditor/ckeditor5-typing/src/utils/injectandroidbackspacemutationshandling.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module typing/delete
- */
-
-
-
-
-
-
-
-/**
- * The delete and backspace feature. Handles the <kbd>Delete</kbd> and <kbd>Backspace</kbd> keys in the editor.
- *
- * @extends module:core/plugin~Plugin
- */
-class Delete extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	static get pluginName() {
-		return 'Delete';
-	}
-
-	init() {
-		const editor = this.editor;
-		const view = editor.editing.view;
-		const viewDocument = view.document;
-
-		view.addObserver( _deleteobserver__WEBPACK_IMPORTED_MODULE_2__["default"] );
-
-		editor.commands.add( 'forwardDelete', new _deletecommand__WEBPACK_IMPORTED_MODULE_1__["default"]( editor, 'forward' ) );
-		editor.commands.add( 'delete', new _deletecommand__WEBPACK_IMPORTED_MODULE_1__["default"]( editor, 'backward' ) );
-
-		this.listenTo( viewDocument, 'delete', ( evt, data ) => {
-			editor.execute( data.direction == 'forward' ? 'forwardDelete' : 'delete', { unit: data.unit, sequence: data.sequence } );
-			data.preventDefault();
-			view.scrollToTheSelection();
-		} );
-
-		Object(_utils_injectandroidbackspacemutationshandling__WEBPACK_IMPORTED_MODULE_3__["default"])( editor );
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-typing/src/deletecommand.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-typing/src/deletecommand.js ***!
-  \**********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DeleteCommand; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_command__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/command */ "./node_modules/@ckeditor/ckeditor5-core/src/command.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_model_selection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/model/selection */ "./node_modules/@ckeditor/ckeditor5-engine/src/model/selection.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_model_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/model/element */ "./node_modules/@ckeditor/ckeditor5-engine/src/model/element.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_model_range__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/model/range */ "./node_modules/@ckeditor/ckeditor5-engine/src/model/range.js");
-/* harmony import */ var _utils_changebuffer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/changebuffer */ "./node_modules/@ckeditor/ckeditor5-typing/src/utils/changebuffer.js");
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_count__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/count */ "./node_modules/@ckeditor/ckeditor5-utils/src/count.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module typing/deletecommand
- */
-
-
-
-
-
-
-
-
-/**
- * The delete command. Used by the {@link module:typing/delete~Delete delete feature} to handle the <kbd>Delete</kbd> and
- * <kbd>Backspace</kbd> keys.
- *
- * @extends module:core/command~Command
- */
-class DeleteCommand extends _ckeditor_ckeditor5_core_src_command__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * Creates an instance of the command.
-	 *
-	 * @param {module:core/editor/editor~Editor} editor
-	 * @param {'forward'|'backward'} direction The directionality of the delete describing in what direction it
-	 * should consume the content when the selection is collapsed.
-	 */
-	constructor( editor, direction ) {
-		super( editor );
-
-		/**
-		 * The directionality of the delete describing in what direction it should
-		 * consume the content when the selection is collapsed.
-		 *
-		 * @readonly
-		 * @member {'forward'|'backward'} #direction
-		 */
-		this.direction = direction;
-
-		/**
-		 * Delete's change buffer used to group subsequent changes into batches.
-		 *
-		 * @readonly
-		 * @private
-		 * @member {typing.ChangeBuffer} #buffer
-		 */
-		this._buffer = new _utils_changebuffer__WEBPACK_IMPORTED_MODULE_4__["default"]( editor.model, editor.config.get( 'typing.undoStep' ) );
-	}
-
-	/**
-	 * Executes the delete command. Depending on whether the selection is collapsed or not, deletes its content
-	 * or a piece of content in the {@link #direction defined direction}.
-	 *
-	 * @fires execute
-	 * @param {Object} [options] The command options.
-	 * @param {'character'} [options.unit='character'] See {@link module:engine/model/utils/modifyselection~modifySelection}'s options.
-	 * @param {Number} [options.sequence=1] A number describing which subsequent delete event it is without the key being released.
-	 * See the {@link module:engine/view/document~Document#event:delete} event data.
-	 */
-	execute( options = {} ) {
-		const model = this.editor.model;
-		const doc = model.document;
-
-		model.enqueueChange( this._buffer.batch, writer => {
-			this._buffer.lock();
-
-			const selection = new _ckeditor_ckeditor5_engine_src_model_selection__WEBPACK_IMPORTED_MODULE_1__["default"]( doc.selection );
-
-			// Do not replace the whole selected content if selection was collapsed.
-			// This prevents such situation:
-			//
-			// <h1></h1><p>[]</p>	-->  <h1>[</h1><p>]</p> 		-->  <p></p>
-			// starting content		-->   after `modifySelection`	-->  after `deleteContent`.
-			const doNotResetEntireContent = selection.isCollapsed;
-
-			// Try to extend the selection in the specified direction.
-			if ( selection.isCollapsed ) {
-				model.modifySelection( selection, { direction: this.direction, unit: options.unit } );
-			}
-
-			// Check if deleting in an empty editor. See #61.
-			if ( this._shouldEntireContentBeReplacedWithParagraph( options.sequence || 1 ) ) {
-				this._replaceEntireContentWithParagraph( writer );
-
-				return;
-			}
-
-			// If selection is still collapsed, then there's nothing to delete.
-			if ( selection.isCollapsed ) {
-				return;
-			}
-
-			let changeCount = 0;
-
-			selection.getFirstRange().getMinimalFlatRanges().forEach( range => {
-				changeCount += Object(_ckeditor_ckeditor5_utils_src_count__WEBPACK_IMPORTED_MODULE_5__["default"])(
-					range.getWalker( { singleCharacters: true, ignoreElementEnd: true, shallow: true } )
-				);
-			} );
-
-			model.deleteContent( selection, { doNotResetEntireContent } );
-			this._buffer.input( changeCount );
-
-			writer.setSelection( selection );
-
-			this._buffer.unlock();
-		} );
-	}
-
-	/**
-	 * If the user keeps <kbd>Backspace</kbd> or <kbd>Delete</kbd> key pressed, the content of the current
-	 * editable will be cleared. However, this will not yet lead to resetting the remaining block to a paragraph
-	 * (which happens e.g. when the user does <kbd>Ctrl</kbd> + <kbd>A</kbd>, <kbd>Backspace</kbd>).
-	 *
-	 * But, if the user pressed the key in an empty editable for the first time,
-	 * we want to replace the entire content with a paragraph if:
-	 *
-	 * * the current limit element is empty,
-	 * * the paragraph is allowed in the limit element,
-	 * * the limit doesn't already have a paragraph inside.
-	 *
-	 * See https://github.com/ckeditor/ckeditor5-typing/issues/61.
-	 *
-	 * @private
-	 * @param {Number} sequence A number describing which subsequent delete event it is without the key being released.
-	 * @returns {Boolean}
-	 */
-	_shouldEntireContentBeReplacedWithParagraph( sequence ) {
-		// Does nothing if user pressed and held the "Backspace" or "Delete" key.
-		if ( sequence > 1 ) {
-			return false;
-		}
-
-		const model = this.editor.model;
-		const doc = model.document;
-		const selection = doc.selection;
-		const limitElement = model.schema.getLimitElement( selection );
-
-		// If a collapsed selection contains the whole content it means that the content is empty
-		// (from the user perspective).
-		const limitElementIsEmpty = selection.isCollapsed && selection.containsEntireContent( limitElement );
-
-		if ( !limitElementIsEmpty ) {
-			return false;
-		}
-
-		if ( !model.schema.checkChild( limitElement, 'paragraph' ) ) {
-			return false;
-		}
-
-		const limitElementFirstChild = limitElement.getChild( 0 );
-
-		// Does nothing if the limit element already contains only a paragraph.
-		// We ignore the case when paragraph might have some inline elements (<p><inlineWidget>[]</inlineWidget></p>)
-		// because we don't support such cases yet and it's unclear whether inlineWidget shouldn't be a limit itself.
-		if ( limitElementFirstChild && limitElementFirstChild.name === 'paragraph' ) {
-			return false;
-		}
-
-		return true;
-	}
-
-	/**
-	 * The entire content is replaced with the paragraph. Selection is moved inside the paragraph.
-	 *
-	 * @private
-	 */
-	_replaceEntireContentWithParagraph( writer ) {
-		const model = this.editor.model;
-		const doc = model.document;
-		const selection = doc.selection;
-		const limitElement = model.schema.getLimitElement( selection );
-		const paragraph = new _ckeditor_ckeditor5_engine_src_model_element__WEBPACK_IMPORTED_MODULE_2__["default"]( 'paragraph' );
-
-		writer.remove( _ckeditor_ckeditor5_engine_src_model_range__WEBPACK_IMPORTED_MODULE_3__["default"].createIn( limitElement ) );
-		writer.insert( paragraph, limitElement );
-
-		writer.setSelection( paragraph, 0 );
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-typing/src/deleteobserver.js":
-/*!***********************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-typing/src/deleteobserver.js ***!
-  \***********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DeleteObserver; });
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_view_observer_observer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/view/observer/observer */ "./node_modules/@ckeditor/ckeditor5-engine/src/view/observer/observer.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_view_observer_domeventdata__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/view/observer/domeventdata */ "./node_modules/@ckeditor/ckeditor5-engine/src/view/observer/domeventdata.js");
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/keyboard */ "./node_modules/@ckeditor/ckeditor5-utils/src/keyboard.js");
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_env__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/env */ "./node_modules/@ckeditor/ckeditor5-utils/src/env.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module typing/deleteobserver
- */
-
-
-
-
-
-
-/**
- * Delete observer introduces the {@link module:engine/view/document~Document#event:delete} event.
- *
- * @extends module:engine/view/observer/observer~Observer
- */
-class DeleteObserver extends _ckeditor_ckeditor5_engine_src_view_observer_observer__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	constructor( view ) {
-		super( view );
-
-		const document = view.document;
-		let sequence = 0;
-
-		document.on( 'keyup', ( evt, data ) => {
-			if ( data.keyCode == _ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_2__["keyCodes"].delete || data.keyCode == _ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_2__["keyCodes"].backspace ) {
-				sequence = 0;
-			}
-		} );
-
-		document.on( 'keydown', ( evt, data ) => {
-			const deleteData = {};
-
-			if ( data.keyCode == _ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_2__["keyCodes"].delete ) {
-				deleteData.direction = 'forward';
-				deleteData.unit = 'character';
-			} else if ( data.keyCode == _ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_2__["keyCodes"].backspace ) {
-				deleteData.direction = 'backward';
-				deleteData.unit = 'codePoint';
-			} else {
-				return;
-			}
-
-			const hasWordModifier = _ckeditor_ckeditor5_utils_src_env__WEBPACK_IMPORTED_MODULE_3__["default"].isMac ? data.altKey : data.ctrlKey;
-			deleteData.unit = hasWordModifier ? 'word' : deleteData.unit;
-			deleteData.sequence = ++sequence;
-
-			// Save the event object to check later if it was stopped or not.
-			let event;
-			document.once( 'delete', evt => ( event = evt ), { priority: 'highest' } );
-
-			document.fire( 'delete', new _ckeditor_ckeditor5_engine_src_view_observer_domeventdata__WEBPACK_IMPORTED_MODULE_1__["default"]( document, data.domEvent, deleteData ) );
-
-			// Stop `keydown` event if `delete` event was stopped.
-			// https://github.com/ckeditor/ckeditor5/issues/753
-			if ( event && event.stop.called ) {
-				evt.stop();
-			}
-		} );
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	observe() {}
-}
-
-/**
- * Event fired when the user tries to delete content (e.g. presses <kbd>Delete</kbd> or <kbd>Backspace</kbd>).
- *
- * Note: This event is fired by the {@link module:typing/deleteobserver~DeleteObserver observer}
- * (usually registered by the {@link module:typing/delete~Delete delete feature}).
- *
- * @event module:engine/view/document~Document#event:delete
- * @param {module:engine/view/observer/domeventdata~DomEventData} data
- * @param {'forward'|'delete'} data.direction The direction in which the deletion should happen.
- * @param {'character'|'word'} data.unit The "amount" of content that should be deleted.
- * @param {Number} data.sequence A number describing which subsequent delete event it is without the key being released.
- * If it's 2 or more it means that the key was pressed and hold.
- */
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-typing/src/input.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-typing/src/input.js ***!
-  \**************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Input; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _inputcommand__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./inputcommand */ "./node_modules/@ckeditor/ckeditor5-typing/src/inputcommand.js");
-/* harmony import */ var _utils_injectunsafekeystrokeshandling__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils/injectunsafekeystrokeshandling */ "./node_modules/@ckeditor/ckeditor5-typing/src/utils/injectunsafekeystrokeshandling.js");
-/* harmony import */ var _utils_injecttypingmutationshandling__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/injecttypingmutationshandling */ "./node_modules/@ckeditor/ckeditor5-typing/src/utils/injecttypingmutationshandling.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module typing/input
- */
-
-
-
-
-
-
-
-/**
- * Handles text input coming from the keyboard or other input methods.
- *
- * @extends module:core/plugin~Plugin
- */
-class Input extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	static get pluginName() {
-		return 'Input';
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	init() {
-		const editor = this.editor;
-
-		// TODO The above default configuration value should be defined using editor.config.define() once it's fixed.
-		const inputCommand = new _inputcommand__WEBPACK_IMPORTED_MODULE_1__["default"]( editor, editor.config.get( 'typing.undoStep' ) || 20 );
-
-		editor.commands.add( 'input', inputCommand );
-
-		Object(_utils_injectunsafekeystrokeshandling__WEBPACK_IMPORTED_MODULE_2__["default"])( editor );
-		Object(_utils_injecttypingmutationshandling__WEBPACK_IMPORTED_MODULE_3__["default"])( editor );
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-typing/src/inputcommand.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-typing/src/inputcommand.js ***!
-  \*********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return InputCommand; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_command__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/command */ "./node_modules/@ckeditor/ckeditor5-core/src/command.js");
-/* harmony import */ var _utils_changebuffer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/changebuffer */ "./node_modules/@ckeditor/ckeditor5-typing/src/utils/changebuffer.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module typing/inputcommand
- */
-
-
-
-
-/**
- * The input command. Used by the {@link module:typing/input~Input input feature} to handle typing.
- *
- * @extends module:core/command~Command
- */
-class InputCommand extends _ckeditor_ckeditor5_core_src_command__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * Creates an instance of the command.
-	 *
-	 * @param {module:core/editor/editor~Editor} editor
-	 * @param {Number} undoStepSize The maximum number of atomic changes
-	 * which can be contained in one batch in the command buffer.
-	 */
-	constructor( editor, undoStepSize ) {
-		super( editor );
-
-		/**
-		 * Typing's change buffer used to group subsequent changes into batches.
-		 *
-		 * @readonly
-		 * @private
-		 * @member {module:typing/utils/changebuffer~ChangeBuffer} #_buffer
-		 */
-		this._buffer = new _utils_changebuffer__WEBPACK_IMPORTED_MODULE_1__["default"]( editor.model, undoStepSize );
-	}
-
-	/**
-	 * The current change buffer.
-	 *
-	 * @type {module:typing/utils/changebuffer~ChangeBuffer}
-	 */
-	get buffer() {
-		return this._buffer;
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	destroy() {
-		super.destroy();
-
-		this._buffer.destroy();
-	}
-
-	/**
-	 * Executes the input command. It replaces the content within the given range with the given text.
-	 * Replacing is a two step process, first the content within the range is removed and then the new text is inserted
-	 * at the beginning of the range (which after the removal is a collapsed range).
-	 *
-	 * @fires execute
-	 * @param {Object} [options] The command options.
-	 * @param {String} [options.text=''] The text to be inserted.
-	 * @param {module:engine/model/range~Range} [options.range] The range in which the text is inserted. Defaults
-	 * to the first range in the current selection.
-	 * @param {module:engine/model/range~Range} [options.resultRange] The range where the selection
-	 * should be placed after the insertion. If not specified, the selection will be placed right after
-	 * the inserted text.
-	 */
-	execute( options = {} ) {
-		const model = this.editor.model;
-		const doc = model.document;
-		const text = options.text || '';
-		const textInsertions = text.length;
-		const range = options.range || doc.selection.getFirstRange();
-		const resultRange = options.resultRange;
-
-		model.enqueueChange( this._buffer.batch, writer => {
-			const isCollapsedRange = range.isCollapsed;
-
-			this._buffer.lock();
-
-			if ( !isCollapsedRange ) {
-				writer.remove( range );
-			}
-
-			if ( text ) {
-				writer.insertText( text, doc.selection.getAttributes(), range.start );
-			}
-
-			if ( resultRange ) {
-				writer.setSelection( resultRange );
-			} else if ( isCollapsedRange ) {
-				// If range was collapsed just shift the selection by the number of inserted characters.
-				writer.setSelection( range.start.getShiftedBy( textInsertions ) );
-			}
-
-			this._buffer.unlock();
-
-			this._buffer.input( textInsertions );
-		} );
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-typing/src/typing.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-typing/src/typing.js ***!
-  \***************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Typing; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _input__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./input */ "./node_modules/@ckeditor/ckeditor5-typing/src/input.js");
-/* harmony import */ var _delete__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./delete */ "./node_modules/@ckeditor/ckeditor5-typing/src/delete.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module typing/typing
- */
-
-
-
-
-
-/**
- * The typing feature. It handles typing.
- *
- * @extends module:core/plugin~Plugin
- */
-class Typing extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	static get requires() {
-		return [ _input__WEBPACK_IMPORTED_MODULE_1__["default"], _delete__WEBPACK_IMPORTED_MODULE_2__["default"] ];
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	static get pluginName() {
-		return 'Typing';
-	}
-}
-
-/**
- * The configuration of the typing features. Used by the features from the `@ckeditor/ckeditor5-typing` package.
- *
- * Read more in {@link module:typing/typing~TypingConfig}.
- *
- * @member {module:typing/typing~TypingConfig} module:core/editor/editorconfig~EditorConfig#typing
- */
-
-/**
- * The configuration of the typing features. Used by the typing features in `@ckeditor/ckeditor5-typing` package.
- *
- *		ClassicEditor
- *			.create( editorElement, {
- * 				typing: ... // Typing feature options.
- *			} )
- *			.then( ... )
- *			.catch( ... );
- *
- * See {@link module:core/editor/editorconfig~EditorConfig all editor options}.
- *
- * @interface TypingConfig
- */
-
-/**
- * The granularity of undo/redo for typing and deleting. The value `20` means (more or less) that a new undo step
- * is created every 20 characters are inserted or deleted.
- *
- * @member {Number} [module:typing/typing~TypingConfig#undoStep=20]
- */
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-typing/src/utils/changebuffer.js":
-/*!***************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-typing/src/utils/changebuffer.js ***!
-  \***************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ChangeBuffer; });
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_model_batch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/model/batch */ "./node_modules/@ckeditor/ckeditor5-engine/src/model/batch.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module typing/utils/changebuffer
- */
-
-
-
-/**
- * Change buffer allows to group atomic changes (like characters that have been typed) into
- * {@link module:engine/model/batch~Batch batches}.
- *
- * Batches represent single undo steps, hence changes added to one single batch are undone together.
- *
- * The buffer has a configurable limit of atomic changes that it can accommodate. After the limit was
- * exceeded (see {@link ~ChangeBuffer#input}), a new batch is created in {@link ~ChangeBuffer#batch}.
- *
- * To use the change buffer you need to let it know about the number of changes that were added to the batch:
- *
- *		const buffer = new ChangeBuffer( model, LIMIT );
- *
- *		// Later on in your feature:
- *		buffer.batch.insert( pos, insertedCharacters );
- *		buffer.input( insertedCharacters.length );
- *
- */
-class ChangeBuffer {
-	/**
-	 * Creates a new instance of the change buffer.
-	 *
-	 * @param {module:engine/model/model~Model} model
-	 * @param {Number} [limit=20] The maximum number of atomic changes which can be contained in one batch.
-	 */
-	constructor( model, limit = 20 ) {
-		/**
-		 * The model instance.
-		 *
-		 * @readonly
-		 * @member {module:engine/model/model~Model} #model
-		 */
-		this.model = model;
-
-		/**
-		 * The number of atomic changes in the buffer. Once it exceeds the {@link #limit},
-		 * the {@link #batch batch} is set to a new one.
-		 *
-		 * @readonly
-		 * @member {Number} #size
-		 */
-		this.size = 0;
-
-		/**
-		 * The maximum number of atomic changes which can be contained in one batch.
-		 *
-		 * @readonly
-		 * @member {Number} #limit
-		 */
-		this.limit = limit;
-
-		/**
-		 * Whether the buffer is locked. A locked buffer cannot be reset unless it gets unlocked.
-		 *
-		 * @readonly
-		 * @member {Boolean} #isLocked
-		 */
-		this.isLocked = false;
-
-		// The function to be called in order to notify the buffer about batches which appeared in the document.
-		// The callback will check whether it is a new batch and in that case the buffer will be flushed.
-		//
-		// The reason why the buffer needs to be flushed whenever a new batch appears is that the changes added afterwards
-		// should be added to a new batch. For instance, when the  user types, then inserts an image, and then types again,
-		// the characters typed after inserting the image should be added to a different batch than the characters typed before.
-		this._changeCallback = ( evt, batch ) => {
-			if ( batch.type != 'transparent' && batch !== this._batch ) {
-				this._reset( true );
-			}
-		};
-
-		this._selectionChangeCallback = () => {
-			this._reset();
-		};
-
-		this.model.document.on( 'change', this._changeCallback );
-
-		this.model.document.selection.on( 'change:range', this._selectionChangeCallback );
-		this.model.document.selection.on( 'change:attribute', this._selectionChangeCallback );
-
-		/**
-		 * The current batch instance.
-		 *
-		 * @private
-		 * @member #_batch
-		 */
-
-		/**
-		 * The callback to document the change event which later needs to be removed.
-		 *
-		 * @private
-		 * @member #_changeCallback
-		 */
-
-		/**
-		 * The callback to document selection `change:attribute` and `change:range` events which resets the buffer.
-		 *
-		 * @private
-		 * @member #_selectionChangeCallback
-		 */
-	}
-
-	/**
-	 * The current batch to which a feature should add its deltas. Once the {@link #size}
-	 * is reached or exceeds the {@link #limit}, the batch is set to a new instance and the size is reset.
-	 *
-	 * @type {module:engine/model/batch~Batch}
-	 */
-	get batch() {
-		if ( !this._batch ) {
-			this._batch = new _ckeditor_ckeditor5_engine_src_model_batch__WEBPACK_IMPORTED_MODULE_0__["default"]();
-		}
-
-		return this._batch;
-	}
-
-	/**
-	 * The input number of changes into the buffer. Once the {@link #size} is
-	 * reached or exceeds the {@link #limit}, the batch is set to a new instance and the size is reset.
-	 *
-	 * @param {Number} changeCount The number of atomic changes to input.
-	 */
-	input( changeCount ) {
-		this.size += changeCount;
-
-		if ( this.size >= this.limit ) {
-			this._reset( true );
-		}
-	}
-
-	/**
-	 * Locks the buffer.
-	 */
-	lock() {
-		this.isLocked = true;
-	}
-
-	/**
-	 * Unlocks the buffer.
-	 */
-	unlock() {
-		this.isLocked = false;
-	}
-
-	/**
-	 * Destroys the buffer.
-	 */
-	destroy() {
-		this.model.document.off( 'change', this._changeCallback );
-		this.model.document.selection.off( 'change:range', this._selectionChangeCallback );
-		this.model.document.selection.off( 'change:attribute', this._selectionChangeCallback );
-	}
-
-	/**
-	 * Resets the change buffer.
-	 *
-	 * @private
-	 * @param {Boolean} [ignoreLock] Whether internal lock {@link #isLocked} should be ignored.
-	 */
-	_reset( ignoreLock ) {
-		if ( !this.isLocked || ignoreLock ) {
-			this._batch = null;
-			this.size = 0;
-		}
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-typing/src/utils/injectandroidbackspacemutationshandling.js":
-/*!******************************************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-typing/src/utils/injectandroidbackspacemutationshandling.js ***!
-  \******************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return injectAndroidBackspaceMutationsHandling; });
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_model_selection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/model/selection */ "./node_modules/@ckeditor/ckeditor5-engine/src/model/selection.js");
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_diff__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/diff */ "./node_modules/@ckeditor/ckeditor5-utils/src/diff.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils */ "./node_modules/@ckeditor/ckeditor5-typing/src/utils/utils.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module typing/utils/injectandroidbackspacenutationshandling
- */
-
-
-
-
-
-
-/**
- * Handles mutations triggered by <kbd>Backspace</kbd> on Android.
- * Due to the fact that on Android `keydown` events don't have the `keyCode` set, we are not able
- * to handle backspacing directly. We need to guess that from mutations which the IME
- * on Android caused.
- *
- * @param {module:core/editor/editor~Editor} editor The editor instance.
- */
-function injectAndroidBackspaceMutationsHandling( editor ) {
-	const model = editor.model;
-	const view = editor.editing.view;
-	const selectionChangeToleranceMs = 200;
-
-	let previousSelection = null;
-	let currentSelection = new _ckeditor_ckeditor5_engine_src_model_selection__WEBPACK_IMPORTED_MODULE_0__["default"]( model.document.selection );
-	let latestSelectionChangeMs = Date.now();
-
-	model.document.selection.on( 'change', handleSelectionChange );
-
-	view.document.on( 'mutations', handleMutations, { priority: 'highest' } );
-
-	// Saves current and previous selection when it changes. Saved selections are used
-	// to remove correct piece of content when `Backspace` mutations are detected.
-	//
-	// @param {Object} evt
-	function handleSelectionChange( evt ) {
-		const newSelection = new _ckeditor_ckeditor5_engine_src_model_selection__WEBPACK_IMPORTED_MODULE_0__["default"]( evt.source );
-		if ( !currentSelection.isEqual( newSelection ) ) {
-			previousSelection = currentSelection;
-			currentSelection = newSelection;
-			latestSelectionChangeMs = Date.now();
-		}
-	}
-
-	// Handles DOM mutations and checks if they should be processed as block elements removal mutations.
-	//
-	// @param {Object} evt
-	// @param {Array.<module:engine/view/observer/mutationobserver~MutatedText|
-	// module:engine/view/observer/mutationobserver~MutatedChildren>} mutations
-	function handleMutations( evt, mutations ) {
-		if ( Object(_utils__WEBPACK_IMPORTED_MODULE_2__["containerChildrenMutated"])( mutations ) && containsContainersRemoval( mutations ) ) {
-			handleContainerRemovalMutations();
-
-			// Stop mutations event propagation so other mutation handlers are not triggered.
-			evt.stop();
-		}
-	}
-
-	// Handles situations when mutations were generated by container removal.
-	// It happens on Android devices where every typing input has `229` key code
-	// and delete observer will not be triggered. In such cases we need to handle
-	// container removal mutations manually.
-	function handleContainerRemovalMutations() {
-		if ( shouldUsePreviousSelection() ) {
-			// If previous selection is used, update model selection in order
-			// to use `delete` command and to make `undo` work correctly.
-			model.enqueueChange( writer => {
-				writer.setSelection( previousSelection );
-			} );
-		}
-
-		editor.execute( 'delete' );
-	}
-
-	// Whether previously saved selection should be used instead of the current one to remove content.
-	//
-	// On Android devices when pressing backspace on non-collapsed selection, selection like:
-	//
-	//		`<h1>[Foo</h1><p>Bar]</p>`
-	//
-	// is changed to:
-	//
-	//		`<h1>Foo</h1><p>Bar[]</p>`
-	//
-	// even before `keypress` event, so in such cases we have to rely on previous selection to correctly process selected content.
-	//
-	// Previous selection will be used if:
-	//
-	//		* current selection is collapsed (see example above),
-	//		* previous selection exists, is non-collapsed and has same ending (last position) as the current one,
-	//		* change of the selection happened not earlier than X milliseconds ago (see `selectionChangeToleranceMs`).
-	//
-	// The last check is needed, because user can manually collapse the selection on its current end and then press `Backspace`.
-	// In such situations timing determines if the selection change was caused by the user or browser native behaviour.
-	// However, this happens only if selection was collapsed by the user on the beginning of the paragraph (so mutations
-	// still will show container removal).
-	//
-	// @returns {Boolean}
-	function shouldUsePreviousSelection() {
-		return Date.now() - latestSelectionChangeMs < selectionChangeToleranceMs &&
-			previousSelection && !previousSelection.isCollapsed && currentSelection.isCollapsed &&
-			currentSelection.getLastPosition().isEqual( previousSelection.getLastPosition() );
-	}
-}
-
-// Checks whether mutations array contains mutation generated by container/containers removal.
-// For example mutations generated on Android when pressing `backspace` on the beginning of the line:
-//
-//		<h1>Header1</h1>
-//		<p>{}Paragraph</p>
-//
-// are:
-//
-//		[
-//			{ newChildren: [], oldChildren: [ 'Paragraph' ], node: P, type: 'children' },
-//			{ newChildren: [ ContainerElement ], oldChildren: [ ContainerElement, ContainerElement ], node: Root, type: 'children' },
-//			{ newChildren: [ 'Heading 1Paragraph' ], oldChildren: [ 'Heading 1' ], node: H1, type: 'children' }
-//		]
-//
-// The 1st and 3rd mutations are just changes in a text (1st - text in `p` element was removed, 3rd - text in `h2` was changed)
-// and the 2nd one shows that one `ContainerElement` was removed. We have to recognize if mutations like 2nd one are present.
-// Based on that heuristic mutations are treated as the one removing container element.
-//
-// @private
-// @param {Array.<module:engine/view/observer/mutationobserver~MutatedText|
-// module:engine/view/observer/mutationobserver~MutatedChildren>} mutations
-// @returns {Boolean}
-function containsContainersRemoval( mutations ) {
-	for ( const mutation of mutations ) {
-		if ( mutation.type !== 'children' ) {
-			continue;
-		}
-
-		const childrenBefore = mutation.oldChildren;
-		const childrenAfter = mutation.newChildren;
-
-		// Check if only containers were present before the mutation.
-		if ( !hasOnlyContainers( childrenBefore ) ) {
-			continue;
-		}
-
-		const diffResult = Object(_ckeditor_ckeditor5_utils_src_diff__WEBPACK_IMPORTED_MODULE_1__["default"])( childrenBefore, childrenAfter );
-
-		// Check if there was only removing in that mutation without any insertions.
-		const hasDelete = diffResult.some( item => item === 'delete' );
-		const hasInsert = diffResult.some( item => item === 'insert' );
-
-		if ( hasDelete && !hasInsert ) {
-			return true;
-		}
-	}
-
-	return false;
-}
-
-// Whether provided array contains only nodes of `containerElement` type.
-//
-// @private
-// @param {Array.<module:engine/view/node~Node>} children
-// @returns {Boolean}
-function hasOnlyContainers( children ) {
-	return children.every( child => child.is( 'containerElement' ) );
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-typing/src/utils/injecttypingmutationshandling.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-typing/src/utils/injecttypingmutationshandling.js ***!
-  \********************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return injectTypingMutationsHandling; });
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_model_range__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/model/range */ "./node_modules/@ckeditor/ckeditor5-engine/src/model/range.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_view_position__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/view/position */ "./node_modules/@ckeditor/ckeditor5-engine/src/view/position.js");
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_diff__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/diff */ "./node_modules/@ckeditor/ckeditor5-utils/src/diff.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_view_domconverter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/view/domconverter */ "./node_modules/@ckeditor/ckeditor5-engine/src/view/domconverter.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils */ "./node_modules/@ckeditor/ckeditor5-typing/src/utils/utils.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module typing/utils/injecttypingmutationshandling
- */
-
-
-
-
-
-
-
-
-/**
- * Handles mutations caused by normal typing.
- *
- * @param {module:core/editor/editor~Editor} editor The editor instance.
- */
-function injectTypingMutationsHandling( editor ) {
-	editor.editing.view.document.on( 'mutations', ( evt, mutations, viewSelection ) => {
-		new MutationHandler( editor ).handle( mutations, viewSelection );
-	} );
-}
-
-/**
- * Helper class for translating DOM mutations into model changes.
- *
- * @private
- */
-class MutationHandler {
-	/**
-	 * Creates an instance of the mutation handler.
-	 *
-	 * @param {module:core/editor/editor~Editor} editor
-	 */
-	constructor( editor ) {
-		/**
-		 * Editor instance for which mutations are handled.
-		 *
-		 * @readonly
-		 * @member {module:core/editor/editor~Editor} #editor
-		 */
-		this.editor = editor;
-
-		/**
-		 * The editing controller.
-		 *
-		 * @readonly
-		 * @member {module:engine/controller/editingcontroller~EditingController} #editing
-		 */
-		this.editing = this.editor.editing;
-	}
-
-	/**
-	 * Handles given mutations.
-	 *
-	 * @param {Array.<module:engine/view/observer/mutationobserver~MutatedText|
-	 * module:engine/view/observer/mutationobserver~MutatedChildren>} mutations
-	 * @param {module:engine/view/selection~Selection|null} viewSelection
-	 */
-	handle( mutations, viewSelection ) {
-		if ( Object(_utils__WEBPACK_IMPORTED_MODULE_4__["containerChildrenMutated"])( mutations ) ) {
-			this._handleContainerChildrenMutations( mutations, viewSelection );
-		} else {
-			for ( const mutation of mutations ) {
-				// Fortunately it will never be both.
-				this._handleTextMutation( mutation, viewSelection );
-				this._handleTextNodeInsertion( mutation );
-			}
-		}
-	}
-
-	/**
-	 * Handles situations when container's children mutated during input. This can happen when
-	 * the browser is trying to "fix" DOM in certain situations. For example, when the user starts to type
-	 * in `<p><a href=""><i>Link{}</i></a></p>`, the browser might change the order of elements
-	 * to `<p><i><a href="">Link</a>x{}</i></p>`. A similar situation happens when the spell checker
-	 * replaces a word wrapped with `<strong>` with a word wrapped with a `<b>` element.
-	 *
-	 * To handle such situations, the common DOM ancestor of all mutations is converted to the model representation
-	 * and then compared with the current model to calculate the proper text change.
-	 *
-	 * Note: Single text node insertion is handled in {@link #_handleTextNodeInsertion} and text node mutation is handled
-	 * in {@link #_handleTextMutation}).
-	 *
-	 * @private
-	 * @param {Array.<module:engine/view/observer/mutationobserver~MutatedText|
-	 * module:engine/view/observer/mutationobserver~MutatedChildren>} mutations
-	 * @param {module:engine/view/selection~Selection|null} viewSelection
-	 */
-	_handleContainerChildrenMutations( mutations, viewSelection ) {
-		// Get common ancestor of all mutations.
-		const mutationsCommonAncestor = getMutationsContainer( mutations );
-
-		// Quit if there is no common ancestor.
-		if ( !mutationsCommonAncestor ) {
-			return;
-		}
-
-		const domConverter = this.editor.editing.view.domConverter;
-
-		// Get common ancestor in DOM.
-		const domMutationCommonAncestor = domConverter.mapViewToDom( mutationsCommonAncestor );
-
-		// Create fresh DomConverter so it will not use existing mapping and convert current DOM to model.
-		// This wouldn't be needed if DomConverter would allow to create fresh view without checking any mappings.
-		const freshDomConverter = new _ckeditor_ckeditor5_engine_src_view_domconverter__WEBPACK_IMPORTED_MODULE_3__["default"]();
-		const modelFromCurrentDom = this.editor.data.toModel(
-			freshDomConverter.domToView( domMutationCommonAncestor )
-		).getChild( 0 );
-
-		// Current model.
-		const currentModel = this.editor.editing.mapper.toModelElement( mutationsCommonAncestor );
-
-		// If common ancestor is not mapped, do not do anything. It probably is a parent of another view element.
-		// That means that we would need to diff model elements (see `if` below). Better return early instead of
-		// trying to get a reasonable model ancestor. It will fell into the `if` below anyway.
-		// This situation happens for example for lists. If `<ul>` is a common ancestor, `currentModel` is `undefined`
-		// because `<ul>` is not mapped (`<li>`s are).
-		// See https://github.com/ckeditor/ckeditor5/issues/718.
-		if ( !currentModel ) {
-			return;
-		}
-
-		// Get children from both ancestors.
-		const modelFromDomChildren = Array.from( modelFromCurrentDom.getChildren() );
-		const currentModelChildren = Array.from( currentModel.getChildren() );
-
-		// Remove the last `<softBreak>` from the end of `modelFromDomChildren` if there is no `<softBreak>` in current model.
-		// If the described scenario happened, it means that this is a bogus `<br />` added by a browser.
-		const lastDomChild = modelFromDomChildren[ modelFromDomChildren.length - 1 ];
-		const lastCurrentChild = currentModelChildren[ currentModelChildren.length - 1 ];
-
-		if ( lastDomChild && lastDomChild.is( 'softBreak' ) && lastCurrentChild && !lastCurrentChild.is( 'softBreak' ) ) {
-			modelFromDomChildren.pop();
-		}
-
-		// Skip situations when common ancestor has any container elements.
-		if ( !isSafeForTextMutation( modelFromDomChildren ) || !isSafeForTextMutation( currentModelChildren ) ) {
-			return;
-		}
-
-		// Replace &nbsp; inserted by the browser with normal space. See comment in `_handleTextMutation`.
-		// Replace non-texts with any character. This is potentially dangerous but passes in manual tests. The thing is
-		// that we need to take care of proper indexes so we cannot simply remove non-text elements from the content.
-		// By inserting a character we keep all the real texts on their indexes.
-		const newText = modelFromDomChildren.map( item => item.is( 'text' ) ? item.data : '@' ).join( '' ).replace( /\u00A0/g, ' ' );
-		const oldText = currentModelChildren.map( item => item.is( 'text' ) ? item.data : '@' ).join( '' );
-
-		// Do nothing if mutations created same text.
-		if ( oldText === newText ) {
-			return;
-		}
-
-		const diffResult = Object(_ckeditor_ckeditor5_utils_src_diff__WEBPACK_IMPORTED_MODULE_2__["default"])( oldText, newText );
-
-		const { firstChangeAt, insertions, deletions } = calculateChanges( diffResult );
-
-		// Try setting new model selection according to passed view selection.
-		let modelSelectionRange = null;
-
-		if ( viewSelection ) {
-			modelSelectionRange = this.editing.mapper.toModelRange( viewSelection.getFirstRange() );
-		}
-
-		const insertText = newText.substr( firstChangeAt, insertions );
-		const removeRange = _ckeditor_ckeditor5_engine_src_model_range__WEBPACK_IMPORTED_MODULE_0__["default"].createFromParentsAndOffsets(
-			currentModel,
-			firstChangeAt,
-			currentModel,
-			firstChangeAt + deletions
-		);
-
-		this.editor.execute( 'input', {
-			text: insertText,
-			range: removeRange,
-			resultRange: modelSelectionRange
-		} );
-	}
-
-	/**
-	 * @private
-	 */
-	_handleTextMutation( mutation, viewSelection ) {
-		if ( mutation.type != 'text' ) {
-			return;
-		}
-
-		// Replace &nbsp; inserted by the browser with normal space.
-		// We want only normal spaces in the model and in the view. Renderer and DOM Converter will be then responsible
-		// for rendering consecutive spaces using &nbsp;, but the model and the view has to be clear.
-		// Other feature may introduce inserting non-breakable space on specific key stroke (for example shift + space).
-		// However then it will be handled outside of mutations, like enter key is.
-		// The replacing is here because it has to be done before `diff` and `diffToChanges` functions, as they
-		// take `newText` and compare it to (cleaned up) view.
-		// It could also be done in mutation observer too, however if any outside plugin would like to
-		// introduce additional events for mutations, they would get already cleaned up version (this may be good or not).
-		const newText = mutation.newText.replace( /\u00A0/g, ' ' );
-		// To have correct `diffResult`, we also compare view node text data with &nbsp; replaced by space.
-		const oldText = mutation.oldText.replace( /\u00A0/g, ' ' );
-
-		const diffResult = Object(_ckeditor_ckeditor5_utils_src_diff__WEBPACK_IMPORTED_MODULE_2__["default"])( oldText, newText );
-
-		const { firstChangeAt, insertions, deletions } = calculateChanges( diffResult );
-
-		// Try setting new model selection according to passed view selection.
-		let modelSelectionRange = null;
-
-		if ( viewSelection ) {
-			modelSelectionRange = this.editing.mapper.toModelRange( viewSelection.getFirstRange() );
-		}
-
-		// Get the position in view and model where the changes will happen.
-		const viewPos = new _ckeditor_ckeditor5_engine_src_view_position__WEBPACK_IMPORTED_MODULE_1__["default"]( mutation.node, firstChangeAt );
-		const modelPos = this.editing.mapper.toModelPosition( viewPos );
-		const removeRange = _ckeditor_ckeditor5_engine_src_model_range__WEBPACK_IMPORTED_MODULE_0__["default"].createFromPositionAndShift( modelPos, deletions );
-		const insertText = newText.substr( firstChangeAt, insertions );
-
-		this.editor.execute( 'input', {
-			text: insertText,
-			range: removeRange,
-			resultRange: modelSelectionRange
-		} );
-	}
-
-	/**
-	 * @private
-	 */
-	_handleTextNodeInsertion( mutation ) {
-		if ( mutation.type != 'children' ) {
-			return;
-		}
-
-		const change = Object(_utils__WEBPACK_IMPORTED_MODULE_4__["getSingleTextNodeChange"])( mutation );
-		const viewPos = new _ckeditor_ckeditor5_engine_src_view_position__WEBPACK_IMPORTED_MODULE_1__["default"]( mutation.node, change.index );
-		const modelPos = this.editing.mapper.toModelPosition( viewPos );
-		const insertedText = change.values[ 0 ].data;
-
-		this.editor.execute( 'input', {
-			// Replace &nbsp; inserted by the browser with normal space.
-			// See comment in `_handleTextMutation`.
-			// In this case we don't need to do this before `diff` because we diff whole nodes.
-			// Just change &nbsp; in case there are some.
-			text: insertedText.replace( /\u00A0/g, ' ' ),
-			range: new _ckeditor_ckeditor5_engine_src_model_range__WEBPACK_IMPORTED_MODULE_0__["default"]( modelPos )
-		} );
-	}
-}
-
-// Returns first common ancestor of all mutations that is either {@link module:engine/view/containerelement~ContainerElement}
-// or {@link module:engine/view/rootelement~RootElement}.
-//
-// @private
-// @param {Array.<module:engine/view/observer/mutationobserver~MutatedText|
-// module:engine/view/observer/mutationobserver~MutatedChildren>} mutations
-// @returns {module:engine/view/containerelement~ContainerElement|engine/view/rootelement~RootElement|undefined}
-function getMutationsContainer( mutations ) {
-	const lca = mutations
-		.map( mutation => mutation.node )
-		.reduce( ( commonAncestor, node ) => {
-			return commonAncestor.getCommonAncestor( node, { includeSelf: true } );
-		} );
-
-	if ( !lca ) {
-		return;
-	}
-
-	// We need to look for container and root elements only, so check all LCA's
-	// ancestors (starting from itself).
-	return lca.getAncestors( { includeSelf: true, parentFirst: true } )
-		.find( element => element.is( 'containerElement' ) || element.is( 'rootElement' ) );
-}
-
-// Returns true if provided array contains content that won't be problematic during diffing and text mutation handling.
-//
-// @param {Array.<module:engine/model/node~Node>} children
-// @returns {Boolean}
-function isSafeForTextMutation( children ) {
-	return children.every( child => child.is( 'text' ) || child.is( 'softBreak' ) );
-}
-
-// Calculates first change index and number of characters that should be inserted and deleted starting from that index.
-//
-// @private
-// @param diffResult
-// @returns {{insertions: number, deletions: number, firstChangeAt: *}}
-function calculateChanges( diffResult ) {
-	// Index where the first change happens. Used to set the position from which nodes will be removed and where will be inserted.
-	let firstChangeAt = null;
-	// Index where the last change happens. Used to properly count how many characters have to be removed and inserted.
-	let lastChangeAt = null;
-
-	// Get `firstChangeAt` and `lastChangeAt`.
-	for ( let i = 0; i < diffResult.length; i++ ) {
-		const change = diffResult[ i ];
-
-		if ( change != 'equal' ) {
-			firstChangeAt = firstChangeAt === null ? i : firstChangeAt;
-			lastChangeAt = i;
-		}
-	}
-
-	// How many characters, starting from `firstChangeAt`, should be removed.
-	let deletions = 0;
-	// How many characters, starting from `firstChangeAt`, should be inserted.
-	let insertions = 0;
-
-	for ( let i = firstChangeAt; i <= lastChangeAt; i++ ) {
-		// If there is no change (equal) or delete, the character is existing in `oldText`. We count it for removing.
-		if ( diffResult[ i ] != 'insert' ) {
-			deletions++;
-		}
-
-		// If there is no change (equal) or insert, the character is existing in `newText`. We count it for inserting.
-		if ( diffResult[ i ] != 'delete' ) {
-			insertions++;
-		}
-	}
-
-	return { insertions, deletions, firstChangeAt };
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-typing/src/utils/injectunsafekeystrokeshandling.js":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-typing/src/utils/injectunsafekeystrokeshandling.js ***!
-  \*********************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return injectUnsafeKeystrokesHandling; });
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_model_selection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/model/selection */ "./node_modules/@ckeditor/ckeditor5-engine/src/model/selection.js");
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/keyboard */ "./node_modules/@ckeditor/ckeditor5-utils/src/keyboard.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module typing/utils/injectunsafekeystrokeshandling
- */
-
-
-
-
-
-/**
- * Handles keystrokes which are unsafe for typing. This handler's logic is explained
- * in https://github.com/ckeditor/ckeditor5-typing/issues/83#issuecomment-398690251.
- *
- * @param {module:core/editor/editor~Editor} editor The editor instance.
- */
-function injectUnsafeKeystrokesHandling( editor ) {
-	let latestCompositionSelection = null;
-
-	const model = editor.model;
-	const view = editor.editing.view;
-	const inputCommand = editor.commands.get( 'input' );
-
-	view.document.on( 'keydown', ( evt, evtData ) => handleKeydown( evtData ), { priority: 'lowest' } );
-
-	view.document.on( 'compositionstart', handleCompositionStart, { priority: 'lowest' } );
-
-	view.document.on( 'compositionend', () => {
-		latestCompositionSelection = new _ckeditor_ckeditor5_engine_src_model_selection__WEBPACK_IMPORTED_MODULE_0__["default"]( model.document.selection );
-	}, { priority: 'lowest' } );
-
-	// Handles the keydown event. We need to guess whether such keystroke is going to result
-	// in typing. If so, then before character insertion happens, any selected content needs
-	// to be deleted. Otherwise the default browser deletion mechanism would be
-	// triggered, resulting in:
-	//
-	// * Hundreds of mutations which could not be handled.
-	// * But most importantly, loss of control over how the content is being deleted.
-	//
-	// The method is used in a low-priority listener, hence allowing other listeners (e.g. delete or enter features)
-	// to handle the event.
-	//
-	// @param {module:engine/view/observer/keyobserver~KeyEventData} evtData
-	function handleKeydown( evtData ) {
-		const doc = model.document;
-		const isComposing = view.document.isComposing;
-		const isSelectionUnchanged = latestCompositionSelection && latestCompositionSelection.isEqual( doc.selection );
-
-		// Reset stored composition selection.
-		latestCompositionSelection = null;
-
-		// By relying on the state of the input command we allow disabling the entire input easily
-		// by just disabling the input command. We could’ve used here the delete command but that
-		// would mean requiring the delete feature which would block loading one without the other.
-		// We could also check the editor.isReadOnly property, but that wouldn't allow to block
-		// the input without blocking other features.
-		if ( !inputCommand.isEnabled ) {
-			return;
-		}
-
-		if ( isSafeKeystroke( evtData ) || doc.selection.isCollapsed ) {
-			return;
-		}
-
-		// If during composition, deletion should be prevented as it may remove composed sequence (#83).
-		if ( isComposing && evtData.keyCode === 229 ) {
-			return;
-		}
-
-		// If there is a `keydown` event fired with '229' keycode it might be related
-		// to recent composition. Check if selection is the same as upon ending recent composition,
-		// if so do not remove selected content as it will remove composed sequence (#83).
-		if ( !isComposing && evtData.keyCode === 229 && isSelectionUnchanged ) {
-			return;
-		}
-
-		deleteSelectionContent();
-	}
-
-	// Handles the `compositionstart` event. It is used only in special cases to remove the contents
-	// of a non-collapsed selection so composition itself does not result in complex mutations.
-	//
-	// The special case mentioned above is a situation in which the `keydown` event is fired after
-	// `compositionstart` event. In such cases {@link #handleKeydown} cannot clear current selection
-	// contents (because it is too late and will break the composition) so the composition handler takes care of it.
-	function handleCompositionStart() {
-		const doc = model.document;
-		const isFlatSelection = doc.selection.rangeCount === 1 ? doc.selection.getFirstRange().isFlat : true;
-
-		// If on `compositionstart` there is a non-collapsed selection which start and end have different parents
-		// it means the `handleKeydown()` method did not remove its contents. It happens usually because
-		// of different order of events (`compositionstart` before `keydown` - in Safari). In such cases
-		// we need to remove selection contents on composition start (#83).
-		if ( doc.selection.isCollapsed || isFlatSelection ) {
-			return;
-		}
-
-		deleteSelectionContent();
-	}
-
-	function deleteSelectionContent() {
-		const buffer = inputCommand.buffer;
-
-		buffer.lock();
-
-		model.enqueueChange( buffer.batch, () => {
-			model.deleteContent( model.document.selection );
-		} );
-
-		buffer.unlock();
-	}
-}
-
-const safeKeycodes = [
-	Object(_ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_1__["getCode"])( 'arrowUp' ),
-	Object(_ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_1__["getCode"])( 'arrowRight' ),
-	Object(_ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_1__["getCode"])( 'arrowDown' ),
-	Object(_ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_1__["getCode"])( 'arrowLeft' ),
-	9, // Tab
-	16, // Shift
-	17, // Ctrl
-	18, // Alt
-	20, // CapsLock
-	27, // Escape
-	33, // PageUp
-	34, // PageDown
-	35, // Home
-	36 // End
-];
-
-// Function keys.
-for ( let code = 112; code <= 135; code++ ) {
-	safeKeycodes.push( code );
-}
-
-// Returns `true` if a keystroke should not cause any content change caused by "typing".
-//
-// Note: This implementation is very simple and will need to be refined with time.
-//
-// @private
-// @param {engine.view.observer.keyObserver.KeyEventData} keyData
-// @returns {Boolean}
-function isSafeKeystroke( keyData ) {
-	// Keystrokes which contain Ctrl don't represent typing.
-	if ( keyData.ctrlKey ) {
-		return true;
-	}
-
-	return safeKeycodes.includes( keyData.keyCode );
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-typing/src/utils/utils.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-typing/src/utils/utils.js ***!
-  \********************************************************************/
-/*! exports provided: containerChildrenMutated, getSingleTextNodeChange, compareChildNodes */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "containerChildrenMutated", function() { return containerChildrenMutated; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSingleTextNodeChange", function() { return getSingleTextNodeChange; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "compareChildNodes", function() { return compareChildNodes; });
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_view_text__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/view/text */ "./node_modules/@ckeditor/ckeditor5-engine/src/view/text.js");
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_diff__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/diff */ "./node_modules/@ckeditor/ckeditor5-utils/src/diff.js");
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_difftochanges__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/difftochanges */ "./node_modules/@ckeditor/ckeditor5-utils/src/difftochanges.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module typing/utils/utils
- */
-
-
-
-
-
-/**
- * Returns true if container children have mutated or more than a single text node was changed.
- *
- * @private
- * @param {Array.<module:engine/view/observer/mutationobserver~MutatedText|
- * module:engine/view/observer/mutationobserver~MutatedChildren>} mutations
- * @returns {Boolean}
- */
-function containerChildrenMutated( mutations ) {
-	if ( mutations.length == 0 ) {
-		return false;
-	}
-
-	// Check if there is any mutation of `children` type or any mutation that changes more than one text node.
-	for ( const mutation of mutations ) {
-		if ( mutation.type === 'children' && !getSingleTextNodeChange( mutation ) ) {
-			return true;
-		}
-	}
-
-	return false;
-}
-
-/**
- * Returns change made to a single text node.
- *
- * @private
- * @param {module:engine/view/observer/mutationobserver~MutatedText|
- * module:engine/view/observer/mutationobserver~MutatedChildren} mutation
- * @returns {Object|undefined} Change object (see {@link module:utils/difftochanges~diffToChanges} output)
- * or undefined if more than a single text node was changed.
- */
-function getSingleTextNodeChange( mutation ) {
-	// One new node.
-	if ( mutation.newChildren.length - mutation.oldChildren.length != 1 ) {
-		return;
-	}
-
-	// Which is text.
-	const diffResult = Object(_ckeditor_ckeditor5_utils_src_diff__WEBPACK_IMPORTED_MODULE_1__["default"])( mutation.oldChildren, mutation.newChildren, compareChildNodes );
-	const changes = Object(_ckeditor_ckeditor5_utils_src_difftochanges__WEBPACK_IMPORTED_MODULE_2__["default"])( diffResult, mutation.newChildren );
-
-	// In case of [ delete, insert, insert ] the previous check will not exit.
-	if ( changes.length > 1 ) {
-		return;
-	}
-
-	const change = changes[ 0 ];
-
-	// Which is text.
-	if ( !( change.values[ 0 ] instanceof _ckeditor_ckeditor5_engine_src_view_text__WEBPACK_IMPORTED_MODULE_0__["default"] ) ) {
-		return;
-	}
-
-	return change;
-}
-
-/**
- * Checks whether two view nodes are identical, which means they are the same object
- * or contain exactly same data (in case of text nodes).
- *
- * @private
- * @param {module:engine/view/node~Node} oldChild
- * @param {module:engine/view/node~Node} newChild
- * @returns {Boolean}
- */
-function compareChildNodes( oldChild, newChild ) {
-	if ( oldChild instanceof _ckeditor_ckeditor5_engine_src_view_text__WEBPACK_IMPORTED_MODULE_0__["default"] && newChild instanceof _ckeditor_ckeditor5_engine_src_view_text__WEBPACK_IMPORTED_MODULE_0__["default"] ) {
-		return oldChild.data === newChild.data;
-	} else {
-		return oldChild === newChild;
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-ui/src/bindings/clickoutsidehandler.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-ui/src/bindings/clickoutsidehandler.js ***!
-  \*********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return clickOutsideHandler; });
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module ui/bindings/clickoutsidehandler
- */
-
-/* global document */
-
-/**
- * Handles clicking **outside** of a specified set of elements, then fires an action.
- *
- * **Note**: Actually, the action is executed upon `mousedown`, not `click`. It prevents
- * certain issues when the user keeps holding the mouse button and the UI cannot react
- * properly.
- *
- * @param {Object} options Configuration options.
- * @param {module:utils/dom/emittermixin~Emitter} options.emitter The emitter to which this behavior
- * should be added.
- * @param {Function} options.activator Function returning a `Boolean`, to determine whether the handler is active.
- * @param {Array.<HTMLElement>} options.contextElements HTML elements that determine the scope of the
- * handler. Clicking any of them or their descendants will **not** fire the callback.
- * @param {Function} options.callback An action executed by the handler.
- */
-function clickOutsideHandler( { emitter, activator, callback, contextElements } ) {
-	emitter.listenTo( document, 'mousedown', ( evt, { target } ) => {
-		if ( !activator() ) {
-			return;
-		}
-
-		for ( const contextElement of contextElements ) {
-			if ( contextElement.contains( target ) ) {
-				return;
-			}
-		}
-
-		callback();
-	} );
-}
-
-
-/***/ }),
-
 /***/ "./node_modules/@ckeditor/ckeditor5-ui/src/bindings/preventdefault.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/@ckeditor/ckeditor5-ui/src/bindings/preventdefault.js ***!
@@ -45309,70 +40648,6 @@ function preventDefault( view ) {
 			evt.preventDefault();
 		}
 	} );
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-ui/src/bindings/submithandler.js":
-/*!***************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-ui/src/bindings/submithandler.js ***!
-  \***************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return submitHandler; });
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module ui/bindings/submithandler
- */
-
-/**
- * A handler useful for {@link module:ui/view~View views} working as HTML forms. It intercepts a native DOM
- * `submit` event, prevents the default web browser behavior (navigation and page reload) and
- * fires the `submit` event on a view instead. Such a custom event can be then used by any
- * {@link module:utils/dom/emittermixin~Emitter emitter}, e.g. to serialize the form data.
- *
- *		import submitHandler from '@ckeditor/ckeditor5-ui/src/bindings/submithandler';
- *
- *		// ...
- *
- *		class AnyFormView extends View {
- *			constructor() {
- *				super();
- *
- *				// ...
- *
- *				submitHandler( {
- *					view: this
- *				} );
- *			}
- *		}
- *
- *		// ...
- *
- *		const view = new AnyFormView();
- *
- *		// A sample listener attached by an emitter working with the view.
- *		this.listenTo( view, 'submit', () => {
- *			saveTheFormData();
- *			hideTheForm();
- *		} );
- *
- * @param {Object} [options] Configuration options.
- * @param {module:ui/view~View} options.view The view which DOM `submit` events should be handled.
- */
-function submitHandler( { view } ) {
-	view.listenTo( view.element, 'submit', ( evt, domEvt ) => {
-		domEvt.preventDefault();
-		view.fire( 'submit' );
-	}, { useCapture: true } );
 }
 
 
@@ -46698,127 +41973,81 @@ class IconView extends _view__WEBPACK_IMPORTED_MODULE_0__["default"] {
 
 /***/ }),
 
-/***/ "./node_modules/@ckeditor/ckeditor5-ui/src/inputtext/inputtextview.js":
-/*!****************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-ui/src/inputtext/inputtextview.js ***!
-  \****************************************************************************/
+/***/ "./node_modules/@ckeditor/ckeditor5-ui/src/iframe/iframeview.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@ckeditor/ckeditor5-ui/src/iframe/iframeview.js ***!
+  \**********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return InputTextView; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return IframeView; });
 /* harmony import */ var _view__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../view */ "./node_modules/@ckeditor/ckeditor5-ui/src/view.js");
-/* harmony import */ var _theme_components_inputtext_inputtext_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../theme/components/inputtext/inputtext.css */ "./node_modules/@ckeditor/ckeditor5-ui/theme/components/inputtext/inputtext.css");
-/* harmony import */ var _theme_components_inputtext_inputtext_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_theme_components_inputtext_inputtext_css__WEBPACK_IMPORTED_MODULE_1__);
 /**
  * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md.
  */
 
 /**
- * @module ui/inputtext/inputtextview
+ * @module ui/iframe/iframeview
  */
-
-
 
 
 
 /**
- * The text input view class.
+ * The iframe view class.
  *
  * @extends module:ui/view~View
  */
-class InputTextView extends _view__WEBPACK_IMPORTED_MODULE_0__["default"] {
+class IframeView extends _view__WEBPACK_IMPORTED_MODULE_0__["default"] {
 	/**
-	 * @inheritDoc
+	 * Creates a new instance of the iframe view.
+	 *
+	 * @param {module:utils/locale~Locale} [locale] The locale instance.
 	 */
 	constructor( locale ) {
 		super( locale );
 
-		/**
-		 * The value of the input.
-		 *
-		 * @observable
-		 * @member {String} #value
-		 */
-		this.set( 'value' );
-
-		/**
-		 * The `id` attribute of the input (i.e. to pair with a `<label>` element).
-		 *
-		 * @observable
-		 * @member {String} #id
-		 */
-		this.set( 'id' );
-
-		/**
-		 * The `placeholder` attribute of the input.
-		 *
-		 * @observable
-		 * @member {String} #placeholder
-		 */
-		this.set( 'placeholder' );
-
-		/**
-		 * Controls whether the input view is in read-only mode.
-		 *
-		 * @observable
-		 * @member {Boolean} #isReadOnly
-		 */
-		this.set( 'isReadOnly', false );
-
 		const bind = this.bindTemplate;
 
 		this.setTemplate( {
-			tag: 'input',
+			tag: 'iframe',
 			attributes: {
-				type: 'text',
 				class: [
 					'ck',
-					'ck-input',
-					'ck-input-text'
+					'ck-reset_all'
 				],
-				id: bind.to( 'id' ),
-				placeholder: bind.to( 'placeholder' ),
-				readonly: bind.to( 'isReadOnly' )
+				// It seems that we need to allow scripts in order to be able to listen to events.
+				// TODO: Research that. Perhaps the src must be set?
+				sandbox: 'allow-same-origin allow-scripts'
+			},
+			on: {
+				load: bind.to( 'loaded' )
 			}
 		} );
 	}
 
 	/**
-	 * @inheritDoc
+	 * Renders the iframe's {@link #element} and returns a `Promise` for asynchronous
+	 * child `contentDocument` loading process.
+	 *
+	 * @returns {Promise} A promise which resolves once the iframe `contentDocument` has
+	 * been {@link #event:loaded}.
 	 */
 	render() {
-		super.render();
-
-		const setValue = value => {
-			this.element.value = ( !value && value !== 0 ) ? '' : value;
-		};
-
-		setValue( this.value );
-
-		// Bind `this.value` to the DOM element's value.
-		// We cannot use `value` DOM attribute because removing it on Edge does not clear the DOM element's value property.
-		this.on( 'change:value', ( evt, name, value ) => {
-			setValue( value );
+		return new Promise( resolve => {
+			this.on( 'loaded', resolve );
+			super.render();
 		} );
 	}
-
-	/**
-	 * Moves the focus to the input and selects the value.
-	 */
-	select() {
-		this.element.select();
-	}
-
-	/**
-	 * Focuses the input.
-	 */
-	focus() {
-		this.element.focus();
-	}
 }
+
+/**
+ * Fired when the DOM iframe's `contentDocument` finished loading.
+ *
+ * @event loaded
+ */
 
 
 /***/ }),
@@ -46894,1168 +42123,6 @@ class LabelView extends _view__WEBPACK_IMPORTED_MODULE_0__["default"] {
 				}
 			]
 		} );
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-ui/src/labeledinput/labeledinputview.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-ui/src/labeledinput/labeledinputview.js ***!
-  \**********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return LabeledInputView; });
-/* harmony import */ var _view__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../view */ "./node_modules/@ckeditor/ckeditor5-ui/src/view.js");
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_uid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/uid */ "./node_modules/@ckeditor/ckeditor5-utils/src/uid.js");
-/* harmony import */ var _label_labelview__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../label/labelview */ "./node_modules/@ckeditor/ckeditor5-ui/src/label/labelview.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module ui/labeledinput/labeledinputview
- */
-
-
-
-
-
-
-/**
- * The labeled input view class.
- *
- * @extends module:ui/view~View
- */
-class LabeledInputView extends _view__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * Creates an instance of the labeled input view class.
-	 *
-	 * @param {module:utils/locale~Locale} locale The locale instance.
-	 * @param {Function} InputView Constructor of the input view.
-	 */
-	constructor( locale, InputView ) {
-		super( locale );
-
-		const id = `ck-input-${ Object(_ckeditor_ckeditor5_utils_src_uid__WEBPACK_IMPORTED_MODULE_1__["default"])() }`;
-
-		/**
-		 * The text of the label.
-		 *
-		 * @observable
-		 * @member {String} #label
-		 */
-		this.set( 'label' );
-
-		/**
-		 * The value of the input.
-		 *
-		 * @observable
-		 * @member {String} #value
-		 */
-		this.set( 'value' );
-
-		/**
-		 * Controls whether the component is in read-only mode.
-		 *
-		 * @observable
-		 * @member {Boolean} #isReadOnly
-		 */
-		this.set( 'isReadOnly', false );
-
-		/**
-		 * The label view.
-		 *
-		 * @member {module:ui/label/labelview~LabelView} #labelView
-		 */
-		this.labelView = this._createLabelView( id );
-
-		/**
-		 * The input view.
-		 *
-		 * @member {module:ui/view~View} #inputView
-		 */
-		this.inputView = this._createInputView( InputView, id );
-
-		const bind = this.bindTemplate;
-
-		this.setTemplate( {
-			tag: 'div',
-			attributes: {
-				class: [
-					'ck',
-					'ck-labeled-input',
-					bind.if( 'isReadOnly', 'ck-disabled' )
-				]
-			},
-			children: [
-				this.labelView,
-				this.inputView
-			]
-		} );
-	}
-
-	/**
-	 * Creates label view class instance and bind with view.
-	 *
-	 * @private
-	 * @param {String} id Unique id to set as labelView#for attribute.
-	 * @returns {module:ui/label/labelview~LabelView}
-	 */
-	_createLabelView( id ) {
-		const labelView = new _label_labelview__WEBPACK_IMPORTED_MODULE_2__["default"]( this.locale );
-
-		labelView.for = id;
-		labelView.bind( 'text' ).to( this, 'label' );
-
-		return labelView;
-	}
-
-	/**
-	 * Creates input view class instance and bind with view.
-	 *
-	 * @private
-	 * @param {Function} InputView Input view constructor.
-	 * @param {String} id Unique id to set as inputView#id attribute.
-	 * @returns {module:ui/inputtext/inputtextview~InputTextView}
-	 */
-	_createInputView( InputView, id ) {
-		const inputView = new InputView( this.locale );
-
-		inputView.id = id;
-		inputView.bind( 'value' ).to( this );
-		inputView.bind( 'isReadOnly' ).to( this );
-
-		return inputView;
-	}
-
-	/**
-	 * Moves the focus to the input and selects the value.
-	 */
-	select() {
-		this.inputView.select();
-	}
-
-	/**
-	 * Focuses the input.
-	 */
-	focus() {
-		this.inputView.focus();
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-ui/src/panel/balloon/balloonpanelview.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-ui/src/panel/balloon/balloonpanelview.js ***!
-  \***********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BalloonPanelView; });
-/* harmony import */ var _view__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../view */ "./node_modules/@ckeditor/ckeditor5-ui/src/view.js");
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_dom_position__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/dom/position */ "./node_modules/@ckeditor/ckeditor5-utils/src/dom/position.js");
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_dom_isrange__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/dom/isrange */ "./node_modules/@ckeditor/ckeditor5-utils/src/dom/isrange.js");
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_lib_lodash_isElement__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/lib/lodash/isElement */ "./node_modules/@ckeditor/ckeditor5-utils/src/lib/lodash/isElement.js");
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_dom_tounit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/dom/tounit */ "./node_modules/@ckeditor/ckeditor5-utils/src/dom/tounit.js");
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_dom_global__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/dom/global */ "./node_modules/@ckeditor/ckeditor5-utils/src/dom/global.js");
-/* harmony import */ var _theme_components_panel_balloonpanel_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../theme/components/panel/balloonpanel.css */ "./node_modules/@ckeditor/ckeditor5-ui/theme/components/panel/balloonpanel.css");
-/* harmony import */ var _theme_components_panel_balloonpanel_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_theme_components_panel_balloonpanel_css__WEBPACK_IMPORTED_MODULE_6__);
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module ui/panel/balloon/balloonpanelview
- */
-
-
-
-
-
-
-
-
-
-
-const toPx = Object(_ckeditor_ckeditor5_utils_src_dom_tounit__WEBPACK_IMPORTED_MODULE_4__["default"])( 'px' );
-const defaultLimiterElement = _ckeditor_ckeditor5_utils_src_dom_global__WEBPACK_IMPORTED_MODULE_5__["default"].document.body;
-
-/**
- * The balloon panel view class.
- *
- * A floating container which can
- * {@link module:ui/panel/balloon/balloonpanelview~BalloonPanelView#pin pin} to any
- * {@link module:utils/dom/position~Options#target target} in DOM and remain in that position
- * e.g. when the web page is scrolled.
- *
- * The balloon panel can be used to display contextual, non-blocking UI like forms, toolbars and
- * the like in its {@link module:ui/panel/balloon/balloonpanelview~BalloonPanelView#content} view
- * collection.
- *
- * There is a number of {@link module:ui/panel/balloon/balloonpanelview~BalloonPanelView.defaultPositions}
- * that the balloon can use, automatically switching from one to another when the viewport space becomes
- * scarce to keep the balloon visible to the user as long as it is possible. The balloon will also
- * accept any custom position set provided by the user compatible with the
- * {@link module:utils/dom/position~Options options}.
- *
- *		const panel = new BalloonPanelView( locale );
- *		const childView = new ChildView();
- *		const positions = BalloonPanelView.defaultPositions;
- *
- *		panel.render();
- *
- *		// Add a child view to the panel's content collection.
- *		panel.content.add( childView );
- *
- *		// Start pinning the panel to an element with the "target" id DOM.
- *		// The balloon will remain pinned until unpin() is called.
- *		panel.pin( {
- *			target: document.querySelector( '#target' ),
- *			positions: [
- *				positions.northArrowSouth,
- *				positions.southArrowNorth
- *			]
- *		} );
- *
- * @extends module:ui/view~View
- */
-class BalloonPanelView extends _view__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	constructor( locale ) {
-		super( locale );
-
-		const bind = this.bindTemplate;
-
-		/**
-		 * The absolute top position of the balloon panel in pixels.
-		 *
-		 * @observable
-		 * @default 0
-		 * @member {Number} #top
-		 */
-		this.set( 'top', 0 );
-
-		/**
-		 * The absolute left position of the balloon panel in pixels.
-		 *
-		 * @observable
-		 * @default 0
-		 * @member {Number} #left
-		 */
-		this.set( 'left', 0 );
-
-		/**
-		 * Balloon panel's current position. The position name is reflected in the CSS class set
-		 * to the balloon, i.e. `.ck-balloon-panel_arrow_nw` for "arrow_nw" position. The class
-		 * controls the minor aspects of the balloon's visual appearance like placement
-		 * of an {@link #withArrow arrow}. To support a new position, an additional CSS must be created.
-		 *
-		 * Default position names correspond with
-		 * {@link module:ui/panel/balloon/balloonpanelview~BalloonPanelView.defaultPositions}.
-		 *
-		 * See the {@link #attachTo} and {@link #pin} methods to learn about custom balloon positions.
-		 *
-		 * @observable
-		 * @default 'arrow_nw'
-		 * @member {'arrow_nw'|'arrow_ne'|'arrow_sw'|'arrow_se'} #position
-		 */
-		this.set( 'position', 'arrow_nw' );
-
-		/**
-		 * Controls whether the balloon panel is visible or not.
-		 *
-		 * @observable
-		 * @default false
-		 * @member {Boolean} #isVisible
-		 */
-		this.set( 'isVisible', false );
-
-		/**
-		 * Controls whether the balloon panel has an arrow. The presence of the arrow
-		 * is reflected in `ck-balloon-panel_with-arrow` CSS class.
-		 *
-		 * @observable
-		 * @default true
-		 * @member {Boolean} #withArrow
-		 */
-		this.set( 'withArrow', true );
-
-		/**
-		 * An additional CSS class added to the {@link #element}.
-		 *
-		 * @observable
-		 * @member {String} #className
-		 */
-		this.set( 'className' );
-
-		/**
-		 * A callback that starts pining the panel when {@link #isVisible} gets
-		 * `true`. Used by {@link #pin}.
-		 *
-		 * @private
-		 * @member {Function} #_pinWhenIsVisibleCallback
-		 */
-
-		/**
-		 * Collection of the child views which creates balloon panel contents.
-		 *
-		 * @readonly
-		 * @member {module:ui/viewcollection~ViewCollection}
-		 */
-		this.content = this.createCollection();
-
-		this.setTemplate( {
-			tag: 'div',
-			attributes: {
-				class: [
-					'ck',
-					'ck-balloon-panel',
-					bind.to( 'position', value => `ck-balloon-panel_${ value }` ),
-					bind.if( 'isVisible', 'ck-balloon-panel_visible' ),
-					bind.if( 'withArrow', 'ck-balloon-panel_with-arrow' ),
-					bind.to( 'className' )
-				],
-
-				style: {
-					top: bind.to( 'top', toPx ),
-					left: bind.to( 'left', toPx )
-				}
-			},
-
-			children: this.content
-		} );
-	}
-
-	/**
-	 * Shows the panel.
-	 *
-	 * See {@link #isVisible}.
-	 */
-	show() {
-		this.isVisible = true;
-	}
-
-	/**
-	 * Hides the panel.
-	 *
-	 * See {@link #isVisible}.
-	 */
-	hide() {
-		this.isVisible = false;
-	}
-
-	/**
-	 * Attaches the panel to a specified {@link module:utils/dom/position~Options#target} with a
-	 * smart positioning heuristics that choses from available positions to make sure the panel
-	 * is visible to the user i.e. within the limits of the viewport.
-	 *
-	 * This method accepts configuration {@link module:utils/dom/position~Options options}
-	 * to set the `target`, optional `limiter` and `positions` the balloon should chose from.
-	 *
-	 *		const panel = new BalloonPanelView( locale );
-	 *		const positions = BalloonPanelView.defaultPositions;
-	 *
-	 *		panel.render();
-	 *
-	 *		// Attach the panel to an element with the "target" id DOM.
-	 *		panel.attachTo( {
-	 *			target: document.querySelector( '#target' ),
-	 *			positions: [
-	 *				positions.northArrowSouth,
-	 *				positions.southArrowNorth
-	 *			]
-	 *		} );
-	 *
-	 * **Note**: Attaching the panel will also automatically {@link #show} it.
-	 *
-	 * **Note**: An attached panel will not follow its target when the window is scrolled or resized.
-	 * See the {@link #pin} method for more permanent positioning strategy.
-	 *
-	 * @param {module:utils/dom/position~Options} options Positioning options compatible with
-	 * {@link module:utils/dom/position~getOptimalPosition}. Default `positions` array is
-	 * {@link module:ui/panel/balloon/balloonpanelview~BalloonPanelView.defaultPositions}.
-	 */
-	attachTo( options ) {
-		this.show();
-
-		const defaultPositions = BalloonPanelView.defaultPositions;
-		const positionOptions = Object.assign( {}, {
-			element: this.element,
-			positions: [
-				defaultPositions.southArrowNorth,
-				defaultPositions.southArrowNorthWest,
-				defaultPositions.southArrowNorthEast,
-				defaultPositions.northArrowSouth,
-				defaultPositions.northArrowSouthWest,
-				defaultPositions.northArrowSouthEast
-			],
-			limiter: defaultLimiterElement,
-			fitInViewport: true
-		}, options );
-
-		const { top, left, name: position } = BalloonPanelView._getOptimalPosition( positionOptions );
-
-		Object.assign( this, { top, left, position } );
-	}
-
-	/**
-	 * Works the same way as the {@link #attachTo} method except that the position of the panel is
-	 * continuously updated when:
-	 *
-	 * * any ancestor of the {@link module:utils/dom/position~Options#target}
-	 * or {@link module:utils/dom/position~Options#limiter} is scrolled,
-	 * * the browser window gets resized or scrolled.
-	 *
-	 * Thanks to that, the panel always sticks to the {@link module:utils/dom/position~Options#target},
-	 * immune to the changing environment.
-	 *
-	 *		const panel = new BalloonPanelView( locale );
-	 *		const positions = BalloonPanelView.defaultPositions;
-	 *
-	 *		panel.render();
-	 *
-	 *		// Pin the panel to an element with the "target" id DOM.
-	 *		panel.pin( {
-	 *			target: document.querySelector( '#target' ),
-	 *			positions: [
-	 *				positions.northArrowSouth,
-	 *				positions.southArrowNorth
-	 *			]
-	 *		} );
-	 *
-	 * To leave the pinned state, use the {@link #unpin} method.
-	 *
-	 * **Note**: Pinning the panel will also automatically {@link #show} it.
-	 *
-	 * @param {module:utils/dom/position~Options} options Positioning options compatible with
-	 * {@link module:utils/dom/position~getOptimalPosition}. Default `positions` array is
-	 * {@link module:ui/panel/balloon/balloonpanelview~BalloonPanelView.defaultPositions}.
-	 */
-	pin( options ) {
-		this.unpin();
-
-		this._pinWhenIsVisibleCallback = () => {
-			if ( this.isVisible ) {
-				this._startPinning( options );
-			} else {
-				this._stopPinning();
-			}
-		};
-
-		this._startPinning( options );
-
-		// Control the state of the listeners depending on whether the panel is visible
-		// or not.
-		// TODO: Use on() (https://github.com/ckeditor/ckeditor5-utils/issues/144).
-		this.listenTo( this, 'change:isVisible', this._pinWhenIsVisibleCallback );
-	}
-
-	/**
-	 * Stops pinning the panel, as set up by {@link #pin}.
-	 */
-	unpin() {
-		if ( this._pinWhenIsVisibleCallback ) {
-			// Deactivate listeners attached by pin().
-			this._stopPinning();
-
-			// Deactivate the panel pin() control logic.
-			// TODO: Use off() (https://github.com/ckeditor/ckeditor5-utils/issues/144).
-			this.stopListening( this, 'change:isVisible', this._pinWhenIsVisibleCallback );
-
-			this._pinWhenIsVisibleCallback = null;
-
-			this.hide();
-		}
-	}
-
-	/**
-	 * Starts managing the pinned state of the panel. See {@link #pin}.
-	 *
-	 * @private
-	 * @param {module:utils/dom/position~Options} options Positioning options compatible with
-	 * {@link module:utils/dom/position~getOptimalPosition}.
-	 */
-	_startPinning( options ) {
-		this.attachTo( options );
-
-		const targetElement = getDomElement( options.target );
-		const limiterElement = options.limiter ? getDomElement( options.limiter ) : defaultLimiterElement;
-
-		// Then we need to listen on scroll event of eny element in the document.
-		this.listenTo( _ckeditor_ckeditor5_utils_src_dom_global__WEBPACK_IMPORTED_MODULE_5__["default"].document, 'scroll', ( evt, domEvt ) => {
-			const scrollTarget = domEvt.target;
-
-			// The position needs to be updated if the positioning target is within the scrolled element.
-			const isWithinScrollTarget = targetElement && scrollTarget.contains( targetElement );
-
-			// The position needs to be updated if the positioning limiter is within the scrolled element.
-			const isLimiterWithinScrollTarget = limiterElement && scrollTarget.contains( limiterElement );
-
-			// The positioning target and/or limiter can be a Rect, object etc..
-			// There's no way to optimize the listener then.
-			if ( isWithinScrollTarget || isLimiterWithinScrollTarget || !targetElement || !limiterElement ) {
-				this.attachTo( options );
-			}
-		}, { useCapture: true } );
-
-		// We need to listen on window resize event and update position.
-		this.listenTo( _ckeditor_ckeditor5_utils_src_dom_global__WEBPACK_IMPORTED_MODULE_5__["default"].window, 'resize', () => {
-			this.attachTo( options );
-		} );
-	}
-
-	/**
-	 * Stops managing the pinned state of the panel. See {@link #pin}.
-	 *
-	 * @private
-	 */
-	_stopPinning() {
-		this.stopListening( _ckeditor_ckeditor5_utils_src_dom_global__WEBPACK_IMPORTED_MODULE_5__["default"].document, 'scroll' );
-		this.stopListening( _ckeditor_ckeditor5_utils_src_dom_global__WEBPACK_IMPORTED_MODULE_5__["default"].window, 'resize' );
-	}
-}
-
-// Returns the DOM element for given object or null, if there's none,
-// e.g. when passed object is a Rect instance or so.
-//
-// @private
-// @param {*} object
-// @returns {HTMLElement|null}
-function getDomElement( object ) {
-	if ( Object(_ckeditor_ckeditor5_utils_src_lib_lodash_isElement__WEBPACK_IMPORTED_MODULE_3__["default"])( object ) ) {
-		return object;
-	}
-
-	if ( Object(_ckeditor_ckeditor5_utils_src_dom_isrange__WEBPACK_IMPORTED_MODULE_2__["default"])( object ) ) {
-		return object.commonAncestorContainer;
-	}
-
-	if ( typeof object == 'function' ) {
-		return getDomElement( object() );
-	}
-
-	return null;
-}
-
-/**
- * A horizontal offset of the arrow tip from the edge of the balloon. Controlled by CSS.
- *
- *		 +-----|---------...
- *		 |     |
- *		 |     |
- *		 |     |
- *		 |     |
- *		 +--+  |  +------...
- *		     \ | /
- *		      \|/
- *	    >|-----|<---------------- horizontal offset
- *
- * @default 30
- * @member {Number} module:ui/panel/balloon/balloonpanelview~BalloonPanelView.arrowHorizontalOffset
- */
-BalloonPanelView.arrowHorizontalOffset = 25;
-
-/**
- * A vertical offset of the arrow from the edge of the balloon. Controlled by CSS.
- *
- *		 +-------------...
- *		 |
- *		 |
- *		 |                      /-- vertical offset
- *		 |                     V
- *		 +--+    +-----...    ---------
- *		     \  /              |
- *		      \/               |
- *		-------------------------------
- *		                       ^
- *
- * @default 15
- * @member {Number} module:ui/panel/balloon/balloonpanelview~BalloonPanelView.arrowVerticalOffset
- */
-BalloonPanelView.arrowVerticalOffset = 10;
-
-/**
- * Function used to calculate the optimal position for the balloon.
- *
- * @protected
- * @member {Function} module:ui/panel/balloon/balloonpanelview~BalloonPanelView._getOptimalPosition
- */
-BalloonPanelView._getOptimalPosition = _ckeditor_ckeditor5_utils_src_dom_position__WEBPACK_IMPORTED_MODULE_1__["getOptimalPosition"];
-
-/**
- * A default set of positioning functions used by the balloon panel view
- * when attaching using {@link module:ui/panel/balloon/balloonpanelview~BalloonPanelView#attachTo} method.
- *
- * The available positioning functions are as follow:
- *
- * **North**
- *
- * * `northArrowSouth`
- *
- * 		+-----------------+
- * 		|     Balloon     |
- * 		+-----------------+
- * 		         V
- * 		    [ Target ]
- *
- * * `northArrowSouthEast`
- *
- * 		+-----------------+
- * 		|     Balloon     |
- * 		+-----------------+
- * 		               V
- * 		          [ Target ]
- *
- * * `northArrowSouthWest`
- *
- * 		  +-----------------+
- * 		  |     Balloon     |
- * 		  +-----------------+
- * 		     V
- * 		[ Target ]
- *
- * **North west**
- *
- * * `northWestArrowSouth`
- *
- * 		+-----------------+
- * 		|     Balloon     |
- * 		+-----------------+
- * 		         V
- * 		         [ Target ]
- *
- * * `northWestArrowSouthWest`
- *
- * 		+-----------------+
- * 		|     Balloon     |
- * 		+-----------------+
- * 		   V
- * 		   [ Target ]
- *
- * * `northWestArrowSouthEast`
- *
- * 		+-----------------+
- * 		|     Balloon     |
- * 		+-----------------+
- * 		               V
- * 		               [ Target ]
- *
- * **North east**
- *
- * * `northEastArrowSouth`
- *
- * 		+-----------------+
- * 		|     Balloon     |
- * 		+-----------------+
- * 		         V
- * 		[ Target ]
- *
- * * `northEastArrowSouthEast`
- *
- * 		+-----------------+
- * 		|     Balloon     |
- * 		+-----------------+
- * 		               V
- * 		      [ Target ]
- *
- * * `northEastArrowSouthWest`
- *
- * 		      +-----------------+
- * 		      |     Balloon     |
- * 		      +-----------------+
- * 		         V
- * 		[ Target ]
- *
- * **South**
- *
- * * `southArrowNorth`
- *
- *		    [ Target ]
- *		         ^
- *		+-----------------+
- *		|     Balloon     |
- *		+-----------------+
- *
- * * `southArrowNorthEast`
- *
- *		          [ Target ]
- *		               ^
- *		+-----------------+
- *		|     Balloon     |
- *		+-----------------+
- *
- * * `southArrowNorthWest`
- *
- *		[ Target ]
- *		     ^
- *		   +-----------------+
- *		   |     Balloon     |
- *		   +-----------------+
- *
- * **South west**
- *
- * * `southWestArrowNorth`
- *
- *		         [ Target ]
- *		         ^
- *		+-----------------+
- *		|     Balloon     |
- *		+-----------------+
- *
- * * `southWestArrowNorthWest`
- *
- *		  [ Target ]
- *		  ^
- *		+-----------------+
- *		|     Balloon     |
- *		+-----------------+
- *
- * * `southWestArrowNorthEast`
- *
- *		               [ Target ]
- *		               ^
- *		+-----------------+
- *		|     Balloon     |
- *		+-----------------+
- *
- * **South east**
- *
- * * `southEastArrowNorth`
- *
- *		[ Target ]
- *		         ^
- *		+-----------------+
- *		|     Balloon     |
- *		+-----------------+
- *
- * * `southEastArrowNorthEast`
- *
- *		       [ Target ]
- *		                ^
- *		+-----------------+
- *		|     Balloon     |
- *		+-----------------+
- *
- * * `southEastArrowNorthWest`
- *
- *		[ Target ]
- *		         ^
- *		       +-----------------+
- *		       |     Balloon     |
- *		       +-----------------+
- *
- * See {@link module:ui/panel/balloon/balloonpanelview~BalloonPanelView#attachTo}.
- *
- * Positioning functions must be compatible with {@link module:utils/dom/position~Position}.
- *
- * The name that position function returns will be reflected in balloon panel's class that
- * controls the placement of the "arrow". See {@link #position} to learn more.
- *
- * @member {Object} module:ui/panel/balloon/balloonpanelview~BalloonPanelView.defaultPositions
- */
-BalloonPanelView.defaultPositions = {
-	// ------- North
-
-	northArrowSouth: ( targetRect, balloonRect ) => ( {
-		top: getNorthTop( targetRect, balloonRect ),
-		left: targetRect.left + targetRect.width / 2 - balloonRect.width / 2,
-		name: 'arrow_s'
-	} ),
-
-	northArrowSouthEast: ( targetRect, balloonRect ) => ( {
-		top: getNorthTop( targetRect, balloonRect ),
-		left: targetRect.left + targetRect.width / 2 - balloonRect.width + BalloonPanelView.arrowHorizontalOffset,
-		name: 'arrow_se'
-	} ),
-
-	northArrowSouthWest: ( targetRect, balloonRect ) => ( {
-		top: getNorthTop( targetRect, balloonRect ),
-		left: targetRect.left + targetRect.width / 2 - BalloonPanelView.arrowHorizontalOffset,
-		name: 'arrow_sw'
-	} ),
-
-	// ------- North west
-
-	northWestArrowSouth: ( targetRect, balloonRect ) => ( {
-		top: getNorthTop( targetRect, balloonRect ),
-		left: targetRect.left - balloonRect.width / 2,
-		name: 'arrow_s'
-	} ),
-
-	northWestArrowSouthWest: ( targetRect, balloonRect ) => ( {
-		top: getNorthTop( targetRect, balloonRect ),
-		left: targetRect.left - BalloonPanelView.arrowHorizontalOffset,
-		name: 'arrow_sw'
-	} ),
-
-	northWestArrowSouthEast: ( targetRect, balloonRect ) => ( {
-		top: getNorthTop( targetRect, balloonRect ),
-		left: targetRect.left - balloonRect.width + BalloonPanelView.arrowHorizontalOffset,
-		name: 'arrow_se'
-	} ),
-
-	// ------- North east
-
-	northEastArrowSouth: ( targetRect, balloonRect ) => ( {
-		top: getNorthTop( targetRect, balloonRect ),
-		left: targetRect.right - balloonRect.width / 2,
-		name: 'arrow_s'
-	} ),
-
-	northEastArrowSouthEast: ( targetRect, balloonRect ) => ( {
-		top: getNorthTop( targetRect, balloonRect ),
-		left: targetRect.right - balloonRect.width + BalloonPanelView.arrowHorizontalOffset,
-		name: 'arrow_se'
-	} ),
-
-	northEastArrowSouthWest: ( targetRect, balloonRect ) => ( {
-		top: getNorthTop( targetRect, balloonRect ),
-		left: targetRect.right - BalloonPanelView.arrowHorizontalOffset,
-		name: 'arrow_sw'
-	} ),
-
-	// ------- South
-
-	southArrowNorth: ( targetRect, balloonRect ) => ( {
-		top: getSouthTop( targetRect, balloonRect ),
-		left: targetRect.left + targetRect.width / 2 - balloonRect.width / 2,
-		name: 'arrow_n'
-	} ),
-
-	southArrowNorthEast: ( targetRect, balloonRect ) => ( {
-		top: getSouthTop( targetRect, balloonRect ),
-		left: targetRect.left + targetRect.width / 2 - balloonRect.width + BalloonPanelView.arrowHorizontalOffset,
-		name: 'arrow_ne'
-	} ),
-
-	southArrowNorthWest: ( targetRect, balloonRect ) => ( {
-		top: getSouthTop( targetRect, balloonRect ),
-		left: targetRect.left + targetRect.width / 2 - BalloonPanelView.arrowHorizontalOffset,
-		name: 'arrow_nw'
-	} ),
-
-	// ------- South west
-
-	southWestArrowNorth: ( targetRect, balloonRect ) => ( {
-		top: getSouthTop( targetRect, balloonRect ),
-		left: targetRect.left - balloonRect.width / 2,
-		name: 'arrow_n'
-	} ),
-
-	southWestArrowNorthWest: ( targetRect, balloonRect ) => ( {
-		top: getSouthTop( targetRect, balloonRect ),
-		left: targetRect.left - BalloonPanelView.arrowHorizontalOffset,
-		name: 'arrow_nw'
-	} ),
-
-	southWestArrowNorthEast: ( targetRect, balloonRect ) => ( {
-		top: getSouthTop( targetRect, balloonRect ),
-		left: targetRect.left - balloonRect.width + BalloonPanelView.arrowHorizontalOffset,
-		name: 'arrow_ne'
-	} ),
-
-	// ------- South east
-
-	southEastArrowNorth: ( targetRect, balloonRect ) => ( {
-		top: getSouthTop( targetRect, balloonRect ),
-		left: targetRect.right - balloonRect.width / 2,
-		name: 'arrow_n'
-	} ),
-
-	southEastArrowNorthEast: ( targetRect, balloonRect ) => ( {
-		top: getSouthTop( targetRect, balloonRect ),
-		left: targetRect.right - balloonRect.width + BalloonPanelView.arrowHorizontalOffset,
-		name: 'arrow_ne'
-	} ),
-
-	southEastArrowNorthWest: ( targetRect, balloonRect ) => ( {
-		top: getSouthTop( targetRect, balloonRect ),
-		left: targetRect.right - BalloonPanelView.arrowHorizontalOffset,
-		name: 'arrow_nw'
-	} ),
-};
-
-// Returns the top coordinate for positions starting with `north*`.
-//
-// @private
-// @param {utils/dom/rect~Rect} targetRect A rect of the target.
-// @param {utils/dom/rect~Rect} elementRect A rect of the balloon.
-// @returns {Number}
-function getNorthTop( targetRect, balloonRect ) {
-	return targetRect.top - balloonRect.height - BalloonPanelView.arrowVerticalOffset;
-}
-
-// Returns the top coordinate for positions starting with `south*`.
-//
-// @private
-// @param {utils/dom/rect~Rect} targetRect A rect of the target.
-// @param {utils/dom/rect~Rect} elementRect A rect of the balloon.
-// @returns {Number}
-function getSouthTop( targetRect ) {
-	return targetRect.bottom + BalloonPanelView.arrowVerticalOffset;
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-ui/src/panel/balloon/contextualballoon.js":
-/*!************************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-ui/src/panel/balloon/contextualballoon.js ***!
-  \************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ContextualBalloon; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _balloonpanelview__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./balloonpanelview */ "./node_modules/@ckeditor/ckeditor5-ui/src/panel/balloon/balloonpanelview.js");
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_ckeditorerror__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/ckeditorerror */ "./node_modules/@ckeditor/ckeditor5-utils/src/ckeditorerror.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module ui/panel/balloon/contextualballoon
- */
-
-
-
-
-
-/**
- * Provides the common contextual balloon panel for the editor.
- *
- * This plugin allows reusing a single {module:ui/panel/balloon/balloonpanelview~BalloonPanelView} instance
- * to display multiple contextual balloon panels in the editor.
- *
- * Child views of such a panel are stored in the stack and the last one in the stack is visible. When the
- * visible view is removed from the stack, the previous view becomes visible, etc. If there are no more
- * views in the stack, the balloon panel will hide.
- *
- * It simplifies managing the views and helps
- * avoid the unnecessary complexity of handling multiple {module:ui/panel/balloon/balloonpanelview~BalloonPanelView}
- * instances in the editor.
- *
- * @extends module:core/plugin~Plugin
- */
-class ContextualBalloon extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	static get pluginName() {
-		return 'ContextualBalloon';
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	init() {
-		/**
-		 * The common balloon panel view.
-		 *
-		 * @readonly
-		 * @member {module:ui/panel/balloon/balloonpanelview~BalloonPanelView} #view
-		 */
-		this.view = new _balloonpanelview__WEBPACK_IMPORTED_MODULE_1__["default"]();
-
-		/**
-		 * The {@link module:utils/dom/position~Options#limiter position limiter}
-		 * for the {@link #view}, used when no `limiter` has been passed into {@link #add}
-		 * or {@link #updatePosition}.
-		 *
-		 * By default, a function, which obtains the farthest DOM
-		 * {@link module:engine/view/rooteditableelement~RootEditableElement}
-		 * of the {@link module:engine/view/document~Document#selection}.
-		 *
-		 * @member {module:utils/dom/position~Options#limiter} #positionLimiter
-		 */
-		this.positionLimiter = () => {
-			const view = this.editor.editing.view;
-			const viewDocument = view.document;
-			const editableElement = viewDocument.selection.editableElement;
-
-			if ( editableElement ) {
-				return view.domConverter.mapViewToDom( editableElement.root );
-			}
-
-			return null;
-		};
-
-		/**
-		 * Stack of the views injected into the balloon. Last one in the stack is displayed
-		 * as a content of {@link module:ui/panel/balloon/contextualballoon~ContextualBalloon#view}.
-		 *
-		 * @private
-		 * @member {Map} #_stack
-		 */
-		this._stack = new Map();
-
-		// Add balloon panel view to editor `body` collection and wait until view will be ready.
-		this.editor.ui.view.body.add( this.view );
-
-		// Editor should be focused when contextual balloon is focused.
-		this.editor.ui.focusTracker.add( this.view.element );
-	}
-
-	/**
-	 * Returns the currently visible view or `null` when there are no
-	 * views in the stack.
-	 *
-	 * @returns {module:ui/view~View|null}
-	 */
-	get visibleView() {
-		const item = this._stack.get( this.view.content.get( 0 ) );
-
-		return item ? item.view : null;
-	}
-
-	/**
-	 * Returns `true` when the given view is in the stack. Otherwise returns `false`.
-	 *
-	 * @param {module:ui/view~View} view
-	 * @returns {Boolean}
-	 */
-	hasView( view ) {
-		return this._stack.has( view );
-	}
-
-	/**
-	 * Adds a new view to the stack and makes it visible.
-	 *
-	 * @param {Object} data Configuration of the view.
-	 * @param {module:ui/view~View} [data.view] Content of the balloon.
-	 * @param {module:utils/dom/position~Options} [data.position] Positioning options.
-	 * @param {String} [data.balloonClassName] Additional css class for {@link #view} added when given view is visible.
-	 */
-	add( data ) {
-		if ( this.hasView( data.view ) ) {
-			/**
-			 * Trying to add configuration of the same view more than once.
-			 *
-			 * @error contextualballoon-add-view-exist
-			 */
-			throw new _ckeditor_ckeditor5_utils_src_ckeditorerror__WEBPACK_IMPORTED_MODULE_2__["default"]( 'contextualballoon-add-view-exist: Cannot add configuration of the same view twice.' );
-		}
-
-		// When adding view to the not empty balloon.
-		if ( this.visibleView ) {
-			// Remove displayed content from the view.
-			this.view.content.remove( this.visibleView );
-		}
-
-		// Add new view to the stack.
-		this._stack.set( data.view, data );
-
-		// And display it.
-		this._show( data );
-	}
-
-	/**
-	 * Removes the given view from the stack. If the removed view was visible,
-	 * then the view preceding it in the stack will become visible instead.
-	 * When there is no view in the stack then balloon will hide.
-	 *
-	 * @param {module:ui/view~View} view A view to be removed from the balloon.
-	 */
-	remove( view ) {
-		if ( !this.hasView( view ) ) {
-			/**
-			 * Trying to remove configuration of the view not defined in the stack.
-			 *
-			 * @error contextualballoon-remove-view-not-exist
-			 */
-			throw new _ckeditor_ckeditor5_utils_src_ckeditorerror__WEBPACK_IMPORTED_MODULE_2__["default"]( 'contextualballoon-remove-view-not-exist: Cannot remove configuration of not existing view.' );
-		}
-
-		// When visible view is being removed.
-		if ( this.visibleView === view ) {
-			// We need to remove it from the view content.
-			this.view.content.remove( view );
-
-			// And then remove from the stack.
-			this._stack.delete( view );
-
-			// Next we need to check if there is other view in stack to show.
-			const last = Array.from( this._stack.values() ).pop();
-
-			// If it is some other view.
-			if ( last ) {
-				// Just show it.
-				this._show( last );
-			} else {
-				// Hide the balloon panel.
-				this.view.hide();
-			}
-		} else {
-			// Just remove given view from the stack.
-			this._stack.delete( view );
-		}
-	}
-
-	/**
-	 * Updates the position of the balloon using position data of the first visible view in the stack.
-	 * When new position data is given then position data of currently visible panel will be updated.
-	 *
-	 * @param {module:utils/dom/position~Options} [position] position options.
-	 */
-	updatePosition( position ) {
-		if ( position ) {
-			this._stack.get( this.visibleView ).position = position;
-		}
-
-		this.view.pin( this._getBalloonPosition() );
-	}
-
-	/**
-	 * Sets the view as a content of the balloon and attaches balloon using position
-	 * options of the first view.
-	 *
-	 * @private
-	 * @param {Object} data Configuration.
-	 * @param {module:ui/view~View} [data.view] View to show in the balloon.
-	 * @param {String} [data.balloonClassName=''] Additional class name which will added to the {#_balloon} view.
-	 */
-	_show( { view, balloonClassName = '' } ) {
-		this.view.className = balloonClassName;
-
-		this.view.content.add( view );
-		this.view.pin( this._getBalloonPosition() );
-	}
-
-	/**
-	 * Returns position options of the last view in the stack.
-	 * This keeps the balloon in the same position when view is changed.
-	 *
-	 * @private
-	 * @returns {module:utils/dom/position~Options}
-	 */
-	_getBalloonPosition() {
-		let position = Array.from( this._stack.values() ).pop().position;
-
-		// Use the default limiter if none has been specified.
-		if ( position && !position.limiter ) {
-			// Don't modify the original options object.
-			position = Object.assign( {}, position, {
-				limiter: this.positionLimiter
-			} );
-		}
-
-		return position;
 	}
 }
 
@@ -51539,36 +45606,6 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/@ckeditor/ckeditor5-ui/theme/components/inputtext/inputtext.css":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-ui/theme/components/inputtext/inputtext.css ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../../../postcss-loader/src??ref--5-1!./inputtext.css */ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-ui/theme/components/inputtext/inputtext.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"singleton":true,"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
 /***/ "./node_modules/@ckeditor/ckeditor5-ui/theme/components/label/label.css":
 /*!******************************************************************************!*\
   !*** ./node_modules/@ckeditor/ckeditor5-ui/theme/components/label/label.css ***!
@@ -51578,36 +45615,6 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../../../postcss-loader/src??ref--5-1!./label.css */ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-ui/theme/components/label/label.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"singleton":true,"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-ui/theme/components/panel/balloonpanel.css":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-ui/theme/components/panel/balloonpanel.css ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../../../postcss-loader/src??ref--5-1!./balloonpanel.css */ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-ui/theme/components/panel/balloonpanel.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -51746,770 +45753,6 @@ var update = __webpack_require__(/*! ../../../../style-loader/lib/addStyles.js *
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-undo/src/basecommand.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-undo/src/basecommand.js ***!
-  \******************************************************************/
-/*! exports provided: default, transformRangesByDeltas */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BaseCommand; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "transformRangesByDeltas", function() { return transformRangesByDeltas; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_command__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/command */ "./node_modules/@ckeditor/ckeditor5-core/src/command.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module undo/basecommand
- */
-
-
-
-/**
- * Base class for undo feature commands: {@link module:undo/undocommand~UndoCommand} and {@link module:undo/redocommand~RedoCommand}.
- *
- * @protected
- * @extends module:core/command~Command
- */
-class BaseCommand extends _ckeditor_ckeditor5_core_src_command__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	constructor( editor ) {
-		super( editor );
-
-		/**
-		 * Stack of items stored by the command. These are pairs of:
-		 *
-		 * * {@link module:engine/model/batch~Batch batch} saved by the command,
-		 * * {@link module:engine/model/selection~Selection selection} state at the moment of saving the batch.
-		 *
-		 * @protected
-		 * @member {Array} #_stack
-		 */
-		this._stack = [];
-
-		/**
-		 * Stores all batches that were created by this command.
-		 *
-		 * @protected
-		 * @member {WeakSet.<module:engine/model/batch~Batch>} #_createdBatches
-		 */
-		this._createdBatches = new WeakSet();
-
-		// Refresh state, so the command is inactive right after initialization.
-		this.refresh();
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	refresh() {
-		this.isEnabled = this._stack.length > 0;
-	}
-
-	/**
-	 * Stores a batch in the command, together with the selection state of the {@link module:engine/model/document~Document document}
-	 * created by the editor which this command is registered to.
-	 *
-	 * @param {module:engine/model/batch~Batch} batch The batch to add.
-	 */
-	addBatch( batch ) {
-		const docSelection = this.editor.model.document.selection;
-
-		const selection = {
-			ranges: docSelection.hasOwnRange ? Array.from( docSelection.getRanges() ) : [],
-			isBackward: docSelection.isBackward
-		};
-
-		this._stack.push( { batch, selection } );
-		this.refresh();
-	}
-
-	/**
-	 * Removes all items from the stack.
-	 */
-	clearStack() {
-		this._stack = [];
-		this.refresh();
-	}
-
-	/**
-	 * Restores the {@link module:engine/model/document~Document#selection document selection} state after a batch was undone.
-	 *
-	 * @protected
-	 * @param {Array.<module:engine/model/range~Range>} ranges Ranges to be restored.
-	 * @param {Boolean} isBackward A flag describing whether the restored range was selected forward or backward.
-	 * @param {Array.<module:engine/model/delta/delta~Delta>} deltas Deltas which has been applied since selection has been stored.
-	 */
-	_restoreSelection( ranges, isBackward, deltas ) {
-		const model = this.editor.model;
-		const document = model.document;
-
-		// This will keep the transformed selection ranges.
-		const selectionRanges = [];
-
-		// Transform all ranges from the restored selection.
-		for ( const range of ranges ) {
-			const transformedRanges = transformSelectionRange( range, deltas );
-
-			// For each `range` from `ranges`, we take only one transformed range.
-			// This is because we want to prevent situation where single-range selection
-			// got transformed to multi-range selection. We will take the first range that
-			// is not in the graveyard.
-			const transformedRange = transformedRanges.find(
-				range => range.start.root != document.graveyard
-			);
-
-			// `transformedRange` might be `undefined` if transformed range ended up in graveyard.
-			if ( transformedRange ) {
-				selectionRanges.push( transformedRange );
-			}
-		}
-
-		// `selectionRanges` may be empty if all ranges ended up in graveyard. If that is the case, do not restore selection.
-		if ( selectionRanges.length ) {
-			model.change( writer => {
-				writer.setSelection( selectionRanges, { backward: isBackward } );
-			} );
-		}
-	}
-
-	/**
-	 * Undoes a batch by reversing that batch, transforming reversed batch and finally applying it.
-	 * This is a helper method for {@link #execute}.
-	 *
-	 * @protected
-	 * @param {module:engine/model/batch~Batch} batchToUndo The batch to be undone.
-	 * @param {module:engine/model/batch~Batch} undoingBatch The batch that will contain undoing changes.
-	 */
-	_undo( batchToUndo, undoingBatch ) {
-		const model = this.editor.model;
-		const document = model.document;
-
-		// All changes done by the command execution will be saved as one batch.
-		this._createdBatches.add( undoingBatch );
-
-		const deltasToUndo = batchToUndo.deltas.slice();
-		deltasToUndo.reverse();
-
-		// We will process each delta from `batchToUndo`, in reverse order. If there were deltas A, B and C in undone batch,
-		// we need to revert them in reverse order, so first C' (reversed C), then B', then A'.
-		for ( const deltaToUndo of deltasToUndo ) {
-			// For now let's skip deltas with operation applied on detached document.
-			// We assumed that there is no deltas with mixed (document and document fragment) operations
-			// so we can skip entire delta.
-			if ( deltaToUndo.operations.some( op => op.isDocumentOperation ) ) {
-				// Keep in mind that transformation algorithms return arrays. That's because the transformation might result in multiple
-				// deltas, so we need arrays to handle them. To simplify algorithms, it is better to always operate on arrays.
-				const nextBaseVersion = deltaToUndo.baseVersion + deltaToUndo.operations.length;
-
-				// Reverse delta from the history.
-				const historyDeltas = Array.from( document.history.getDeltas( nextBaseVersion ) );
-				const transformedSets = model.transformDeltas( [ deltaToUndo.getReversed() ], historyDeltas, true );
-				const reversedDeltas = transformedSets.deltasA;
-
-				// After reversed delta has been transformed by all history deltas, apply it.
-				for ( const delta of reversedDeltas ) {
-					// Fix base version.
-					delta.baseVersion = document.version;
-
-					// Before applying, add the delta to the `undoingBatch`.
-					undoingBatch.addDelta( delta );
-
-					// Now, apply all operations of the delta.
-					for ( const operation of delta.operations ) {
-						model.applyOperation( operation );
-					}
-
-					document.history.setDeltaAsUndone( deltaToUndo, delta );
-				}
-			}
-		}
-	}
-}
-
-// Transforms given range `range` by given `deltas`.
-// Returns an array containing one or more ranges, which are result of the transformation.
-function transformSelectionRange( range, deltas ) {
-	const transformed = transformRangesByDeltas( [ range ], deltas );
-
-	// After `range` got transformed, we have an array of ranges. Some of those
-	// ranges may be "touching" -- they can be next to each other and could be merged.
-	// First, we have to sort those ranges to assure that they are in order.
-	transformed.sort( ( a, b ) => a.start.isBefore( b.start ) ? -1 : 1 );
-
-	// Then, we check if two consecutive ranges are touching.
-	for ( let i = 1; i < transformed.length; i++ ) {
-		const a = transformed[ i - 1 ];
-		const b = transformed[ i ];
-
-		if ( a.end.isTouching( b.start ) ) {
-			// And join them together if they are.
-			a.end = b.end;
-			transformed.splice( i, 1 );
-			i--;
-		}
-	}
-
-	return transformed;
-}
-
-// Transforms given set of `ranges` by given set of `deltas`. Returns transformed `ranges`.
-function transformRangesByDeltas( ranges, deltas ) {
-	for ( const delta of deltas ) {
-		for ( const operation of delta.operations ) {
-			// We look through all operations from all deltas.
-
-			for ( let i = 0; i < ranges.length; i++ ) {
-				// We transform every range by every operation.
-				let result;
-
-				switch ( operation.type ) {
-					case 'insert':
-						result = ranges[ i ]._getTransformedByInsertion(
-							operation.position,
-							operation.nodes.maxOffset,
-							true
-						);
-						break;
-
-					case 'move':
-					case 'remove':
-					case 'reinsert':
-						result = ranges[ i ]._getTransformedByMove(
-							operation.sourcePosition,
-							operation.targetPosition,
-							operation.howMany,
-							true
-						);
-						break;
-				}
-
-				// If we have a transformation result, we substitute transformed range with it in `transformed` array.
-				// Keep in mind that the result is an array and may contain multiple ranges.
-				if ( result ) {
-					ranges.splice( i, 1, ...result );
-
-					// Fix iterator.
-					i = i + result.length - 1;
-				}
-			}
-		}
-	}
-
-	return ranges;
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-undo/src/redocommand.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-undo/src/redocommand.js ***!
-  \******************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return RedoCommand; });
-/* harmony import */ var _basecommand__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./basecommand */ "./node_modules/@ckeditor/ckeditor5-undo/src/basecommand.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_model_batch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/model/batch */ "./node_modules/@ckeditor/ckeditor5-engine/src/model/batch.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module undo/redocommand
- */
-
-
-
-
-/**
- * The redo command stores {@link module:engine/model/batch~Batch batches} that were used to undo a batch by
- * {@link module:undo/undocommand~UndoCommand}. It is able to redo a previously undone batch by reversing the undoing
- * batches created by `UndoCommand`. The reversed batch is transformed by all the batches from
- * {@link module:engine/model/document~Document#history history} that happened after the reversed undo batch.
- *
- * The redo command also takes care of restoring the {@link module:engine/model/document~Document#selection document selection}.
- *
- * @extends module:undo/basecommand~BaseCommand
- */
-class RedoCommand extends _basecommand__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * Executes the command. This method reverts the last {@link module:engine/model/batch~Batch batch} added to
-	 * the command's stack, applies the reverted and transformed version on the
-	 * {@link module:engine/model/document~Document document} and removes the batch from the stack.
-	 * Then, it restores the {@link module:engine/model/document~Document#selection document selection}.
-	 *
-	 * @fires execute
-	 */
-	execute() {
-		const item = this._stack.pop();
-		const redoingBatch = new _ckeditor_ckeditor5_engine_src_model_batch__WEBPACK_IMPORTED_MODULE_1__["default"]();
-
-		// All changes have to be done in one `enqueueChange` callback so other listeners will not
-		// step between consecutive deltas, or won't do changes to the document before selection is properly restored.
-		this.editor.model.enqueueChange( redoingBatch, () => {
-			const lastDelta = item.batch.deltas[ item.batch.deltas.length - 1 ];
-			const nextBaseVersion = lastDelta.baseVersion + lastDelta.operations.length;
-			const deltas = this.editor.model.document.history.getDeltas( nextBaseVersion );
-
-			this._restoreSelection( item.selection.ranges, item.selection.isBackward, deltas );
-			this._undo( item.batch, redoingBatch );
-		} );
-
-		this.refresh();
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-undo/src/undo.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-undo/src/undo.js ***!
-  \***********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Undo; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _undoediting__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./undoediting */ "./node_modules/@ckeditor/ckeditor5-undo/src/undoediting.js");
-/* harmony import */ var _undoui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./undoui */ "./node_modules/@ckeditor/ckeditor5-undo/src/undoui.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module undo/undo
- */
-
-
-
-
-
-/**
- * The undo feature.
- *
- * It loads the {@link module:undo/undoediting~UndoEditing undo editing feature}
- * and {@link module:undo/undoui~UndoUI undo UI feature}.
- *
- * Below is the explanation of the undo mechanism working together with {@link module:engine/model/history~History History}:
- *
- * Whenever a {@link module:engine/model/delta/delta~Delta delta} is applied to the
- * {@link module:engine/model/document~Document document}, it is saved to `History` as is.
- * The {@link module:engine/model/batch~Batch batch} that owns that delta is also saved, in
- * {@link module:undo/undocommand~UndoCommand}, together with the selection that was present in the document before the
- * delta was applied. A batch is saved instead of the delta because changes are undone batch-by-batch, not delta-by-delta
- * and a batch is seen as one undo step.
- *
- * After some changes happen to the document, the `History` and `UndoCommand` stack can be represented as follows:
- *
- *		  History                           Undo stack
- *		===========             ==================================
- *		[delta A1]                          [batch A]
- *		[delta B1]                          [batch B]
- *		[delta B2]                          [batch C]
- *		[delta C1]
- *		[delta C2]
- *		[delta B3]
- *		[delta C3]
- *
- * Where deltas starting with the same letter are from same batch.
- *
- * Undoing a batch means that a set of deltas which will reverse the effects of that batch needs to be generated. For example, if a batch
- * added several letters, undoing the batch should remove them. It is important to apply undoing deltas in the reversed order,
- * so if a batch has delta `X`, `Y`, `Z`, reversed deltas `Zr`, `Yr` and `Xr` need to be applied. Otherwise reversed delta
- * `Xr` would operate on a wrong document state, because delta `X` does not know that deltas `Y` and `Z` happened.
- *
- * After deltas from an undone batch got {@link module:engine/model/delta/delta~Delta#getReversed reversed},
- * one needs to make sure if they are ready to be applied. In the scenario above, delta `C3` is the last delta and `C3r`
- * bases on up-to-date document state, so it can be applied to the document.
- *
- *		  History                           Undo stack
- *		=============             ==================================
- *		[ delta A1  ]                      [  batch A  ]
- *		[ delta B1  ]                      [  batch B  ]
- *		[ delta B2  ]             [   processing undoing batch C   ]
- *		[ delta C1  ]
- *		[ delta C2  ]
- *		[ delta B3  ]
- *		[ delta C3  ]
- *		[ delta C3r ]
- *
- * Next is delta `C2`, reversed to `C2r`. `C2r` bases on `C2`, so it bases on the wrong document state. It needs to be
- * transformed by deltas from history that happened after it, so it "knows" about them. Let us assume that `C2' = C2r * B3 * C3 * C3r`,
- * where `*` means "transformed by". Rest of deltas from that batch are processed in the same fashion.
- *
- *		  History                           Undo stack                                     Redo stack
- *		=============             ==================================             ==================================
- *		[ delta A1  ]                      [  batch A  ]                                  [ batch Cr ]
- *		[ delta B1  ]                      [  batch B  ]
- *		[ delta B2  ]
- *		[ delta C1  ]
- *		[ delta C2  ]
- *		[ delta B3  ]
- *		[ delta C3  ]
- *		[ delta C3r ]
- *		[ delta C2' ]
- *		[ delta C1' ]
- *
- * Selective undo works on the same basis, however, instead of undoing the last batch in the undo stack, any batch can be undone.
- * The same algorithm applies: deltas from a batch (i.e. `A1`) are reversed and then transformed by deltas stored in history.
- *
- * Redo also is very similar to undo. It has its own stack that is filled with undoing (reversed batches). Deltas from
- * batch that is re-done are reversed-back, transformed in proper order and applied to the document.
- *
- *		  History                           Undo stack                                     Redo stack
- *		=============             ==================================             ==================================
- *		[ delta A1  ]                      [  batch A  ]
- *		[ delta B1  ]                      [  batch B  ]
- *		[ delta B2  ]                      [ batch Crr ]
- *		[ delta C1  ]
- *		[ delta C2  ]
- *		[ delta B3  ]
- *		[ delta C3  ]
- *		[ delta C3r ]
- *		[ delta C2' ]
- *		[ delta C1' ]
- *		[ delta C1'r]
- *		[ delta C2'r]
- *		[ delta C3rr]
- *
- * @extends module:core/plugin~Plugin
- */
-class Undo extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	static get requires() {
-		return [ _undoediting__WEBPACK_IMPORTED_MODULE_1__["default"], _undoui__WEBPACK_IMPORTED_MODULE_2__["default"] ];
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	static get pluginName() {
-		return 'Undo';
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-undo/src/undocommand.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-undo/src/undocommand.js ***!
-  \******************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return UndoCommand; });
-/* harmony import */ var _basecommand__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./basecommand */ "./node_modules/@ckeditor/ckeditor5-undo/src/basecommand.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_model_batch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/model/batch */ "./node_modules/@ckeditor/ckeditor5-engine/src/model/batch.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module undo/undocommand
- */
-
-
-
-
-/**
- * The undo command stores {@link module:engine/model/batch~Batch batches} applied to the
- * {@link module:engine/model/document~Document document} and is able to undo a batch by reversing it and transforming by
- * batches from {@link module:engine/model/document~Document#history history} that happened after the reversed batch.
- *
- * The undo command also takes care of restoring the {@link module:engine/model/document~Document#selection document selection}.
- *
- * @extends module:undo/basecommand~BaseCommand
- */
-class UndoCommand extends _basecommand__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * Executes the command. This method reverts a {@link module:engine/model/batch~Batch batch} added to the command's stack, transforms
-	 * and applies the reverted version on the {@link module:engine/model/document~Document document} and removes the batch from the stack.
-	 * Then, it restores the {@link module:engine/model/document~Document#selection document selection}.
-	 *
-	 * @fires execute
-	 * @fires revert
-	 * @param {module:engine/model/batch~Batch} [batch] A batch that should be undone. If not set, the last added batch will be undone.
-	 */
-	execute( batch = null ) {
-		// If batch is not given, set `batchIndex` to the last index in command stack.
-		const batchIndex = batch ? this._stack.findIndex( a => a.batch == batch ) : this._stack.length - 1;
-
-		const item = this._stack.splice( batchIndex, 1 )[ 0 ];
-		const undoingBatch = new _ckeditor_ckeditor5_engine_src_model_batch__WEBPACK_IMPORTED_MODULE_1__["default"]();
-
-		// All changes has to be done in one `enqueueChange` callback so other listeners will not
-		// step between consecutive deltas, or won't do changes to the document before selection is properly restored.
-		this.editor.model.enqueueChange( undoingBatch, () => {
-			this._undo( item.batch, undoingBatch );
-
-			const deltas = this.editor.model.document.history.getDeltas( item.batch.baseVersion );
-			this._restoreSelection( item.selection.ranges, item.selection.isBackward, deltas );
-
-			this.fire( 'revert', item.batch, undoingBatch );
-		} );
-
-		this.refresh();
-	}
-}
-
-/**
- * Fired when execution of the command reverts some batch.
- *
- * @event revert
- */
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-undo/src/undoediting.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-undo/src/undoediting.js ***!
-  \******************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return UndoEditing; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _undocommand__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./undocommand */ "./node_modules/@ckeditor/ckeditor5-undo/src/undocommand.js");
-/* harmony import */ var _redocommand__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./redocommand */ "./node_modules/@ckeditor/ckeditor5-undo/src/redocommand.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module undo/undoediting
- */
-
-
-
-
-
-/**
- * The undo engine feature.
- *
- * Undo brings in possibility to undo and redo changes done in the model by deltas through
- * the {@link module:engine/model/writer~Writer Writer API}.
- *
- * @extends module:core/plugin~Plugin
- */
-class UndoEditing extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	constructor( editor ) {
-		super( editor );
-
-		/**
-		 * The command that manages undo {@link module:engine/model/batch~Batch batches} stack (history).
-		 * Created and registered during the {@link #init feature initialization}.
-		 *
-		 * @private
-		 * @member {module:undo/undocommand~UndoCommand} #_undoCommand
-		 */
-
-		/**
-		 * The command that manages redo {@link module:engine/model/batch~Batch batches} stack (history).
-		 * Created and registered during the {@link #init feature initialization}.
-		 *
-		 * @private
-		 * @member {module:undo/undocommand~UndoCommand} #_redoCommand
-		 */
-
-		/**
-		 * Keeps track of which batches were registered in undo.
-		 *
-		 * @private
-		 * @member {WeakSet.<module:engine/model/batch~Batch>}
-		 */
-		this._batchRegistry = new WeakSet();
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	init() {
-		const editor = this.editor;
-
-		// Create commands.
-		this._undoCommand = new _undocommand__WEBPACK_IMPORTED_MODULE_1__["default"]( editor );
-		this._redoCommand = new _redocommand__WEBPACK_IMPORTED_MODULE_2__["default"]( editor );
-
-		// Register command to the editor.
-		editor.commands.add( 'undo', this._undoCommand );
-		editor.commands.add( 'redo', this._redoCommand );
-
-		this.listenTo( editor.model, 'applyOperation', ( evt, args ) => {
-			const operation = args[ 0 ];
-
-			// Do not register batch if the operation is not a document operation.
-			// This prevents from creating empty undo steps, where all operations where non-document operations.
-			// Non-document operations creates and alters content in detached tree fragments (for example, document fragments).
-			// Most of time this is preparing data before it is inserted into actual tree (for example during copy & paste).
-			// Such operations should not be reversed.
-			if ( !operation.isDocumentOperation ) {
-				return;
-			}
-
-			const batch = operation.delta.batch;
-
-			// If changes are not a part of a batch or this is not a new batch, omit those changes.
-			if ( this._batchRegistry.has( batch ) || batch.type == 'transparent' ) {
-				return;
-			} else {
-				if ( this._redoCommand._createdBatches.has( batch ) ) {
-					// If this batch comes from `redoCommand`, add it to `undoCommand` stack.
-					this._undoCommand.addBatch( batch );
-				} else if ( !this._undoCommand._createdBatches.has( batch ) ) {
-					// A default batch - these are new changes in the document, not introduced by undo feature.
-					// Add them to `undoCommand` stack and clear `redoCommand` stack.
-					this._undoCommand.addBatch( batch );
-					this._redoCommand.clearStack();
-				}
-			}
-
-			// Add the batch to the registry so it will not be processed again.
-			this._batchRegistry.add( batch );
-		}, { priority: 'highest' } );
-
-		this.listenTo( this._undoCommand, 'revert', ( evt, undoneBatch, undoingBatch ) => {
-			this._redoCommand.addBatch( undoingBatch );
-		} );
-
-		editor.keystrokes.set( 'CTRL+Z', 'undo' );
-		editor.keystrokes.set( 'CTRL+Y', 'redo' );
-		editor.keystrokes.set( 'CTRL+SHIFT+Z', 'redo' );
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-undo/src/undoui.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-undo/src/undoui.js ***!
-  \*************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return UndoUI; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _ckeditor_ckeditor5_ui_src_button_buttonview__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-ui/src/button/buttonview */ "./node_modules/@ckeditor/ckeditor5-ui/src/button/buttonview.js");
-/* harmony import */ var _theme_icons_undo_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../theme/icons/undo.svg */ "./node_modules/@ckeditor/ckeditor5-undo/theme/icons/undo.svg");
-/* harmony import */ var _theme_icons_undo_svg__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_theme_icons_undo_svg__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _theme_icons_redo_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../theme/icons/redo.svg */ "./node_modules/@ckeditor/ckeditor5-undo/theme/icons/redo.svg");
-/* harmony import */ var _theme_icons_redo_svg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_theme_icons_redo_svg__WEBPACK_IMPORTED_MODULE_3__);
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module undo/undoui
- */
-
-
-
-
-
-
-
-/**
- * The undo UI feature. It introduces the Undo and Redo buttons to the editor.
- *
- * @extends module:core/plugin~Plugin
- */
-class UndoUI extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	init() {
-		const editor = this.editor;
-		const t = editor.t;
-
-		this._addButton( 'undo', t( 'Undo' ), 'CTRL+Z', _theme_icons_undo_svg__WEBPACK_IMPORTED_MODULE_2___default.a );
-		this._addButton( 'redo', t( 'Redo' ), 'CTRL+Y', _theme_icons_redo_svg__WEBPACK_IMPORTED_MODULE_3___default.a );
-	}
-
-	/**
-	 * Creates a button for the specified command.
-	 *
-	 * @private
-	 * @param {String} name Command name.
-	 * @param {String} label Button label.
-	 * @param {String} keystroke Command keystroke.
-	 * @param {String} Icon Source of the icon.
-	 */
-	_addButton( name, label, keystroke, Icon ) {
-		const editor = this.editor;
-
-		editor.ui.componentFactory.add( name, locale => {
-			const command = editor.commands.get( name );
-			const view = new _ckeditor_ckeditor5_ui_src_button_buttonview__WEBPACK_IMPORTED_MODULE_1__["default"]( locale );
-
-			view.set( {
-				label,
-				icon: Icon,
-				keystroke,
-				tooltip: true
-			} );
-
-			view.bind( 'isEnabled' ).to( command, 'isEnabled' );
-
-			this.listenTo( view, 'execute', () => editor.execute( name ) );
-
-			return view;
-		} );
-	}
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-undo/theme/icons/redo.svg":
-/*!********************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-undo/theme/icons/redo.svg ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M14.958 9.367l-2.189 1.837a.75.75 0 0 0 .965 1.149l3.788-3.18a.747.747 0 0 0 .21-.284.75.75 0 0 0-.17-.945L13.77 4.762a.75.75 0 1 0-.964 1.15l2.331 1.955H6.22A.75.75 0 0 0 6 7.9a4 4 0 1 0 1.477 7.718l-.344-1.489A2.5 2.5 0 1 1 6.039 9.4l-.008-.032h8.927z\" fill=\"#000\" fill-rule=\"nonzero\"/></svg>"
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-undo/theme/icons/undo.svg":
-/*!********************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-undo/theme/icons/undo.svg ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M5.042 9.367l2.189 1.837a.75.75 0 0 1-.965 1.149l-3.788-3.18a.747.747 0 0 1-.21-.284.75.75 0 0 1 .17-.945L6.23 4.762a.75.75 0 1 1 .964 1.15L4.863 7.866h8.917A.75.75 0 0 1 14 7.9a4 4 0 1 1-1.477 7.718l.344-1.489a2.5 2.5 0 1 0 1.094-4.73l.008-.032H5.042z\" fill=\"#000\" fill-rule=\"nonzero\"/></svg>"
 
 /***/ }),
 
@@ -53733,106 +46976,6 @@ function diff( a, b, cmp ) {
 
 /***/ }),
 
-/***/ "./node_modules/@ckeditor/ckeditor5-utils/src/difftochanges.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-utils/src/difftochanges.js ***!
-  \*********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return diffToChanges; });
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module utils/difftochanges
- */
-
-/**
- * Creates a set of changes which need to be applied to the input in order to transform
- * it into the output. This function can be used with strings or arrays.
- *
- *		const input = Array.from( 'abc' );
- *		const output = Array.from( 'xaby' );
- *		const changes = diffToChanges( diff( input, output ), output );
- *
- *		changes.forEach( change => {
- *			if ( change.type == 'insert' ) {
- *				input.splice( change.index, 0, ...change.values );
- *			} else if ( change.type == 'delete' ) {
- *				input.splice( change.index, change.howMany );
- *			}
- *		} );
- *
- *		input.join( '' ) == output.join( '' ); // -> true
- *
- * @param {Array.<'equal'|'insert'|'delete'>} diff Result of {@link module:utils/diff~diff}.
- * @param {String|Array} output The string or array which was passed as diff's output.
- * @returns {Array.<Object>} Set of changes (insert or delete) which need to be applied to the input
- * in order to transform it into the output.
- */
-function diffToChanges( diff, output ) {
-	const changes = [];
-	let index = 0;
-	let lastOperation;
-
-	diff.forEach( change => {
-		if ( change == 'equal' ) {
-			pushLast();
-
-			index++;
-		} else if ( change == 'insert' ) {
-			if ( isContinuationOf( 'insert' ) ) {
-				lastOperation.values.push( output[ index ] );
-			} else {
-				pushLast();
-
-				lastOperation = {
-					type: 'insert',
-					index,
-					values: [ output[ index ] ]
-				};
-			}
-
-			index++;
-		} else /* if ( change == 'delete' ) */ {
-			if ( isContinuationOf( 'delete' ) ) {
-				lastOperation.howMany++;
-			} else {
-				pushLast();
-
-				lastOperation = {
-					type: 'delete',
-					index,
-					howMany: 1
-				};
-			}
-		}
-	} );
-
-	pushLast();
-
-	return changes;
-
-	function pushLast() {
-		if ( lastOperation ) {
-			changes.push( lastOperation );
-			lastOperation = null;
-		}
-	}
-
-	function isContinuationOf( expected ) {
-		return lastOperation && lastOperation.type == expected;
-	}
-}
-
-
-/***/ }),
-
 /***/ "./node_modules/@ckeditor/ckeditor5-utils/src/dom/emittermixin.js":
 /*!************************************************************************!*\
   !*** ./node_modules/@ckeditor/ckeditor5-utils/src/dom/emittermixin.js ***!
@@ -54284,49 +47427,6 @@ function getDataFromElement( el ) {
 
 /***/ }),
 
-/***/ "./node_modules/@ckeditor/ckeditor5-utils/src/dom/getpositionedancestor.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-utils/src/dom/getpositionedancestor.js ***!
-  \*********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return getPositionedAncestor; });
-/* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./global */ "./node_modules/@ckeditor/ckeditor5-utils/src/dom/global.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module utils/dom/getpositionedancestor
- */
-
-
-
-/**
- * For a given element, returns the nearest ancestor element which CSS position is not "static".
- *
- * @param {HTMLElement} element Native DOM element to be checked.
- * @returns {HTMLElement|null}
- */
-function getPositionedAncestor( element ) {
-	while ( element && element.tagName.toLowerCase() != 'html' ) {
-		if ( _global__WEBPACK_IMPORTED_MODULE_0__["default"].window.getComputedStyle( element ).position != 'static' ) {
-			return element;
-		}
-
-		element = element.parentElement;
-	}
-
-	return null;
-}
-
-
-/***/ }),
-
 /***/ "./node_modules/@ckeditor/ckeditor5-utils/src/dom/global.js":
 /*!******************************************************************!*\
   !*** ./node_modules/@ckeditor/ckeditor5-utils/src/dom/global.js ***!
@@ -54582,330 +47682,6 @@ function isWindow( obj ) {
 
 	return false;
 }
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-utils/src/dom/position.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-utils/src/dom/position.js ***!
-  \********************************************************************/
-/*! exports provided: getOptimalPosition */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOptimalPosition", function() { return getOptimalPosition; });
-/* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./global */ "./node_modules/@ckeditor/ckeditor5-utils/src/dom/global.js");
-/* harmony import */ var _rect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rect */ "./node_modules/@ckeditor/ckeditor5-utils/src/dom/rect.js");
-/* harmony import */ var _getpositionedancestor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getpositionedancestor */ "./node_modules/@ckeditor/ckeditor5-utils/src/dom/getpositionedancestor.js");
-/* harmony import */ var _getborderwidths__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getborderwidths */ "./node_modules/@ckeditor/ckeditor5-utils/src/dom/getborderwidths.js");
-/* harmony import */ var _lib_lodash_isFunction__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../lib/lodash/isFunction */ "./node_modules/@ckeditor/ckeditor5-utils/src/lib/lodash/isFunction.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module utils/dom/position
- */
-
-
-
-
-
-
-
-/**
- * Calculates the `position: absolute` coordinates of a given element so it can be positioned with respect to the
- * target in the visually most efficient way, taking various restrictions like viewport or limiter geometry
- * into consideration.
- *
- *		// The element which is to be positioned.
- *		const element = document.body.querySelector( '#toolbar' );
- *
- *		// A target to which the element is positioned relatively.
- *		const target = document.body.querySelector( '#container' );
- *
- *		// Finding the optimal coordinates for the positioning.
- *		const { left, top, name } = getOptimalPosition( {
- *			element: element,
- *			target: target,
- *
- * 			// The algorithm will chose among these positions to meet the requirements such
- * 			// as "limiter" element or "fitInViewport", set below. The positions are considered
- * 			// in the order of the array.
- *			positions: [
- *				//
- *			 	//	[ Target ]
- *				//	+-----------------+
- *				//	|     Element     |
- *				//	+-----------------+
- *				//
- *				targetRect => ( {
- *					top: targetRect.bottom,
- *					left: targetRect.left,
- *					name: 'mySouthEastPosition'
- *				} ),
- *
- *				//
- *				//	+-----------------+
- *				//	|     Element     |
- *				//	+-----------------+
- *				//	[ Target ]
- *				//
- *				( targetRect, elementRect ) => ( {
- *					top: targetRect.top - elementRect.height,
- *					left: targetRect.left,
- *					name: 'myNorthEastPosition'
- *				} )
- *			],
- *
- *			// Find a position such guarantees the element remains within visible boundaries of <body>.
- *			limiter: document.body,
- *
- *			// Find a position such guarantees the element remains within visible boundaries of the browser viewport.
- *			fitInViewport: true
- *		} );
- *
- *		// The best position which fits into document.body and the viewport. May be useful
- *		// to set proper class on the `element`.
- *		console.log( name ); -> "myNorthEastPosition"
- *
- *		// Using the absolute coordinates which has been found to position the element
- *		// as in the diagram depicting the "myNorthEastPosition" position.
- *		element.style.top = top;
- *		element.style.left = left;
- *
- * @param {module:utils/dom/position~Options} options Positioning options object.
- * @returns {module:utils/dom/position~Position}
- */
-function getOptimalPosition( { element, target, positions, limiter, fitInViewport } ) {
-	// If the {@link module:utils/dom/position~Options#target} is a function, use what it returns.
-	// https://github.com/ckeditor/ckeditor5-utils/issues/157
-	if ( Object(_lib_lodash_isFunction__WEBPACK_IMPORTED_MODULE_4__["default"])( target ) ) {
-		target = target();
-	}
-
-	// If the {@link module:utils/dom/position~Options#limiter} is a function, use what it returns.
-	// https://github.com/ckeditor/ckeditor5-ui/issues/260
-	if ( Object(_lib_lodash_isFunction__WEBPACK_IMPORTED_MODULE_4__["default"])( limiter ) ) {
-		limiter = limiter();
-	}
-
-	const positionedElementAncestor = Object(_getpositionedancestor__WEBPACK_IMPORTED_MODULE_2__["default"])( element.parentElement );
-	const elementRect = new _rect__WEBPACK_IMPORTED_MODULE_1__["default"]( element );
-	const targetRect = new _rect__WEBPACK_IMPORTED_MODULE_1__["default"]( target );
-
-	let bestPosition;
-	let name;
-
-	// If there are no limits, just grab the very first position and be done with that drama.
-	if ( !limiter && !fitInViewport ) {
-		[ name, bestPosition ] = getPosition( positions[ 0 ], targetRect, elementRect );
-	} else {
-		const limiterRect = limiter && new _rect__WEBPACK_IMPORTED_MODULE_1__["default"]( limiter ).getVisible();
-		const viewportRect = fitInViewport && new _rect__WEBPACK_IMPORTED_MODULE_1__["default"]( _global__WEBPACK_IMPORTED_MODULE_0__["default"].window );
-
-		[ name, bestPosition ] =
-			getBestPosition( positions, targetRect, elementRect, limiterRect, viewportRect ) ||
-			// If there's no best position found, i.e. when all intersections have no area because
-			// rects have no width or height, then just use the first available position.
-			getPosition( positions[ 0 ], targetRect, elementRect );
-	}
-
-	let { left, top } = getAbsoluteRectCoordinates( bestPosition );
-
-	if ( positionedElementAncestor ) {
-		const ancestorPosition = getAbsoluteRectCoordinates( new _rect__WEBPACK_IMPORTED_MODULE_1__["default"]( positionedElementAncestor ) );
-		const ancestorBorderWidths = Object(_getborderwidths__WEBPACK_IMPORTED_MODULE_3__["default"])( positionedElementAncestor );
-
-		// (https://github.com/ckeditor/ckeditor5-ui-default/issues/126)
-		// If there's some positioned ancestor of the panel, then its `Rect` must be taken into
-		// consideration. `Rect` is always relative to the viewport while `position: absolute` works
-		// with respect to that positioned ancestor.
-		left -= ancestorPosition.left;
-		top -= ancestorPosition.top;
-
-		// (https://github.com/ckeditor/ckeditor5-utils/issues/139)
-		// If there's some positioned ancestor of the panel, not only its position must be taken into
-		// consideration (see above) but also its internal scrolls. Scroll have an impact here because `Rect`
-		// is relative to the viewport (it doesn't care about scrolling), while `position: absolute`
-		// must compensate that scrolling.
-		left += positionedElementAncestor.scrollLeft;
-		top += positionedElementAncestor.scrollTop;
-
-		// (https://github.com/ckeditor/ckeditor5-utils/issues/139)
-		// If there's some positioned ancestor of the panel, then its `Rect` includes its CSS `borderWidth`
-		// while `position: absolute` positioning does not consider it.
-		// E.g. `{ position: absolute, top: 0, left: 0 }` means upper left corner of the element,
-		// not upper-left corner of its border.
-		left -= ancestorBorderWidths.left;
-		top -= ancestorBorderWidths.top;
-	}
-
-	return { left, top, name };
-}
-
-// For given position function, returns a corresponding `Rect` instance.
-//
-// @private
-// @param {Function} position A function returning {@link module:utils/dom/position~Position}.
-// @param {utils/dom/rect~Rect} targetRect A rect of the target.
-// @param {utils/dom/rect~Rect} elementRect A rect of positioned element.
-// @returns {Array} An array containing position name and its Rect.
-function getPosition( position, targetRect, elementRect ) {
-	const { left, top, name } = position( targetRect, elementRect );
-
-	return [ name, elementRect.clone().moveTo( left, top ) ];
-}
-
-// For a given array of positioning functions, returns such that provides the best
-// fit of the `elementRect` into the `limiterRect` and `viewportRect`.
-//
-// @private
-// @param {module:utils/dom/position~Options#positions} positions Functions returning
-// {@link module:utils/dom/position~Position} to be checked, in the order of preference.
-// @param {utils/dom/rect~Rect} targetRect A rect of the {@link module:utils/dom/position~Options#target}.
-// @param {utils/dom/rect~Rect} elementRect A rect of positioned {@link module:utils/dom/position~Options#element}.
-// @param {utils/dom/rect~Rect} limiterRect A rect of the {@link module:utils/dom/position~Options#limiter}.
-// @param {utils/dom/rect~Rect} viewportRect A rect of the viewport.
-// @returns {Array} An array containing the name of the position and it's rect.
-function getBestPosition( positions, targetRect, elementRect, limiterRect, viewportRect ) {
-	let maxLimiterIntersectArea = 0;
-	let maxViewportIntersectArea = 0;
-	let bestPositionRect;
-	let bestPositionName;
-
-	// This is when element is fully visible.
-	const elementRectArea = elementRect.getArea();
-
-	positions.some( position => {
-		const [ positionName, positionRect ] = getPosition( position, targetRect, elementRect );
-		let limiterIntersectArea;
-		let viewportIntersectArea;
-
-		if ( limiterRect ) {
-			if ( viewportRect ) {
-				// Consider only the part of the limiter which is visible in the viewport. So the limiter is getting limited.
-				const limiterViewportIntersectRect = limiterRect.getIntersection( viewportRect );
-
-				if ( limiterViewportIntersectRect ) {
-					// If the limiter is within the viewport, then check the intersection between that part of the
-					// limiter and actual position.
-					limiterIntersectArea = limiterViewportIntersectRect.getIntersectionArea( positionRect );
-				} else {
-					limiterIntersectArea = 0;
-				}
-			} else {
-				limiterIntersectArea = limiterRect.getIntersectionArea( positionRect );
-			}
-		}
-
-		if ( viewportRect ) {
-			viewportIntersectArea = viewportRect.getIntersectionArea( positionRect );
-		}
-
-		// The only criterion: intersection with the viewport.
-		if ( viewportRect && !limiterRect ) {
-			if ( viewportIntersectArea > maxViewportIntersectArea ) {
-				setBestPosition();
-			}
-		}
-		// The only criterion: intersection with the limiter.
-		else if ( !viewportRect && limiterRect ) {
-			if ( limiterIntersectArea > maxLimiterIntersectArea ) {
-				setBestPosition();
-			}
-		}
-		// Two criteria: intersection with the viewport and the limiter visible in the viewport.
-		else {
-			if ( viewportIntersectArea > maxViewportIntersectArea && limiterIntersectArea >= maxLimiterIntersectArea ) {
-				setBestPosition();
-			} else if ( viewportIntersectArea >= maxViewportIntersectArea && limiterIntersectArea > maxLimiterIntersectArea ) {
-				setBestPosition();
-			}
-		}
-
-		function setBestPosition() {
-			maxViewportIntersectArea = viewportIntersectArea;
-			maxLimiterIntersectArea = limiterIntersectArea;
-			bestPositionRect = positionRect;
-			bestPositionName = positionName;
-		}
-
-		// If a such position is found that element is fully container by the limiter then, obviously,
-		// there will be no better one, so finishing.
-		return limiterIntersectArea === elementRectArea;
-	} );
-
-	return bestPositionRect ? [ bestPositionName, bestPositionRect ] : null;
-}
-
-// DOMRect (also Rect) works in a scroll–independent geometry but `position: absolute` doesn't.
-// This function converts Rect to `position: absolute` coordinates.
-//
-// @private
-// @param {utils/dom/rect~Rect} rect A rect to be converted.
-// @returns {Object} Object containing `left` and `top` properties, in absolute coordinates.
-function getAbsoluteRectCoordinates( { left, top } ) {
-	const { scrollX, scrollY } = _global__WEBPACK_IMPORTED_MODULE_0__["default"].window;
-
-	return {
-		left: left + scrollX,
-		top: top + scrollY,
-	};
-}
-
-/**
- * The `getOptimalPosition` helper options.
- *
- * @interface module:utils/dom/position~Options
- */
-
-/**
- * Element that is to be positioned.
- *
- * @member {HTMLElement} #element
- */
-
-/**
- * Target with respect to which the `element` is to be positioned.
- *
- * @member {HTMLElement|Range|ClientRect|Rect|Function} #target
- */
-
-/**
- * An array of functions which return {@link module:utils/dom/position~Position} relative
- * to the `target`, in the order of preference.
- *
- * @member {Array.<Function>} #positions
- */
-
-/**
- * When set, the algorithm will chose position which fits the most in the
- * limiter's bounding rect.
- *
- * @member {HTMLElement|Range|ClientRect|Rect|Function} #limiter
- */
-
-/**
- * When set, the algorithm will chose such a position which fits `element`
- * the most inside visible viewport.
- *
- * @member {Boolean} #fitInViewport
- */
-
-/**
- * An object describing a position in `position: absolute` coordinate
- * system, along with position name.
- *
- * @typedef {Object} module:utils/dom/position~Position
- *
- * @property {Number} top Top position offset.
- * @property {Number} left Left position offset.
- * @property {String} name Name of the position.
- */
 
 
 /***/ }),
@@ -70978,928 +63754,6 @@ if ( windowOrGlobal.CKEDITOR_VERSION ) {
 
 /***/ }),
 
-/***/ "./node_modules/@ckeditor/ckeditor5-widget/src/highlightstack.js":
-/*!***********************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-widget/src/highlightstack.js ***!
-  \***********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return HighlightStack; });
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_emittermixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/emittermixin */ "./node_modules/@ckeditor/ckeditor5-utils/src/emittermixin.js");
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_mix__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/mix */ "./node_modules/@ckeditor/ckeditor5-utils/src/mix.js");
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module widget/highlightstack
- */
-
-
-
-
-/**
- * Class used to handle correct order of highlights on elements.
- *
- * When different highlights are applied to same element correct order should be preserved:
- *
- * * highlight with highest priority should be applied,
- * * if two highlights have same priority - sort by CSS class provided in
- * {@link module:engine/conversion/downcast-converters~HighlightDescriptor}.
- *
- * This way, highlight will be applied with the same rules it is applied on texts.
- */
-class HighlightStack {
-	/**
-	 * Creates class instance.
-	 */
-	constructor() {
-		this._stack = [];
-	}
-
-	/**
-	 * Adds highlight descriptor to the stack.
-	 *
-	 * @fires change:top
-	 * @param {module:engine/conversion/downcast-converters~HighlightDescriptor} descriptor
-	 * @param {module:engine/view/writer~Writer} writer
-	 */
-	add( descriptor, writer ) {
-		const stack = this._stack;
-
-		// Save top descriptor and insert new one. If top is changed - fire event.
-		const oldTop = stack[ 0 ];
-		this._insertDescriptor( descriptor );
-		const newTop = stack[ 0 ];
-
-		// When new object is at the top and stores different information.
-		if ( oldTop !== newTop && !compareDescriptors( oldTop, newTop ) ) {
-			this.fire( 'change:top', {
-				oldDescriptor: oldTop,
-				newDescriptor: newTop,
-				writer
-			} );
-		}
-	}
-
-	/**
-	 * Removes highlight descriptor from the stack.
-	 *
-	 * @fires change:top
-	 * @param {String} id Id of the descriptor to remove.
-	 * @param {module:engine/view/writer~Writer} writer
-	 */
-	remove( id, writer ) {
-		const stack = this._stack;
-
-		const oldTop = stack[ 0 ];
-		this._removeDescriptor( id );
-		const newTop = stack[ 0 ];
-
-		// When new object is at the top and stores different information.
-		if ( oldTop !== newTop && !compareDescriptors( oldTop, newTop ) ) {
-			this.fire( 'change:top', {
-				oldDescriptor: oldTop,
-				newDescriptor: newTop,
-				writer
-			} );
-		}
-	}
-
-	/**
-	 * Inserts given descriptor in correct place in the stack. It also takes care about updating information when
-	 * descriptor with same id is already present.
-	 *
-	 * @private
-	 * @param {module:engine/conversion/downcast-converters~HighlightDescriptor} descriptor
-	 */
-	_insertDescriptor( descriptor ) {
-		const stack = this._stack;
-		const index = stack.findIndex( item => item.id === descriptor.id );
-
-		// Inserting exact same descriptor - do nothing.
-		if ( compareDescriptors( descriptor, stack[ index ] ) ) {
-			return;
-		}
-
-		// If descriptor with same id but with different information is on the stack - remove it.
-		if ( index > -1 ) {
-			stack.splice( index, 1 );
-		}
-
-		// Find correct place to insert descriptor in the stack.
-		// It have different information (for example priority) so it must be re-inserted in correct place.
-		let i = 0;
-
-		while ( stack[ i ] && shouldABeBeforeB( stack[ i ], descriptor ) ) {
-			i++;
-		}
-
-		stack.splice( i, 0, descriptor );
-	}
-
-	/**
-	 * Removes descriptor with given id from the stack.
-	 *
-	 * @private
-	 * @param {String} id Descriptor's id.
-	 */
-	_removeDescriptor( id ) {
-		const stack = this._stack;
-		const index = stack.findIndex( item => item.id === id );
-
-		// If descriptor with same id is on the list - remove it.
-		if ( index > -1 ) {
-			stack.splice( index, 1 );
-		}
-	}
-}
-
-Object(_ckeditor_ckeditor5_utils_src_mix__WEBPACK_IMPORTED_MODULE_1__["default"])( HighlightStack, _ckeditor_ckeditor5_utils_src_emittermixin__WEBPACK_IMPORTED_MODULE_0__["default"] );
-
-// Compares two descriptors by checking their priority and class list.
-//
-// @param {module:engine/conversion/downcast-converters~HighlightDescriptor} a
-// @param {module:engine/conversion/downcast-converters~HighlightDescriptor} b
-// @returns {Boolean} Returns true if both descriptors are defined and have same priority and classes.
-function compareDescriptors( a, b ) {
-	return a && b && a.priority == b.priority && classesToString( a.classes ) == classesToString( b.classes );
-}
-
-// Checks whenever first descriptor should be placed in the stack before second one.
-//
-// @param {module:engine/conversion/downcast-converters~HighlightDescriptor} a
-// @param {module:engine/conversion/downcast-converters~HighlightDescriptor} b
-// @returns {Boolean}
-function shouldABeBeforeB( a, b ) {
-	if ( a.priority > b.priority ) {
-		return true;
-	} else if ( a.priority < b.priority ) {
-		return false;
-	}
-
-	// When priorities are equal and names are different - use classes to compare.
-	return classesToString( a.classes ) > classesToString( b.classes );
-}
-
-// Converts CSS classes passed with {@link module:engine/conversion/downcast-converters~HighlightDescriptor} to
-// sorted string.
-//
-// @param {String|Array<String>} descriptor
-// @returns {String}
-function classesToString( classes ) {
-	return Array.isArray( classes ) ? classes.sort().join( ',' ) : classes;
-}
-
-/**
- * Fired when top element on {@link module:widget/highlightstack~HighlightStack} has been changed
- *
- * @event change:top
- * @param {Object} data Additional information about the change.
- * @param {module:engine/conversion/downcast-converters~HighlightDescriptor} [data.newDescriptor] New highlight
- * descriptor. It will be `undefined` when last descriptor is removed from the stack.
- * @param {module:engine/conversion/downcast-converters~HighlightDescriptor} [data.oldDescriptor] Old highlight
- * descriptor. It will be `undefined` when first descriptor is added to the stack.
- * @param {module:engine/view/writer~Writer} writer View writer that can be used to modify element.
- */
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-widget/src/utils.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-widget/src/utils.js ***!
-  \**************************************************************/
-/*! exports provided: WIDGET_CLASS_NAME, WIDGET_SELECTED_CLASS_NAME, isWidget, toWidget, setHighlightHandling, setLabel, getLabel, toWidgetEditable */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WIDGET_CLASS_NAME", function() { return WIDGET_CLASS_NAME; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WIDGET_SELECTED_CLASS_NAME", function() { return WIDGET_SELECTED_CLASS_NAME; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isWidget", function() { return isWidget; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toWidget", function() { return toWidget; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setHighlightHandling", function() { return setHighlightHandling; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setLabel", function() { return setLabel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLabel", function() { return getLabel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toWidgetEditable", function() { return toWidgetEditable; });
-/* harmony import */ var _highlightstack__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./highlightstack */ "./node_modules/@ckeditor/ckeditor5-widget/src/highlightstack.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_view_position__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/view/position */ "./node_modules/@ckeditor/ckeditor5-engine/src/view/position.js");
-/* harmony import */ var _ckeditor_ckeditor5_ui_src_icon_iconview__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-ui/src/icon/iconview */ "./node_modules/@ckeditor/ckeditor5-ui/src/icon/iconview.js");
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_env__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/env */ "./node_modules/@ckeditor/ckeditor5-utils/src/env.js");
-/* harmony import */ var _theme_icons_drag_handler_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../theme/icons/drag-handler.svg */ "./node_modules/@ckeditor/ckeditor5-widget/theme/icons/drag-handler.svg");
-/* harmony import */ var _theme_icons_drag_handler_svg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_theme_icons_drag_handler_svg__WEBPACK_IMPORTED_MODULE_4__);
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module widget/utils
- */
-
-
-
-
-
-
-
-
-const widgetSymbol = Symbol( 'isWidget' );
-const labelSymbol = Symbol( 'label' );
-
-/**
- * CSS class added to each widget element.
- *
- * @const {String}
- */
-const WIDGET_CLASS_NAME = 'ck-widget';
-
-/**
- * CSS class added to currently selected widget element.
- *
- * @const {String}
- */
-const WIDGET_SELECTED_CLASS_NAME = 'ck-widget_selected';
-
-/**
- * Returns `true` if given {@link module:engine/view/element~Element} is a widget.
- *
- * @param {module:engine/view/element~Element} element
- * @returns {Boolean}
- */
-function isWidget( element ) {
-	return !!element.getCustomProperty( widgetSymbol );
-}
-
-/**
- * Converts given {@link module:engine/view/element~Element} to widget in following way:
- * * sets `contenteditable` attribute to `"true"`,
- * * adds custom `getFillerOffset` method returning `null`,
- * * adds `ck-widget` CSS class,
- * * adds custom property allowing to recognize widget elements by using {@link ~isWidget},
- * * implements `addHighlight` and `removeHighlight` custom properties to handle view highlight on widgets.
- *
- * @param {module:engine/view/element~Element} element
- * @param {module:engine/view/writer~Writer} writer
- * @param {Object} [options={}]
- * @param {String|Function} [options.label] Element's label provided to {@link ~setLabel} function. It can be passed as
- * a plain string or a function returning a string.
- * @param {Boolean} [options.hasSelectionHandler=false] If `true`, the widget will have a selection handler added.
- * @returns {module:engine/view/element~Element} Returns same element.
- */
-function toWidget( element, writer, options = {} ) {
-	// The selection on Edge behaves better when the whole editor contents is in a single contentedible element.
-	// https://github.com/ckeditor/ckeditor5/issues/1079
-	if ( !_ckeditor_ckeditor5_utils_src_env__WEBPACK_IMPORTED_MODULE_3__["default"].isEdge ) {
-		writer.setAttribute( 'contenteditable', 'false', element );
-	}
-
-	writer.addClass( WIDGET_CLASS_NAME, element );
-	writer.setCustomProperty( widgetSymbol, true, element );
-	element.getFillerOffset = getFillerOffset;
-
-	if ( options.label ) {
-		setLabel( element, options.label, writer );
-	}
-
-	if ( options.hasSelectionHandler ) {
-		addSelectionHandler( element, writer );
-	}
-
-	setHighlightHandling(
-		element,
-		writer,
-		( element, descriptor, writer ) => writer.addClass( normalizeToArray( descriptor.classes ), element ),
-		( element, descriptor, writer ) => writer.removeClass( normalizeToArray( descriptor.classes ), element )
-	);
-
-	return element;
-
-	// Normalizes CSS class in descriptor that can be provided in form of an array or a string.
-	function normalizeToArray( classes ) {
-		return Array.isArray( classes ) ? classes : [ classes ];
-	}
-}
-
-/**
- * Sets highlight handling methods. Uses {@link module:widget/highlightstack~HighlightStack} to
- * properly determine which highlight descriptor should be used at given time.
- *
- * @param {module:engine/view/element~Element} element
- * @param {module:engine/view/writer~Writer} writer
- * @param {Function} add
- * @param {Function} remove
- */
-function setHighlightHandling( element, writer, add, remove ) {
-	const stack = new _highlightstack__WEBPACK_IMPORTED_MODULE_0__["default"]();
-
-	stack.on( 'change:top', ( evt, data ) => {
-		if ( data.oldDescriptor ) {
-			remove( element, data.oldDescriptor, data.writer );
-		}
-
-		if ( data.newDescriptor ) {
-			add( element, data.newDescriptor, data.writer );
-		}
-	} );
-
-	writer.setCustomProperty( 'addHighlight', ( element, descriptor, writer ) => stack.add( descriptor, writer ), element );
-	writer.setCustomProperty( 'removeHighlight', ( element, id, writer ) => stack.remove( id, writer ), element );
-}
-
-/**
- * Sets label for given element.
- * It can be passed as a plain string or a function returning a string. Function will be called each time label is retrieved by
- * {@link ~getLabel}.
- *
- * @param {module:engine/view/element~Element} element
- * @param {String|Function} labelOrCreator
- * @param {module:engine/view/writer~Writer} writer
- */
-function setLabel( element, labelOrCreator, writer ) {
-	writer.setCustomProperty( labelSymbol, labelOrCreator, element );
-}
-
-/**
- * Returns label for provided element.
- *
- * @param {module:engine/view/element~Element} element
- * @returns {String}
- */
-function getLabel( element ) {
-	const labelCreator = element.getCustomProperty( labelSymbol );
-
-	if ( !labelCreator ) {
-		return '';
-	}
-
-	return typeof labelCreator == 'function' ? labelCreator() : labelCreator;
-}
-
-/**
- * Adds functionality to provided {module:engine/view/editableelement~EditableElement} to act as a widget's editable:
- * * adds `ck-editor__editable` and `ck-editor__nested-editable` CSS classes,
- * * sets `contenteditable` as `true` when {module:engine/view/editableelement~EditableElement#isReadOnly} is `false`
- * otherwise set `false`,
- * * adds `ck-editor__nested-editable_focused` CSS class when editable is focused and removes it when it's blurred.
- *
- * @param {module:engine/view/editableelement~EditableElement} editable
- * @param {module:engine/view/writer~Writer} writer
- * @returns {module:engine/view/editableelement~EditableElement} Returns same element that was provided in `editable` param.
- */
-function toWidgetEditable( editable, writer ) {
-	writer.addClass( [ 'ck-editor__editable', 'ck-editor__nested-editable' ], editable );
-
-	// The selection on Edge behaves better when the whole editor contents is in a single contentedible element.
-	// https://github.com/ckeditor/ckeditor5/issues/1079
-	if ( !_ckeditor_ckeditor5_utils_src_env__WEBPACK_IMPORTED_MODULE_3__["default"].isEdge ) {
-		// Set initial contenteditable value.
-		writer.setAttribute( 'contenteditable', editable.isReadOnly ? 'false' : 'true', editable );
-
-		// Bind the contenteditable property to element#isReadOnly.
-		editable.on( 'change:isReadOnly', ( evt, property, is ) => {
-			writer.setAttribute( 'contenteditable', is ? 'false' : 'true', editable );
-		} );
-	}
-
-	editable.on( 'change:isFocused', ( evt, property, is ) => {
-		if ( is ) {
-			writer.addClass( 'ck-editor__nested-editable_focused', editable );
-		} else {
-			writer.removeClass( 'ck-editor__nested-editable_focused', editable );
-		}
-	} );
-
-	return editable;
-}
-
-// Default filler offset function applied to all widget elements.
-//
-// @returns {null}
-function getFillerOffset() {
-	return null;
-}
-
-// Adds a drag handler to the editable element.
-//
-// @param {module:engine/view/editableelement~EditableElement}
-// @param {module:engine/view/writer~Writer} writer
-function addSelectionHandler( editable, writer ) {
-	const selectionHandler = writer.createUIElement( 'div', { class: 'ck ck-widget__selection-handler' }, function( domDocument ) {
-		const domElement = this.toDomElement( domDocument );
-
-		// Use the IconView from the ui library.
-		const icon = new _ckeditor_ckeditor5_ui_src_icon_iconview__WEBPACK_IMPORTED_MODULE_2__["default"]();
-		icon.set( 'content', _theme_icons_drag_handler_svg__WEBPACK_IMPORTED_MODULE_4___default.a );
-
-		// Render the icon view right away to append its #element to the selectionHandler DOM element.
-		icon.render();
-
-		domElement.appendChild( icon.element );
-
-		return domElement;
-	} );
-
-	// Append the selection handler into the widget wrapper.
-	writer.insert( _ckeditor_ckeditor5_engine_src_view_position__WEBPACK_IMPORTED_MODULE_1__["default"].createAt( editable ), selectionHandler );
-	writer.addClass( [ 'ck-widget_selectable' ], editable );
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-widget/src/widget.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-widget/src/widget.js ***!
-  \***************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Widget; });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_view_observer_mouseobserver__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/view/observer/mouseobserver */ "./node_modules/@ckeditor/ckeditor5-engine/src/view/observer/mouseobserver.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_model_range__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/model/range */ "./node_modules/@ckeditor/ckeditor5-engine/src/model/range.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_model_selection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/model/selection */ "./node_modules/@ckeditor/ckeditor5-engine/src/model/selection.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_model_element__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/model/element */ "./node_modules/@ckeditor/ckeditor5-engine/src/model/element.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_view_editableelement__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/view/editableelement */ "./node_modules/@ckeditor/ckeditor5-engine/src/view/editableelement.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_view_rooteditableelement__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/view/rooteditableelement */ "./node_modules/@ckeditor/ckeditor5-engine/src/view/rooteditableelement.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./utils */ "./node_modules/@ckeditor/ckeditor5-widget/src/utils.js");
-/* harmony import */ var _ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/keyboard */ "./node_modules/@ckeditor/ckeditor5-utils/src/keyboard.js");
-/* harmony import */ var _theme_widget_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../theme/widget.css */ "./node_modules/@ckeditor/ckeditor5-widget/theme/widget.css");
-/* harmony import */ var _theme_widget_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_theme_widget_css__WEBPACK_IMPORTED_MODULE_9__);
-/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/**
- * @module widget/widget
- */
-
-
-
-
-
-
-
-
-
-
-
-
-
-const selectAllKeystrokeCode = Object(_ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_8__["parseKeystroke"])( 'Ctrl+A' );
-
-/**
- * The widget plugin.
- * Registers model to view selection converter for editing pipeline. It is hooked after default selection conversion.
- * If converted selection is placed around widget element, selection is marked as fake. Additionally, proper CSS class
- * is added to indicate that widget has been selected.
- * Adds default {@link module:engine/view/document~Document#event:mousedown mousedown} handling on widget elements.
- *
- * @extends module:core/plugin~Plugin.
- */
-class Widget extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-	/**
-	 * @inheritDoc
-	 */
-	static get pluginName() {
-		return 'Widget';
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	init() {
-		const view = this.editor.editing.view;
-		const viewDocument = view.document;
-
-		/**
-		 * Holds previously selected widgets.
-		 *
-		 * @private
-		 * @type {Set.<module:engine/view/element~Element>}
-		 */
-		this._previouslySelected = new Set();
-
-		// Model to view selection converter.
-		// Converts selection placed over widget element to fake selection
-		this.editor.editing.downcastDispatcher.on( 'selection', ( evt, data, conversionApi ) => {
-			// Remove selected class from previously selected widgets.
-			this._clearPreviouslySelectedWidgets( conversionApi.writer );
-
-			const viewWriter = conversionApi.writer;
-			const viewSelection = viewWriter.document.selection;
-			const selectedElement = viewSelection.getSelectedElement();
-
-			for ( const range of viewSelection.getRanges() ) {
-				for ( const value of range ) {
-					const node = value.item;
-
-					if ( node.is( 'element' ) && Object(_utils__WEBPACK_IMPORTED_MODULE_7__["isWidget"])( node ) ) {
-						viewWriter.addClass( _utils__WEBPACK_IMPORTED_MODULE_7__["WIDGET_SELECTED_CLASS_NAME"], node );
-						this._previouslySelected.add( node );
-
-						// Check if widget is a single element selected.
-						if ( node == selectedElement ) {
-							viewWriter.setSelection( viewSelection.getRanges(), { fake: true, label: Object(_utils__WEBPACK_IMPORTED_MODULE_7__["getLabel"])( selectedElement ) } );
-						}
-					}
-				}
-			}
-		}, { priority: 'low' } );
-
-		// If mouse down is pressed on widget - create selection over whole widget.
-		view.addObserver( _ckeditor_ckeditor5_engine_src_view_observer_mouseobserver__WEBPACK_IMPORTED_MODULE_1__["default"] );
-		this.listenTo( viewDocument, 'mousedown', ( ...args ) => this._onMousedown( ...args ) );
-
-		// Handle custom keydown behaviour.
-		this.listenTo( viewDocument, 'keydown', ( ...args ) => this._onKeydown( ...args ), { priority: 'high' } );
-
-		// Handle custom delete behaviour.
-		this.listenTo( viewDocument, 'delete', ( evt, data ) => {
-			if ( this._handleDelete( data.direction == 'forward' ) ) {
-				data.preventDefault();
-				evt.stop();
-			}
-		}, { priority: 'high' } );
-	}
-
-	/**
-	 * Handles {@link module:engine/view/document~Document#event:mousedown mousedown} events on widget elements.
-	 *
-	 * @private
-	 * @param {module:utils/eventinfo~EventInfo} eventInfo
-	 * @param {module:engine/view/observer/domeventdata~DomEventData} domEventData
-	 */
-	_onMousedown( eventInfo, domEventData ) {
-		const editor = this.editor;
-		const view = editor.editing.view;
-		const viewDocument = view.document;
-		let element = domEventData.target;
-
-		// Do nothing if inside nested editable.
-		if ( isInsideNestedEditable( element ) ) {
-			return;
-		}
-
-		// If target is not a widget element - check if one of the ancestors is.
-		if ( !Object(_utils__WEBPACK_IMPORTED_MODULE_7__["isWidget"])( element ) ) {
-			element = element.findAncestor( _utils__WEBPACK_IMPORTED_MODULE_7__["isWidget"] );
-
-			if ( !element ) {
-				return;
-			}
-		}
-
-		domEventData.preventDefault();
-
-		// Focus editor if is not focused already.
-		if ( !viewDocument.isFocused ) {
-			view.focus();
-		}
-
-		// Create model selection over widget.
-		const modelElement = editor.editing.mapper.toModelElement( element );
-
-		this._setSelectionOverElement( modelElement );
-	}
-
-	/**
-	 * Handles {@link module:engine/view/document~Document#event:keydown keydown} events.
-	 *
-	 * @private
-	 * @param {module:utils/eventinfo~EventInfo} eventInfo
-	 * @param {module:engine/view/observer/domeventdata~DomEventData} domEventData
-	 */
-	_onKeydown( eventInfo, domEventData ) {
-		const keyCode = domEventData.keyCode;
-		const isForward = keyCode == _ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_8__["keyCodes"].delete || keyCode == _ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_8__["keyCodes"].arrowdown || keyCode == _ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_8__["keyCodes"].arrowright;
-		let wasHandled = false;
-
-		// Checks if the keys were handled and then prevents the default event behaviour and stops
-		// the propagation.
-		if ( isArrowKeyCode( keyCode ) ) {
-			wasHandled = this._handleArrowKeys( isForward );
-		} else if ( isSelectAllKeyCode( domEventData ) ) {
-			wasHandled = this._selectAllNestedEditableContent() || this._selectAllContent();
-		} else if ( keyCode === _ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_8__["keyCodes"].enter ) {
-			wasHandled = this._handleEnterKey( domEventData.shiftKey );
-		}
-
-		if ( wasHandled ) {
-			domEventData.preventDefault();
-			eventInfo.stop();
-		}
-	}
-
-	/**
-	 * Handles delete keys: backspace and delete.
-	 *
-	 * @private
-	 * @param {Boolean} isForward Set to true if delete was performed in forward direction.
-	 * @returns {Boolean|undefined} Returns `true` if keys were handled correctly.
-	 */
-	_handleDelete( isForward ) {
-		// Do nothing when the read only mode is enabled.
-		if ( this.editor.isReadOnly ) {
-			return;
-		}
-
-		const modelDocument = this.editor.model.document;
-		const modelSelection = modelDocument.selection;
-
-		// Do nothing on non-collapsed selection.
-		if ( !modelSelection.isCollapsed ) {
-			return;
-		}
-
-		const objectElement = this._getObjectElementNextToSelection( isForward );
-
-		if ( objectElement ) {
-			this.editor.model.change( writer => {
-				let previousNode = modelSelection.anchor.parent;
-
-				// Remove previous element if empty.
-				while ( previousNode.isEmpty ) {
-					const nodeToRemove = previousNode;
-					previousNode = nodeToRemove.parent;
-
-					writer.remove( nodeToRemove );
-				}
-
-				this._setSelectionOverElement( objectElement );
-			} );
-
-			return true;
-		}
-	}
-
-	/**
-	 * Handles arrow keys.
-	 *
-	 * @private
-	 * @param {Boolean} isForward Set to true if arrow key should be handled in forward direction.
-	 * @returns {Boolean|undefined} Returns `true` if keys were handled correctly.
-	 */
-	_handleArrowKeys( isForward ) {
-		const model = this.editor.model;
-		const schema = model.schema;
-		const modelDocument = model.document;
-		const modelSelection = modelDocument.selection;
-		const objectElement = modelSelection.getSelectedElement();
-
-		// If object element is selected.
-		if ( objectElement && schema.isObject( objectElement ) ) {
-			const position = isForward ? modelSelection.getLastPosition() : modelSelection.getFirstPosition();
-			const newRange = schema.getNearestSelectionRange( position, isForward ? 'forward' : 'backward' );
-
-			if ( newRange ) {
-				model.change( writer => {
-					writer.setSelection( newRange );
-				} );
-			}
-
-			return true;
-		}
-
-		// If selection is next to object element.
-		// Return if not collapsed.
-		if ( !modelSelection.isCollapsed ) {
-			return;
-		}
-
-		const objectElement2 = this._getObjectElementNextToSelection( isForward );
-
-		if ( objectElement2 instanceof _ckeditor_ckeditor5_engine_src_model_element__WEBPACK_IMPORTED_MODULE_4__["default"] && schema.isObject( objectElement2 ) ) {
-			this._setSelectionOverElement( objectElement2 );
-
-			return true;
-		}
-	}
-
-	/**
-	 * Handles the enter key, giving users and access to positions in the editable directly before
-	 * (<kbd>Shift</kbd>+<kbd>Enter</kbd>) or after (<kbd>Enter</kbd>) the selected widget.
-	 * It improves the UX, mainly when the widget is the first or last child of the root editable
-	 * and there's no other way to type after or before it.
-	 *
-	 * @private
-	 * @param {Boolean} isBackwards Set to true if the new paragraph is to be inserted before
-	 * the selected widget (<kbd>Shift</kbd>+<kbd>Enter</kbd>).
-	 * @returns {Boolean|undefined} Returns `true` if keys were handled correctly.
-	 */
-	_handleEnterKey( isBackwards ) {
-		const model = this.editor.model;
-		const modelSelection = model.document.selection;
-		const objectElement = modelSelection.getSelectedElement();
-
-		if ( objectElement && model.schema.isObject( objectElement ) ) {
-			model.change( writer => {
-				const paragraph = writer.createElement( 'paragraph' );
-
-				writer.insert( paragraph, objectElement, isBackwards ? 'before' : 'after' );
-				writer.setSelection( paragraph, 'in' );
-			} );
-
-			return true;
-		}
-	}
-
-	/**
-	 * Extends the {@link module:engine/model/selection~Selection document's selection} to span the entire
-	 * content of the nested editable if already anchored in one.
-	 *
-	 * See: {@link module:engine/model/schema~Schema#getLimitElement}.
-	 *
-	 * @private
-	 */
-	_selectAllNestedEditableContent() {
-		const model = this.editor.model;
-		const documentSelection = model.document.selection;
-		const limitElement = model.schema.getLimitElement( documentSelection );
-
-		if ( documentSelection.getFirstRange().root == limitElement ) {
-			return false;
-		}
-
-		model.change( writer => {
-			writer.setSelection( _ckeditor_ckeditor5_engine_src_model_range__WEBPACK_IMPORTED_MODULE_2__["default"].createIn( limitElement ) );
-		} );
-
-		return true;
-	}
-
-	/**
-	 * Handles <kbd>CTRL + A</kbd> when widget is selected.
-	 *
-	 * @private
-	 * @returns {Boolean} Returns true if widget was selected and selecting all was handled by this method.
-	 */
-	_selectAllContent() {
-		const model = this.editor.model;
-		const editing = this.editor.editing;
-		const view = editing.view;
-		const viewDocument = view.document;
-		const viewSelection = viewDocument.selection;
-
-		const selectedElement = viewSelection.getSelectedElement();
-
-		// Only widget is selected.
-		// https://github.com/ckeditor/ckeditor5-widget/issues/23
-		if ( selectedElement && Object(_utils__WEBPACK_IMPORTED_MODULE_7__["isWidget"])( selectedElement ) ) {
-			const widgetParent = editing.mapper.toModelElement( selectedElement.parent );
-
-			model.change( writer => {
-				writer.setSelection( _ckeditor_ckeditor5_engine_src_model_range__WEBPACK_IMPORTED_MODULE_2__["default"].createIn( widgetParent ) );
-			} );
-
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
-	 * Sets {@link module:engine/model/selection~Selection document's selection} over given element.
-	 *
-	 * @private
-	 * @param {module:engine/model/element~Element} element
-	 */
-	_setSelectionOverElement( element ) {
-		this.editor.model.change( writer => {
-			writer.setSelection( _ckeditor_ckeditor5_engine_src_model_range__WEBPACK_IMPORTED_MODULE_2__["default"].createOn( element ) );
-		} );
-	}
-
-	/**
-	 * Checks if {@link module:engine/model/element~Element element} placed next to the current
-	 * {@link module:engine/model/selection~Selection model selection} exists and is marked in
-	 * {@link module:engine/model/schema~Schema schema} as `object`.
-	 *
-	 * @private
-	 * @param {Boolean} forward Direction of checking.
-	 * @returns {module:engine/model/element~Element|null}
-	 */
-	_getObjectElementNextToSelection( forward ) {
-		const model = this.editor.model;
-		const schema = model.schema;
-		const modelSelection = model.document.selection;
-
-		// Clone current selection to use it as a probe. We must leave default selection as it is so it can return
-		// to its current state after undo.
-		const probe = new _ckeditor_ckeditor5_engine_src_model_selection__WEBPACK_IMPORTED_MODULE_3__["default"]( modelSelection );
-		model.modifySelection( probe, { direction: forward ? 'forward' : 'backward' } );
-		const objectElement = forward ? probe.focus.nodeBefore : probe.focus.nodeAfter;
-
-		if ( objectElement instanceof _ckeditor_ckeditor5_engine_src_model_element__WEBPACK_IMPORTED_MODULE_4__["default"] && schema.isObject( objectElement ) ) {
-			return objectElement;
-		}
-
-		return null;
-	}
-
-	/**
-	 * Removes CSS class from previously selected widgets.
-	 *
-	 * @private
-	 * @param {module:engine/view/writer~Writer} writer
-	 */
-	_clearPreviouslySelectedWidgets( writer ) {
-		for ( const widget of this._previouslySelected ) {
-			writer.removeClass( _utils__WEBPACK_IMPORTED_MODULE_7__["WIDGET_SELECTED_CLASS_NAME"], widget );
-		}
-
-		this._previouslySelected.clear();
-	}
-}
-
-// Returns 'true' if provided key code represents one of the arrow keys.
-//
-// @param {Number} keyCode
-// @returns {Boolean}
-function isArrowKeyCode( keyCode ) {
-	return keyCode == _ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_8__["keyCodes"].arrowright ||
-		keyCode == _ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_8__["keyCodes"].arrowleft ||
-		keyCode == _ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_8__["keyCodes"].arrowup ||
-		keyCode == _ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_8__["keyCodes"].arrowdown;
-}
-
-// Returns 'true' if provided (DOM) key event data corresponds with the Ctrl+A keystroke.
-//
-// @param {module:engine/view/observer/keyobserver~KeyEventData} domEventData
-// @returns {Boolean}
-function isSelectAllKeyCode( domEventData ) {
-	return Object(_ckeditor_ckeditor5_utils_src_keyboard__WEBPACK_IMPORTED_MODULE_8__["getCode"])( domEventData ) == selectAllKeystrokeCode;
-}
-
-// Returns `true` when element is a nested editable or is placed inside one.
-//
-// @param {module:engine/view/element~Element}
-// @returns {Boolean}
-function isInsideNestedEditable( element ) {
-	while ( element ) {
-		if ( element instanceof _ckeditor_ckeditor5_engine_src_view_editableelement__WEBPACK_IMPORTED_MODULE_5__["default"] && !( element instanceof _ckeditor_ckeditor5_engine_src_view_rooteditableelement__WEBPACK_IMPORTED_MODULE_6__["default"] ) ) {
-			return true;
-		}
-
-		element = element.parent;
-	}
-
-	return false;
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-widget/theme/icons/drag-handler.svg":
-/*!******************************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-widget/theme/icons/drag-handler.svg ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" xmlns=\"http://www.w3.org/2000/svg\"><g><path d=\"M4 0v1H1v3H0V.5A.5.5 0 0 1 .5 0H4zm8 0h3.5a.5.5 0 0 1 .5.5V4h-1V1h-3V0zM4 16H.5a.5.5 0 0 1-.5-.5V12h1v3h3v1zm8 0v-1h3v-3h1v3.5a.5.5 0 0 1-.5.5H12z\"/><path fill-opacity=\".256\" d=\"M1 1h14v14H1z\"/><g class=\"ck-icon__selected-indicator\"><path d=\"M7 0h2v1H7V0zM0 7h1v2H0V7zm15 0h1v2h-1V7zm-8 8h2v1H7v-1z\"/><path fill-opacity=\".254\" d=\"M1 1h14v14H1z\"/></g></g></svg>\n"
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-widget/theme/widget.css":
-/*!******************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-widget/theme/widget.css ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../postcss-loader/src??ref--5-1!./widget.css */ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-widget/theme/widget.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"singleton":true,"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
 /***/ "./node_modules/ckeditor5/package.json":
 /*!*********************************************!*\
   !*** ./node_modules/ckeditor5/package.json ***!
@@ -71907,7 +63761,7 @@ if(false) {}
 /*! exports provided: _from, _id, _inBundle, _integrity, _location, _phantomChildren, _requested, _requiredBy, _resolved, _shasum, _spec, _where, author, bugs, bundleDependencies, deprecated, description, engines, homepage, keywords, license, name, repository, version, default */
 /***/ (function(module) {
 
-module.exports = {"_from":"ckeditor5@^11.0.1","_id":"ckeditor5@11.0.1","_inBundle":false,"_integrity":"sha512-vm8Uak+ecC6YI/b8d87EYufMsDZFsVZTPNzd3eIyWN+hZWx5AP/vHlMZ4iNbyrUvDW04eanBoew8YaO9TFg3GA==","_location":"/ckeditor5","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"ckeditor5@^11.0.1","name":"ckeditor5","escapedName":"ckeditor5","rawSpec":"^11.0.1","saveSpec":null,"fetchSpec":"^11.0.1"},"_requiredBy":["/@ckeditor/ckeditor5-utils"],"_resolved":"https://registry.npmjs.org/ckeditor5/-/ckeditor5-11.0.1.tgz","_shasum":"877d4a61d579cd1b6464cb9353787301576012d8","_spec":"ckeditor5@^11.0.1","_where":"D:\\designbold\\ckeditor\\test\\node_modules\\@ckeditor\\ckeditor5-utils","author":{"name":"CKSource","url":"http://cksource.com/"},"bugs":{"url":"https://github.com/ckeditor/ckeditor5/issues"},"bundleDependencies":false,"deprecated":false,"description":"A set of ready-to-use rich text editors created with a powerful framework. Made with real-time collaborative editing in mind.","engines":{"node":">=6.9.0","npm":">=3.0.0"},"homepage":"http://ckeditor.com","keywords":["ckeditor","ckeditor5","ckeditor 5","wysiwyg","rich text","editor","html","contentEditable","editing","operational transformation","ot","collaboration","collaborative","real-time","framework"],"license":"GPL-2.0-or-later","name":"ckeditor5","repository":{"type":"git","url":"git+https://github.com/ckeditor/ckeditor5.git"},"version":"11.0.1"};
+module.exports = {"_from":"ckeditor5@^11.0.1","_id":"ckeditor5@11.0.1","_inBundle":false,"_integrity":"sha512-vm8Uak+ecC6YI/b8d87EYufMsDZFsVZTPNzd3eIyWN+hZWx5AP/vHlMZ4iNbyrUvDW04eanBoew8YaO9TFg3GA==","_location":"/ckeditor5","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"ckeditor5@^11.0.1","name":"ckeditor5","escapedName":"ckeditor5","rawSpec":"^11.0.1","saveSpec":null,"fetchSpec":"^11.0.1"},"_requiredBy":["/@ckeditor/ckeditor5-utils"],"_resolved":"https://registry.npmjs.org/ckeditor5/-/ckeditor5-11.0.1.tgz","_shasum":"877d4a61d579cd1b6464cb9353787301576012d8","_spec":"ckeditor5@^11.0.1","_where":"D:\\Xampp\\htdocs\\Ckeditor\\test\\third-party\\node_modules\\@ckeditor\\ckeditor5-utils","author":{"name":"CKSource","url":"http://cksource.com/"},"bugs":{"url":"https://github.com/ckeditor/ckeditor5/issues"},"bundleDependencies":false,"deprecated":false,"description":"A set of ready-to-use rich text editors created with a powerful framework. Made with real-time collaborative editing in mind.","engines":{"node":">=6.9.0","npm":">=3.0.0"},"homepage":"http://ckeditor.com","keywords":["ckeditor","ckeditor5","ckeditor 5","wysiwyg","rich text","editor","html","contentEditable","editing","operational transformation","ot","collaboration","collaborative","real-time","framework"],"license":"GPL-2.0-or-later","name":"ckeditor5","repository":{"type":"git","url":"git+https://github.com/ckeditor/ckeditor5.git"},"version":"11.0.1"};
 
 /***/ }),
 
@@ -71919,50 +63773,6 @@ module.exports = {"_from":"ckeditor5@^11.0.1","_id":"ckeditor5@11.0.1","_inBundl
 /***/ (function(module, exports) {
 
 module.exports = ".ck.ck-editor{position:relative}.ck.ck-editor .ck-editor__top .ck-sticky-panel .ck-toolbar{z-index:var(--ck-z-modal)}.ck.ck-editor__top .ck-sticky-panel .ck-toolbar{border-radius:0}.ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel .ck-toolbar,.ck.ck-editor__top .ck-sticky-panel .ck-toolbar.ck-rounded-corners{border-radius:var(--ck-border-radius);border-bottom-left-radius:0;border-bottom-right-radius:0}.ck.ck-editor__top .ck-sticky-panel .ck-toolbar{border-bottom-width:0}.ck.ck-editor__top .ck-sticky-panel .ck-sticky-panel__content_sticky .ck-toolbar{border-bottom-width:1px;border-radius:0}.ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel .ck-sticky-panel__content_sticky .ck-toolbar,.ck.ck-editor__top .ck-sticky-panel .ck-sticky-panel__content_sticky .ck-toolbar.ck-rounded-corners{border-radius:var(--ck-border-radius);border-radius:0}.ck.ck-editor__main>.ck-editor__editable{background:var(--ck-color-base-background);border-radius:0}.ck-rounded-corners .ck.ck-editor__main>.ck-editor__editable,.ck.ck-editor__main>.ck-editor__editable.ck-rounded-corners{border-radius:var(--ck-border-radius);border-top-left-radius:0;border-top-right-radius:0}.ck.ck-editor__main>.ck-editor__editable:not(.ck-focused){border-color:var(--ck-color-base-border)}"
-
-/***/ }),
-
-/***/ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-engine/theme/placeholder.css":
-/*!*******************************************************************************************************************!*\
-  !*** ./node_modules/postcss-loader/src??ref--5-1!./node_modules/@ckeditor/ckeditor5-engine/theme/placeholder.css ***!
-  \*******************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".ck.ck-placeholder:before,.ck .ck-placeholder:before{content:attr(data-placeholder);pointer-events:none;cursor:text;color:var(--ck-color-engine-placeholder-text)}"
-
-/***/ }),
-
-/***/ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-image/theme/image.css":
-/*!************************************************************************************************************!*\
-  !*** ./node_modules/postcss-loader/src??ref--5-1!./node_modules/@ckeditor/ckeditor5-image/theme/image.css ***!
-  \************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".ck-content .image{clear:both;text-align:center}.ck-content .image>img{display:block;margin:0 auto;max-width:100%}"
-
-/***/ }),
-
-/***/ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-image/theme/imagecaption.css":
-/*!*******************************************************************************************************************!*\
-  !*** ./node_modules/postcss-loader/src??ref--5-1!./node_modules/@ckeditor/ckeditor5-image/theme/imagecaption.css ***!
-  \*******************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".ck-content .image>figcaption{color:#333;background-color:#f7f7f7;padding:.6em;font-size:.75em;outline-offset:-1px}"
-
-/***/ }),
-
-/***/ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-image/theme/textalternativeform.css":
-/*!**************************************************************************************************************************!*\
-  !*** ./node_modules/postcss-loader/src??ref--5-1!./node_modules/@ckeditor/ckeditor5-image/theme/textalternativeform.css ***!
-  \**************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".ck.ck-text-alternative-form .ck-labeled-input{display:inline-block}.ck.ck-text-alternative-form .ck-label{display:none}.ck.ck-text-alternative-form{padding:var(--ck-spacing-standard)}.ck.ck-text-alternative-form:focus{outline:none}.ck.ck-text-alternative-form>:not(:first-child){margin-left:var(--ck-spacing-standard)}"
 
 /***/ }),
 
@@ -71999,17 +63809,6 @@ module.exports = ".ck.ck-icon{vertical-align:middle}:root{--ck-icon-size:calc(va
 
 /***/ }),
 
-/***/ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-ui/theme/components/inputtext/inputtext.css":
-/*!**********************************************************************************************************************************!*\
-  !*** ./node_modules/postcss-loader/src??ref--5-1!./node_modules/@ckeditor/ckeditor5-ui/theme/components/inputtext/inputtext.css ***!
-  \**********************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ":root{--ck-input-text-width:18em}.ck.ck-input-text{border-radius:0}.ck-rounded-corners .ck.ck-input-text,.ck.ck-input-text.ck-rounded-corners{border-radius:var(--ck-border-radius)}.ck.ck-input-text{box-shadow:var(--ck-inner-shadow),0 0;background:var(--ck-color-input-background);border:1px solid var(--ck-color-input-border);padding:var(--ck-spacing-extra-tiny) var(--ck-spacing-medium);min-width:var(--ck-input-text-width);min-height:var(--ck-ui-component-min-height);transition-property:box-shadow,border;transition:.2s ease-in-out}.ck.ck-input-text:focus{outline:none;border:var(--ck-focus-ring);box-shadow:var(--ck-focus-outer-shadow),var(--ck-inner-shadow)}.ck.ck-input-text[readonly]{border:1px solid var(--ck-color-input-disabled-border);background:var(--ck-color-input-disabled-background);color:var(--ck-color-input-disabled-text)}.ck.ck-input-text[readonly]:focus{box-shadow:var(--ck-focus-disabled-outer-shadow),var(--ck-inner-shadow)}"
-
-/***/ }),
-
 /***/ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-ui/theme/components/label/label.css":
 /*!**************************************************************************************************************************!*\
   !*** ./node_modules/postcss-loader/src??ref--5-1!./node_modules/@ckeditor/ckeditor5-ui/theme/components/label/label.css ***!
@@ -72018,17 +63817,6 @@ module.exports = ":root{--ck-input-text-width:18em}.ck.ck-input-text{border-radi
 /***/ (function(module, exports) {
 
 module.exports = ".ck.ck-label{display:block}.ck.ck-voice-label{display:none}.ck.ck-label{font-weight:700}"
-
-/***/ }),
-
-/***/ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-ui/theme/components/panel/balloonpanel.css":
-/*!*********************************************************************************************************************************!*\
-  !*** ./node_modules/postcss-loader/src??ref--5-1!./node_modules/@ckeditor/ckeditor5-ui/theme/components/panel/balloonpanel.css ***!
-  \*********************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ":root{--ck-balloon-panel-arrow-z-index:calc(var(--ck-z-default) - 3)}.ck.ck-balloon-panel{display:none;position:absolute;z-index:var(--ck-z-modal)}.ck.ck-balloon-panel.ck-balloon-panel_with-arrow:after,.ck.ck-balloon-panel.ck-balloon-panel_with-arrow:before{content:\"\";position:absolute}.ck.ck-balloon-panel.ck-balloon-panel_with-arrow:before{z-index:var(--ck-balloon-panel-arrow-z-index)}.ck.ck-balloon-panel.ck-balloon-panel_with-arrow:after{z-index:calc(var(--ck-balloon-panel-arrow-z-index) + 1)}.ck.ck-balloon-panel[class*=arrow_n]:before{z-index:var(--ck-balloon-panel-arrow-z-index)}.ck.ck-balloon-panel[class*=arrow_n]:after{z-index:calc(var(--ck-balloon-panel-arrow-z-index) + 1)}.ck.ck-balloon-panel[class*=arrow_s]:before{z-index:var(--ck-balloon-panel-arrow-z-index)}.ck.ck-balloon-panel[class*=arrow_s]:after{z-index:calc(var(--ck-balloon-panel-arrow-z-index) + 1)}.ck.ck-balloon-panel.ck-balloon-panel_visible{display:block}:root{--ck-balloon-arrow-offset:2px;--ck-balloon-arrow-height:10px;--ck-balloon-arrow-half-width:8px}.ck.ck-balloon-panel{border-radius:0}.ck-rounded-corners .ck.ck-balloon-panel,.ck.ck-balloon-panel.ck-rounded-corners{border-radius:var(--ck-border-radius)}.ck.ck-balloon-panel{box-shadow:var(--ck-drop-shadow),0 0;min-height:15px;background:var(--ck-color-panel-background);border:1px solid var(--ck-color-panel-border)}.ck.ck-balloon-panel.ck-balloon-panel_with-arrow:after,.ck.ck-balloon-panel.ck-balloon-panel_with-arrow:before{width:0;height:0;border-style:solid}.ck.ck-balloon-panel[class*=arrow_n]:after,.ck.ck-balloon-panel[class*=arrow_n]:before{border-left-width:var(--ck-balloon-arrow-half-width);border-bottom-width:var(--ck-balloon-arrow-height);border-right-width:var(--ck-balloon-arrow-half-width);border-top-width:0}.ck.ck-balloon-panel[class*=arrow_n]:before{border-bottom-color:var(--ck-color-panel-border)}.ck.ck-balloon-panel[class*=arrow_n]:after,.ck.ck-balloon-panel[class*=arrow_n]:before{border-left-color:transparent;border-right-color:transparent;border-top-color:transparent}.ck.ck-balloon-panel[class*=arrow_n]:after{border-bottom-color:var(--ck-color-panel-background);margin-top:var(--ck-balloon-arrow-offset)}.ck.ck-balloon-panel[class*=arrow_s]:after,.ck.ck-balloon-panel[class*=arrow_s]:before{border-left-width:var(--ck-balloon-arrow-half-width);border-bottom-width:0;border-right-width:var(--ck-balloon-arrow-half-width);border-top-width:var(--ck-balloon-arrow-height)}.ck.ck-balloon-panel[class*=arrow_s]:before{border-top-color:var(--ck-color-panel-border)}.ck.ck-balloon-panel[class*=arrow_s]:after,.ck.ck-balloon-panel[class*=arrow_s]:before{border-left-color:transparent;border-bottom-color:transparent;border-right-color:transparent}.ck.ck-balloon-panel[class*=arrow_s]:after{border-top-color:var(--ck-color-panel-background);margin-bottom:var(--ck-balloon-arrow-offset)}.ck.ck-balloon-panel.ck-balloon-panel_arrow_n:after,.ck.ck-balloon-panel.ck-balloon-panel_arrow_n:before{left:50%;margin-left:calc(-1 * var(--ck-balloon-arrow-half-width));top:calc(-1 * var(--ck-balloon-arrow-height))}.ck.ck-balloon-panel.ck-balloon-panel_arrow_nw:after,.ck.ck-balloon-panel.ck-balloon-panel_arrow_nw:before{left:calc(2 * var(--ck-balloon-arrow-half-width));top:calc(-1 * var(--ck-balloon-arrow-height))}.ck.ck-balloon-panel.ck-balloon-panel_arrow_ne:after,.ck.ck-balloon-panel.ck-balloon-panel_arrow_ne:before{right:calc(2 * var(--ck-balloon-arrow-half-width));top:calc(-1 * var(--ck-balloon-arrow-height))}.ck.ck-balloon-panel.ck-balloon-panel_arrow_s:after,.ck.ck-balloon-panel.ck-balloon-panel_arrow_s:before{left:50%;margin-left:calc(-1 * var(--ck-balloon-arrow-half-width));bottom:calc(-1 * var(--ck-balloon-arrow-height))}.ck.ck-balloon-panel.ck-balloon-panel_arrow_sw:after,.ck.ck-balloon-panel.ck-balloon-panel_arrow_sw:before{left:calc(2 * var(--ck-balloon-arrow-half-width));bottom:calc(-1 * var(--ck-balloon-arrow-height))}.ck.ck-balloon-panel.ck-balloon-panel_arrow_se:after,.ck.ck-balloon-panel.ck-balloon-panel_arrow_se:before{right:calc(2 * var(--ck-balloon-arrow-half-width));bottom:calc(-1 * var(--ck-balloon-arrow-height))}"
 
 /***/ }),
 
@@ -72073,17 +63861,6 @@ module.exports = ".ck.ck-tooltip,.ck.ck-tooltip .ck-tooltip__text:after{position
 /***/ (function(module, exports) {
 
 module.exports = ".ck-hidden{display:none!important}.ck.ck-reset,.ck.ck-reset_all,.ck.ck-reset_all *{box-sizing:border-box;width:auto;height:auto;position:static}:root{--ck-z-default:1;--ck-z-modal:calc(var(--ck-z-default) + 999);--ck-color-base-foreground:#fafafa;--ck-color-base-background:#fff;--ck-color-base-border:#c4c4c4;--ck-color-base-action:#61b045;--ck-color-base-focus:#6cb5f9;--ck-color-base-text:#333;--ck-color-base-active:#198cf0;--ck-color-base-active-focus:#0e7fe1;--ck-color-focus-border:#47a4f5;--ck-color-focus-shadow:rgba(119,186,248,0.5);--ck-color-focus-disabled-shadow:rgba(119,186,248,0.3);--ck-color-text:var(--ck-color-base-text);--ck-color-shadow-drop:rgba(0,0,0,0.15);--ck-color-shadow-inner:rgba(0,0,0,0.1);--ck-color-button-default-background:transparent;--ck-color-button-default-hover-background:#e6e6e6;--ck-color-button-default-active-background:#d9d9d9;--ck-color-button-default-active-shadow:#bfbfbf;--ck-color-button-default-disabled-background:transparent;--ck-color-button-on-background:#dedede;--ck-color-button-on-hover-background:#c4c4c4;--ck-color-button-on-active-background:#bababa;--ck-color-button-on-active-shadow:#a1a1a1;--ck-color-button-on-disabled-background:#dedede;--ck-color-button-action-background:var(--ck-color-base-action);--ck-color-button-action-hover-background:#579e3d;--ck-color-button-action-active-background:#53973b;--ck-color-button-action-active-shadow:#498433;--ck-color-button-action-disabled-background:#7ec365;--ck-color-button-action-text:var(--ck-color-base-background);--ck-color-button-save:#008a00;--ck-color-button-cancel:#db3700;--ck-color-switch-button-off-background:#b0b0b0;--ck-color-switch-button-on-background:var(--ck-color-button-action-background);--ck-color-switch-button-inner-background:var(--ck-color-base-background);--ck-color-dropdown-panel-background:var(--ck-color-base-background);--ck-color-dropdown-panel-border:var(--ck-color-base-border);--ck-color-input-background:var(--ck-color-base-background);--ck-color-input-border:#c7c7c7;--ck-color-input-text:var(--ck-color-base-text);--ck-color-input-disabled-background:#f2f2f2;--ck-color-input-disabled-border:#c7c7c7;--ck-color-input-disabled-text:#5c5c5c;--ck-color-list-background:var(--ck-color-base-background);--ck-color-list-button-hover-background:var(--ck-color-base-foreground);--ck-color-list-button-on-background:var(--ck-color-base-active);--ck-color-list-button-on-background-focus:var(--ck-color-base-active-focus);--ck-color-list-button-on-text:var(--ck-color-base-background);--ck-color-panel-background:var(--ck-color-base-background);--ck-color-panel-border:var(--ck-color-base-border);--ck-color-toolbar-background:var(--ck-color-base-foreground);--ck-color-toolbar-border:var(--ck-color-base-border);--ck-color-tooltip-background:var(--ck-color-base-text);--ck-color-tooltip-text:var(--ck-color-base-background);--ck-color-engine-placeholder-text:#c2c2c2;--ck-color-upload-bar-background:#6cb5f9;--ck-color-upload-infinite-background:rgba(0,0,0,0.1);--ck-color-link-default:#0000f0;--ck-color-link-selected-background:#ebf8ff;--ck-disabled-opacity:.5;--ck-focus-outer-shadow-geometry:0 0 0 3px;--ck-focus-outer-shadow:var(--ck-focus-outer-shadow-geometry) var(--ck-color-focus-shadow);--ck-focus-disabled-outer-shadow:var(--ck-focus-outer-shadow-geometry) var(--ck-color-focus-disabled-shadow);--ck-focus-ring:1px solid var(--ck-color-focus-border);--ck-font-size-base:13px;--ck-line-height-base:1.84615;--ck-font-face:Helvetica,Arial,Tahoma,Verdana,Sans-Serif;--ck-font-size-tiny:0.7em;--ck-font-size-small:0.75em;--ck-font-size-normal:1em;--ck-font-size-big:1.4em;--ck-font-size-large:1.8em;--ck-ui-component-min-height:2.3em}.ck.ck-reset,.ck.ck-reset_all,.ck.ck-reset_all *{margin:0;padding:0;border:0;background:transparent;text-decoration:none;vertical-align:middle;transition:none;word-wrap:break-word}.ck.ck-reset_all,.ck.ck-reset_all *{border-collapse:collapse;font:normal normal normal var(--ck-font-size-base)/var(--ck-line-height-base) var(--ck-font-face);color:var(--ck-color-text);text-align:left;white-space:nowrap;cursor:auto;float:none}.ck.ck-reset_all .ck-rtl *{text-align:right}.ck.ck-reset_all iframe{vertical-align:inherit}.ck.ck-reset_all textarea{white-space:pre-wrap}.ck.ck-reset_all input[type=password],.ck.ck-reset_all input[type=text],.ck.ck-reset_all textarea{cursor:text}.ck.ck-reset_all input[type=password][disabled],.ck.ck-reset_all input[type=text][disabled],.ck.ck-reset_all textarea[disabled]{cursor:default}.ck.ck-reset_all fieldset{padding:10px;border:2px groove #dfdee3}.ck.ck-reset_all button::-moz-focus-inner{padding:0;border:0}:root{--ck-border-radius:2px;--ck-inner-shadow:2px 2px 3px var(--ck-color-shadow-inner) inset;--ck-drop-shadow:0 1px 2px 1px var(--ck-color-shadow-drop);--ck-spacing-unit:0.6em;--ck-spacing-large:calc(var(--ck-spacing-unit) * 1.5);--ck-spacing-standard:var(--ck-spacing-unit);--ck-spacing-medium:calc(var(--ck-spacing-unit) * 0.8);--ck-spacing-small:calc(var(--ck-spacing-unit) * 0.5);--ck-spacing-tiny:calc(var(--ck-spacing-unit) * 0.3);--ck-spacing-extra-tiny:calc(var(--ck-spacing-unit) * 0.16)}"
-
-/***/ }),
-
-/***/ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-widget/theme/widget.css":
-/*!**************************************************************************************************************!*\
-  !*** ./node_modules/postcss-loader/src??ref--5-1!./node_modules/@ckeditor/ckeditor5-widget/theme/widget.css ***!
-  \**************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".ck .ck-widget.ck-widget_selectable{position:relative}.ck .ck-widget.ck-widget_selectable .ck-widget__selection-handler{visibility:hidden;position:absolute}.ck .ck-widget.ck-widget_selectable .ck-widget__selection-handler .ck-icon{display:block}.ck .ck-widget.ck-widget_selectable.ck-widget_selected .ck-widget__selection-handler,.ck .ck-widget.ck-widget_selectable:hover .ck-widget__selection-handler{visibility:visible}:root{--ck-widget-outline-thickness:3px;--ck-widget-handler-icon-size:16px;--ck-widget-handler-animation-duration:200ms;--ck-widget-handler-animation-curve:ease;--ck-color-widget-blurred-border:#dedede;--ck-color-widget-hover-border:#ffc83d;--ck-color-widget-editable-focus-background:var(--ck-color-base-background);--ck-color-widget-drag-handler-icon-color:var(--ck-color-base-background)}.ck .ck-widget{margin:var(--ck-spacing-standard) 0;padding:0;outline-width:var(--ck-widget-outline-thickness);outline-style:solid;outline-color:transparent;transition:outline-color var(--ck-widget-handler-animation-duration) var(--ck-widget-handler-animation-curve)}.ck .ck-widget.ck-widget_selected,.ck .ck-widget.ck-widget_selected:hover{outline:var(--ck-widget-outline-thickness) solid var(--ck-color-focus-border)}.ck .ck-widget:hover{outline-color:var(--ck-color-widget-hover-border)}.ck .ck-editor__nested-editable{border:1px solid transparent}.ck .ck-editor__nested-editable.ck-editor__nested-editable_focused,.ck .ck-editor__nested-editable:focus{outline:none;border:var(--ck-focus-ring);box-shadow:var(--ck-inner-shadow),0 0;background-color:var(--ck-color-widget-editable-focus-background)}.ck .ck-widget.ck-widget_selectable .ck-widget__selection-handler{padding:4px;box-sizing:border-box;background-color:transparent;opacity:0;transition:background-color var(--ck-widget-handler-animation-duration) var(--ck-widget-handler-animation-curve),visibility var(--ck-widget-handler-animation-duration) var(--ck-widget-handler-animation-curve),opacity var(--ck-widget-handler-animation-duration) var(--ck-widget-handler-animation-curve);border-radius:var(--ck-border-radius) var(--ck-border-radius) 0 0;transform:translateY(-100%);left:calc(0px - var(--ck-widget-outline-thickness))}.ck .ck-widget.ck-widget_selectable .ck-widget__selection-handler:hover .ck-icon .ck-icon__selected-indicator{opacity:1}.ck .ck-widget.ck-widget_selectable .ck-widget__selection-handler .ck-icon{width:var(--ck-widget-handler-icon-size);height:var(--ck-widget-handler-icon-size);color:var(--ck-color-widget-drag-handler-icon-color)}.ck .ck-widget.ck-widget_selectable .ck-widget__selection-handler .ck-icon .ck-icon__selected-indicator{opacity:0;transition:opacity .3s var(--ck-widget-handler-animation-curve)}.ck .ck-widget.ck-widget_selectable.ck-widget_selected .ck-widget__selection-handler,.ck .ck-widget.ck-widget_selectable.ck-widget_selected:hover .ck-widget__selection-handler{opacity:1;background-color:var(--ck-color-focus-border)}.ck .ck-widget.ck-widget_selectable.ck-widget_selected .ck-widget__selection-handler .ck-icon .ck-icon__selected-indicator,.ck .ck-widget.ck-widget_selectable.ck-widget_selected:hover .ck-widget__selection-handler .ck-icon .ck-icon__selected-indicator{opacity:1}.ck .ck-widget.ck-widget_selectable:hover .ck-widget__selection-handler{opacity:1;background-color:var(--ck-color-widget-hover-border)}.ck-editor__editable.ck-blurred .ck-widget.ck-widget_selected,.ck-editor__editable.ck-blurred .ck-widget.ck-widget_selected:hover{outline-color:var(--ck-color-widget-blurred-border)}.ck-editor__editable.ck-blurred .ck-widget.ck-widget_selected .ck-widget__selection-handler,.ck-editor__editable.ck-blurred .ck-widget.ck-widget_selected .ck-widget__selection-handler:hover,.ck-editor__editable.ck-blurred .ck-widget.ck-widget_selected:hover .ck-widget__selection-handler,.ck-editor__editable.ck-blurred .ck-widget.ck-widget_selected:hover .ck-widget__selection-handler:hover{background:var(--ck-color-widget-blurred-border)}"
 
 /***/ }),
 

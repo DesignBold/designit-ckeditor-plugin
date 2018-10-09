@@ -7,7 +7,7 @@ const { styles } = require( '@ckeditor/ckeditor5-dev-utils' );
 
 module.exports = {
     // https://webpack.js.org/configuration/entry-context/
-    entry: './designit.js',
+    entry: './app.js',
 
     // https://webpack.js.org/configuration/output/
     output: {

@@ -34,7 +34,7 @@ var startDesignTool = function(image_src, param){
     }
 };
 
-export default class SampleView extends Plugin {
+export default class DesignitPlugin extends Plugin {
     init(){
         const editor = this.editor;
 		const t = editor.t;

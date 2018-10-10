@@ -23,6 +23,16 @@ module.exports = {
                 test: /\.svg$/,
 
                 use: [ 'raw-loader' ]
+            },{
+                // Or /ckeditor5-[^/]+\/theme\/icons\/[^/]+\.svg$/ if you want to limit this loader
+                // to CKEditor 5 icons only.
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                  {
+                    loader: 'file-loader',
+                    options: {}
+                  }
+                ]
             },
             {
                 // Or /ckeditor5-[^/]+\/theme\/[^/]+\.css$/ if you want to limit this loader

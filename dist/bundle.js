@@ -1120,8 +1120,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ckeditor_ckeditor5_ui_src_iframe_iframeview__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-ui/src/iframe/iframeview */ "./node_modules/@ckeditor/ckeditor5-ui/src/iframe/iframeview.js");
 /* harmony import */ var _button_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./button.js */ "./button.js");
 /* harmony import */ var _button_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_button_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _ckeditor_ckeditor5_core_theme_icons_image_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/theme/icons/image.svg */ "./node_modules/@ckeditor/ckeditor5-core/theme/icons/image.svg");
-/* harmony import */ var _ckeditor_ckeditor5_core_theme_icons_image_svg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_core_theme_icons_image_svg__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _logo_b_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./logo_b.svg */ "./logo_b.svg");
+/* harmony import */ var _logo_b_svg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_logo_b_svg__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
@@ -1169,8 +1169,8 @@ class DesignitPlugin extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORT
             const iframe_view = new _ckeditor_ckeditor5_ui_src_iframe_iframeview__WEBPACK_IMPORTED_MODULE_2__["default"]( locale );
 
             view.set( {
-                label: t('Open dialog'),
-                icon: _ckeditor_ckeditor5_core_theme_icons_image_svg__WEBPACK_IMPORTED_MODULE_4___default.a,
+                label: t('Open design tool'),
+                icon: _logo_b_svg__WEBPACK_IMPORTED_MODULE_4___default.a,
                 tooltip: true
             } );
 
@@ -1187,6 +1187,17 @@ class DesignitPlugin extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORT
         })
     }
 }
+
+/***/ }),
+
+/***/ "./logo_b.svg":
+/*!********************!*\
+  !*** ./logo_b.svg ***!
+  \********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\r\n<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\r\n\t viewBox=\"0 0 25 25\" style=\"enable-background:new 0 0 25 25;\" xml:space=\"preserve\">\r\n<style type=\"text/css\">\r\n\t.st0{fill:#F15B23;}\r\n\t.st1{fill:#2C97DD;}\r\n\t.st2{fill:#02BC9B;}\r\n\t.st3{fill:#EFCD06;}\r\n</style>\r\n<g>\r\n\t<g>\r\n\t\t<polygon class=\"st0\" points=\"7.8,12 7.8,4.9 4.1,0 4.1,7.1 \t\t\"/>\r\n\t</g>\r\n\t<path class=\"st1\" d=\"M21.3,16.2L21.3,16.2c0-1.5-0.3-2.8-0.7-3.9c-0.5-1.1-1.1-2.1-1.9-2.8c-0.8-0.7-1.6-1.3-2.5-1.7\r\n\t\tc-0.9-0.4-1.8-0.6-2.6-0.6c-2.3,0-3.9,0.4-5,1.1l0,0.1v3.8L8.9,12c1.4-0.9,2.8-1.4,4.5-1.4c1.2,0.1,2.3,0.7,3.1,1.6\r\n\t\ts1.2,2.1,1.2,3.6c0,0.3-0.1,0.5-0.1,0.7v0c0,0,0.2-0.2,0.2-0.2L21.3,16.2C21.2,16.2,21.3,16.3,21.3,16.2z\"/>\r\n\t<path class=\"st2\" d=\"M12.9,21.1c-1,0-2-0.3-2.7-0.8c-0.7-0.5-1.4-1.3-1.7-2.2c-0.2-0.5-0.4-1.1-0.5-1.6c-0.1-0.5-0.1-1-0.1-1.6\r\n\t\tv-1.7L4.1,8.4v7.8c0,0.1,0.1,0.2,0.1,0.4c0.1,1,0.4,2,0.9,3.2c0.6,1.3,1.7,2.4,3,3.4c1.3,0.9,2.7,1.4,5,1.4v-3.4\r\n\t\tC13.1,21.1,12.9,21.1,12.9,21.1z\"/>\r\n\t<path class=\"st3\" d=\"M12.9,24.4L12.9,24.4c1.5,0,2.7-0.3,3.8-0.8c1.1-0.5,1.9-1.2,2.6-2.1c0.6-0.8,1.1-1.9,1.4-2.8\r\n\t\tc0.3-0.8,0.5-1.8,0.5-2.5h-3.5c-0.1,1.5-0.4,2.2-1,2.9c-0.6,0.7-1.1,1.3-1.8,1.6c-0.7,0.3-1.9,0.5-1.9,0.5v3.4\r\n\t\tC13.1,24.5,12.8,24.4,12.9,24.4C12.9,24.4,12.9,24.4,12.9,24.4z\"/>\r\n</g>\r\n</svg>\r\n"
 
 /***/ }),
 
@@ -1374,17 +1385,6 @@ Object(_ckeditor_ckeditor5_utils_src_mix__WEBPACK_IMPORTED_MODULE_1__["default"]
  * @returns {null|Promise}
  */
 
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-core/theme/icons/image.svg":
-/*!*********************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-core/theme/icons/image.svg ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<svg width=\"20\" height=\"20\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M6.91 10.54c.26-.23.64-.21.88.03l3.36 3.14 2.23-2.06a.64.64 0 0 1 .87 0l2.52 2.97V4.5H3.2v10.12l3.71-4.08zm10.27-7.51c.6 0 1.09.47 1.09 1.05v11.84c0 .59-.49 1.06-1.09 1.06H2.79c-.6 0-1.09-.47-1.09-1.06V4.08c0-.58.49-1.05 1.1-1.05h14.38zm-5.22 5.56a1.96 1.96 0 1 1 3.4-1.96 1.96 1.96 0 0 1-3.4 1.96z\" fill=\"#000\" fill-rule=\"nonzero\"/></svg>\n"
 
 /***/ }),
 
@@ -4581,7 +4581,7 @@ function isStringArray( arr ) {
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../../postcss-loader/src??ref--5-1!./button.css */ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-ui/theme/components/button/button.css");
+var content = __webpack_require__(/*! !../../../../../postcss-loader/src??ref--6-1!./button.css */ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-ui/theme/components/button/button.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -4611,7 +4611,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../../postcss-loader/src??ref--5-1!./icon.css */ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-ui/theme/components/icon/icon.css");
+var content = __webpack_require__(/*! !../../../../../postcss-loader/src??ref--6-1!./icon.css */ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-ui/theme/components/icon/icon.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -4641,7 +4641,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../../postcss-loader/src??ref--5-1!./tooltip.css */ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-ui/theme/components/tooltip/tooltip.css");
+var content = __webpack_require__(/*! !../../../../../postcss-loader/src??ref--6-1!./tooltip.css */ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-ui/theme/components/tooltip/tooltip.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -4671,7 +4671,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../postcss-loader/src??ref--5-1!./globals.css */ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-ui/theme/globals/globals.css");
+var content = __webpack_require__(/*! !../../../../postcss-loader/src??ref--6-1!./globals.css */ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-ui/theme/globals/globals.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -41212,7 +41212,7 @@ var zipWith = Object(_baseRest_js__WEBPACK_IMPORTED_MODULE_0__["default"])(funct
 
 /***/ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-ui/theme/components/button/button.css":
 /*!****************************************************************************************************************************!*\
-  !*** ./node_modules/postcss-loader/src??ref--5-1!./node_modules/@ckeditor/ckeditor5-ui/theme/components/button/button.css ***!
+  !*** ./node_modules/postcss-loader/src??ref--6-1!./node_modules/@ckeditor/ckeditor5-ui/theme/components/button/button.css ***!
   \****************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -41223,7 +41223,7 @@ module.exports = ".ck.ck-button,a.ck.ck-button{-moz-user-select:none;-webkit-use
 
 /***/ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-ui/theme/components/icon/icon.css":
 /*!************************************************************************************************************************!*\
-  !*** ./node_modules/postcss-loader/src??ref--5-1!./node_modules/@ckeditor/ckeditor5-ui/theme/components/icon/icon.css ***!
+  !*** ./node_modules/postcss-loader/src??ref--6-1!./node_modules/@ckeditor/ckeditor5-ui/theme/components/icon/icon.css ***!
   \************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -41234,7 +41234,7 @@ module.exports = ".ck.ck-icon{vertical-align:middle}:root{--ck-icon-size:calc(va
 
 /***/ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-ui/theme/components/tooltip/tooltip.css":
 /*!******************************************************************************************************************************!*\
-  !*** ./node_modules/postcss-loader/src??ref--5-1!./node_modules/@ckeditor/ckeditor5-ui/theme/components/tooltip/tooltip.css ***!
+  !*** ./node_modules/postcss-loader/src??ref--6-1!./node_modules/@ckeditor/ckeditor5-ui/theme/components/tooltip/tooltip.css ***!
   \******************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -41245,7 +41245,7 @@ module.exports = ".ck.ck-tooltip,.ck.ck-tooltip .ck-tooltip__text:after{position
 
 /***/ "./node_modules/postcss-loader/src/index.js?!./node_modules/@ckeditor/ckeditor5-ui/theme/globals/globals.css":
 /*!*******************************************************************************************************************!*\
-  !*** ./node_modules/postcss-loader/src??ref--5-1!./node_modules/@ckeditor/ckeditor5-ui/theme/globals/globals.css ***!
+  !*** ./node_modules/postcss-loader/src??ref--6-1!./node_modules/@ckeditor/ckeditor5-ui/theme/globals/globals.css ***!
   \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {

@@ -1,6 +1,6 @@
 {
   "name": "ckeditor-designit-plugin",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Designbold designit button intergration for CKeditor",
   "main": "dist/bundle.js",
   "scripts": {
@@ -22,5 +22,8 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2"
+  },
+  "devDependencies": {
+    "file-loader": "^2.0.0"
   }
 }

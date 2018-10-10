@@ -3,7 +3,7 @@ import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 import IframeView from '@ckeditor/ckeditor5-ui/src/iframe/iframeview';
 import './button.js';
 
-import imageIcon from '@ckeditor/ckeditor5-core/theme/icons/image.svg'
+import imageIcon from './logo_b.svg';
 
 const Designit = 'Designit';
 
@@ -45,7 +45,7 @@ export default class DesignitPlugin extends Plugin {
             const iframe_view = new IframeView( locale );
 
             view.set( {
-                label: t('Open dialog'),
+                label: t('Open design tool'),
                 icon: imageIcon,
                 tooltip: true
             } );

@@ -10,6 +10,13 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites.
 
+In order to start developing CKEditor 5 you will require:
+
+Node.js 6.9.0+
+npm 4+ (note: some npm 5+ versions were known to cause problems, especially with deduplicating packages; upgrade npm when in doubt)
+
+### Adding a plugin to a build
+
 Adding plugins to existing builds is done through their customization. Editor builds are maintained in their respective GitHub repositories. Therefore, assuming that you want to customize the classic editor build you need to:
 
 1 Clone the build repository.
@@ -75,3 +82,20 @@ ClassicEditor.defaultConfig = {
 Finally, if everything worked, the editor build (which is available in the build/ directory) should be updated.
 
 You can open the sample/index.html file in your browser to see whether the plugin was installed correctly.
+
+### Versioning
+
+#### 1.0.5
+
+- [X] Fix the problem when click button designit
+- [X] Clean code
+
+#### 1.1.0
+
+- [X] Change process show designit tool from open new tab to show popup.
+- [X] Add Feature show popular doctype
+- [X] Add Feature show all doctype
+- [X] Add Feature custome size
+- [X] Clean code
+- [X] Update readme.md
+

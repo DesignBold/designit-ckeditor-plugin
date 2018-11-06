@@ -99,3 +99,6 @@ You can open the sample/index.html file in your browser to see whether the plugi
 - [X] Clean code
 - [X] Update readme.md
 
+#### 1.1.1
+
+- [X] Add feature download image

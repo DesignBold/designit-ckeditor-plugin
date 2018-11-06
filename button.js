@@ -15,6 +15,9 @@
 };
 window.DBSDK = {
 	app_id : "08b68956d3",
+	API: {
+		host: 'www.designbold.com'
+	}
 };
 
 // Add style css
@@ -743,7 +746,6 @@ window.DBSDK = {
     		iframe.src = designit_uri;
     		iframe.name = 'db-design-frame-' + uuid;
     		iframe.id = 'db-design-frame-' + uuid;
-    		console.log('1 - ' + iframe);
     		var iframeOnLoad = function () {
     			if (iframe.removeEventListener) {
     				iframe.removeEventListener('load', null, true);
@@ -753,27 +755,25 @@ window.DBSDK = {
     			}
     			iframe.style.display = 'block';
     			DBSDK.$('.db-overlay[data-id="' + uuid + '"] .db-loading')[0].style.display = 'none';
-                //source_frame = window.document.getElementById('db-design-frame-'+uuid);
-                console.log('2 - ' + iframe);
-            };
-            DBSDK.unbindEventHandler(iframe, 'load', iframeOnLoad, true);
-            DBSDK.bindEventHandler(iframe, 'load', iframeOnLoad, true);
-            var overlay = '<div class="db-overlay animated fadeIn" data-id="' + uuid + '" style="display: block;">'
-            + '<span class="db-close-lightbox">x</span>'
-            + '<div class="db-lightbox">'
-            + '<div class="db-loading">'
-            + '<div class="inner-circles-loader large loading-icon"></div>'
-            + '</div>'
-            + '</div>'
-            + '</div>';
-            doc.body.insertAdjacentHTML('beforeend', overlay);
-            DBSDK.$('.db-overlay[data-id="' + uuid + '"] .db-lightbox')[0].appendChild(iframe);
-            source_frame = window.document.getElementById('db-design-frame-'+uuid);
-            DBSDK.bindEventHandler(DBSDK.$('.db-overlay[data-id="' + uuid + '"] .db-close-lightbox')[0], 'click', function (e) {
-            	e.currentTarget.parentNode.style.display = 'none';
-            	window.parent.postMessage({"action":""})
-            });
-        }
+    		};
+    		source_frame = iframe;
+    		DBSDK.unbindEventHandler(iframe, 'load', iframeOnLoad, true);
+    		DBSDK.bindEventHandler(iframe, 'load', iframeOnLoad, true);
+    		var overlay = '<div class="db-overlay animated fadeIn" data-id="' + uuid + '" style="display: block;">'
+    		+ '<span class="db-close-lightbox">x</span>'
+    		+ '<div class="db-lightbox">'
+    		+ '<div class="db-loading">'
+    		+ '<div class="inner-circles-loader large loading-icon"></div>'
+    		+ '</div>'
+    		+ '</div>'
+    		+ '</div>';
+    		doc.body.insertAdjacentHTML('beforeend', overlay);
+    		DBSDK.$('.db-overlay[data-id="' + uuid + '"] .db-lightbox')[0].appendChild(iframe);
+    		DBSDK.bindEventHandler(DBSDK.$('.db-overlay[data-id="' + uuid + '"] .db-close-lightbox')[0], 'click', function (e) {
+    			e.currentTarget.parentNode.style.display = 'none';
+    			window.parent.postMessage({"action":""})
+    		});
+    	}
     };
 
     DBSDK.startDesignToolExtension = function (designit_uri,uuid, param) {
@@ -793,7 +793,7 @@ window.DBSDK = {
     	+ '<span class="db-close-lightbox">x</span>'
     	+ '</div>';
     	DBSDK.$('.db-overlay')[0].insertAdjacentHTML('beforeend', lightbox);
-
+    	source_frame = iframe;
     	var iframeOnLoad = function () {
     		if (iframe.removeEventListener) {
     			iframe.removeEventListener('load', null, true);
@@ -807,7 +807,6 @@ window.DBSDK = {
 
     	DBSDK.unbindEventHandler(iframe, 'load', iframeOnLoad, true);
     	DBSDK.bindEventHandler(iframe, 'load', iframeOnLoad, true);
-    	source_frame = window.document.getElementById('db-design-frame-' + uuid);
     	DBSDK.$('.db-overlay .db-lightbox[data-id="' + uuid + '"]')[0].appendChild(iframe);
 
     	DBSDK.bindEventHandler(DBSDK.$('.db-overlay .db-lightbox[data-id="' + uuid + '"] .db-close-lightbox')[0], 'click', function (e) {
@@ -928,17 +927,19 @@ window.DBSDK = {
     				var downloadUrl = e.data.src || null;
     				var document_id = e.data.document_id || null;
     				uuid = design_frame[0].getAttribute('data-id');
-    				var btn = DBSDK.$('.db-btn-designit[data-id="' + uuid + '"]')[0],
-    				previewTarget = btn.getAttribute('data-db-preview-target');
+    				var btn = DBSDK.$('.db-btn-designit[data-id="' + uuid + '"]')[0];
+    				var previewTarget = false;
+    				if (typeof btn == 'object'){
+    					previewTarget = btn.getAttribute('data-db-preview-target');
+    				}
                     // hide the iframe modal
-                    DBSDK.$('.db-overlay[data-id="' + uuid + '"] .db-close-lightbox')[0].click();
+                    DBSDK.$('.fix-favorite .db-close-lightbox')[0].click();
                     setTimeout(function () {
+                    	var output  = {buttonId:uuid};
                     	if (previewTarget) {
-                    		DBSDK.exportCallback(downloadUrl,document_id, previewTarget);
+                    		output.previewTarget = previewTarget;
                     	}
-                    	else {
-                    		DBSDK.exportCallback(downloadUrl,document_id);
-                    	}
+                    	DBSDK.exportCallback(downloadUrl,document_id,output);
                     }, 0);
                 }
             }
@@ -1039,7 +1040,15 @@ window.DBSDK = {
     	if (overlay) {
     		overlay.style.display = 'block';
     	}else{
-    		let overlay = '<div class="db-overlay animated fadeIn" style="display: block;"></div>';
+    		var modal = '<div id="dbsdk_modal_notification" class="fadeIn">'
+    		+ '<div id="modal_notification" class="modal">'
+    		+ '<div class="db-loading">'
+    		+ '<p>Please wait download image...</p>'
+    		+ '<div class="inner-circles-loader large loading-icon"></div>'
+    		+ '</div>'
+    		+ '</div>'
+    		+ '</div>';
+    		let overlay = modal + '<div class="db-overlay animated fadeIn" style="display: block;"></div>';
     		doc.body.insertAdjacentHTML('beforeend', overlay);
 
     		var favorite = '<div class="fix-favorite">'
@@ -1066,7 +1075,7 @@ window.DBSDK = {
 					}
 				}
 
-				xhr.open("GET", "https://api-alpha.designbold.com/v3/user/recent_doctype", true);
+				xhr.open("GET", "https://api.designbold.com/v3/user/recent_doctype", true);
 				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 				xhr.setRequestHeader("Authorization", "Bearer b0f99ceb3d596cb8e7152088548c41e981920c0bd92312047fd8e75b9eee440d");
 

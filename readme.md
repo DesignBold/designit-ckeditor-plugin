@@ -1,8 +1,8 @@
-# Designbold designit button intergration for CKeditor 5
+# DesignBold intergration design button for CKeditor 5
 
-Designit a button allow designing image on CKeditor 5, written completely in Javascript.
+DesignBold button design image on CKeditor 5, written completely by Javascript.
 
-For more information, check out the [proposal repo](https://github.com/designboldgit/designit-ckeditor-plugin).
+For more information, check out the [proposal repo](https://github.com/DesignBold/designit-ckeditor-plugin).
 
 ## Getting Started
 
@@ -32,7 +32,7 @@ Adding plugins to existing builds is done through their customization. Editor bu
 First, clone the build repository:
 
 ```
-git clone -b stable https://github.com/ckeditor/ckeditor5-build-classic.git
+git clone -b stable https://github.com/DesignBold/designit-ckeditor-plugin.git
 cd ckeditor5-build-classic
 npm install
 ```
